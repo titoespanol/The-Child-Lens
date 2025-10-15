@@ -43,8 +43,8 @@ export function ContactUs() {
 
   function onSubmit(values: FormData) {
     const subject = encodeURIComponent(`New message from ${values.name}`);
-    const body = encodeURIComponent(values.message);
-    window.location.href = `mailto:team@thechildlens.com?subject=${subject}&body=${body}`;
+    const body = encodeURIComponent(`From: ${values.email}\n\n${values.message}`);
+    window.location.href = `mailto:pilar@thechildlens.com?subject=${subject}&body=${body}`;
   }
 
   return (
@@ -108,7 +108,7 @@ export function ContactUs() {
             <div className="space-y-4 text-base">
                 <div className="flex items-start">
                     <Mail className="w-5 h-5 mr-3 mt-1 shrink-0"/>
-                    <a href="mailto:team@thechildlens.com" className="hover:underline">team@thechildlens.com</a>
+                    <a href="mailto:pilar@thechildlens.com" className="hover:underline">pilar@thechildlens.com</a>
                 </div>
                  <div className="flex items-start">
                     <Pin className="w-5 h-5 mr-3 mt-1 shrink-0"/>
@@ -116,7 +116,7 @@ export function ContactUs() {
                 </div>
                 <div className="flex items-start">
                     <Link className="w-5 h-5 mr-3 mt-1 shrink-0"/>
-                    <a href="https://console.firebase.google.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">Firebase Console</a>
+                    <a href="https://www.linkedin.com/company/the-child-lens" target="_blank" rel="noopener noreferrer" className="hover:underline">LinkedIn</a>
                 </div>
             </div>
             <div className="h-[300px] md:h-[400px] w-full rounded-lg overflow-hidden shadow-lg">
