@@ -9,6 +9,7 @@ Proyecto convertido de Next.js a un sitio web **100% estático** listo para GitH
 - ✅ Carpeta `/dist` lista para GitHub Pages
 - ✅ Sin dependencias de servidor (Node.js, Express)
 - ✅ Assets multimedia en Firebase Storage (externo)
+- ✅ Configurado basePath `/The-Child-Lens` para GitHub Pages
 
 ## Tech Stack
 
@@ -136,19 +137,20 @@ Ver `README.md` para workflow YAML completo
 ```javascript
 // next.config.js
 {
-  output: 'export',           // Exportación estática
+  output: 'export',              // Exportación estática
+  basePath: '/The-Child-Lens',   // Base path para GitHub Pages
   images: {
-    unoptimized: true,        // Sin optimización servidor
+    unoptimized: true,           // Sin optimización servidor
   },
   typescript: {
-    ignoreBuildErrors: true,  // Flexibilidad
+    ignoreBuildErrors: true,     // Flexibilidad
   }
 }
 ```
 
 ## Recent Changes
 
-### Octubre 15, 2025 - Conversión a Estático
+### Octubre 15, 2025 - Conversión a Estático y Deploy
 - ✅ Clonado desde rama `replit` de GitHub
 - ✅ Configurado Next.js para export estático
 - ✅ Compilado con `npm run build`
@@ -156,6 +158,9 @@ Ver `README.md` para workflow YAML completo
 - ✅ Añadidos `.nojekyll`, `CNAME`, `/data`
 - ✅ Creado README con instrucciones GitHub Pages
 - ✅ Verificado servidor estático en puerto 5000
+- ✅ Desplegado a GitHub: https://github.com/titoespanol/The-Child-Lens
+- ✅ Configurado basePath `/The-Child-Lens` para rutas correctas
+- ✅ Re-compilado y actualizado dist con rutas corregidas
 
 ### Cambios Previos
 - Migrado de Firebase Studio a Replit
