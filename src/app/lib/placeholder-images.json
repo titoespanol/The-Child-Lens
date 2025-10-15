@@ -1,15 +1,15 @@
 {
-  "bohoPattern": "/assets/boho-pattern.jpg",
-  "mandelaVideo": "/assets/mandela-video.mp4",
-  "logo": "/logotcl.png",
-  "closeButton": "/assets/close-button.png",
-  "childFace": "/assets/child-face.jpg",
+  "bohoPattern": "/The-Child-Lens/assets/boho-pattern.jpg",
+  "mandelaVideo": "/The-Child-Lens/assets/mandela-video.mp4",
+  "logo": "/The-Child-Lens/logotcl.png",
+  "closeButton": "/The-Child-Lens/assets/close-button.png",
+  "childFace": "/The-Child-Lens/assets/child-face.jpg",
   "team": [
     {
       "name": "Pilar Puig",
       "role": "Founder",
-      "imageUrl": "/assets/pilar-adult.jpg",
-      "childImageUrl": "/assets/pilar-child.jpg",
+      "imageUrl": "/The-Child-Lens/assets/pilar-adult.jpg",
+      "childImageUrl": "/The-Child-Lens/assets/pilar-child.jpg",
       "dataAiHint": "portrait woman",
       "linkedinUrl": "https://www.linkedin.com/in/pilar-puig-s%C3%A0rries-phd/",
       "bio": {
@@ -28,8 +28,8 @@
     {
       "name": "Marc Ramis",
       "role": "Advisor",
-      "imageUrl": "/assets/marc-adult.jpg",
-      "childImageUrl": "/assets/marc-child.jpg",
+      "imageUrl": "/The-Child-Lens/assets/marc-adult.jpg",
+      "childImageUrl": "/The-Child-Lens/assets/marc-child.jpg",
       "dataAiHint": "portrait man",
       "linkedinUrl": "https://www.linkedin.com/in/markramis/",
       "bio": {
