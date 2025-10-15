@@ -1,10 +1,10 @@
-# Solo subir el contenido de /dist a GitHub Pages
+# Solo subir el contenido de /out a GitHub Pages
 # Todo lo demás se ignora
 
 # Ignorar todo
 *
 !.gitignore
 
-# Pero NO ignorar el directorio dist
-!dist/
-!dist/**/*
+# Pero NO ignorar el directorio out
+!out/
+!out/**/*
