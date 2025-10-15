@@ -1,6 +1,45 @@
-node_modules
-dist
+# Proyecto de Desarrollo (Root)
+# El folder /dist tendrá su propio repositorio separado para GitHub Pages
+
+# Dependencias
+node_modules/
+package-lock.json
+
+# Archivos de Build
+.next/
+out/
+dist/
+build/
+
+# Archivos del Sistema
 .DS_Store
+*.log
+*.swp
+*.swo
+*~
+
+# Variables de Entorno
+.env
+.env.local
+.env.*.local
+
+# Archivos Temporales
+*.tmp
+*.temp
+*.tar.gz
+*.zip
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Testing
+coverage/
+.nyc_output
+
+# Misc
+.cache/
 server/public
 vite.config.ts.*
-*.tar.gz
