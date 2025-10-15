@@ -132,7 +132,7 @@ export function ScienceToSystems({ colorClasses }: ScienceToSystemsProps) {
                     <h3 className={cn("text-xl font-bold flex items-center justify-center")}>
                         {sections[activeSection] && sections[activeSection].smallTitle}
                     </h3>
-                    <h1 className="text-6xl font-bold font-headline tracking-tighter">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-headline tracking-tighter">
                         From Science to Systems
                     </h1>
                 </div>

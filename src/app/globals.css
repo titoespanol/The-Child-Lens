@@ -301,15 +301,29 @@
   display: flex;
   line-height: 1.25;
   width: 100%;
-  padding-left: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   font-size: clamp(
-    2.5rem,
-    1.5rem + 4vw,
+    1.75rem,
+    1rem + 5vw,
     6rem
   );
   min-height: 150vh;
   margin-top: 300px;
   padding-bottom: 50vh;
+}
+
+@media (min-width: 640px) {
+  .scrolling-words-section {
+    padding-left: 3rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .scrolling-words-section {
+    padding-left: 5rem;
+  }
 }
 
 .scrolling-words-section h2 {
