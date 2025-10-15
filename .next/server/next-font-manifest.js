@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/home/runner/workspace/src/app/layout\":[\"static/media/8dc0eb8f2309e859-s.p.woff2\",\"static/media/db6616faf3b8e6c8-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"
