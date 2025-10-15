@@ -1,10 +1,20 @@
-# Solo subir el contenido de /out a GitHub Pages
+# Subir solo archivos compilados para GitHub Pages (en la raíz)
 # Todo lo demás se ignora
 
-# Ignorar todo
+# Ignorar todo por defecto
 *
-!.gitignore
+*/
 
-# Pero NO ignorar el directorio out
-!out/
-!out/**/*
+# Permitir estos archivos específicos
+!.gitignore
+!index.html
+!404.html
+!favicon.ico
+!index.txt
+!logotcl.png
+
+# Permitir estos directorios y su contenido
+!_next/
+!_next/**/*
+!assets/
+!assets/**/*
