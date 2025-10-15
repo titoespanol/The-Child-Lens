@@ -88,7 +88,7 @@ export function ScrollingFeatures({ isChildLensActive, colorClasses }: Scrolling
           style={{ filter: `blur(${blurAmount}px)` }}
         >
           <Image
-            src="/assets/child-face.jpg"
+            src="/The-Child-Lens/assets/child-face.jpg"
             alt="A child's face with dotted light patterns"
             fill
             className="object-cover"
