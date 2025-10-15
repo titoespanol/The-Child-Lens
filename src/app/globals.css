@@ -309,6 +309,7 @@
   );
   min-height: 150vh;
   margin-top: 300px;
+  padding-bottom: 50vh;
 }
 
 .scrolling-words-section h2 {
@@ -330,6 +331,11 @@
 
 .scrolling-words-section li {
   scroll-snap-align: center;
+}
+
+.scrolling-words-section li:last-of-type {
+  position: sticky;
+  top: calc(50% - 0.5lh);
 }
 
 .scrolling-words-section h2,
