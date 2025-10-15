@@ -8,6 +8,7 @@
 # Permitir estos archivos específicos
 !.gitignore
 !.nojekyll
+!CNAME
 !index.html
 !404.html
 !favicon.ico
