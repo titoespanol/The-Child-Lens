@@ -120,17 +120,19 @@ Ver `README.md` para workflow YAML completo
 ## Assets y Media
 
 ### Ubicación Actual
-- **Imágenes/Videos**: Firebase Storage (URLs externas)
+- **Imágenes/Videos**: `/dist/assets/` (local, autohospedadas)
 - **Logo**: `/dist/logotcl.png` (local)
 - **Fuentes**: Incluidas en `/_next/static/media/`
 
-### Firebase Storage URLs
-- Boho Pattern (fondo)
-- Video Mandela
-- Imágenes del equipo
-- Iconos y botones
+### Assets Locales (1.7MB total)
+- `boho-pattern.jpg` - Patrón de fondo boho (196KB)
+- `mandela-video.mp4` - Video de cita de Mandela (645KB)
+- `child-face.jpg` - Imagen de cara de niña (228KB)
+- `close-button.png` - Botón de cerrar (80KB)
+- `pilar-adult.jpg` + `pilar-child.jpg` - Fotos de Pilar (267KB)
+- `marc-adult.jpg` + `marc-child.jpg` - Fotos de Marc (239KB)
 
-**Ventaja**: No aumenta tamaño del repositorio, CDN global
+**Ventaja**: Todo autohospedado, sin dependencias externas, funciona offline
 
 ## Configuración Next.js (Para Re-compilación)
 
@@ -161,6 +163,10 @@ Ver `README.md` para workflow YAML completo
 - ✅ Desplegado a GitHub: https://github.com/titoespanol/The-Child-Lens
 - ✅ Configurado basePath `/The-Child-Lens` para rutas correctas
 - ✅ Re-compilado y actualizado dist con rutas corregidas
+- ✅ Descargadas todas las imágenes/video de Firebase Storage (1.7MB)
+- ✅ Assets ahora autohospedados en `/dist/assets/`
+- ✅ Eliminada dependencia de Firebase Storage
+- ✅ Sitio 100% autónomo y funcional offline
 
 ### Cambios Previos
 - Migrado de Firebase Studio a Replit
