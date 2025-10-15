@@ -108,25 +108,14 @@ cp -r out/* dist/    # Copiar nueva versión
 
 ## GitHub Pages Deployment
 
-### ⭐ GitHub Actions (Automático - Configurado)
-El proyecto usa GitHub Actions para despliegue automático:
-- **Archivo**: `.github/workflows/deploy.yml`
-- **Trigger**: Push a rama `main`
-- **Proceso**: Compila y publica solo carpeta `out` a GitHub Pages
-- **Ventaja**: Sube todo el proyecto, GitHub publica solo lo necesario
-
-**Cómo usar**:
-1. Haz push del código completo: `git push origin main`
-2. GitHub Actions automáticamente:
-   - Instala dependencias
-   - Compila con `npm run build`
-   - Publica solo el output estático
-3. Tu sitio se actualiza automáticamente en minutos
-
-### Método Manual (Alternativo)
+### Método 1: Manual
 1. Sube contenido de `/dist` a GitHub
 2. Settings → Pages → Deploy from branch
 3. Selecciona branch y carpeta `/` (root)
+4. Listo: `https://usuario.github.io/repo/`
+
+### Método 2: GitHub Actions (Automático)
+Ver `README.md` para workflow YAML completo
 
 ## Assets y Media
 
@@ -175,11 +164,9 @@ El proyecto usa GitHub Actions para despliegue automático:
 - ✅ Configurado basePath `/The-Child-Lens` para rutas correctas
 - ✅ Re-compilado y actualizado dist con rutas corregidas
 - ✅ Descargadas todas las imágenes/video de Firebase Storage (1.7MB)
-- ✅ Assets ahora autohospedados en `/dist/assets/` (incluyendo logo)
+- ✅ Assets ahora autohospedados en `/dist/assets/`
 - ✅ Eliminada dependencia de Firebase Storage
 - ✅ Sitio 100% autónomo y funcional offline
-- ✅ Configurado GitHub Actions (`.github/workflows/deploy.yml`) para despliegue automático
-- ✅ Push completo a GitHub, Actions publica solo contenido estático
 
 ### Cambios Previos
 - Migrado de Firebase Studio a Replit
@@ -235,21 +222,20 @@ El proyecto usa GitHub Actions para despliegue automático:
 
 ## Next Steps
 
-1. **Desplegar con GitHub Actions (Automático)**:
+1. **Desplegar a GitHub Pages**:
    ```bash
+   cd dist
+   git init
    git add .
-   git commit -m "Update site"
-   git push origin main
+   git commit -m "Deploy to GitHub Pages"
+   git remote add origin [tu-repo]
+   git push -u origin main
    ```
-   GitHub Actions se encarga del resto automáticamente.
 
-2. **Activar GitHub Pages** (primera vez):
-   - Ve a Settings → Pages
-   - Source: GitHub Actions
-   - Guarda cambios
+2. **Activar GitHub Pages** en Settings
 
 3. **(Opcional) Configurar dominio personalizado** editando `CNAME`
 
 ---
 
-**Estado**: ✅ Listo para producción en GitHub Pages con CI/CD automático
+**Estado**: ✅ Listo para producción en GitHub Pages
