@@ -299,6 +299,7 @@
 .scrolling-words-section {
   --font-level: 6;
   display: flex;
+  gap: 0.5em;
   line-height: 1.25;
   width: 100%;
   padding-left: 1rem;
@@ -308,7 +309,7 @@
     1rem + 5vw,
     6rem
   );
-  min-height: 150vh;
+  min-height: 100vh;
   margin-top: 300px;
   padding-bottom: 50vh;
 }
@@ -345,11 +346,13 @@
 
 .scrolling-words-section li {
   scroll-snap-align: center;
+  margin-bottom: 0.5em;
 }
 
 .scrolling-words-section li:last-of-type {
   position: sticky;
   top: calc(50% - 0.5lh);
+  margin-bottom: 0;
 }
 
 .scrolling-words-section h2,
@@ -370,7 +373,7 @@
     animation-name: brighten;
     animation-fill-mode: both;
     animation-timing-function: linear;
-    animation-range: cover calc(50% - 1lh) calc(50% + 1lh);
+    animation-range: cover calc(50% - 0.5lh) calc(50% + 0.5lh);
     animation-timeline: view();
   }
 
