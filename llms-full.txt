@@ -1,0 +1,88 @@
+# The Child Lens
+
+> A platform for systemic change in children's health. We build ventures from scratch, walk hand-in-hand with startups, and shift the perspectives of those in power — all to unearth the deep roots of systems that fail children's health.
+
+## Mission
+
+Children's Health. Further. Faster. Forward.
+
+The Child Lens is a platform for systemic change in children's health. We don't just treat the symptoms. We dig deep into the tangled roots — where funding gaps, power dynamics and cultural blind spots quietly shape outcomes.
+
+Real impact in children's health takes more than a brilliant idea. It takes The Builder, The Right Hand, and The Voice.
+
+## Vision: From Parts to Pattern
+
+When systems speak, change travels. You can advance a therapy, change a policy, or raise a fund. If the parts don't speak, change doesn't travel.
+
+The Child Lens works across the seams, turning isolated efforts into a shared path so progress moves further, faster, together. This is the lens we bring. And it lives through 3 ways of working.
+
+## Method: From Science to Systems
+
+### The Builder
+
+We sit next to you and turn your science into a paediatric venture, step by step. Together, we define the value proposition, map risks — clinical, regulatory, and science-related — check your IP position, and agree on go/no-go criteria that feel fair and doable. We help you shape endpoints that matter to children and clinicians, design with ethics and privacy, and outline a realistic path to first-in-child data. We craft the essentials — one-pager, deck, pilot brief, budget, and a clear, fundable story. We open doors to investors, hospitals and partners — while you keep the steering wheel.
+
+### The Right Hand
+
+We act as your right hand in paediatric innovation, sitting beside your team to make the path clear and doable. With deep experience across biotech, medtech and digital health — from boardrooms to hands-on execution — we bring clarity on what matters next, focus on the few moves that truly move the needle, and momentum to keep things moving. We don't just advise from afar — we roll up our sleeves and help make progress real.
+
+### The Voice
+
+We work to make children's health impossible to ignore. With clarity and courage, we engage directly with policymakers, hospital leaders, funders and other system actors to shift how decisions are made and whose needs are prioritised. We speak the language of science, but also of policy, equity and long-term impact. Because transforming children's health requires more than great ventures — it demands structural change, bold voices, and a collective willingness to rethink the rules.
+
+## Team
+
+We're not just a team — we're co-pilots, sparring partners, and system shifters.
+
+### Pilar Puig — Founder
+
+Founder at The Child Lens. Worked with leading children's hospitals, top-tier universities, and early-stage healthtech teams across Europe and the UK.
+
+- Company builder: licensing, business plan, governance, fundraising
+- Network orchestrator: VCs, corporates, family offices, clinicians
+- Fundraiser: narrative, materials, investor process
+- Selected collaborations: Sant Joan de Deu Hospital, University of Oxford, IQS, DIVE Medical, Gate2Brain, WHI Institute, Ship2B Foundation
+- Venture Partner at Montana Impact Fund
+
+LinkedIn: https://www.linkedin.com/in/pilar-puig-sarries-phd/
+
+### Tanya Humphreys — Associate
+
+Tanya is the Founder and Director of Consult4impact, a consultancy helping organisations and investors maximise their social and environmental impact through responsible investment, ESG integration, user involvement, and strategic partnerships. She previously led Macmillan Cancer Support's Innovation Impact Investment Portfolio, where she built and managed investments in pioneering health ventures across the UK. Tanya holds the CFA UK Certificates in Impact Investing and Investment Management, and brings extensive experience in impact strategy, ESG advisory, portfolio design and governance. She is passionate about shaping investment ecosystems that put people — and especially children and young people — at the heart of innovation and decision-making.
+
+LinkedIn: https://www.linkedin.com/in/tanyahumphreys/
+
+### Marc Ramis — Advisor
+
+Currently dedicated to building companies focused on pediatric innovation. Marc is the Founder and Partner at Montana. Co-founded and is a Partner at Chasing Science and Manor House Partners, both early-stage venture builders between London and Barcelona. From England, he also dedicates his time to advising organisations such as Deep Science Ventures and Inside Out. Additionally, he is a Venture Partner at Ship2B Ventures and Korion Life Sciences.
+
+Most recently, Marc served as Co-founder & CEO of Rejuveron Senescence Therapeutics AG, Ninevah Therapeutics Ltd, and Senolytic Therapeutics Inc. He served also as a Board Member or Strategic Advisor for Aptadel Therapeutics, Retinset Therapeutics, Gate2Brain, Dive Medical, Oniria Therapeutics, Nanobots Therapeutics, Cebiotex, Cyclomed, and GeneTether.
+
+LinkedIn: https://www.linkedin.com/in/markramis/
+
+## Brand & Design Resources
+
+### Brand Book
+
+The Child Lens Brand Book defines the complete brand identity: philosophy ("Learn More, Scroll Less"), design principles (clarity, calm, safety, agency, evidence), audience framework (children vs. caregivers), tone matrix, reading-level guidelines, naming conventions, copy guidelines, neurodiversity considerations, and the Learn Better Loop methodology.
+
+Available at: https://thechildlens.com/brand-book/
+
+### Design System
+
+The Design System provides the full component library: typography scale (Lenia Sans, weights 300–700), colour palettes with semantic tokens, spacing scale, elevation system, interactive components (buttons, cards, tabs, dropdowns, story navigation, scroll-snap viewers), accessibility features (reduce-motion, high-contrast, font-size controls), and responsive breakpoints.
+
+Available at: https://thechildlens.com/design-system/
+
+## Contact
+
+- **Email**: team@thechildlens.com
+- **Address**: Tech Barcelona — Pier07, Via Laietana 26, Ciutat Vella, 08003 Barcelona
+- **LinkedIn**: https://www.linkedin.com/company/the-child-lens
+
+## Links
+
+- [Homepage](https://thechildlens.com/)
+- [Brand Book](https://thechildlens.com/brand-book/)
+- [Design System](https://thechildlens.com/design-system/)
+- [LinkedIn](https://www.linkedin.com/company/the-child-lens)

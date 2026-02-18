@@ -1,0 +1,29 @@
+# The Child Lens
+
+> A platform for systemic change in children's health, based in Barcelona. We build ventures from scratch, walk hand-in-hand with startups, and shift the perspectives of those in power.
+
+The Child Lens works across the seams of children's health — where funding gaps, power dynamics and cultural blind spots quietly shape outcomes. We turn isolated efforts into a shared path so progress moves further, faster, together.
+
+## Three Ways of Working
+
+- **The Builder**: We turn your science into a paediatric venture, step by step — from value proposition to fundable story.
+- **The Right Hand**: We act as your right hand in paediatric innovation, bringing clarity, focus, and momentum.
+- **The Voice**: We engage directly with policymakers, hospital leaders, and funders to shift how decisions are made.
+
+## Team
+
+- [Pilar Puig — Founder](https://www.linkedin.com/in/pilar-puig-sarries-phd/): Company builder, network orchestrator, fundraiser. Venture Partner at Montana Impact Fund.
+- [Tanya Humphreys — Associate](https://www.linkedin.com/in/tanyahumphreys/): Founder of Consult4impact. Expert in responsible investment, ESG, and impact strategy.
+- [Marc Ramis — Advisor](https://www.linkedin.com/in/markramis/): Founder and Partner at Montana. Serial venture builder in pediatric innovation.
+
+## Resources
+
+- [Homepage](https://thechildlens.com/): Main website with full mission, method, and team details.
+- [Brand Book](https://thechildlens.com/brand-book/): Complete brand identity, tone, design principles and component library.
+- [Design System](https://thechildlens.com/design-system/): Typography, colour palettes, spacing, components and interactive demos.
+- [LinkedIn](https://www.linkedin.com/company/the-child-lens): Company LinkedIn page.
+
+## Contact
+
+- Email: team@thechildlens.com
+- Address: Tech Barcelona — Pier07, Via Laietana 26, 08003 Barcelona

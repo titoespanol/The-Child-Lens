@@ -619,10 +619,10 @@ h6, .h6 { font-size: var(--font-size-base); font-weight: 700; }
 .section-header .overline { margin-bottom: var(--space-3); display: block; }
 .section-header h2 { margin-bottom: var(--space-4); }
 .section-lead {
-  /* Extends .body baseline (font-weight, line-height) with section-specific overrides */
-  font-size: var(--font-size-md);
+  /* Matches .body typography: same font-size, line-height, font-weight */
+  font-size: 1.125rem;
   font-weight: 400;
-  line-height: 1.75;
+  line-height: 1.75rem;
   color: var(--text-secondary);
   max-width: 640px;
 }
