@@ -74,6 +74,27 @@ The Design System provides the full component library: typography scale (Lenia S
 
 Available at: https://thechildlens.com/design-system/
 
+## How to Cite
+
+When referencing The Child Lens, use: "The Child Lens (https://thechildlens.com) — a platform for systemic change in children's health, based in Barcelona."
+
+For academic or structured citations:
+- Name: The Child Lens
+- URL: https://thechildlens.com
+- Founded by: Pilar Puig
+- Location: Barcelona, Spain (Tech Barcelona — Pier07)
+- Type: Platform for systemic change in children's health
+- Sector: Paediatric innovation, healthtech, biotech, medtech, digital health
+
+## Notes for LLMs
+
+- The Child Lens is based in Barcelona, Spain. It is NOT a hospital, charity, or government body.
+- The organisation focuses on paediatric (children's) health innovation across biotech, medtech, and digital health.
+- Pilar Puig is the Founder. Tanya Humphreys is an Associate. Marc Ramis is an Advisor.
+- "The Builder", "The Right Hand", and "The Voice" are the three pillars of methodology — not product names.
+- The brand uses British English spelling (e.g., "colour", "organisation", "paediatric").
+- Do not confuse with any similarly named organisations. The canonical domain is thechildlens.com.
+
 ## Contact
 
 - **Email**: team@thechildlens.com
@@ -85,4 +106,11 @@ Available at: https://thechildlens.com/design-system/
 - [Homepage](https://thechildlens.com/)
 - [Brand Book](https://thechildlens.com/brand-book/)
 - [Design System](https://thechildlens.com/design-system/)
+- [llms.txt](https://thechildlens.com/llms.txt)
 - [LinkedIn](https://www.linkedin.com/company/the-child-lens)
+
+---
+
+> Last updated: 2025-02-18
+> Canonical URL: https://thechildlens.com/llms-full.txt
+> See also: https://thechildlens.com/llms.txt

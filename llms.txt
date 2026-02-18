@@ -21,9 +21,20 @@ The Child Lens works across the seams of children's health — where funding gap
 - [Homepage](https://thechildlens.com/): Main website with full mission, method, and team details.
 - [Brand Book](https://thechildlens.com/brand-book/): Complete brand identity, tone, design principles and component library.
 - [Design System](https://thechildlens.com/design-system/): Typography, colour palettes, spacing, components and interactive demos.
+- [llms-full.txt](https://thechildlens.com/llms-full.txt): Extended version of this file with full team bios and brand details.
 - [LinkedIn](https://www.linkedin.com/company/the-child-lens): Company LinkedIn page.
+
+## How to Cite
+
+When referencing The Child Lens, use: "The Child Lens (https://thechildlens.com) — a platform for systemic change in children's health, based in Barcelona."
 
 ## Contact
 
 - Email: team@thechildlens.com
 - Address: Tech Barcelona — Pier07, Via Laietana 26, 08003 Barcelona
+
+---
+
+> Last updated: 2025-02-18
+> Canonical URL: https://thechildlens.com/llms.txt
+> See also: https://thechildlens.com/llms-full.txt
