@@ -41,6 +41,74 @@
   <script>document.querySelectorAll('body link[rel="icon"], body link[rel="apple-touch-icon"]').forEach(el => document.head.appendChild(el))</script>
   <script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script>
 
+  <!-- Canonical & Robots -->
+  <link rel="canonical" href="https://thechildlens.com/" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://thechildlens.com/#org",
+    "name": "The Child Lens",
+    "url": "https://thechildlens.com",
+    "logo": "https://thechildlens.com/android-chrome-512x512.png",
+    "description": "A platform for systemic change in children's health. We build ventures from scratch, walk hand-in-hand with startups, and shift the perspectives of those in power.",
+    "foundingDate": "2024",
+    "founder": {
+      "@type": "Person",
+      "name": "Pilar Puig",
+      "jobTitle": "Founder",
+      "url": "https://www.linkedin.com/in/pilar-puig-sarries-phd/"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Tech Barcelona — Pier07, Via Laietana 26",
+      "addressLocality": "Barcelona",
+      "postalCode": "08003",
+      "addressCountry": "ES"
+    },
+    "email": "team@thechildlens.com",
+    "sameAs": [
+      "https://www.linkedin.com/company/the-child-lens"
+    ],
+    "member": [
+      {
+        "@type": "Person",
+        "name": "Pilar Puig",
+        "jobTitle": "Founder",
+        "url": "https://www.linkedin.com/in/pilar-puig-sarries-phd/"
+      },
+      {
+        "@type": "Person",
+        "name": "Tanya Humphreys",
+        "jobTitle": "Associate",
+        "url": "https://www.linkedin.com/in/tanyahumphreys/"
+      },
+      {
+        "@type": "Person",
+        "name": "Marc Ramis",
+        "jobTitle": "Advisor",
+        "url": "https://www.linkedin.com/in/markramis/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://thechildlens.com/#website",
+    "name": "The Child Lens",
+    "url": "https://thechildlens.com",
+    "publisher": { "@id": "https://thechildlens.com/#org" },
+    "description": "A platform for systemic change in children's health."
+  }
+  </script>
+
   <!-- SSR fallback: hide static content once React hydrates -->
   <style>
     .ssr-fallback { display: block; }
