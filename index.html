@@ -210,6 +210,20 @@
         </article>
       </section>
 
+      <!-- Collaborations -->
+      <section id="collaborations">
+        <p>Selected collaborations include:</p>
+        <ul>
+          <li>Sant Joan de D&eacute;u Hospital</li>
+          <li>University of Oxford</li>
+          <li>IQS</li>
+        </ul>
+        <p>Venture Partner of:</p>
+        <ul>
+          <li>Montana</li>
+        </ul>
+      </section>
+
       <!-- Mandela Quote -->
       <section id="quote">
         <blockquote>
@@ -255,6 +269,160 @@
     if (typeof __next_f !== 'undefined') {
       document.body.classList.add('hydrated');
     }
+  </script>
+
+  <!-- Collaboration Logos Section -->
+  <style>
+    #collab-section {
+      background: hsl(36 43% 96%);
+      color: hsl(0 0% 13.3%);
+      padding: 2rem 0 2.5rem;
+      text-align: center;
+    }
+    #collab-section .collab-container {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    #collab-section .collab-group {
+      margin-bottom: 1.5rem;
+    }
+    #collab-section .collab-group:last-child {
+      margin-bottom: 0;
+    }
+    #collab-section .collab-label {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      opacity: 0.55;
+      margin-bottom: 0.75rem;
+    }
+    #collab-section .collab-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    #collab-section .collab-logo {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+      transition: filter 0.5s ease;
+      filter: grayscale(1);
+      mix-blend-mode: multiply;
+    }
+    #collab-section.child-lens-active .collab-logo {
+      filter: grayscale(0);
+    }
+    #collab-section .collab-divider {
+      width: 60px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.15;
+      margin: 0 auto 1.5rem;
+    }
+    @media (max-width: 640px) {
+      #collab-section .collab-logos {
+        gap: 1.5rem;
+      }
+      #collab-section .collab-logo {
+        height: 28px;
+      }
+    }
+  </style>
+  <script>
+    (function() {
+      var html = '<section id="collab-section">' +
+        '<div class="collab-container">' +
+          '<div class="collab-group">' +
+            '<p class="collab-label">Selected collaborations include</p>' +
+            '<div class="collab-logos">' +
+              '<img class="collab-logo" src="/assets/logo-sjd.png" alt="Sant Joan de Déu Hospital" />' +
+              '<img class="collab-logo" src="/assets/logo-oxford.png" alt="University of Oxford" />' +
+              '<img class="collab-logo" src="/assets/logo-iqs.png" alt="IQS" />' +
+            '</div>' +
+          '</div>' +
+          '<div class="collab-divider"></div>' +
+          '<div class="collab-group">' +
+            '<p class="collab-label">Venture Partner of</p>' +
+            '<div class="collab-logos">' +
+              '<img class="collab-logo" src="/assets/logo-montana.png" alt="Montana" />' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</section>';
+
+      function inject() {
+        if (document.getElementById('collab-section')) return;
+        var who = document.getElementById('who-we-are');
+        if (!who) return false;
+        var temp = document.createElement('div');
+        temp.innerHTML = html;
+        var section = temp.firstChild;
+        who.parentNode.insertBefore(section, who.nextSibling);
+        syncLensMode();
+        return true;
+      }
+
+      function syncLensMode() {
+        var section = document.getElementById('collab-section');
+        if (!section) return;
+        var btns = document.querySelectorAll('button');
+        var lensBtn = null;
+        for (var i = 0; i < btns.length; i++) {
+          if (btns[i].textContent.indexOf('LENS') !== -1) {
+            lensBtn = btns[i];
+            break;
+          }
+        }
+        if (!lensBtn) return;
+        var isChild = lensBtn.textContent.indexOf('ADULT') !== -1;
+        if (isChild) {
+          section.classList.add('child-lens-active');
+        } else {
+          section.classList.remove('child-lens-active');
+        }
+      }
+
+      // Observe lens button changes
+      function watchLensButton() {
+        var btns = document.querySelectorAll('button');
+        var lensBtn = null;
+        for (var i = 0; i < btns.length; i++) {
+          if (btns[i].textContent.indexOf('LENS') !== -1) {
+            lensBtn = btns[i];
+            break;
+          }
+        }
+        if (!lensBtn) return;
+        var observer = new MutationObserver(function() {
+          syncLensMode();
+        });
+        observer.observe(lensBtn, { childList: true, characterData: true, subtree: true });
+      }
+
+      // Try injecting immediately and also observe DOM for when React renders
+      if (!inject()) {
+        var bodyObserver = new MutationObserver(function() {
+          if (inject()) {
+            bodyObserver.disconnect();
+            watchLensButton();
+          }
+        });
+        bodyObserver.observe(document.body, { childList: true, subtree: true });
+      } else {
+        watchLensButton();
+      }
+
+      // Also handle direct clicks on the lens button
+      document.addEventListener('click', function(e) {
+        if (e.target && e.target.tagName === 'BUTTON' && e.target.textContent.indexOf('LENS') !== -1) {
+          setTimeout(syncLensMode, 50);
+        }
+      }, true);
+    })();
   </script>
 </body>
 </html>
