@@ -348,7 +348,7 @@
           '<div class="collab-group">' +
             '<p class="collab-label">Venture Partner of</p>' +
             '<div class="collab-logos">' +
-              '<img class="collab-logo" src="/assets/logo-montana.png" alt="Montana" />' +
+              '<img class="collab-logo" src="/assets/logo-montana.jpg" alt="Montana" />' +
             '</div>' +
           '</div>' +
         '</div>' +
@@ -422,6 +422,52 @@
           setTimeout(syncLensMode, 50);
         }
       }, true);
+    })();
+  </script>
+
+  <!-- Fix SVG electric circle animations: make them oscillate smoothly -->
+  <script>
+    (function() {
+      function fixElectricAnimations() {
+        var animates = document.querySelectorAll('filter[id^="electric-filter-"] animate');
+        if (animates.length === 0) return false;
+        var fixed = 0;
+        for (var i = 0; i < animates.length; i++) {
+          var anim = animates[i];
+          if (anim.getAttribute('data-fixed')) continue;
+          var vals = anim.getAttribute('values');
+          if (!vals) continue;
+          var parts = vals.split(';').map(function(s) { return s.trim(); });
+          if (parts.length === 2) {
+            // Oscillate: A → B → A (no jump at loop boundary)
+            anim.setAttribute('values', parts[0] + '; ' + parts[1] + '; ' + parts[0]);
+            // Double duration so each leg stays at the same speed
+            var dur = anim.getAttribute('dur');
+            if (dur) {
+              var seconds = parseFloat(dur);
+              anim.setAttribute('dur', (seconds * 2) + 's');
+            }
+            anim.setAttribute('data-fixed', '1');
+            fixed++;
+          }
+        }
+        return fixed > 0;
+      }
+
+      // Watch for React to render the SVG filters, then fix them
+      var attempts = 0;
+      var interval = setInterval(function() {
+        if (fixElectricAnimations() || attempts > 60) {
+          clearInterval(interval);
+        }
+        attempts++;
+      }, 500);
+
+      // Also observe DOM changes in case React re-renders
+      var observer = new MutationObserver(function() {
+        fixElectricAnimations();
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
     })();
   </script>
 </body>
