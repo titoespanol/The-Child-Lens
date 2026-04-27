@@ -132,6 +132,7 @@
       <nav aria-label="Main navigation">
         <ul>
           <li><a href="#hero">Home</a></li>
+          <li><a href="/about/">About Us</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#vision">Vision</a></li>
           <li><a href="#method">Method</a></li>
@@ -190,24 +191,24 @@
 
       <!-- Team -->
       <section id="team">
-        <h2>Who we are.</h2>
-        <p>We&rsquo;re not just a team &mdash; we&rsquo;re co-pilots, sparring partners, and system shifters.</p>
+        <h2>Who We Are</h2>
+        <p>We work alongside founders, clinicians, investors and partners to bring paediatric innovation into the real world, working across Europe and the UK.</p>
 
         <article>
-          <h3>Pilar Puig &mdash; Founder</h3>
-          <p>Founder at The Child Lens. Worked with leading children&rsquo;s hospitals, top-tier universities, and early-stage healthtech teams across Europe and the UK. Company builder: licensing, business plan, governance, fundraising. Network orchestrator: VCs, corporates, family offices, clinicians. Selected collaborations include: Sant Joan de Deu Hospital, University of Oxford, IQS, DIVE Medical, Gate2Brain, WHI Institute, Ship2B Foundation. Venture Partner at Montana Impact Fund.</p>
+          <h3>Pilar Puig, Founder</h3>
+          <p>Building paediatric ventures and driving systemic innovation in children&rsquo;s health.</p>
           <a href="https://www.linkedin.com/in/pilar-puig-sarries-phd/" rel="noopener noreferrer">LinkedIn</a>
         </article>
 
         <article>
-          <h3>Tanya Humphreys &mdash; Associate</h3>
-          <p>Tanya is the Founder and Director of Consult4impact, a consultancy helping organisations and investors maximise their social and environmental impact through responsible investment, ESG integration, user involvement, and strategic partnerships. She previously led Macmillan Cancer Support&rsquo;s Innovation Impact Investment Portfolio, where she built and managed investments in pioneering health ventures across the UK. She is passionate about shaping investment ecosystems that put people &mdash; and especially children and young people &mdash; at the heart of innovation and decision-making.</p>
+          <h3>Tanya Humphreys, Associate</h3>
+          <p>Brings expertise in impact investing, venture building and partnerships.</p>
           <a href="https://www.linkedin.com/in/tanyahumphreys/" rel="noopener noreferrer">LinkedIn</a>
         </article>
 
         <article>
-          <h3>Marc Ramis &mdash; Advisor</h3>
-          <p>Currently dedicated to building companies focused on pediatric innovation. Marc is the Founder and Partner at Montana. Co-founded and is a Partner at Chasing Science and Manor House Partners, both early-stage venture builders between London and Barcelona. Venture Partner at Ship2B Ventures and Korion Life Sciences. Previously Co-founder &amp; CEO of Rejuveron Senescence Therapeutics AG, Ninevah Therapeutics Ltd, and Senolytic Therapeutics Inc.</p>
+          <h3>Marc Ramis, Advisor</h3>
+          <p>Brings expertise in strategy and company building.</p>
           <a href="https://www.linkedin.com/in/markramis/" rel="noopener noreferrer">LinkedIn</a>
         </article>
       </section>
@@ -219,10 +220,6 @@
           <li>Sant Joan de D&eacute;u Hospital</li>
           <li>University of Oxford</li>
           <li>IQS</li>
-        </ul>
-        <p>Venture Partner of:</p>
-        <ul>
-          <li>Montana</li>
         </ul>
       </section>
 
@@ -318,13 +315,6 @@
     #collab-section.child-lens-active .collab-logo {
       filter: grayscale(0);
     }
-    #collab-section .collab-divider {
-      width: 60px;
-      height: 1px;
-      background: currentColor;
-      opacity: 0.15;
-      margin: 0 auto 1.5rem;
-    }
     @media (max-width: 640px) {
       #collab-section .collab-logos {
         gap: 1.5rem;
@@ -344,13 +334,6 @@
               '<img class="collab-logo" src="/assets/logo-sjd.png" alt="Sant Joan de Déu Hospital" />' +
               '<img class="collab-logo" src="/assets/logo-oxford.png" alt="University of Oxford" />' +
               '<img class="collab-logo" src="/assets/logo-iqs.png" alt="IQS" />' +
-            '</div>' +
-          '</div>' +
-          '<div class="collab-divider"></div>' +
-          '<div class="collab-group">' +
-            '<p class="collab-label">Venture Partner of</p>' +
-            '<div class="collab-logos">' +
-              '<img class="collab-logo" src="/assets/logo-montana.jpg" alt="Montana" />' +
             '</div>' +
           '</div>' +
         '</div>' +
@@ -432,6 +415,180 @@
     #who-we-are .absolute.rounded-full {
       display: none !important;
     }
+
+    .tcl-top-menu {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transform: translateY(-50%);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .tcl-top-menu a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2rem;
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      border-radius: 999px;
+      padding: 0 0.75rem;
+      background: rgba(242, 239, 232, 0.78);
+      color: #111;
+      font-size: 0.75rem;
+      font-weight: 700;
+      line-height: 1;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .tcl-top-menu a:hover,
+    .tcl-top-menu a[aria-current="page"] {
+      border-color: #111;
+      background: #111;
+      color: #f2efe8;
+    }
+
+    #who-we-are .tcl-homepage-intro {
+      max-width: 46rem;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
+    }
+
+    #who-we-are .tcl-homepage-role {
+      color: rgba(0, 0, 0, 0.58) !important;
+      font-weight: 700;
+    }
+
+    #who-we-are .tcl-homepage-summary {
+      max-width: 16rem;
+      margin: 0.45rem auto 0;
+      color: rgba(0, 0, 0, 0.72);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.875rem;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 767px) {
+      .tcl-top-menu {
+        left: 50%;
+        top: calc(100% + 0.35rem);
+        transform: translateX(-50%);
+      }
+
+      .tcl-top-menu a {
+        min-height: 1.875rem;
+        padding: 0 0.65rem;
+        font-size: 0.6875rem;
+      }
+    }
   </style>
+
+  <!-- Homepage team copy and top navigation patch for the static Next export -->
+  <script>
+    (function() {
+      var teamSummaries = {
+        "Pilar Puig": {
+          role: "Founder",
+          summary: "Building paediatric ventures and driving systemic innovation in children\u2019s health."
+        },
+        "Tanya Humphreys": {
+          role: "Associate",
+          summary: "Brings expertise in impact investing, venture building and partnerships."
+        },
+        "Marc Ramis": {
+          role: "Advisor",
+          summary: "Brings expertise in strategy and company building."
+        }
+      };
+
+      function ensureTopMenu() {
+        var header = document.querySelector("header");
+        if (!header || header.querySelector(".tcl-top-menu")) return false;
+
+        var nav = document.createElement("nav");
+        nav.className = "tcl-top-menu";
+        nav.setAttribute("aria-label", "Site navigation");
+        nav.innerHTML = '<a href="/">Home</a><a href="/about/">About Us</a>';
+
+        Array.prototype.forEach.call(nav.querySelectorAll("a"), function(link) {
+          var linkPath = new URL(link.getAttribute("href"), window.location.origin).pathname.replace(/\/$/, "") || "/";
+          var currentPath = window.location.pathname.replace(/\/$/, "") || "/";
+          if (linkPath === currentPath) {
+            link.setAttribute("aria-current", "page");
+          }
+        });
+
+        header.appendChild(nav);
+        return true;
+      }
+
+      function updateTeamCopy() {
+        var section = document.getElementById("who-we-are");
+        if (!section) return false;
+
+        var intro = Array.prototype.find.call(section.querySelectorAll("p"), function(node) {
+          return node.textContent.indexOf("co-pilots") !== -1 || node.classList.contains("tcl-homepage-intro");
+        });
+        if (intro) {
+          var introText = "We work alongside founders, clinicians, investors and partners to bring paediatric innovation into the real world, working across Europe and the UK.";
+          if (intro.textContent !== introText) {
+            intro.textContent = introText;
+          }
+          intro.classList.add("tcl-homepage-intro");
+        }
+
+        Object.keys(teamSummaries).forEach(function(name) {
+          var heading = Array.prototype.find.call(section.querySelectorAll("h3"), function(node) {
+            return node.textContent.trim() === name;
+          });
+          if (!heading) return;
+
+          var card = heading.closest(".flex.flex-col.items-center") || heading.parentElement;
+          var role = heading.parentElement ? heading.parentElement.nextElementSibling : null;
+          if (role && role.tagName === "P") {
+            if (role.textContent !== teamSummaries[name].role) {
+              role.textContent = teamSummaries[name].role;
+            }
+            role.classList.add("tcl-homepage-role");
+          }
+
+          if (!card || card.querySelector('[data-tcl-summary="' + name + '"]')) return;
+          var summary = document.createElement("p");
+          summary.className = "tcl-homepage-summary";
+          summary.setAttribute("data-tcl-summary", name);
+          summary.textContent = teamSummaries[name].summary;
+          if (role && role.parentElement === card) {
+            role.insertAdjacentElement("afterend", summary);
+          } else {
+            card.appendChild(summary);
+          }
+        });
+
+        return true;
+      }
+
+      function applyEnhancements() {
+        ensureTopMenu();
+        updateTeamCopy();
+      }
+
+      applyEnhancements();
+      var queued = false;
+      var observer = new MutationObserver(function() {
+        if (queued) return;
+        queued = true;
+        window.requestAnimationFrame(function() {
+          queued = false;
+          applyEnhancements();
+        });
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    })();
+  </script>
 </body>
 </html>

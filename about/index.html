@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - The Child Lens</title>
+  <meta name="description" content="Meet the people behind The Child Lens and the trusted experts supporting paediatric innovation across tech transfer, clinical development, regulatory, hospital adoption and digital technologies." />
+  <link rel="canonical" href="https://thechildlens.com/about/" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="About Us - The Child Lens" />
+  <meta property="og:description" content="People behind The Child Lens and the Trusted Experts supporting paediatric innovation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://thechildlens.com/about/" />
+  <meta property="og:image" content="https://thechildlens.com/assets/pilar-adult.jpg" />
+
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="msapplication-config" content="/browserconfig.xml" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
+  <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="/favicon-48x48.png" sizes="48x48" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#051D23" />
+  <link rel="stylesheet" href="/_next/static/css/652f7f78ddf033c2.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Us - The Child Lens",
+    "url": "https://thechildlens.com/about/",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "The Child Lens",
+      "url": "https://thechildlens.com"
+    },
+    "about": {
+      "@type": "Organization",
+      "name": "The Child Lens",
+      "url": "https://thechildlens.com"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --about-bg: #f2efe8;
+      --about-ink: #111111;
+      --about-muted: rgba(17, 17, 17, 0.68);
+      --about-line: rgba(17, 17, 17, 0.12);
+      --about-card: rgba(255, 255, 255, 0.42);
+      --accent-orange: #d45324;
+      --accent-yellow: #ffb53a;
+      --accent-pink: #f291bc;
+      --accent-blue: #419ebf;
+      --accent-coral: #f27236;
+      --accent-plum: #9c4a79;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body.about-page {
+      margin: 0;
+      background: var(--about-bg);
+      color: var(--about-ink);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      letter-spacing: 0;
+      overflow-x: hidden;
+    }
+
+    .about-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+      background: rgba(242, 239, 232, 0.84);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .about-nav {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 1rem;
+      min-height: 4.5rem;
+      padding: 0 1rem;
+    }
+
+    .about-logo {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+    }
+
+    .about-logo img {
+      width: 10rem;
+      height: auto;
+    }
+
+    .about-nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .about-nav-links a,
+    .lens-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2rem;
+      border: 1px solid rgba(17, 17, 17, 0.18);
+      border-radius: 999px;
+      padding: 0 0.85rem;
+      color: var(--about-ink);
+      font-size: 0.75rem;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .about-nav-links a:hover,
+    .about-nav-links a[aria-current="page"] {
+      border-color: var(--about-ink);
+      background: var(--about-ink);
+      color: var(--about-bg);
+    }
+
+    .lens-toggle-wrap {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .lens-toggle {
+      position: relative;
+      min-width: 6.875rem;
+      border-color: var(--about-ink);
+      padding: 0 1rem;
+      background: transparent;
+      cursor: pointer;
+      text-transform: uppercase;
+      transform: translateZ(0);
+    }
+
+    .lens-toggle:hover {
+      background: var(--about-ink);
+      color: var(--about-bg);
+    }
+
+    .lens-toggle-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lens-toggle-layer {
+      display: none;
+    }
+
+    .lens-toggle.is-child-mode {
+      width: 6.875rem;
+      height: 2.5rem;
+      min-height: 2.5rem;
+      border: 0;
+      padding: 0;
+      color: #fff;
+    }
+
+    .lens-toggle.is-child-mode:hover {
+      background: transparent;
+      color: #fff;
+    }
+
+    .lens-toggle.is-child-mode .lens-toggle-layer,
+    .lens-toggle.is-child-mode .lens-toggle-label {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--about-ink);
+      border-radius: 999px;
+    }
+
+    .lens-toggle.is-child-mode .lens-toggle-layer {
+      display: block;
+    }
+
+    .lens-toggle.is-child-mode .lens-toggle-layer-one {
+      left: 0.5rem;
+      top: 0.5rem;
+      background: var(--accent-yellow);
+    }
+
+    .lens-toggle.is-child-mode .lens-toggle-layer-two {
+      left: 0.25rem;
+      top: 0.25rem;
+      background: var(--accent-pink);
+    }
+
+    .lens-toggle.is-child-mode .lens-toggle-label {
+      z-index: 2;
+      background: var(--accent-blue);
+    }
+
+    .about-main {
+      padding-top: 4.5rem;
+    }
+
+    .about-section {
+      padding: 5rem 1rem;
+    }
+
+    .about-container {
+      width: min(72rem, 100%);
+      margin: 0 auto;
+    }
+
+    .about-hero {
+      min-height: auto;
+      padding: 8rem 1rem 6rem;
+      border-bottom: 1px solid var(--about-line);
+    }
+
+    .about-hero-content {
+      max-width: 54rem;
+    }
+
+    .eyebrow {
+      margin-bottom: 1rem;
+      color: var(--accent-orange);
+      font-size: 0.8125rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .about-hero h1,
+    .about-section h2 {
+      margin: 0;
+      font-family: LeniaSans, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .about-hero h1 {
+      max-width: 48rem;
+      font-size: 4.5rem;
+    }
+
+    .about-hero-copy {
+      max-width: 43rem;
+      margin-top: 1.5rem;
+      color: var(--about-muted);
+      font-size: 1.125rem;
+      line-height: 1.65;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 0.75fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 3rem;
+    }
+
+    .section-heading h2 {
+      font-size: 3.5rem;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--about-muted);
+      font-size: 1.0625rem;
+      line-height: 1.65;
+    }
+
+    .people-grid,
+    .experts-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .people-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .experts-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .person-card,
+    .expert-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--about-line);
+      border-radius: 8px;
+      background: var(--about-card);
+    }
+
+    .person-card {
+      border-top: 4px solid var(--accent-blue);
+    }
+
+    .person-card:nth-child(2) {
+      border-top-color: var(--accent-pink);
+    }
+
+    .person-card:nth-child(3) {
+      border-top-color: var(--accent-yellow);
+    }
+
+    .expert-card:nth-child(1) {
+      border-top: 4px solid var(--accent-orange);
+    }
+
+    .expert-card:nth-child(2) {
+      border-top: 4px solid var(--accent-blue);
+    }
+
+    .expert-card:nth-child(3) {
+      border-top: 4px solid var(--accent-pink);
+    }
+
+    .expert-card:nth-child(4) {
+      border-top: 4px solid var(--accent-plum);
+    }
+
+    .expert-card:nth-child(5) {
+      border-top: 4px solid var(--accent-coral);
+    }
+
+    .person-card img,
+    .expert-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: rgba(17, 17, 17, 0.04);
+    }
+
+    .card-body {
+      padding: 1.25rem;
+    }
+
+    .card-body h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .role {
+      margin-top: 0.35rem;
+      color: rgba(17, 17, 17, 0.58);
+      font-size: 0.875rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .summary {
+      margin-top: 0.85rem;
+      color: var(--about-muted);
+      font-size: 0.9375rem;
+      line-height: 1.55;
+    }
+
+    .about-footer {
+      padding: 2rem 1rem;
+      color: rgba(17, 17, 17, 0.54);
+      font-size: 0.875rem;
+      text-align: center;
+    }
+
+    @media (max-width: 1100px) {
+      .experts-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .about-header {
+        overflow: visible;
+      }
+
+      .about-nav {
+        display: block;
+        position: relative;
+        min-height: auto;
+        padding: 0.75rem 1rem 0.85rem;
+      }
+
+      .about-logo {
+        display: inline-flex;
+      }
+
+      .about-nav-links {
+        width: fit-content;
+        margin: 0.75rem auto 0;
+        justify-content: center;
+      }
+
+      .lens-toggle-wrap {
+        position: absolute;
+        top: 0.75rem;
+        right: 1rem;
+        width: 6.875rem;
+        padding-right: 0;
+      }
+
+      .lens-toggle {
+        width: 100%;
+      }
+
+      .about-main {
+        padding-top: 6.75rem;
+      }
+
+      .section-heading {
+        grid-template-columns: 1fr;
+      }
+
+      .about-container,
+      .about-hero h1,
+      .section-heading h2,
+      .about-hero-copy,
+      .section-heading p {
+        max-width: calc(100vw - 2rem);
+      }
+
+      .about-hero {
+        padding-top: 4rem;
+      }
+
+      .about-hero h1 {
+        font-size: 3.25rem;
+        overflow-wrap: break-word;
+      }
+
+      .section-heading h2 {
+        font-size: 2.75rem;
+        overflow-wrap: break-word;
+      }
+
+      .people-grid,
+      .experts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .about-logo img {
+        width: 10rem;
+      }
+
+      .about-nav-links a {
+        min-height: 1.875rem;
+        padding: 0 0.65rem;
+        font-size: 0.6875rem;
+      }
+
+      .about-section {
+        padding: 4rem 1rem;
+      }
+
+      .about-hero h1 {
+        font-size: 2.55rem;
+      }
+
+      .about-hero-copy,
+      .section-heading p {
+        font-size: 1rem;
+      }
+
+      .about-container,
+      .about-hero h1,
+      .section-heading h2,
+      .about-hero-copy,
+      .section-heading p {
+        width: calc(100vw - 2rem);
+        max-width: 22.375rem;
+      }
+
+      .about-container {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .people-grid,
+      .experts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="about-page">
+  <header class="about-header">
+    <nav class="about-nav" aria-label="Main navigation">
+      <a class="about-logo" href="/" aria-label="The Child Lens home">
+        <img src="/assets/logo-black.png" alt="The Child Lens logo" width="160" height="48" />
+      </a>
+      <div class="about-nav-links">
+        <a href="/">Home</a>
+        <a href="/about/" aria-current="page">About Us</a>
+      </div>
+      <div class="lens-toggle-wrap">
+        <button class="lens-toggle" id="lens-toggle" type="button" aria-pressed="false">
+          <span class="lens-toggle-layer lens-toggle-layer-one" aria-hidden="true"></span>
+          <span class="lens-toggle-layer lens-toggle-layer-two" aria-hidden="true"></span>
+          <span class="lens-toggle-label">CHILD LENS</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="about-main">
+    <section class="about-hero">
+      <div class="about-container about-hero-content">
+        <p class="eyebrow">The Child Lens</p>
+        <h1>About Us</h1>
+        <p class="about-hero-copy">We work alongside founders, clinicians, investors and partners to bring paediatric innovation into the real world, working across Europe and the UK.</p>
+      </div>
+    </section>
+
+    <section class="about-section" id="people">
+      <div class="about-container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">The team</p>
+            <h2>People behind The Child Lens</h2>
+          </div>
+          <p>Three complementary roles covering venture building, impact and investment, strategy, and company building.</p>
+        </div>
+
+        <div class="people-grid">
+          <article class="person-card">
+            <img src="/assets/pilar-adult.jpg" data-adult="/assets/pilar-adult.jpg" data-child="/assets/pilar-child.jpg" alt="Pilar Puig portrait" />
+            <div class="card-body">
+              <h3>Pilar Puig</h3>
+              <p class="role">Founder</p>
+              <p class="summary">Building paediatric ventures and driving systemic innovation in children&rsquo;s health.</p>
+            </div>
+          </article>
+
+          <article class="person-card">
+            <img src="/assets/tany-adult.png" data-adult="/assets/tany-adult.png" data-child="/assets/tany-child.png" alt="Tanya Humphreys portrait" />
+            <div class="card-body">
+              <h3>Tanya Humphreys</h3>
+              <p class="role">Associate - Impact &amp; Investment</p>
+              <p class="summary">Brings expertise in impact investing, venture building and partnerships.</p>
+            </div>
+          </article>
+
+          <article class="person-card">
+            <img src="/assets/marc-adult.png" data-adult="/assets/marc-adult.png" data-child="/assets/marc-child.png" alt="Marc Ramis portrait" />
+            <div class="card-body">
+              <h3>Marc Ramis</h3>
+              <p class="role">Advisor - Strategy &amp; Company Building</p>
+              <p class="summary">Brings expertise in strategy and company building.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="trusted-experts">
+      <div class="about-container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">The network</p>
+            <h2>Trusted Experts</h2>
+          </div>
+          <p>Experts working across tech transfer, clinical development, regulatory, hospital adoption, and digital technologies to support paediatric innovation.</p>
+        </div>
+
+        <div class="experts-grid">
+          <article class="expert-card">
+            <img src="/assets/team/esther-riambau-adult.png" data-adult="/assets/team/esther-riambau-adult.png" data-child="/assets/team/esther-riambau-child.png" alt="Esther Riambau portrait" />
+            <div class="card-body">
+              <h3>Esther Riambau, PhD</h3>
+              <p class="role">Tech Transfer &amp; Company Creation</p>
+              <p class="summary">Tech transfer expert, translating scientific discoveries into venture-ready companies, including in paediatric oncology.</p>
+            </div>
+          </article>
+
+          <article class="expert-card">
+            <img src="/assets/team/jair-barril-adult.png" data-adult="/assets/team/jair-barril-adult.png" data-child="/assets/team/jair-barril-child.png" alt="Jair Barril portrait" />
+            <div class="card-body">
+              <h3>Jair Barril</h3>
+              <p class="role">Hospital Innovation Adoption - AI Systems</p>
+              <p class="summary">Drives adoption of paediatric technologies and digital health products, and leads AI-driven automation within hospital processes at Boston Children&rsquo;s Hospital.</p>
+            </div>
+          </article>
+
+          <article class="expert-card">
+            <img src="/assets/team/maria-sanchis-adult.png" data-adult="/assets/team/maria-sanchis-adult.png" data-child="/assets/team/maria-sanchis-child.png" alt="Maria Sanchis portrait" />
+            <div class="card-body">
+              <h3>Maria Sanch&iacute;s, PhD</h3>
+              <p class="role">Hospital Innovation Adoption</p>
+              <p class="summary">Link between solution providers and hospital functional teams, enabling adoption of innovative technologies in clinical environments.</p>
+            </div>
+          </article>
+
+          <article class="expert-card">
+            <img src="/assets/team/mark-sorrentino-adult.png" data-adult="/assets/team/mark-sorrentino-adult.png" data-child="/assets/team/mark-sorrentino-child.png" alt="Mark Sorrentino portrait" />
+            <div class="card-body">
+              <h3>Mark Sorrentino, MD</h3>
+              <p class="role">VP Pediatric Clinical Development, ICON</p>
+              <p class="summary">Leads ICON&rsquo;s global pediatric center of excellence, shaping clinical strategy and trial design across paediatric populations.</p>
+            </div>
+          </article>
+
+          <article class="expert-card">
+            <img src="/assets/team/tito-espanol-adult.png" data-adult="/assets/team/tito-espanol-adult.png" data-child="/assets/team/tito-espanol-child.png" alt="Tito Espa&ntilde;ol portrait" />
+            <div class="card-body">
+              <h3>Tito Espa&ntilde;ol</h3>
+              <p class="role">AI &amp; Digital Products</p>
+              <p class="summary">Designs and develops digital health products, from early concept to scalable product.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="about-footer">
+    <p>&copy; The Child Lens. All rights reserved.</p>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.getElementById("lens-toggle");
+      var images = document.querySelectorAll("img[data-adult][data-child]");
+      var isChildLens = false;
+
+      function renderLens() {
+        images.forEach(function(image) {
+          image.src = isChildLens ? image.dataset.child : image.dataset.adult;
+        });
+        toggle.querySelector(".lens-toggle-label").textContent = isChildLens ? "ADULT LENS" : "CHILD LENS";
+        toggle.setAttribute("aria-pressed", String(isChildLens));
+        toggle.classList.toggle("is-child-mode", isChildLens);
+        document.body.classList.toggle("child-lens", isChildLens);
+      }
+
+      toggle.addEventListener("click", function() {
+        isChildLens = !isChildLens;
+        renderLens();
+      });
+
+      renderLens();
+    })();
+  </script>
+</body>
+</html>

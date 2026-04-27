@@ -32,33 +32,49 @@ We work to make children's health impossible to ignore. With clarity and courage
 
 ## Team
 
-We're not just a team — we're co-pilots, sparring partners, and system shifters.
+We work alongside founders, clinicians, investors and partners to bring paediatric innovation into the real world, working across Europe and the UK.
 
 ### Pilar Puig — Founder
 
-Founder at The Child Lens. Worked with leading children's hospitals, top-tier universities, and early-stage healthtech teams across Europe and the UK.
-
-- Company builder: licensing, business plan, governance, fundraising
-- Network orchestrator: VCs, corporates, family offices, clinicians
-- Fundraiser: narrative, materials, investor process
-- Selected collaborations: Sant Joan de Deu Hospital, University of Oxford, IQS, DIVE Medical, Gate2Brain, WHI Institute, Ship2B Foundation
-- Venture Partner at Montana Impact Fund
+Building paediatric ventures and driving systemic innovation in children's health.
 
 LinkedIn: https://www.linkedin.com/in/pilar-puig-sarries-phd/
 
 ### Tanya Humphreys — Associate
 
-Tanya is the Founder and Director of Consult4impact, a consultancy helping organisations and investors maximise their social and environmental impact through responsible investment, ESG integration, user involvement, and strategic partnerships. She previously led Macmillan Cancer Support's Innovation Impact Investment Portfolio, where she built and managed investments in pioneering health ventures across the UK. Tanya holds the CFA UK Certificates in Impact Investing and Investment Management, and brings extensive experience in impact strategy, ESG advisory, portfolio design and governance. She is passionate about shaping investment ecosystems that put people — and especially children and young people — at the heart of innovation and decision-making.
+Brings expertise in impact investing, venture building and partnerships.
 
 LinkedIn: https://www.linkedin.com/in/tanyahumphreys/
 
 ### Marc Ramis — Advisor
 
-Currently dedicated to building companies focused on pediatric innovation. Marc is the Founder and Partner at Montana. Co-founded and is a Partner at Chasing Science and Manor House Partners, both early-stage venture builders between London and Barcelona. From England, he also dedicates his time to advising organisations such as Deep Science Ventures and Inside Out. Additionally, he is a Venture Partner at Ship2B Ventures and Korion Life Sciences.
-
-Most recently, Marc served as Co-founder & CEO of Rejuveron Senescence Therapeutics AG, Ninevah Therapeutics Ltd, and Senolytic Therapeutics Inc. He served also as a Board Member or Strategic Advisor for Aptadel Therapeutics, Retinset Therapeutics, Gate2Brain, Dive Medical, Oniria Therapeutics, Nanobots Therapeutics, Cebiotex, Cyclomed, and GeneTether.
+Brings expertise in strategy and company building.
 
 LinkedIn: https://www.linkedin.com/in/markramis/
+
+## Trusted Experts
+
+Experts working across tech transfer, clinical development, regulatory, hospital adoption, and digital technologies to support paediatric innovation.
+
+### Esther Riambau, PhD
+
+Tech Transfer & Company Creation. Tech transfer expert, translating scientific discoveries into venture-ready companies, including in paediatric oncology.
+
+### Jair Barril
+
+Hospital Innovation Adoption - AI Systems. Drives adoption of paediatric technologies and digital health products, and leads AI-driven automation within hospital processes at Boston Children's Hospital.
+
+### Maria Sanchís, PhD
+
+Hospital Innovation Adoption. Link between solution providers and hospital functional teams, enabling adoption of innovative technologies in clinical environments.
+
+### Mark Sorrentino, MD
+
+VP Pediatric Clinical Development, ICON. Leads ICON's global pediatric center of excellence, shaping clinical strategy and trial design across paediatric populations.
+
+### Tito Español
+
+AI & Digital Products. Designs and develops digital health products, from early concept to scalable product.
 
 ## Brand & Design Resources
 
@@ -104,6 +120,7 @@ For academic or structured citations:
 ## Links
 
 - [Homepage](https://thechildlens.com/)
+- [About Us](https://thechildlens.com/about/)
 - [Brand Book](https://thechildlens.com/brand-book/)
 - [Design System](https://thechildlens.com/design-system/)
 - [llms.txt](https://thechildlens.com/llms.txt)
@@ -111,6 +128,6 @@ For academic or structured citations:
 
 ---
 
-> Last updated: 2025-02-18
+> Last updated: 2026-04-24
 > Canonical URL: https://thechildlens.com/llms-full.txt
 > See also: https://thechildlens.com/llms.txt

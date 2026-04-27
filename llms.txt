@@ -12,13 +12,22 @@ The Child Lens works across the seams of children's health — where funding gap
 
 ## Team
 
-- [Pilar Puig — Founder](https://www.linkedin.com/in/pilar-puig-sarries-phd/): Company builder, network orchestrator, fundraiser. Venture Partner at Montana Impact Fund.
-- [Tanya Humphreys — Associate](https://www.linkedin.com/in/tanyahumphreys/): Founder of Consult4impact. Expert in responsible investment, ESG, and impact strategy.
-- [Marc Ramis — Advisor](https://www.linkedin.com/in/markramis/): Founder and Partner at Montana. Serial venture builder in pediatric innovation.
+- [Pilar Puig — Founder](https://www.linkedin.com/in/pilar-puig-sarries-phd/): Building paediatric ventures and driving systemic innovation in children's health.
+- [Tanya Humphreys — Associate](https://www.linkedin.com/in/tanyahumphreys/): Brings expertise in impact investing, venture building and partnerships.
+- [Marc Ramis — Advisor](https://www.linkedin.com/in/markramis/): Brings expertise in strategy and company building.
+
+## Trusted Experts
+
+- **Esther Riambau, PhD**: Tech Transfer & Company Creation. Translates scientific discoveries into venture-ready companies, including in paediatric oncology.
+- **Jair Barril**: Hospital Innovation Adoption and AI Systems. Drives adoption of paediatric technologies and digital health products, and leads AI-driven automation within hospital processes at Boston Children's Hospital.
+- **Maria Sanchís, PhD**: Hospital Innovation Adoption. Links solution providers and hospital functional teams to enable adoption of innovative technologies in clinical environments.
+- **Mark Sorrentino, MD**: VP Pediatric Clinical Development, ICON. Leads ICON's global pediatric center of excellence, shaping clinical strategy and trial design across paediatric populations.
+- **Tito Español**: AI & Digital Products. Designs and develops digital health products, from early concept to scalable product.
 
 ## Resources
 
 - [Homepage](https://thechildlens.com/): Main website with full mission, method, and team details.
+- [About Us](https://thechildlens.com/about/): People behind The Child Lens and the Trusted Experts network.
 - [Brand Book](https://thechildlens.com/brand-book/): Complete brand identity, tone, design principles and component library.
 - [Design System](https://thechildlens.com/design-system/): Typography, colour palettes, spacing, components and interactive demos.
 - [llms-full.txt](https://thechildlens.com/llms-full.txt): Extended version of this file with full team bios and brand details.
@@ -35,6 +44,6 @@ When referencing The Child Lens, use: "The Child Lens (https://thechildlens.com)
 
 ---
 
-> Last updated: 2025-02-18
+> Last updated: 2026-04-24
 > Canonical URL: https://thechildlens.com/llms.txt
 > See also: https://thechildlens.com/llms-full.txt
