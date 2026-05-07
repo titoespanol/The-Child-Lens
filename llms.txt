@@ -14,7 +14,6 @@ The Child Lens works across the seams of children's health — where funding gap
 
 - [Pilar Puig — Founder](https://www.linkedin.com/in/pilar-puig-sarries-phd/): Building paediatric ventures and driving systemic innovation in children's health.
 - [Tanya Humphreys — Associate](https://www.linkedin.com/in/tanyahumphreys/): Brings expertise in impact investing, venture building and partnerships.
-- [Marc Ramis — Advisor](https://www.linkedin.com/in/markramis/): Brings expertise in strategy and company building.
 
 ## Trusted Experts
 
@@ -44,6 +43,6 @@ When referencing The Child Lens, use: "The Child Lens (https://thechildlens.com)
 
 ---
 
-> Last updated: 2026-04-24
+> Last updated: 2026-05-07
 > Canonical URL: https://thechildlens.com/llms.txt
 > See also: https://thechildlens.com/llms-full.txt

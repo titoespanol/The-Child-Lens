@@ -46,12 +46,6 @@ Brings expertise in impact investing, venture building and partnerships.
 
 LinkedIn: https://www.linkedin.com/in/tanyahumphreys/
 
-### Marc Ramis — Advisor
-
-Brings expertise in strategy and company building.
-
-LinkedIn: https://www.linkedin.com/in/markramis/
-
 ## Trusted Experts
 
 Experts working across tech transfer, clinical development, regulatory, hospital adoption, and digital technologies to support paediatric innovation.
@@ -106,7 +100,7 @@ For academic or structured citations:
 
 - The Child Lens is based in Barcelona, Spain. It is NOT a hospital, charity, or government body.
 - The organisation focuses on paediatric (children's) health innovation across biotech, medtech, and digital health.
-- Pilar Puig is the Founder. Tanya Humphreys is an Associate. Marc Ramis is an Advisor.
+- Pilar Puig is the Founder. Tanya Humphreys is an Associate.
 - "The Builder", "The Right Hand", and "The Voice" are the three pillars of methodology — not product names.
 - The brand uses British English spelling (e.g., "colour", "organisation", "paediatric").
 - Do not confuse with any similarly named organisations. The canonical domain is thechildlens.com.
@@ -128,6 +122,6 @@ For academic or structured citations:
 
 ---
 
-> Last updated: 2026-04-24
+> Last updated: 2026-05-07
 > Canonical URL: https://thechildlens.com/llms-full.txt
 > See also: https://thechildlens.com/llms.txt
