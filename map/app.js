@@ -461,7 +461,7 @@ function filter(syncUrl = true) {
   }
   if ($('filteredDirectory')) {
     $('filteredDirectory').hidden = !hasFilters;
-    $('filteredDirectory').href = 'directory.html' + (query ? '?' + query : '');
+    $('filteredDirectory').href = (location.hostname === 'thechildlens.com' || location.hostname === 'www.thechildlens.com' ? '/directory/' : 'directory.html') + (query ? '?' + query : '');
     $('filteredDirectory').textContent = `View ${shown.length} ${window.MCHOrganisationModel.categoryLabel(type, shown.length)} in the directory`;
   }
 
@@ -498,7 +498,30 @@ function initMap() {
       zoom: 1.7
     });
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
-    map.on('load', updateMarkers);
+    map.on('load', async () => {
+      updateMarkers();
+      const background = map.getStyle()?.layers?.find(layer => layer.type === 'background');
+      if (!background) return;
+      const patternUrl = location.hostname === 'thechildlens.com' || location.hostname === 'www.thechildlens.com' || location.hostname === 'localhost'
+        ? '/assets/boho-pattern.jpg' : 'https://thechildlens.com/assets/boho-pattern.jpg';
+      try {
+          const image = (await map.loadImage(patternUrl)).data;
+          const tile = document.createElement('canvas');
+          tile.width = tile.height = 512;
+          const context = tile.getContext('2d');
+          context.drawImage(image, 0, 0, 512, 512);
+          map.addImage('tcl-boho', context.getImageData(0, 0, 512, 512));
+          let applied = false;
+          const applyLens = () => {
+            const enabled = document.body.classList.contains('child-lens');
+            if (enabled) { map.setPaintProperty(background.id, 'background-pattern', 'tcl-boho'); applied = true; }
+            else if (applied) { map.setPaintProperty(background.id, 'background-pattern', null); applied = false; }
+            document.body.classList.toggle('child-lens-map-pattern', enabled);
+          };
+          window.addEventListener('tcl-lens-change', applyLens);
+          applyLens();
+      } catch { /* The unmodified basemap remains available. */ }
+    });
     map.on('error', () => { if (!map.isStyleLoaded() && $('mapFallback')) $('mapFallback').hidden = false; });
     map.on('idle', () => { if ($('mapFallback')) $('mapFallback').hidden = true; });
     if ($('mapRegion')) new ResizeObserver(() => map.resize()).observe($('mapRegion'));

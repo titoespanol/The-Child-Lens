@@ -6,6 +6,8 @@
   let modalHeader, modalHeading;
   const opener = document.getElementById('authBtn');
   if (!modal || !opener) return;
+  const authReturnUrl = () => window.location.hostname === 'thechildlens.com' || window.location.hostname === 'www.thechildlens.com'
+    ? new URL('/map/', window.location.origin).href : new URL('./', window.location.href).href;
   let client = typeof dbClient === 'undefined' ? null : dbClient;
   let loadingClient = null;
   let subscribed = false;
@@ -150,7 +152,7 @@
       b.onclick = () => action(b, status, async () => {
         try { window.sessionStorage?.setItem('mch-account-route', route); } catch {}
         const { error } = await client.auth.signInWithOAuth({ provider,
-          options: { redirectTo: new URL('./', window.location.href).href, scopes: 'openid profile email' } });
+          options: { redirectTo: authReturnUrl(), scopes: 'openid profile email' } });
         if (error) throw error;
         status.textContent = `Continuing to ${name}…`;
       });
@@ -164,7 +166,7 @@
       action(send, status, async () => {
         try { window.sessionStorage?.setItem('mch-account-route', route); } catch {}
         const { error } = await client.auth.signInWithOtp({ email: email.value.trim(), options: {
-          emailRedirectTo: new URL('./', window.location.href).href
+          emailRedirectTo: authReturnUrl()
         } });
         if (error) {
           status.textContent = ['over_email_send_rate_limit', 'over_request_rate_limit'].includes(error.code)
@@ -222,7 +224,7 @@
     }).catch(() => {
       if (stamp === generation) node('p', 'Reviewer access could not be checked. Reopen My account to try again.', reviewer, {className:'field-help',role:'status'});
     });
-    node('a', 'Saved organisations', overview, { href: 'directory.html?saved=1', className: 'account-option' });
+    node('a', 'Saved organisations', overview, { href: (window.location.hostname === 'thechildlens.com' || window.location.hostname === 'www.thechildlens.com' ? '/directory/' : 'directory.html') + '?saved=1', className: 'account-option' });
     node('a', 'Request account deletion', overview, { href: 'mailto:privacy@thechildlens.com?subject=Delete%20my%20Mapping%20Children%27s%20Health%20account', className: 'account-option' });
     const help = node('details', '', overview, { className: 'account-help' });
     node('summary', 'Privacy & account help', help);

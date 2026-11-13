@@ -509,7 +509,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="/shared/map-navigation.css" />
+  <link rel="stylesheet" href="/shared/map-navigation.css?v=20261113-lens-banner" />
 </head>
 <body class="about-page">
   <header class="about-header">
@@ -526,7 +526,7 @@
         <button class="lens-toggle" id="lens-toggle" type="button" aria-pressed="false">
           <span class="lens-toggle-layer lens-toggle-layer-one" aria-hidden="true"></span>
           <span class="lens-toggle-layer lens-toggle-layer-two" aria-hidden="true"></span>
-          <span class="lens-toggle-label">CHILD LENS</span>
+          <span class="lens-toggle-label">ADULT LENS</span>
         </button>
       </div>
     </nav>
@@ -644,20 +644,28 @@
       var toggle = document.getElementById("lens-toggle");
       var images = document.querySelectorAll("img[data-adult][data-child]");
       var isChildLens = false;
+      try { isChildLens = localStorage.getItem("tcl-child-lens-enabled") === "1"; } catch (_) {}
 
       function renderLens() {
         images.forEach(function(image) {
           image.src = isChildLens ? image.dataset.child : image.dataset.adult;
         });
-        toggle.querySelector(".lens-toggle-label").textContent = isChildLens ? "ADULT LENS" : "CHILD LENS";
+        toggle.querySelector(".lens-toggle-label").textContent = isChildLens ? "CHILD LENS" : "ADULT LENS";
         toggle.setAttribute("aria-pressed", String(isChildLens));
         toggle.classList.toggle("is-child-mode", isChildLens);
         document.body.classList.toggle("child-lens", isChildLens);
+        try { localStorage.setItem("tcl-child-lens-enabled", isChildLens ? "1" : "0"); } catch (_) {}
       }
 
       toggle.addEventListener("click", function() {
         isChildLens = !isChildLens;
         renderLens();
+      });
+      window.addEventListener("storage", function(event) {
+        if (event.key === "tcl-child-lens-enabled") {
+          isChildLens = event.newValue === "1";
+          renderLens();
+        }
       });
 
       renderLens();
