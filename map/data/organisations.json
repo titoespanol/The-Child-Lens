@@ -1,0 +1,3800 @@
+[
+  {
+    "id": "health-board-cardiff-and-vale-gb",
+    "name": "Cardiff and Vale University Health Board",
+    "logo_enabled": false,
+    "type": "Healthcare system",
+    "stage": null,
+    "city": "Cardiff",
+    "country": "United Kingdom",
+    "lat": 51.5201875,
+    "lng": -3.1945625,
+    "website": "https://cavuhb.nhs.wales/",
+    "sourceUrl": "https://cavuhb.nhs.wales/about-us/our-health-board-structure/",
+    "sourceType": "Official health board",
+    "verification": "Needs review (location pin missing)",
+    "description": "NHS health board serving Cardiff and the Vale of Glamorgan, with primary, community and hospital services, including Noah's Ark Children's Hospital for Wales.",
+    "technology": [],
+    "focus": [
+      "General & preventive care"
+    ]
+  },
+  {
+    "id": "hospital-al-jalila-children-s-hospital-ae",
+    "name": "Al Jalila Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Dubai",
+    "country": "United Arab Emirates",
+    "lat": 25.2254891,
+    "lng": 55.3189012,
+    "website": "https://dubaihealth.ae/facility/hospital/al-jalila-childrens-hospital",
+    "sourceUrl": "https://dubaihealth.ae/facility/hospital/al-jalila-childrens-hospital",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Children's hospital operated by Dubai Health, providing paediatric medical and surgical specialties including cardiac, kidney, neurological and oncology care.",
+    "technology": [],
+    "focus": [
+      "Heart & circulation",
+      "Kidney & urinary health",
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "hospital-alder-hey-children-s-hospital-gb",
+    "name": "Alder Hey Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Liverpool",
+    "country": "United Kingdom",
+    "lat": 53.4195082,
+    "lng": -2.8968453,
+    "website": "https://www.alderhey.nhs.uk",
+    "sourceUrl": "https://www.alderhey.nhs.uk",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Specialist paediatric hospital campus delivering multi-specialty medical, surgical, emergency, and mental health services in Liverpool.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Mental health",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-american-memorial-hospital-fr",
+    "name": "American Memorial Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Reims",
+    "country": "France",
+    "lat": 49.230645,
+    "lng": 4.0172687,
+    "website": "https://www.chu-reims.fr",
+    "sourceUrl": "https://www.chu-reims.fr",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Dedicated children's hospital of CHU de Reims delivering paediatric emergency care, specialised surgery, neonatology, and rare disease treatment.",
+    "technology": [],
+    "focus": [
+      "Brain & nervous system",
+      "Pregnancy & newborn care",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-astrid-lindgren-children-s-hospital-se",
+    "name": "Astrid Lindgren Children's Hospital",
+    "logo_enabled": false,
+    "type": "Paediatric department",
+    "stage": null,
+    "city": "Stockholm",
+    "country": "Sweden",
+    "lat": 59.3488853,
+    "lng": 18.0328329,
+    "website": "https://www.karolinska.se",
+    "sourceUrl": "https://www.karolinska.se",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Children's hospital within Karolinska University Hospital providing specialized paediatric care and clinical research.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Brain & nervous system",
+      "Pregnancy & newborn care",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-bambino-gesu-children-s-hospital-it",
+    "name": "Bambino Gesù Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Rome",
+    "country": "Italy",
+    "lat": 41.8970772,
+    "lng": 12.4607003,
+    "website": "https://www.ospedalebambinogesu.it",
+    "sourceUrl": "https://www.ospedalebambinogesu.it",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Paediatric hospital and research institute providing tertiary care, clinical research, and specialized paediatric programmes.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "hospital-beatrix-children-s-hospital-nl",
+    "name": "Beatrix Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Groningen",
+    "country": "Netherlands",
+    "lat": 53.2232991,
+    "lng": 6.5738651,
+    "website": "https://www.umcg.nl",
+    "sourceUrl": "https://www.umcg.nl",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Dedicated paediatric hospital within University Medical Center Groningen providing secondary and tertiary care, neonatal intensive care, and research into rare genetic conditions.",
+    "technology": [],
+    "focus": [
+      "Pregnancy & newborn care",
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "hospital-beijing-children-s-hospital-cn",
+    "name": "Beijing Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Beijing",
+    "country": "China",
+    "lat": 39.9104601,
+    "lng": 116.3483754,
+    "website": "https://www.bch.com.cn/",
+    "sourceUrl": "https://english.beijing.gov.cn/livinginbeijing/Healthservice/202005/t20200513_1895969.html",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Children's hospital affiliated with Capital Medical University in Beijing, providing paediatric clinical services.",
+    "technology": [],
+    "focus": []
+  },
+  {
+    "id": "hospital-birmingham-children-s-hospital-gb",
+    "name": "Birmingham Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Birmingham",
+    "country": "United Kingdom",
+    "lat": 52.4848697,
+    "lng": -1.8942585,
+    "website": "https://www.bwc.nhs.uk",
+    "sourceUrl": "https://www.bwc.nhs.uk",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Birmingham Children's Hospital provides specialist paediatric healthcare, surgery, organ transplantation, and child mental health services across the West Midlands.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Rare & genetic conditions",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-children-s-health-ireland-at-crumlin-ie",
+    "name": "Children's Health Ireland at Crumlin",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Dublin",
+    "country": "Ireland",
+    "lat": 53.3261794,
+    "lng": -6.3189039,
+    "website": "https://www.childrenshealthireland.ie",
+    "sourceUrl": "https://www.childrenshealthireland.ie",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Paediatric teaching hospital in Dublin providing acute, surgical, cardiovascular, oncological, and subspecialty medical care.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Heart & circulation"
+    ]
+  },
+  {
+    "id": "hospital-children-s-hospital-zagreb-hr",
+    "name": "Children's Hospital Zagreb",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Zagreb",
+    "country": "Croatia",
+    "lat": 45.8098378,
+    "lng": 15.9647362,
+    "website": "https://www.kdb.hr",
+    "sourceUrl": "https://www.kdb.hr",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Public paediatric hospital in Croatia delivering medical, surgical subspecialty care, oncology, and emergency services for children.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-children-s-memorial-health-institute-pl",
+    "name": "Children's Memorial Health Institute",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Warsaw",
+    "country": "Poland",
+    "lat": 52.2059555,
+    "lng": 21.1923666,
+    "website": "https://www.czd.pl",
+    "sourceUrl": "https://www.czd.pl",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "A specialized pediatric hospital and research institute in Warsaw, providing tertiary clinical care, surgery, and clinical trials for children and adolescents.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Rare & genetic conditions",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-children-s-surgical-hospital-in-entebbe-ug",
+    "name": "Children's Surgical Hospital in Entebbe",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Entebbe",
+    "country": "Uganda",
+    "lat": 0.0831559,
+    "lng": 32.4564982,
+    "website": "https://en.emergency.it/projects/childrens-surgical-hospital-uganda/",
+    "sourceUrl": "https://en.emergency.it/projects/childrens-surgical-hospital-uganda/",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Paediatric surgical hospital operated by EMERGENCY in Entebbe, providing surgical and intensive care for children and training for health professionals.",
+    "technology": [],
+    "focus": [
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-department-of-paediatrics-and-adolescent-medicine-aarhus-university-hospital-dk",
+    "name": "Department of Paediatrics and Adolescent Medicine, Aarhus University Hospital",
+    "logo_enabled": false,
+    "type": "Paediatric department",
+    "stage": null,
+    "city": "Aarhus",
+    "country": "Denmark",
+    "lat": 56.1910097,
+    "lng": 10.1701402,
+    "website": "https://www.en.auh.dk",
+    "sourceUrl": "https://www.en.auh.dk",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "The Department of Paediatrics and Adolescent Medicine at Aarhus University Hospital provides specialized paediatric clinical care, neonatal care, and research.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "hospital-dmitry-rogachev-national-medical-research-center-of-pediatric-hematology-oncology-and-immunology-ru",
+    "name": "Dmitry Rogachev National Medical Research Center of Pediatric Hematology, Oncology and Immunology",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Moscow",
+    "country": "Russia",
+    "lat": 55.6538986,
+    "lng": 37.4946058,
+    "website": "https://fnkc.ru",
+    "sourceUrl": "https://fnkc.ru",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Paediatric medical and research centre in Moscow focused on blood, cancer and immune disorders, with specialist treatment and clinical research services.",
+    "technology": [],
+    "focus": [
+      "Cancer & blood disorders",
+      "Infection & immunity"
+    ]
+  },
+  {
+    "id": "hospital-dr-von-hauner-children-s-hospital-de",
+    "name": "Dr. von Hauner Children's Hospital",
+    "logo_enabled": false,
+    "type": "Paediatric department",
+    "stage": null,
+    "city": "Munich",
+    "country": "Germany",
+    "lat": 48.1302821,
+    "lng": 11.5592053,
+    "website": "https://www.klinikum.uni-muenchen.de",
+    "sourceUrl": "https://www.klinikum.uni-muenchen.de",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "University paediatric clinic of LMU Klinikum Munich providing specialized inpatient care, paediatric surgery, and translational research.",
+    "technology": [],
+    "focus": [
+      "Brain & nervous system",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-edmond-and-lily-safra-children-s-hospital-il",
+    "name": "Edmond and Lily Safra Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Ramat Gan",
+    "country": "Israel",
+    "lat": 32.0480934,
+    "lng": 34.8439622,
+    "website": "https://www.shebaonline.org/department/edmond-lily-safra-childrens-hospital/",
+    "sourceUrl": "https://www.shebaonline.org/department/edmond-lily-safra-childrens-hospital/",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Children's hospital at Sheba Medical Center in Ramat Gan providing paediatric medical and surgical care in a child-focused setting.",
+    "technology": [
+      "Patient experience"
+    ],
+    "focus": []
+  },
+  {
+    "id": "hospital-erasmus-mc-sophia-children-s-hospital-nl",
+    "name": "Erasmus MC Sophia Children's Hospital",
+    "logo_enabled": false,
+    "type": "Paediatric department",
+    "stage": null,
+    "city": "Rotterdam",
+    "country": "Netherlands",
+    "lat": 51.9109324,
+    "lng": 4.4680514,
+    "website": "https://www.erasmusmc.nl/en/sophia",
+    "sourceUrl": "https://www.erasmusmc.nl/en/sophia",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Academic paediatric hospital within Erasmus University Medical Center providing paediatric medical care, clinical trials, and specialized training.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Pregnancy & newborn care",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-evelina-london-children-s-hospital-gb",
+    "name": "Evelina London Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "London",
+    "country": "United Kingdom",
+    "lat": 51.4983028,
+    "lng": -0.118463,
+    "website": "https://www.evelinalondon.nhs.uk",
+    "sourceUrl": "https://www.evelinalondon.nhs.uk",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Specialist hospital facility offering paediatric surgery, cardiology, neonatal intensive care, and related clinical research in London.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Heart & circulation",
+      "Pregnancy & newborn care",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-filatov-children-s-city-clinical-hospital-ru",
+    "name": "Filatov Children's City Clinical Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Moscow",
+    "country": "Russia",
+    "lat": 55.7652924,
+    "lng": 37.5858247,
+    "website": "https://filatovmos.ru/index.php/",
+    "sourceUrl": "https://filatovmos.ru/index.php/",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Children's clinical hospital in Moscow providing medical and surgical care through specialist departments, with teaching activity.",
+    "technology": [],
+    "focus": [
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-heim-pal-national-pediatric-institute-hu",
+    "name": "Heim Pál National Pediatric Institute",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Budapest",
+    "country": "Hungary",
+    "lat": 47.4787771,
+    "lng": 19.0925763,
+    "website": "https://www.heimpalkorhaz.hu",
+    "sourceUrl": "https://www.heimpalkorhaz.hu",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "National paediatric institute providing comprehensive inpatient, outpatient, and emergency care across clinical subspecialties in Hungary.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Infection & immunity",
+      "Mental health"
+    ]
+  },
+  {
+    "id": "hospital-holy-innocents-children-s-hospital-ug",
+    "name": "Holy Innocents Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Mbarara",
+    "country": "Uganda",
+    "lat": -0.623289,
+    "lng": 30.647672,
+    "website": "https://www.archdioceseofmbarara.org.ug/commissions/caritas/hospitals",
+    "sourceUrl": "https://www.archdioceseofmbarara.org.ug/commissions/caritas/hospitals",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Non-profit children's hospital in Mbarara providing paediatric medical, surgical and neonatal care, founded by the Archdiocese of Mbarara.",
+    "technology": [],
+    "focus": [
+      "General & preventive care",
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "hospital-hopital-armand-trousseau-fr",
+    "name": "Hôpital Armand-Trousseau",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Paris",
+    "country": "France",
+    "lat": 48.841958,
+    "lng": 2.4066039,
+    "website": "https://www.aphp.fr/contenu/hopital-armand-trousseau-1",
+    "sourceUrl": "https://www.aphp.fr/contenu/hopital-armand-trousseau-1",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "A public pediatric hospital in Paris providing emergency care, pediatric surgery, pediatric oncology, burn care, and level III maternity services.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-hopital-de-la-timone-enfants-fr",
+    "name": "Hôpital de la Timone Enfants",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Marseille",
+    "country": "France",
+    "lat": 43.289573,
+    "lng": 5.4034775,
+    "website": "https://fr.ap-hm.fr",
+    "sourceUrl": "https://fr.ap-hm.fr",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "A dedicated children's hospital within the AP-HM network in Marseille, providing pediatric emergency care, surgery, transplants, and specialized inpatient programs.",
+    "technology": [],
+    "focus": [
+      "Brain & nervous system",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-hopital-femme-mere-enfant-fr",
+    "name": "Hôpital Femme Mère Enfant",
+    "logo_enabled": false,
+    "type": "Paediatric department",
+    "stage": null,
+    "city": "Bron",
+    "country": "France",
+    "lat": 45.7460693,
+    "lng": 4.9007826,
+    "website": "https://www.chu-lyon.fr",
+    "sourceUrl": "https://www.chu-lyon.fr",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Hôpital Femme Mère Enfant is a specialized university hospital facility in Bron providing paediatric subspecialties, neonatology, paediatric surgery, and research.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Pregnancy & newborn care",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-hopital-necker-enfants-malades-fr",
+    "name": "Hôpital Necker-Enfants Malades",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Paris",
+    "country": "France",
+    "lat": 48.8452317,
+    "lng": 2.3148562,
+    "website": "https://hopital-necker.aphp.fr",
+    "sourceUrl": "https://hopital-necker.aphp.fr",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Paediatric hospital integrating clinical care, rare disease reference centres, and biomedical research.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Pregnancy & newborn care",
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "hospital-hopp-children-s-cancer-center-heidelberg-kitz-de",
+    "name": "Hopp Children's Cancer Center Heidelberg (KiTZ)",
+    "logo_enabled": false,
+    "type": "Paediatric department",
+    "stage": null,
+    "city": "Heidelberg",
+    "country": "Germany",
+    "lat": 49.4176927,
+    "lng": 8.6621214,
+    "website": "https://www.kitz-heidelberg.de",
+    "sourceUrl": "https://www.kitz-heidelberg.de",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Paediatric oncology and haematology centre conducting clinical care, clinical trials, and translational cancer research for children and adolescents.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "hospital-hospital-infantil-i-hospital-de-la-dona-vall-d-hebron-es",
+    "name": "Hospital Infantil i Hospital de la Dona Vall d'Hebron",
+    "logo_enabled": false,
+    "type": "Paediatric department",
+    "stage": null,
+    "city": "Barcelona",
+    "country": "Spain",
+    "lat": 41.4280254,
+    "lng": 2.1406941,
+    "website": "https://hospital.vallhebron.com",
+    "sourceUrl": "https://hospital.vallhebron.com",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Vall d'Hebron Children's Hospital is a referral centre in Barcelona delivering complex paediatric clinical care, fetal surgery, and paediatric oncology.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "hospital-hospital-infantil-la-paz-es",
+    "name": "Hospital Infantil La Paz",
+    "logo_enabled": false,
+    "type": "Paediatric department",
+    "stage": null,
+    "city": "Madrid",
+    "country": "Spain",
+    "lat": 40.48072,
+    "lng": -3.68739,
+    "website": "https://www.comunidad.madrid/hospital/lapaz/",
+    "sourceUrl": "https://www.comunidad.madrid/hospital/lapaz/",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Dedicated paediatric hospital within the La Paz healthcare complex providing comprehensive paediatric subspecialty medicine and surgical care.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Rare & genetic conditions",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-hospital-pediatrico-de-coimbra-pt",
+    "name": "Hospital Pediátrico de Coimbra",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Coimbra",
+    "country": "Portugal",
+    "lat": 40.2238157,
+    "lng": -8.4138231,
+    "website": "https://www.chuc.min-saude.pt",
+    "sourceUrl": "https://www.chuc.min-saude.pt",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Dedicated paediatric hospital in Coimbra providing inpatient care, multi-specialty paediatrics, rare disease diagnostics, and clinical research.",
+    "technology": [],
+    "focus": [
+      "Brain & nervous system",
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "hospital-irccs-ospedale-pediatrico-burlo-garofolo-it",
+    "name": "IRCCS Ospedale Pediatrico Burlo Garofolo",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Trieste",
+    "country": "Italy",
+    "lat": 45.6359387,
+    "lng": 13.7842799,
+    "website": "https://www.burlo.trieste.it",
+    "sourceUrl": "https://www.burlo.trieste.it",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Biomedical research hospital in Italy providing specialised paediatric care, maternal-fetal medicine, and genetic disease programmes.",
+    "technology": [],
+    "focus": [
+      "Pregnancy & newborn care",
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "hospital-istituto-giannina-gaslini-it",
+    "name": "Istituto Giannina Gaslini",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Genoa",
+    "country": "Italy",
+    "lat": 44.3928643,
+    "lng": 8.9880616,
+    "website": "https://www.gaslini.org",
+    "sourceUrl": "https://www.gaslini.org",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Istituto Giannina Gaslini is a paediatric research institute and hospital in Genoa providing comprehensive paediatric care, neonatal medicine, and oncology.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "hospital-kidz-first-children-s-hospital-nz",
+    "name": "Kidz First Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Auckland",
+    "country": "New Zealand",
+    "lat": -36.964007,
+    "lng": 174.8405848,
+    "website": "https://www.healthpoint.nz/kidz-first-childrens-hospital/?details=true",
+    "sourceUrl": "https://www.healthpoint.nz/kidz-first-childrens-hospital/?details=true",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Children's hospital at Middlemore in Auckland, providing paediatric inpatient medical and surgical care, with family-centred services.",
+    "technology": [],
+    "focus": [
+      "Pregnancy & newborn care",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-kinderspital-zurich-ch",
+    "name": "Kinderspital Zürich",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Zurich",
+    "country": "Switzerland",
+    "lat": 47.351594,
+    "lng": 8.5711052,
+    "website": "https://www.kispi.uzh.ch",
+    "sourceUrl": "https://www.kispi.uzh.ch",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "University children's hospital in Zurich providing specialized clinical care, paediatric surgery, emergency medicine, and academic research.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-kyungpook-national-university-children-s-hospital-kr",
+    "name": "Kyungpook National University Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Daegu",
+    "country": "South Korea",
+    "lat": 35.9565651,
+    "lng": 128.5638866,
+    "website": "https://en.knuch.kr/",
+    "sourceUrl": "https://en.knuch.kr/",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Children's hospital at the Kyungpook National University Chilgok campus in Daegu, providing paediatric clinical and surgical services.",
+    "technology": [],
+    "focus": [
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-morozov-children-s-city-clinical-hospital-ru",
+    "name": "Morozov Children's City Clinical Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Moscow",
+    "country": "Russia",
+    "lat": 55.7260591,
+    "lng": 37.6178564,
+    "website": "https://morozdgkb.ru",
+    "sourceUrl": "https://morozdgkb.ru",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Children's clinical hospital in Moscow providing paediatric inpatient, outpatient, emergency and surgical care across medical specialties.",
+    "technology": [],
+    "focus": [
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-national-center-for-child-health-and-development-jp",
+    "name": "National Center for Child Health and Development",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Tokyo",
+    "country": "Japan",
+    "lat": 35.6333011,
+    "lng": 139.6121225,
+    "website": "https://www.ncchd.go.jp/en/",
+    "sourceUrl": "https://www.ncchd.go.jp/en/",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Medical and research institution in Tokyo dedicated to child, adolescent, maternal and perinatal health, with a children's hospital and clinical research facilities.",
+    "technology": [],
+    "focus": [
+      "Pregnancy & newborn care",
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "hospital-nelson-mandela-children-s-hospital-za",
+    "name": "Nelson Mandela Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Johannesburg",
+    "country": "South Africa",
+    "lat": -26.179313,
+    "lng": 28.0393618,
+    "website": "https://www.nelsonmandelachildrenshospital.org",
+    "sourceUrl": "https://www.nelsonmandelachildrenshospital.org",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Specialist children's hospital in Johannesburg providing paediatric surgical, cardiac, renal, neurological and intensive-care services.",
+    "technology": [],
+    "focus": [
+      "Heart & circulation",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-noah-s-ark-children-s-hospital-for-wales-gb",
+    "name": "Noah's Ark Children's Hospital for Wales",
+    "logo_enabled": false,
+    "type": "Paediatric department",
+    "stage": null,
+    "city": "Cardiff",
+    "country": "United Kingdom",
+    "lat": 51.5078752,
+    "lng": -3.1892189,
+    "website": "https://cavuhb.nhs.wales/hospitals-and-health-centres/our-hospitals/noahs-ark-childrens-hospital-for-wales/",
+    "sourceUrl": "https://cavuhb.nhs.wales/hospitals-and-health-centres/our-hospitals/noahs-ark-childrens-hospital-for-wales/",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Paediatric hospital facility in Cardiff offering secondary and tertiary paediatric care and clinical research.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-osaka-women-s-and-children-s-hospital-jp",
+    "name": "Osaka Women's and Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Izumi",
+    "country": "Japan",
+    "lat": 34.4715151,
+    "lng": 135.4736064,
+    "website": "https://www.wch.opho.jp/english/",
+    "sourceUrl": "https://www.wch.opho.jp/english/",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Maternal and children's hospital in Izumi, Osaka Prefecture, combining paediatric and perinatal clinical care with child-health research.",
+    "technology": [],
+    "focus": [
+      "Cancer & blood disorders",
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "hospital-oslo-university-hospital-division-of-paediatric-and-adolescent-medicine-no",
+    "name": "Oslo University Hospital - Division of Paediatric and Adolescent Medicine",
+    "logo_enabled": false,
+    "type": "Paediatric department",
+    "stage": null,
+    "city": "Oslo",
+    "country": "Norway",
+    "lat": 59.9489712,
+    "lng": 10.7144341,
+    "website": "https://www.ous-research.no",
+    "sourceUrl": "https://www.ous-research.no",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Paediatric and adolescent division within Oslo University Hospital delivering specialized medical, surgical, and congenital care across hospital campuses.",
+    "technology": [],
+    "focus": [
+      "Heart & circulation",
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "hospital-ospedale-dei-bambini-giovanni-di-cristina-it",
+    "name": "Ospedale dei Bambini Giovanni Di Cristina",
+    "logo_enabled": false,
+    "type": "Paediatric department",
+    "stage": null,
+    "city": "Palermo",
+    "country": "Italy",
+    "lat": 38.1092016,
+    "lng": 13.3557917,
+    "website": "https://www.arnascivico.it",
+    "sourceUrl": "https://www.arnascivico.it",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Ospedale dei Bambini Giovanni Di Cristina in Palermo provides multi-specialty paediatric care, emergency services, and paediatric surgery.",
+    "technology": [],
+    "focus": [
+      "Infection & immunity",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-ospedale-dei-bambini-vittore-buzzi-it",
+    "name": "Ospedale dei Bambini Vittore Buzzi",
+    "logo_enabled": false,
+    "type": "Paediatric department",
+    "stage": null,
+    "city": "Milan",
+    "country": "Italy",
+    "lat": 45.485845,
+    "lng": 9.1669682,
+    "website": "https://www.asst-fbf-sacco.it",
+    "sourceUrl": "https://www.asst-fbf-sacco.it",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Ospedale dei Bambini Vittore Buzzi in Milan provides specialized paediatric care, neonatal intensive care, obstetrics, and paediatric surgery.",
+    "technology": [],
+    "focus": [
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "hospital-perth-children-s-hospital-au",
+    "name": "Perth Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Perth",
+    "country": "Australia",
+    "lat": -31.9693254,
+    "lng": 115.8170862,
+    "website": "https://pch.health.wa.gov.au",
+    "sourceUrl": "https://pch.health.wa.gov.au",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Children's hospital in Perth providing paediatric medical, surgical and trauma care for children across Western Australia.",
+    "technology": [],
+    "focus": [
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-princess-elisabeth-children-s-hospital-be",
+    "name": "Princess Elisabeth Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Ghent",
+    "country": "Belgium",
+    "lat": 51.023723,
+    "lng": 3.7270247,
+    "website": "https://www.uzgent.be",
+    "sourceUrl": "https://www.uzgent.be",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Dedicated children's hospital within Ghent University Hospital delivering specialised paediatric medicine, neonatal care, paediatric surgery, and clinical research.",
+    "technology": [],
+    "focus": [
+      "Pregnancy & newborn care",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-queen-fabiola-children-s-university-hospital-be",
+    "name": "Queen Fabiola Children's University Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Brussels",
+    "country": "Belgium",
+    "lat": 50.8885403,
+    "lng": 4.3288842,
+    "website": "https://www.huderf.be",
+    "sourceUrl": "https://www.huderf.be",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "University hospital in Brussels dedicated exclusively to paediatric medicine, surgery, child psychiatry, teaching, and clinical research.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Mental health",
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "hospital-queen-silvia-children-s-hospital-se",
+    "name": "Queen Silvia Children's Hospital",
+    "logo_enabled": false,
+    "type": "Paediatric department",
+    "stage": null,
+    "city": "Gothenburg",
+    "country": "Sweden",
+    "lat": 57.7199341,
+    "lng": 12.0523649,
+    "website": "https://www.sahlgrenska.se/om-oss/drottning-silvias-barnsjukhus/",
+    "sourceUrl": "https://www.sahlgrenska.se/om-oss/drottning-silvias-barnsjukhus/",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Children's hospital facility within Sahlgrenska University Hospital providing multi-specialty paediatric care, surgery, and clinical research.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Heart & circulation",
+      "Mental health",
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "hospital-rainbow-children-s-hospital-banjara-hills-in",
+    "name": "Rainbow Children's Hospital, Banjara Hills",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Hyderabad",
+    "country": "India",
+    "lat": 17.4148145,
+    "lng": 78.4475692,
+    "website": "https://www.rainbowhospitals.in/our-centre/Hyderabad/banjara-hills-road",
+    "sourceUrl": "https://www.rainbowhospitals.in/our-centre/Hyderabad/banjara-hills-road",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Paediatric and perinatal hospital in Banjara Hills, Hyderabad, providing children's medical services, intensive care and neonatal care.",
+    "technology": [],
+    "focus": [
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "hospital-red-cross-war-memorial-children-s-hospital-za",
+    "name": "Red Cross War Memorial Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Cape Town",
+    "country": "South Africa",
+    "lat": -33.954444,
+    "lng": 18.487778,
+    "website": "https://westerncape.gov.za/health-wellness/facility/red-cross-war-memorial-childrens-hospital",
+    "sourceUrl": "https://westerncape.gov.za/health-wellness/facility/red-cross-war-memorial-childrens-hospital",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Children's teaching hospital in Rondebosch, Cape Town, providing paediatric medical, surgical and specialist hospital services.",
+    "technology": [],
+    "focus": [
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-royal-aberdeen-children-s-hospital-gb",
+    "name": "Royal Aberdeen Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Aberdeen",
+    "country": "United Kingdom",
+    "lat": 57.1535387,
+    "lng": -2.1355774,
+    "website": "https://www.rach.scot.nhs.uk",
+    "sourceUrl": "https://www.rach.scot.nhs.uk",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Dedicated specialist paediatric hospital providing acute emergency care, medical and surgical subspecialties, and neonatal care for children across northern Scotland.",
+    "technology": [],
+    "focus": [
+      "Pregnancy & newborn care",
+      "Rehabilitation & disability",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-royal-manchester-children-s-hospital-gb",
+    "name": "Royal Manchester Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Manchester",
+    "country": "United Kingdom",
+    "lat": 53.4605509,
+    "lng": -2.2246555,
+    "website": "https://www.mft.nhs.uk/rmch/",
+    "sourceUrl": "https://www.mft.nhs.uk/rmch/",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Paediatric hospital providing tertiary medical care, neurology, paediatric oncology, emergency services, and clinical trials.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Brain & nervous system",
+      "Cancer & blood disorders"
+    ]
+  },
+  {
+    "id": "hospital-ruth-rappaport-children-s-hospital-il",
+    "name": "Ruth Rappaport Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Haifa",
+    "country": "Israel",
+    "lat": 32.8336954,
+    "lng": 34.9849206,
+    "website": "https://www.rambam.org.il/en/departmentsandclinics/ruth-children-hospital/",
+    "sourceUrl": "https://www.rambam.org.il/en/departmentsandclinics/ruth-children-hospital/",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Children's hospital at Rambam Health Care Campus in Haifa, providing paediatric medical and surgical services across multiple specialties.",
+    "technology": [],
+    "focus": []
+  },
+  {
+    "id": "hospital-seoul-national-university-children-s-hospital-kr",
+    "name": "Seoul National University Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Seoul",
+    "country": "South Korea",
+    "lat": 37.5791175,
+    "lng": 126.9987329,
+    "website": "https://www.snuh.org/global/en/about/EN05006001.do",
+    "sourceUrl": "https://www.snuh.org/global/en/about/EN05006001.do",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Children's hospital within Seoul National University Hospital, providing paediatric medical, surgical and specialist inpatient and outpatient services in Seoul.",
+    "technology": [],
+    "focus": [
+      "Heart & circulation",
+      "Pregnancy & newborn care",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-shanghai-children-s-medical-center-cn",
+    "name": "Shanghai Children's Medical Center",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Shanghai",
+    "country": "China",
+    "lat": 31.207755,
+    "lng": 121.518351,
+    "website": "https://www.shsmu.edu.cn/english/info/1085/1227.htm",
+    "sourceUrl": "https://www.shsmu.edu.cn/english/info/1085/1227.htm",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Children's hospital affiliated with Shanghai Jiao Tong University School of Medicine, providing specialist paediatric care including cardiovascular and blood-disorder services.",
+    "technology": [],
+    "focus": [
+      "Cancer & blood disorders",
+      "Heart & circulation"
+    ]
+  },
+  {
+    "id": "hospital-sheffield-children-s-hospital-gb",
+    "name": "Sheffield Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Sheffield",
+    "country": "United Kingdom",
+    "lat": 53.3803638,
+    "lng": -1.4907637,
+    "website": "https://www.sheffieldchildrens.nhs.uk",
+    "sourceUrl": "https://www.sheffieldchildrens.nhs.uk",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Sheffield Children's Hospital provides specialist integrated paediatric healthcare, inpatient surgery, child mental health, and community services.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Mental health",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-sheikh-khalifa-medical-city-paediatric-department-ae",
+    "name": "Sheikh Khalifa Medical City — Paediatric Department",
+    "logo_enabled": false,
+    "type": "Paediatric department",
+    "stage": null,
+    "city": "Abu Dhabi",
+    "country": "United Arab Emirates",
+    "lat": 24.4707714,
+    "lng": 54.365164,
+    "website": "https://skmc.seha.ae/department/pediatrics/",
+    "sourceUrl": "https://skmc.seha.ae/department/pediatrics/",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Paediatric department at Sheikh Khalifa Medical City in Abu Dhabi, providing inpatient and specialist care, including paediatric emergency and critical-care services.",
+    "technology": [],
+    "focus": [
+      "Heart & circulation",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-st-anna-kinderspital-at",
+    "name": "St. Anna Kinderspital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Vienna",
+    "country": "Austria",
+    "lat": 48.2162149,
+    "lng": 16.3443714,
+    "website": "https://www.stanna.at/",
+    "sourceUrl": "https://www.okids-net.at",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Paediatric hospital and university clinic providing general and specialised care, with clinical research in paediatric oncology and rare diseases.",
+    "technology": [],
+    "focus": [
+      "Cancer & blood disorders",
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "hospital-starship-children-s-health-nz",
+    "name": "Starship Children's Health",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Auckland",
+    "country": "New Zealand",
+    "lat": -36.8596021,
+    "lng": 174.7697596,
+    "website": "https://www.starship.org.nz/about-starship/",
+    "sourceUrl": "https://www.starship.org.nz/about-starship/",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Children's health service in Auckland providing paediatric medical, surgical, cardiac and mental-health services for children and young people.",
+    "technology": [],
+    "focus": [
+      "Heart & circulation",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-surya-hospitals-santacruz-in",
+    "name": "Surya Hospitals, Santacruz",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Mumbai",
+    "country": "India",
+    "lat": 19.0857296,
+    "lng": 72.8377345,
+    "website": "https://suryahospitals.com/hospital/surya-hospitals-santacruz-mumbai",
+    "sourceUrl": "https://suryahospitals.com/hospital/surya-hospitals-santacruz-mumbai",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Women's and children's hospital in Santacruz, Mumbai, providing paediatric and neonatal intensive care alongside specialist medical services.",
+    "technology": [],
+    "focus": [
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "hospital-sydney-children-s-hospital-randwick-au",
+    "name": "Sydney Children's Hospital, Randwick",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Sydney",
+    "country": "Australia",
+    "lat": -33.9176741,
+    "lng": 151.2383822,
+    "website": "https://www.schn.health.nsw.gov.au",
+    "sourceUrl": "https://www.schn.health.nsw.gov.au",
+    "sourceType": "Country research import; needs review",
+    "verification": "Needs review (research import)",
+    "description": "Children's hospital in Randwick, Sydney, providing specialist paediatric medical and surgical services as part of the Sydney Children's Hospitals Network.",
+    "technology": [],
+    "focus": [
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-tallinn-children-s-hospital-ee",
+    "name": "Tallinn Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Tallinn",
+    "country": "Estonia",
+    "lat": 59.3971935,
+    "lng": 24.7033351,
+    "website": "https://lastehaigla.ee",
+    "sourceUrl": "https://lastehaigla.ee",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "An independent specialized pediatric hospital in Tallinn, Estonia, providing inpatient and outpatient care across multiple pediatric medical and surgical disciplines.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Mental health",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-veneto-children-s-hospital-salus-pueri-it",
+    "name": "Veneto Children's Hospital \"Salus Pueri\"",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Padua",
+    "country": "Italy",
+    "lat": 45.4027912,
+    "lng": 11.8898975,
+    "website": "https://www.unipd.it",
+    "sourceUrl": "https://www.unipd.it",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "The dedicated pediatric hospital facility of the University Hospital of Padua, providing multi-specialty children's care, pediatric surgery, and emergency services.",
+    "technology": [],
+    "focus": [
+      "Pregnancy & newborn care",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-wilhelmina-children-s-hospital-nl",
+    "name": "Wilhelmina Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Utrecht",
+    "country": "Netherlands",
+    "lat": 52.0894645,
+    "lng": 5.1811818,
+    "website": "https://www.hetwkz.nl",
+    "sourceUrl": "https://www.hetwkz.nl",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "Academic children's hospital integrated within UMC Utrecht, delivering specialized paediatric medical care, surgery, and clinical training.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Rare & genetic conditions",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "hospital-zentrum-fur-kinderheilkunde-und-jugendmedizin-universitatsklinikum-gieen-de",
+    "name": "Zentrum für Kinderheilkunde und Jugendmedizin, Universitätsklinikum Gießen",
+    "logo_enabled": false,
+    "type": "Paediatric department",
+    "stage": null,
+    "city": "Giessen",
+    "country": "Germany",
+    "lat": 50.5752828,
+    "lng": 8.6679885,
+    "website": "https://www.ukgm.de",
+    "sourceUrl": "https://www.ukgm.de",
+    "sourceType": "Hospital research import; requires review",
+    "verification": "Needs review (incomplete record)",
+    "description": "University medical hospital campus in Hesse, Germany, housing the Zentrum für Kinderheilkunde und Jugendmedizin for tertiary paediatric and adolescent care.",
+    "technology": [],
+    "focus": [
+      "Heart & circulation",
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "i4kids-1",
+    "name": "Children’s Clinical University Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Riga",
+    "country": "Latvia",
+    "lat": 56.9225,
+    "lng": 24.0856,
+    "website": "https://www.bkus.lv",
+    "sourceUrl": "https://eithealth.eu/wp-content/uploads/2025/04/i4KIDS-WHITEPAPER_FINAL.pdf",
+    "sourceType": "i4KIDS-EUROPE consortium",
+    "verification": "verified",
+    "description": "Latvia's primary specialised tertiary paediatric university hospital (BKUS) and i4KIDS-EUROPE consortium member.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "i4kids-2",
+    "name": "HUS Helsinki University Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Helsinki",
+    "country": "Finland",
+    "lat": 60.1887,
+    "lng": 24.9073,
+    "website": "https://www.hus.fi/en/patient/hospitals-and-units/new-childrens-hospital",
+    "sourceUrl": "https://eithealth.eu/wp-content/uploads/2025/04/i4KIDS-WHITEPAPER_FINAL.pdf",
+    "sourceType": "i4KIDS-EUROPE consortium",
+    "verification": "verified",
+    "description": "Nordic centre of excellence at the New Children's Hospital (Uusi lastensairaala) participating in i4KIDS-EUROPE.",
+    "technology": [
+      "Digital health",
+      "Medical devices"
+    ],
+    "focus": [
+      "Rare & genetic conditions",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "i4kids-3",
+    "name": "Rigshospitalet / Mary Elizabeths Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Copenhagen",
+    "country": "Denmark",
+    "lat": 55.6967,
+    "lng": 12.5683,
+    "website": "https://www.rigshospitalet.dk/maryelizabethshospital",
+    "sourceUrl": "https://eithealth.eu/wp-content/uploads/2025/04/i4KIDS-WHITEPAPER_FINAL.pdf",
+    "sourceType": "i4KIDS-EUROPE consortium",
+    "verification": "verified",
+    "description": "Denmark's specialised hospital for children, teenagers and expectant families (Børneriget) and i4KIDS partner.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "i4kids-4",
+    "name": "K.I.D.S. Children’s Hospitals Innovators’ Club",
+    "logo_enabled": false,
+    "type": "Coalition",
+    "stage": null,
+    "city": "Warsaw",
+    "country": "Poland",
+    "lat": 52.2472,
+    "lng": 21.0042,
+    "website": "https://kids.org.pl",
+    "sourceUrl": "https://eithealth.eu/wp-content/uploads/2025/04/i4KIDS-WHITEPAPER_FINAL.pdf",
+    "sourceType": "i4KIDS-EUROPE consortium",
+    "verification": "verified",
+    "description": "Polish accelerator and innovation foundation partnering with children's hospitals to introduce digital transformation and patient-centred improvements.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "i4kids-6",
+    "name": "EIT Health Spain",
+    "logo_enabled": false,
+    "type": "Innovation hub",
+    "stage": null,
+    "city": "Barcelona",
+    "country": "Spain",
+    "lat": 41.3831,
+    "lng": 2.1189,
+    "website": "https://eithealth.eu/who-we-are/regional-innovation-hubs/eit-health-spain/",
+    "sourceUrl": "https://eithealth.eu/wp-content/uploads/2025/04/i4KIDS-WHITEPAPER_FINAL.pdf",
+    "sourceType": "i4KIDS-EUROPE consortium",
+    "verification": "verified",
+    "description": "Spanish regional hub of the European Institute of Innovation & Technology located at Parc Científic de Barcelona, co-driving health venture creation.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "i4kids-7",
+    "name": "Fundació de Recerca Sant Joan de Déu",
+    "logo_enabled": false,
+    "type": "Research group",
+    "stage": null,
+    "city": "Esplugues de Llobregat",
+    "country": "Spain",
+    "lat": 41.3813,
+    "lng": 2.1023,
+    "website": "https://www.fsjd.org",
+    "sourceUrl": "https://eithealth.eu/wp-content/uploads/2025/04/i4KIDS-WHITEPAPER_FINAL.pdf",
+    "sourceType": "i4KIDS-EUROPE consortium",
+    "verification": "verified",
+    "description": "Biomedical research institute linked to Sant Joan de Déu Barcelona Children's Hospital, coordinating the i4KIDS paediatric innovation hub.",
+    "technology": [],
+    "focus": [
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "kidsx-1",
+    "name": "Advocate Children’s Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Oak Lawn",
+    "country": "United States",
+    "lat": 41.7218,
+    "lng": -87.7326,
+    "website": "https://www.advocatehealth.com/locations/advocate-childrens-hospital-oak-lawn",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Major Midwestern paediatric hospital and tertiary referral centre participating in the KidsX digital health consortium.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "kidsx-10",
+    "name": "Children’s Mercy Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Kansas City",
+    "country": "United States",
+    "lat": 39.0837,
+    "lng": -94.5804,
+    "website": "https://www.childrensmercy.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Comprehensive paediatric medical centre known for the Children's Mercy Research Institute and genomic medicine programs.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "kidsx-11",
+    "name": "Children’s Nebraska",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Omaha",
+    "country": "United States",
+    "lat": 41.2619,
+    "lng": -96.0401,
+    "website": "https://www.childrensnebraska.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Regional paediatric specialty healthcare center and teaching hospital affiliated with UNMC and Creighton.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "kidsx-12",
+    "name": "Children’s Wisconsin",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Milwaukee",
+    "country": "United States",
+    "lat": 43.0416,
+    "lng": -88.0227,
+    "website": "https://www.childrenswi.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Independent paediatric health system and research hospital partnered with the Medical College of Wisconsin.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "kidsx-13",
+    "name": "Children’s Hospital of Philadelphia",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Philadelphia",
+    "country": "United States",
+    "lat": 39.9492,
+    "lng": -75.1938,
+    "website": "https://www.chop.edu",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "World-leading paediatric academic medical center (CHOP) with major cell and gene therapy commercialisation programs.",
+    "technology": [
+      "Biotech & therapeutics",
+      "Digital health"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "kidsx-14",
+    "name": "Cincinnati Children’s Hospital Medical Center",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Cincinnati",
+    "country": "United States",
+    "lat": 39.1415,
+    "lng": -84.5009,
+    "website": "https://www.cincinnatichildrens.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Top-tier academic paediatric medical institution with an active tech transfer office and biomedical research foundation.",
+    "technology": [
+      "Biotech & therapeutics",
+      "Digital health",
+      "Medical devices"
+    ],
+    "focus": []
+  },
+  {
+    "id": "kidsx-15",
+    "name": "Dayton Children’s Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Dayton",
+    "country": "United States",
+    "lat": 39.7766,
+    "lng": -84.1755,
+    "website": "https://www.childrensdayton.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Regional paediatric referral centre serving the Miami Valley with specialised clinical and surgical services.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Mental health"
+    ]
+  },
+  {
+    "id": "kidsx-16",
+    "name": "Janet Weis Children’s Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Danville",
+    "country": "United States",
+    "lat": 40.9678,
+    "lng": -76.6046,
+    "website": "https://www.geisinger.org/patient-care/find-a-location/janet-weis-childrens-hospital",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Paediatric specialty hospital within the Geisinger health system serving central and northeastern Pennsylvania.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "kidsx-17",
+    "name": "Gillette Children’s",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "St Paul",
+    "country": "United States",
+    "lat": 44.9575,
+    "lng": -93.0858,
+    "website": "https://www.gillettechildrens.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Speciality children's hospital internationally recognized for complex neuromusculoskeletal, brain, and movement disorders.",
+    "technology": [
+      "Medical devices"
+    ],
+    "focus": [
+      "Development & learning"
+    ]
+  },
+  {
+    "id": "kidsx-18",
+    "name": "Primary Children’s Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Salt Lake City",
+    "country": "United States",
+    "lat": 40.7711,
+    "lng": -111.8398,
+    "website": "https://intermountainhealthcare.org/primary-childrens",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Intermountain Healthcare's tertiary paediatric hospital and primary teaching facility for the University of Utah.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Surgery"
+    ]
+  },
+  {
+    "id": "kidsx-19",
+    "name": "Joe DiMaggio Children’s Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Hollywood",
+    "country": "United States",
+    "lat": 26.0195,
+    "lng": -80.1775,
+    "website": "https://www.jdch.com",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Freestanding tertiary paediatric facility part of Memorial Healthcare System serving South Florida.",
+    "technology": [
+      "Digital health",
+      "Medical devices"
+    ],
+    "focus": [
+      "Heart & circulation"
+    ]
+  },
+  {
+    "id": "kidsx-2",
+    "name": "ALYN Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Jerusalem",
+    "country": "Israel",
+    "lat": 31.7674,
+    "lng": 35.1611,
+    "website": "https://www.alyn.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Comprehensive paediatric and adolescent rehabilitation hospital with an in-house assistive technology and innovation centre (ALYNnovation).",
+    "technology": [
+      "Digital health",
+      "Medical devices"
+    ],
+    "focus": [
+      "Development & learning",
+      "Rehabilitation & disability"
+    ]
+  },
+  {
+    "id": "kidsx-20",
+    "name": "Ann & Robert H. Lurie Children’s Hospital of Chicago",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Chicago",
+    "country": "United States",
+    "lat": 41.8967,
+    "lng": -87.6217,
+    "website": "https://www.luriechildrens.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Major urban academic paediatric medical centre affiliated with Northwestern University Feinberg School of Medicine.",
+    "technology": [
+      "Biotech & therapeutics",
+      "Digital health",
+      "Medical devices"
+    ],
+    "focus": []
+  },
+  {
+    "id": "kidsx-21",
+    "name": "Shawn Jenkins Children’s Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Charleston",
+    "country": "United States",
+    "lat": 32.7844,
+    "lng": -79.9547,
+    "website": "https://musckids.org/our-locations/shawn-jenkins-childrens-hospital",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "State-of-the-art maternal and children's hospital facility at the Medical University of South Carolina (MUSC).",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Heart & circulation",
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "kidsx-22",
+    "name": "Nicklaus Children’s Health System",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Miami",
+    "country": "United States",
+    "lat": 25.7431,
+    "lng": -80.2934,
+    "website": "https://www.nicklauschildrens.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Comprehensive South Florida children's hospital system with a designated Baby's Heart and Brain Institute.",
+    "technology": [
+      "Diagnostics",
+      "Digital health"
+    ],
+    "focus": [
+      "Brain & nervous system",
+      "Heart & circulation"
+    ]
+  },
+  {
+    "id": "kidsx-23",
+    "name": "Doernbecher Children’s Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Portland",
+    "country": "United States",
+    "lat": 45.4988,
+    "lng": -122.6888,
+    "website": "https://www.ohsu.edu/doernbecher",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Full-service academic paediatric medical centre integrated into Oregon Health & Science University (OHSU).",
+    "technology": [
+      "Biotech & therapeutics"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "kidsx-24",
+    "name": "OSF Children’s Hospital of Illinois",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Peoria",
+    "country": "United States",
+    "lat": 40.7022,
+    "lng": -89.5857,
+    "website": "https://www.osfhealthcare.org/childrens-hospital/",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Downstate Illinois comprehensive children's teaching hospital and clinical simulation partner via Jump Trading Simulation.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Heart & circulation"
+    ]
+  },
+  {
+    "id": "kidsx-25",
+    "name": "Riley Hospital for Children",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Indianapolis",
+    "country": "United States",
+    "lat": 39.7788,
+    "lng": -86.1798,
+    "website": "https://www.rileychildrens.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Indiana University Health's comprehensive paediatric and adolescent academic hospital.",
+    "technology": [
+      "Biotech & therapeutics",
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "kidsx-26",
+    "name": "Schneider Children’s Medical Center of Israel",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Petah Tikva",
+    "country": "Israel",
+    "lat": 32.0888,
+    "lng": 34.8697,
+    "website": "https://www.schneider.org.il",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Dedicated tertiary paediatric hospital in Israel, leading in organ transplantation and paediatric innovation partnerships.",
+    "technology": [
+      "Digital health",
+      "Medical devices"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "kidsx-27",
+    "name": "Seattle Children’s Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Seattle",
+    "country": "United States",
+    "lat": 47.6627,
+    "lng": -122.2828,
+    "website": "https://www.seattlechildrens.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Pacific Northwest paediatric referral centre and home to Seattle Children's Research Institute, pioneered in CAR-T cell trials.",
+    "technology": [
+      "Biotech & therapeutics"
+    ],
+    "focus": [
+      "Cancer & blood disorders"
+    ]
+  },
+  {
+    "id": "kidsx-28",
+    "name": "Helen DeVos Children’s Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Grand Rapids",
+    "country": "United States",
+    "lat": 42.9709,
+    "lng": -85.6601,
+    "website": "https://www.corewellhealth.org/helen-devos-childrens-hospital",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Tertiary children's hospital part of Corewell Health serving western Michigan with comprehensive pediatric services.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "kidsx-29",
+    "name": "Texas Children’s Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Houston",
+    "country": "United States",
+    "lat": 29.7093,
+    "lng": -95.3995,
+    "website": "https://www.texaschildrens.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Largest children's hospital in the United States, affiliated with Baylor College of Medicine in the Texas Medical Center.",
+    "technology": [
+      "Biotech & therapeutics",
+      "Digital health",
+      "Medical devices"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Heart & circulation",
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "kidsx-3",
+    "name": "Arkansas Children’s",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Little Rock",
+    "country": "United States",
+    "lat": 34.7433,
+    "lng": -92.2915,
+    "website": "https://www.archildrens.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Tertiary pediatric health system and academic medical campus affiliated with the UAMS College of Medicine.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "kidsx-30",
+    "name": "UVA Children’s",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Charlottesville",
+    "country": "United States",
+    "lat": 38.0326,
+    "lng": -78.4987,
+    "website": "https://childrens.uvahealth.com",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Academic pediatric hospital affiliated with the University of Virginia Health System.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "kidsx-4",
+    "name": "Goryeb Children’s Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Morristown",
+    "country": "United States",
+    "lat": 40.7894,
+    "lng": -74.4653,
+    "website": "https://www.atlantichealth.org/locations/goryeb-childrens-hospital",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Comprehensive children's hospital on the Morristown Medical Center campus serving northern New Jersey.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "kidsx-5",
+    "name": "Children’s Health System of Texas",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Dallas",
+    "country": "United States",
+    "lat": 32.7997,
+    "lng": -96.8375,
+    "website": "https://www.childrens.com",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Major paediatric healthcare system anchored by Children's Medical Center Dallas and affiliated with UT Southwestern.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "kidsx-6",
+    "name": "Children’s Hospital Colorado",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Aurora",
+    "country": "United States",
+    "lat": 39.7437,
+    "lng": -104.8384,
+    "website": "https://www.childrenscolorado.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Academic pediatric hospital on the Anschutz Medical Campus with an active Center for Innovation.",
+    "technology": [
+      "Digital health",
+      "Medical devices"
+    ],
+    "focus": []
+  },
+  {
+    "id": "kidsx-7",
+    "name": "Children’s Hospital New Orleans",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "New Orleans",
+    "country": "United States",
+    "lat": 29.9248,
+    "lng": -90.1264,
+    "website": "https://www.chnola.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Free-standing tertiary paediatric medical center providing comprehensive multi-specialty care in Louisiana and the Gulf Coast.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "kidsx-8",
+    "name": "Children’s Hospital of Eastern Ontario",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Ottawa",
+    "country": "Canada",
+    "lat": 45.401,
+    "lng": -75.6517,
+    "website": "https://www.cheo.on.ca",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Bilingual paediatric health and research centre (CHEO) with a dedicated innovation and research institute.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "kidsx-9",
+    "name": "Children’s Hospital Orange County",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Orange",
+    "country": "United States",
+    "lat": 33.7806,
+    "lng": -117.8872,
+    "website": "https://www.choc.org",
+    "sourceUrl": "https://kidsx.health/kidsx-member-organizations/",
+    "sourceType": "KidsX member list",
+    "verification": "verified",
+    "description": "Southern California paediatric healthcare system (CHOC) and co-founding institution of the KidsX accelerator.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "research-406-ventures",
+    "name": ".406 Ventures",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "Boston",
+    "country": "United States",
+    "lat": 42.3533,
+    "lng": -71.0515,
+    "website": "https://www.406ventures.com",
+    "sourceUrl": "https://www.406ventures.com/companies/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Venture investor whose published healthcare portfolio includes child-care platform Bluebird Kids Health and autism-care provider Cortica.",
+    "technology": [],
+    "focus": [
+      "Development & learning"
+    ]
+  },
+  {
+    "id": "research-7wire",
+    "name": "7wire Ventures",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "Chicago",
+    "country": "United States",
+    "lat": 41.8906,
+    "lng": -87.6241,
+    "website": "https://www.7wireventures.com",
+    "sourceUrl": "https://www.7wireventures.com/portfolio/brightline/",
+    "sourceType": "Primary investor publication",
+    "verification": "verified",
+    "description": "Digital-health investor with documented involvement in child and teen mental health through Brightline.",
+    "technology": [],
+    "focus": [
+      "Mental health"
+    ]
+  },
+  {
+    "id": "research-a-street",
+    "name": "A-Street",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "Bentonville",
+    "country": "United States",
+    "lat": 36.3729,
+    "lng": -94.2088,
+    "website": "https://www.astreet.com",
+    "sourceUrl": "https://www.astreet.com/portfolio",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Investor in learning and student wellbeing with documented school mental-health involvement through Cartwheel.",
+    "technology": [],
+    "focus": [
+      "Mental health"
+    ]
+  },
+  {
+    "id": "research-abs-kids",
+    "name": "ABS Kids",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Salt Lake City",
+    "country": "United States",
+    "lat": 40.7608,
+    "lng": -111.891,
+    "website": "https://www.abskids.com",
+    "sourceUrl": "https://www.abskids.com/about/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Provides autism assessment and behavioural services for children and support for their families.",
+    "technology": [],
+    "focus": [
+      "Development & learning"
+    ]
+  },
+  {
+    "id": "research-action-behavior",
+    "name": "Action Behavior Centers",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Austin",
+    "country": "United States",
+    "lat": 30.4144,
+    "lng": -97.7188,
+    "website": "https://www.actionbehavior.com",
+    "sourceUrl": "https://form.actionbehavior.com/our-story/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Operates centres providing behavioural services for autistic children and their families.",
+    "technology": [],
+    "focus": [
+      "Development & learning"
+    ]
+  },
+  {
+    "id": "research-alba-health",
+    "name": "Alba Health",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Stockholm",
+    "country": "Sweden",
+    "lat": 59.3293,
+    "lng": 18.0686,
+    "website": "https://albahealth.com",
+    "sourceUrl": "https://albahealth.com/pages/about",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Microbiome testing and guidance company founded around child gut health, now offering wellness services for children and adults.",
+    "technology": [],
+    "focus": [
+      "Digestive health & nutrition"
+    ]
+  },
+  {
+    "id": "research-alder-hey-innovation",
+    "name": "Alder Hey Innovation",
+    "logo_enabled": false,
+    "type": "Innovation hub",
+    "stage": null,
+    "city": "Liverpool",
+    "country": "United Kingdom",
+    "lat": 53.4244,
+    "lng": -2.9056,
+    "website": "https://www.alderheyinnovation.com",
+    "sourceUrl": "https://www.alderheyinnovation.com/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Hospital-hosted paediatric innovation hub supporting clinical ideas, technology development and external partnerships.",
+    "technology": [
+      "Digital health",
+      "Medical devices"
+    ],
+    "focus": []
+  },
+  {
+    "id": "research-andelyn",
+    "name": "Andelyn Biosciences",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Columbus",
+    "country": "United States",
+    "lat": 39.9612,
+    "lng": -82.9988,
+    "website": "https://www.andelynbio.com",
+    "sourceUrl": "https://www.andelynbio.com/about-us/our-history",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Develops and manufactures viral vectors for gene therapies. It grew from children’s gene-therapy research and now supports a broader biopharmaceutical client base.",
+    "technology": [
+      "Biotech & therapeutics"
+    ],
+    "focus": [
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "research-angeleye",
+    "name": "AngelEye Health",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Nashville",
+    "country": "United States",
+    "lat": 36.1627,
+    "lng": -86.7816,
+    "website": "https://www.angeleyehealth.com",
+    "sourceUrl": "https://www.angeleyehealth.com/about-us/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Provides neonatal and paediatric digital tools for family engagement, feeding workflows, discharge coordination and communication with care teams.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "research-atom-medical",
+    "name": "Atom Medical",
+    "logo_enabled": false,
+    "type": "MedTech company",
+    "stage": null,
+    "city": "Tokyo",
+    "country": "Japan",
+    "lat": 35.7061,
+    "lng": 139.761,
+    "website": "https://atomed-global.com",
+    "sourceUrl": "https://atomed-global.com/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Manufactures equipment for neonatal, infant and perinatal care, including incubators and infant warmers.",
+    "technology": [
+      "Medical devices"
+    ],
+    "focus": [
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "research-autism-impact-fund",
+    "name": "Autism Impact Fund",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "Orlando",
+    "country": "United States",
+    "lat": 28.5612,
+    "lng": -81.3323,
+    "website": "https://autismimpact.fund",
+    "sourceUrl": "https://autismimpact.fund/portfolio/",
+    "sourceType": "Primary investor publication",
+    "verification": "verified",
+    "description": "Investor in autism, neurodevelopmental and behavioural-health businesses, including paediatric care provider Cortica.",
+    "technology": [],
+    "focus": [
+      "Development & learning"
+    ]
+  },
+  {
+    "id": "research-bcn-innova",
+    "name": "BCN Innova",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Sabadell",
+    "country": "Spain",
+    "lat": 41.5433,
+    "lng": 2.1094,
+    "website": "https://www.bcninnova.com",
+    "sourceUrl": "https://www.bcninnova.com/index.php?action=Company&lang=EN",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Develops ocular-motility devices with roots in paediatric ophthalmology, including GazeLab and ScreenKids; its portfolio also covers broader ophthalmology and neurology.",
+    "technology": [
+      "Medical devices"
+    ],
+    "focus": [
+      "Eyes, ears & oral health"
+    ]
+  },
+  {
+    "id": "research-bluebird-kids",
+    "name": "Bluebird Kids Health",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "West Palm Beach",
+    "country": "United States",
+    "lat": 26.7153,
+    "lng": -80.0534,
+    "website": "https://www.bluebirdkids.com",
+    "sourceUrl": "https://www.bluebirdkids.com/about-us",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Provides paediatric primary care for babies, children and teenagers through a network of practices.",
+    "technology": [],
+    "focus": [
+      "General & preventive care"
+    ]
+  },
+  {
+    "id": "research-cartwheel",
+    "name": "Cartwheel Care",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": "Series A",
+    "city": "Cambridge",
+    "country": "United States",
+    "lat": 42.3653,
+    "lng": -71.1039,
+    "website": "https://www.cartwheel.org",
+    "sourceUrl": "https://www.cartwheel.org/about-us",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "School-linked mental-health provider offering telehealth care and family support for children and young people.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Mental health"
+    ]
+  },
+  {
+    "id": "research-cartx",
+    "name": "CARTx Therapeutics",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Columbus",
+    "country": "United States",
+    "lat": 39.9538,
+    "lng": -82.9818,
+    "website": "https://www.cartx.health",
+    "sourceUrl": "https://www.cartx.health/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Develops an investigational off-the-shelf engineered T-cell platform, with its first two therapies targeting childhood leukaemia and brain cancer.",
+    "technology": [
+      "Biotech & therapeutics"
+    ],
+    "focus": [
+      "Cancer & blood disorders"
+    ]
+  },
+  {
+    "id": "research-city-light",
+    "name": "City Light Capital",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "New York",
+    "country": "United States",
+    "lat": 40.758,
+    "lng": -73.9855,
+    "website": "https://citylight.vc",
+    "sourceUrl": "https://citylight.vc/portfolio/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Impact investor with published child-health portfolio businesses including Brightline, Clarity Pediatrics and Spark Pediatrics.",
+    "technology": [],
+    "focus": [
+      "Development & learning",
+      "Mental health"
+    ]
+  },
+  {
+    "id": "research-clarity-pediatrics",
+    "name": "Clarity Pediatrics",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": "Seed",
+    "city": "San Francisco",
+    "country": "United States",
+    "lat": 37.7651,
+    "lng": -122.4332,
+    "website": "https://www.claritypediatrics.com",
+    "sourceUrl": "https://www.claritypediatrics.com/about-us",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Provides virtual paediatric chronic-condition care, including ADHD and anxiety support.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Development & learning",
+      "Mental health"
+    ]
+  },
+  {
+    "id": "research-cmai-checkpoint",
+    "name": "CMAI Checkpoint",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Columbus",
+    "country": "United States",
+    "lat": 39.9538,
+    "lng": -82.9818,
+    "website": "https://www.nationwidechildrens.org/research/technology-commercialization/startups",
+    "sourceUrl": "https://www.nationwidechildrens.org/research/technology-commercialization/startups",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Develops clinical decision-support tools focused on recognising child-safety and maltreatment concerns.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "research-cognoa",
+    "name": "Cognoa",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Palo Alto",
+    "country": "United States",
+    "lat": 37.4419,
+    "lng": -122.143,
+    "website": "https://cognoa.com",
+    "sourceUrl": "https://cognoa.com/about-us/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Develops digital tools for early-childhood developmental and behavioural assessment, beginning with autism.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Development & learning"
+    ]
+  },
+  {
+    "id": "research-coral-care",
+    "name": "Coral Care",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": "Seed",
+    "city": "New York",
+    "country": "United States",
+    "lat": 40.7562,
+    "lng": -73.9754,
+    "website": "https://www.coralcare.com",
+    "sourceUrl": "https://www.coralcare.com/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Connects families with in-home paediatric speech, occupational and physical therapy.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Development & learning",
+      "Rehabilitation & disability"
+    ]
+  },
+  {
+    "id": "research-cortica",
+    "name": "Cortica",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "San Diego",
+    "country": "United States",
+    "lat": 32.7157,
+    "lng": -117.1611,
+    "website": "https://www.corticacare.com",
+    "sourceUrl": "https://www.corticacare.com/about",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Provides coordinated developmental, medical and behavioural services for autistic children and teenagers.",
+    "technology": [],
+    "focus": [
+      "Development & learning"
+    ]
+  },
+  {
+    "id": "research-cypress-biopharma",
+    "name": "Cypress BioPharma",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Cary",
+    "country": "United States",
+    "lat": 35.7915,
+    "lng": -78.7811,
+    "website": "https://cypressbiopharma.com",
+    "sourceUrl": "https://cypressbiopharma.com/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Develops investigational treatments for rare kidney diseases, with an explicit paediatric focus including childhood nephrotic syndrome.",
+    "technology": [
+      "Biotech & therapeutics"
+    ],
+    "focus": [
+      "Kidney & urinary health",
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "research-daybreak",
+    "name": "Daybreak Health",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": "Series B",
+    "city": "San Francisco",
+    "country": "United States",
+    "lat": 37.7749,
+    "lng": -122.4194,
+    "website": "https://www.daybreakhealth.com",
+    "sourceUrl": "https://www.daybreakhealth.com/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Partners with schools to provide virtual mental-health care for children and families.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Mental health"
+    ]
+  },
+  {
+    "id": "research-develo",
+    "name": "Develo",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Los Angeles",
+    "country": "United States",
+    "lat": 34.0522,
+    "lng": -118.2437,
+    "website": "https://develo.com",
+    "sourceUrl": "https://develo.com/about-us",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Develops practice software for independent paediatric clinics, including clinical records, billing and family engagement.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "General & preventive care"
+    ]
+  },
+  {
+    "id": "research-earlipoint",
+    "name": "EarliPoint Health",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Decatur",
+    "country": "United States",
+    "lat": 33.7748,
+    "lng": -84.2963,
+    "website": "https://earlipointhealth.com",
+    "sourceUrl": "https://earlipointhealth.com/about-us/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Develops eye-tracking assessment technology to assist clinicians evaluating autism in young children.",
+    "technology": [
+      "Medical devices"
+    ],
+    "focus": [
+      "Development & learning"
+    ]
+  },
+  {
+    "id": "research-echo",
+    "name": "European Children’s Hospitals Organisation (ECHO)",
+    "logo_enabled": false,
+    "type": "Coalition",
+    "stage": null,
+    "city": "Barcelona",
+    "country": "Spain",
+    "lat": 41.3813,
+    "lng": 2.1023,
+    "website": "https://www.echohospitals.org",
+    "sourceUrl": "https://www.echohospitals.org/about-echo/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "European children’s-hospital association supporting research collaboration, innovation, quality improvement and advocacy.",
+    "technology": [],
+    "focus": []
+  },
+  {
+    "id": "research-gosh-drive",
+    "name": "GOSH DRIVE",
+    "logo_enabled": false,
+    "type": "Innovation hub",
+    "stage": null,
+    "city": "London",
+    "country": "United Kingdom",
+    "lat": 51.5225,
+    "lng": -0.1206,
+    "website": "https://www.goshdrive.com",
+    "sourceUrl": "https://www.gosh.nhs.uk/our-research/drive-unit-for-digital-innovation/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Data and digital innovation unit hosted by Great Ormond Street Hospital, supporting early-stage technology testing, research and industry collaboration.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "research-greymatter-capital",
+    "name": "GreyMatter Capital",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "San Francisco",
+    "country": "United States",
+    "lat": 37.7749,
+    "lng": -122.4194,
+    "website": "https://www.greymattercapital.com",
+    "sourceUrl": "https://www.greymattercapital.com/portfolio",
+    "sourceType": "Primary investor publication",
+    "verification": "verified",
+    "description": "Investor whose published portfolio includes child mental-health and developmental-care businesses such as Blackbird Health, Anna Health and Coral Care.",
+    "technology": [],
+    "focus": [
+      "Development & learning",
+      "Mental health"
+    ]
+  },
+  {
+    "id": "research-gv",
+    "name": "GV",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "Mountain View",
+    "country": "United States",
+    "lat": 37.422,
+    "lng": -122.0841,
+    "website": "https://www.gv.com",
+    "sourceUrl": "https://www.gv.com/portfolio?sector=life-sciences",
+    "sourceType": "Primary investor publication",
+    "verification": "verified",
+    "description": "General venture investor whose published life-sciences portfolio includes neonatal technology developer Vitara Biomedical and child mental-health company Brightline.",
+    "technology": [],
+    "focus": [
+      "Mental health",
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "research-hatteras",
+    "name": "Hatteras Venture Partners",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "Durham",
+    "country": "United States",
+    "lat": 35.9934,
+    "lng": -78.8996,
+    "website": "https://hatterasvp.com",
+    "sourceUrl": "https://hatterasvp.com/category/portfolio/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Healthcare venture investor with paediatric portfolio businesses including GoCheck Kids and Ladder Health.",
+    "technology": [],
+    "focus": [
+      "Eyes, ears & oral health"
+    ]
+  },
+  {
+    "id": "research-healthier-capital",
+    "name": "Healthier Capital",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "New York",
+    "country": "United States",
+    "lat": 40.7128,
+    "lng": -74.006,
+    "website": "https://www.healthiercapital.com",
+    "sourceUrl": "https://www.healthiercapital.com/about",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Healthcare technology investor with documented backing of paediatric care provider Zarminali Pediatrics.",
+    "technology": [],
+    "focus": []
+  },
+  {
+    "id": "research-ican",
+    "name": "International Children’s Advisory Network (iCAN)",
+    "logo_enabled": false,
+    "type": "Network",
+    "stage": null,
+    "city": "Atlanta",
+    "country": "United States",
+    "lat": 33.749,
+    "lng": -84.388,
+    "website": "https://www.icanresearch.org",
+    "sourceUrl": "https://www.icanresearch.org/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Nonprofit network bringing children’s and families’ perspectives into paediatric research, clinical trials and health-technology development.",
+    "technology": [],
+    "focus": []
+  },
+  {
+    "id": "research-institut-imagine",
+    "name": "Institut Imagine",
+    "logo_enabled": false,
+    "type": "Research infrastructure",
+    "stage": null,
+    "city": "Paris",
+    "country": "France",
+    "lat": 48.8465,
+    "lng": 2.3168,
+    "website": "https://www.institutimagine.org",
+    "sourceUrl": "https://www.institutimagine.org/en/cultivating-and-transferring-innovation-139",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Genetic-disease research and translation institute on the Necker-Enfants Malades campus, with paediatric programmes and startup-development support.",
+    "technology": [],
+    "focus": [
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "research-institute-child-health-ireland",
+    "name": "Institute for Child Health Ireland",
+    "logo_enabled": false,
+    "type": "Institution",
+    "stage": null,
+    "city": "Dublin",
+    "country": "Ireland",
+    "lat": 53.3361,
+    "lng": -6.2978,
+    "website": "https://www.childrenshealthireland.ie",
+    "sourceUrl": "https://www.childrenshealthireland.ie/news/institute-for-child-health-ireland-launched-to-advance-research-innovation-and-better-outcomes-for-children/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Child-health research and innovation initiative launched by Children’s Health Ireland with national university partners in October 2026.",
+    "technology": [],
+    "focus": []
+  },
+  {
+    "id": "research-kids-public",
+    "name": "Kids Public",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Tokyo",
+    "country": "Japan",
+    "lat": 35.6895,
+    "lng": 139.6917,
+    "website": "https://kids-public.co.jp",
+    "sourceUrl": "https://syounika.jp/about_corporate",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Operates online paediatric health-consultation services for families in Japan, alongside an obstetric consultation service.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "General & preventive care"
+    ]
+  },
+  {
+    "id": "research-kidsx",
+    "name": "KidsX",
+    "logo_enabled": false,
+    "type": "Accelerator",
+    "stage": null,
+    "city": "Los Angeles",
+    "country": "United States",
+    "lat": 34.0978,
+    "lng": -118.2917,
+    "website": "https://kidsx.health",
+    "sourceUrl": "https://kidsx.health/about-kidsx/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Paediatric innovation ecosystem and hospital consortium supporting digital-health companies through validation, mentorship and innovation programmes.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "research-kkh",
+    "name": "KK Women’s and Children’s Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Singapore",
+    "country": "Singapore",
+    "lat": 1.3106,
+    "lng": 103.8475,
+    "website": "https://www.kkh.com.sg",
+    "sourceUrl": "https://www.kkh.com.sg/research-innovation/innovation/alicekkh",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Women’s and children’s hospital supporting maternal and paediatric innovation through its A.L.I.C.E innovation hub and clinical-research infrastructure.",
+    "technology": [
+      "Medical devices"
+    ],
+    "focus": []
+  },
+  {
+    "id": "research-kriba",
+    "name": "Kriba",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Madrid",
+    "country": "Spain",
+    "lat": 40.4285,
+    "lng": -3.6845,
+    "website": "https://kriba.ai",
+    "sourceUrl": "https://kriba.ai/about-us/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Medical-device developer with infant meningitis screening origins, now also investigating kidney and eye applications.",
+    "technology": [
+      "Medical devices"
+    ],
+    "focus": [
+      "Infection & immunity",
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "research-ladder",
+    "name": "Ladder Health",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "New York",
+    "country": "United States",
+    "lat": 40.7314,
+    "lng": -73.9918,
+    "website": "https://www.ladderhealth.co",
+    "sourceUrl": "https://www.ladderhealth.co/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Provides virtual developmental therapy for children, including speech, occupational, physical and feeding therapy with caregiver support.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Development & learning",
+      "Rehabilitation & disability"
+    ]
+  },
+  {
+    "id": "research-laerdal-million-lives",
+    "name": "Laerdal Million Lives Fund",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "San Francisco",
+    "country": "United States",
+    "lat": 37.7749,
+    "lng": -122.4194,
+    "website": "https://www.laerdalmillionlives.com",
+    "sourceUrl": "https://www.laerdalmillionlives.com/portfolio",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Health technology fund with documented investment in preterm-birth technology developer Novocuff.",
+    "technology": [],
+    "focus": [
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "research-left-lane",
+    "name": "Left Lane Capital",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "New York",
+    "country": "United States",
+    "lat": 40.741,
+    "lng": -73.9897,
+    "website": "https://www.leftlane.com",
+    "sourceUrl": "https://jobs.leftlanecap.com/companies",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Consumer technology investor with documented child autism-care involvement through AnswersNow.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Development & learning"
+    ]
+  },
+  {
+    "id": "research-littleseed",
+    "name": "LittleSeed",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Hilliard",
+    "country": "United States",
+    "lat": 40.0339,
+    "lng": -83.1596,
+    "website": "https://littleseed.io",
+    "sourceUrl": "https://littleseed.io/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Develops immersive digital tools and virtual-reality experiences for child procedure preparation and engagement, alongside broader healthcare and educational work.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "research-marble-health",
+    "name": "Marble Health",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "New York",
+    "country": "United States",
+    "lat": 40.7209,
+    "lng": -73.9984,
+    "website": "https://marblehealth.com",
+    "sourceUrl": "https://marblehealth.com/about-us",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Partners with schools to connect teenagers and families with mental-health care.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Mental health"
+    ]
+  },
+  {
+    "id": "research-maro",
+    "name": "Maro",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Bozeman",
+    "country": "United States",
+    "lat": 45.6769,
+    "lng": -111.0429,
+    "website": "https://www.meetmaro.com",
+    "sourceUrl": "https://www.meetmaro.com/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Provides school mental-health screening workflows, parent-consent management and referral support.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Mental health"
+    ]
+  },
+  {
+    "id": "research-metrodora",
+    "name": "Metrodora Ventures",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "New York",
+    "country": "United States",
+    "lat": 40.7128,
+    "lng": -74.006,
+    "website": "https://www.metrodora.vc",
+    "sourceUrl": "https://www.7wireventures.com/perspectives/our-investment-in-summer-health/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Health and learning investor with documented participation in paediatric telehealth company Summer Health’s financing.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "research-montana-childrens-health",
+    "name": "Montana Children’s Health Fund",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "Barcelona",
+    "country": "Spain",
+    "lat": 41.3887,
+    "lng": 2.1589,
+    "website": "https://montana.ship2bventures.com",
+    "sourceUrl": "https://ship2bventures.com/news/montana-raises-37m-in-first-close-becoming-europes-first-venture-fund-dedicated-to-childrens-health",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "European child-health venture fund managed by Ship2B Ventures, supporting research-based paediatric innovation.",
+    "technology": [],
+    "focus": []
+  },
+  {
+    "id": "research-mountain-group-partners",
+    "name": "Mountain Group Partners",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "Nashville",
+    "country": "United States",
+    "lat": 36.1627,
+    "lng": -86.7816,
+    "website": "https://mtngp.com",
+    "sourceUrl": "https://mtngp.com/focus/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Life-sciences and technology investor whose published healthcare strategy includes complex paediatric care.",
+    "technology": [],
+    "focus": []
+  },
+  {
+    "id": "research-neela",
+    "name": "Neela Therapeutics",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Lunenburg",
+    "country": "United States",
+    "lat": 42.5937,
+    "lng": -71.7248,
+    "website": "https://neelatx.com",
+    "sourceUrl": "https://neelatx.com/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Develops precision therapies for rare and serious paediatric diseases, including neurological and genetic conditions.",
+    "technology": [
+      "Biotech & therapeutics"
+    ],
+    "focus": [
+      "Brain & nervous system",
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "research-nice-neotech",
+    "name": "nice Neötech Medical Systems",
+    "logo_enabled": false,
+    "type": "MedTech company",
+    "stage": null,
+    "city": "Chennai",
+    "country": "India",
+    "lat": 13.0827,
+    "lng": 80.2707,
+    "website": "https://www.niceneotech.com",
+    "sourceUrl": "https://www.niceneotech.com/about-us/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Manufactures neonatal intensive-care equipment, including incubators, warmers, phototherapy and respiratory-support products.",
+    "technology": [
+      "Medical devices"
+    ],
+    "focus": [
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "research-optum-ventures",
+    "name": "Optum Ventures",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "Boston",
+    "country": "United States",
+    "lat": 42.3554,
+    "lng": -71.0543,
+    "website": "https://www.optumventures.com",
+    "sourceUrl": "https://www.optumventures.com/portfolio",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Healthcare investor whose published portfolio includes child autism-care provider Cortica.",
+    "technology": [],
+    "focus": [
+      "Development & learning"
+    ]
+  },
+  {
+    "id": "research-owl-ventures",
+    "name": "Owl Ventures",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "San Francisco",
+    "country": "United States",
+    "lat": 37.7897,
+    "lng": -122.4018,
+    "website": "https://www.owlvc.com",
+    "sourceUrl": "https://www.owlvc.com/portfolio",
+    "sourceType": "Primary investor publication",
+    "verification": "verified",
+    "description": "Education and workforce investor with documented child-health involvement through school telehealth provider Hazel Health.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "research-playbrush",
+    "name": "Playbrush",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": "Acquired",
+    "city": "Vienna",
+    "country": "Austria",
+    "lat": 48.2082,
+    "lng": 16.3738,
+    "website": "https://www.playbrush.com",
+    "sourceUrl": "https://www.sunstar.com/newsroom/sunstar-previews-gum-playbrush-at-ids",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Developed connected toothbrushes and apps for children’s oral-health habits; the acquired business and product line now operate within Sunstar’s GUM portfolio.",
+    "technology": [
+      "Medical devices"
+    ],
+    "focus": [
+      "Eyes, ears & oral health"
+    ]
+  },
+  {
+    "id": "research-poppins",
+    "name": "Poppins",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Palaiseau",
+    "country": "France",
+    "lat": 48.7145,
+    "lng": 2.2464,
+    "website": "https://www.poppins.io",
+    "sourceUrl": "https://www.poppins.io/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Develops a home-use digital application to support children with dyslexia and learning difficulties.",
+    "technology": [
+      "Biotech & therapeutics",
+      "Digital health"
+    ],
+    "focus": [
+      "Development & learning"
+    ]
+  },
+  {
+    "id": "research-reach-capital",
+    "name": "Reach Capital",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "San Francisco",
+    "country": "United States",
+    "lat": 37.768,
+    "lng": -122.3897,
+    "website": "https://www.reachcapital.com",
+    "sourceUrl": "https://www.reachcapital.com/resources/news/supporting-adolescent-health-why-we-co-led-cartwheels-series-a/",
+    "sourceType": "Primary investor publication",
+    "verification": "verified",
+    "description": "Investor across learning, health and work with documented backing of school-linked child mental-health provider Cartwheel.",
+    "technology": [],
+    "focus": [
+      "Mental health"
+    ]
+  },
+  {
+    "id": "research-rock-health-capital",
+    "name": "Rock Health Capital",
+    "logo_enabled": false,
+    "type": "Investor",
+    "stage": null,
+    "city": "San Francisco",
+    "country": "United States",
+    "lat": 37.7749,
+    "lng": -122.4194,
+    "website": "https://rockhealth.com",
+    "sourceUrl": "https://rockhealth.com/insights/next-gen-innovation-opportunities-in-pediatric-digital-health/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Digital-health investor with documented child mental-health involvement through Brightline and published paediatric innovation research.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Mental health"
+    ]
+  },
+  {
+    "id": "research-sibel-health",
+    "name": "Sibel Health",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": "Series B",
+    "city": "Chicago",
+    "country": "United States",
+    "lat": 41.8856,
+    "lng": -87.6322,
+    "website": "https://sibelhealth.com",
+    "sourceUrl": "https://sibelhealth.com/staff-systems-engineer/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Wireless physiological monitoring company founded with a maternal and newborn focus, now serving broader clinical and research populations.",
+    "technology": [
+      "Digital health",
+      "Medical devices"
+    ],
+    "focus": [
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "research-smalltalk",
+    "name": "smallTalk",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Columbus",
+    "country": "United States",
+    "lat": 39.9984,
+    "lng": -83.0416,
+    "website": "https://www.smalltalk.tech",
+    "sourceUrl": "https://www.smalltalk.tech/company",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Develops infant-directed language-exposure technology for neonatal care, connecting hospitalised babies with recordings of caregiver voices.",
+    "technology": [
+      "Medical devices"
+    ],
+    "focus": [
+      "Development & learning",
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "research-smart-lollipop",
+    "name": "The Smart Lollipop",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Girona",
+    "country": "Spain",
+    "lat": 41.9641,
+    "lng": 2.8277,
+    "website": "https://thesmartlollipop.com",
+    "sourceUrl": "https://www.accio.gencat.cat/ca/accio/premsa-comunicacio/cercador-premsa-actualitat/article/20220904-the-smart-lollipop-ronda-testatge-caramel-intelligent",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Developer of a lollipop-style saliva collection device with paediatric origins and current child and adult applications.",
+    "technology": [
+      "Medical devices"
+    ],
+    "focus": []
+  },
+  {
+    "id": "research-spark-mcm4kids",
+    "name": "SPARK Hub for Innovations in Pediatrics",
+    "logo_enabled": false,
+    "type": "Accelerator",
+    "stage": null,
+    "city": "Washington",
+    "country": "United States",
+    "lat": 38.9282,
+    "lng": -77.0142,
+    "website": "https://www.mcm4kids.org",
+    "sourceUrl": "https://www.mcm4kids.org/spark-accelerator-program/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Children’s National-led BARDA accelerator hub supporting academic innovators and companies developing paediatric medical countermeasures.",
+    "technology": [
+      "Biotech & therapeutics",
+      "Diagnostics",
+      "Medical devices"
+    ],
+    "focus": [
+      "Infection & immunity"
+    ]
+  },
+  {
+    "id": "research-storilly",
+    "name": "Storilly",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Columbus",
+    "country": "United States",
+    "lat": 39.9612,
+    "lng": -82.9988,
+    "website": "https://storilly.com",
+    "sourceUrl": "https://storilly.com/team/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Offers parent coaching and personalised storybook resources to support children’s speech and language development.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Development & learning",
+      "Eyes, ears & oral health"
+    ]
+  },
+  {
+    "id": "research-zarminali",
+    "name": "Zarminali Pediatrics",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Washington",
+    "country": "United States",
+    "lat": 38.9282,
+    "lng": -77.0142,
+    "website": "https://zarminali.com",
+    "sourceUrl": "https://zarminali.com/our-story",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Builds coordinated paediatric primary, urgent, virtual and specialty care services for children and families.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "General & preventive care"
+    ]
+  },
+  {
+    "id": "seed-1",
+    "name": "The Child Lens",
+    "logo_enabled": false,
+    "type": "Venture builder",
+    "stage": null,
+    "city": "Barcelona",
+    "country": "Spain",
+    "lat": 41.3879,
+    "lng": 2.1699,
+    "website": "https://thechildlens.com",
+    "sourceUrl": "https://thechildlens.com",
+    "sourceType": "user-provided",
+    "verification": "verified",
+    "description": "Barcelona-based venture builder dedicated to advancing children's health innovation, working with clinicians, startups, and researchers to turn promising pediatric solutions into viable ventures.",
+    "technology": [
+      "Biotech & therapeutics",
+      "Diagnostics",
+      "Digital health",
+      "Medical devices"
+    ],
+    "focus": [],
+    "founding_year": 2025,
+    "founding_year_source_url": "https://es.linkedin.com/company/the-child-lens"
+  },
+  {
+    "id": "seed-10",
+    "name": "Boston Children's Innovation & Digital Health Accelerator",
+    "logo_enabled": false,
+    "type": "Innovation hub",
+    "stage": null,
+    "city": "Boston",
+    "country": "United States",
+    "lat": 42.338,
+    "lng": -71.108,
+    "website": "https://www.childrenshospital.org/research/innovation-digital-health-accelerator",
+    "sourceUrl": "https://www.childrenshospital.org/research/innovation-digital-health-accelerator",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Internal innovation and digital health accelerator (IDHA) at Boston Children's Hospital advancing clinician-led medical devices and software.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "seed-11",
+    "name": "Starlight Children's Foundation",
+    "logo_enabled": false,
+    "type": "Charity or foundation",
+    "stage": null,
+    "city": "Los Angeles",
+    "country": "United States",
+    "lat": 34.0522,
+    "lng": -118.2437,
+    "website": "https://www.starlight.org",
+    "sourceUrl": "https://www.starlight.org/about",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Global children's charity delivering happiness, adaptive hospital wear, gaming stations, and emotional wellbeing programs to hospitalized children across 800+ hospitals.",
+    "technology": [
+      "Patient experience"
+    ],
+    "focus": []
+  },
+  {
+    "id": "seed-12",
+    "name": "Harmony Hybrid",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Dublin",
+    "country": "Ireland",
+    "lat": 53.3361,
+    "lng": -6.2978,
+    "website": "https://harmonyhybrid.com",
+    "sourceUrl": "https://harmonyhybrid.com/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Medical technology venture developing less invasive devices to optimize hybrid catheter-surgical procedures for neonates and infants with complex congenital heart defects.",
+    "technology": [
+      "Medical devices"
+    ],
+    "focus": [
+      "Heart & circulation",
+      "Pregnancy & newborn care"
+    ]
+  },
+  {
+    "id": "seed-13",
+    "name": "Chirpy Mood Science",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "Baldock",
+    "country": "United Kingdom",
+    "lat": 51.9897,
+    "lng": -0.1887,
+    "website": "https://wearechirpy.com",
+    "sourceUrl": "https://wearechirpy.com/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Evidence-based child and adolescent emotional wellbeing company developing science-backed nutritional formulations and psycho-educational resources for young minds.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Development & learning",
+      "Mental health"
+    ]
+  },
+  {
+    "id": "seed-14",
+    "name": "Joey",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": null,
+    "city": "London",
+    "country": "United Kingdom",
+    "lat": 51.5074,
+    "lng": -0.1278,
+    "website": "https://www.joeyfamily.com",
+    "sourceUrl": "https://www.zinc.vc/news/spotlight-on-joey-building-the-future-of-childrens-healthcare/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "CQC-regulated chat-first digital pediatric consultation provider connecting parents directly on WhatsApp with NHS-trained child health specialists.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "General & preventive care"
+    ]
+  },
+  {
+    "id": "seed-15",
+    "name": "La Health Rock",
+    "logo_enabled": false,
+    "type": "Venture builder",
+    "stage": null,
+    "city": "Panama City",
+    "country": "Panama",
+    "lat": 8.98,
+    "lng": -79.52,
+    "website": "https://healthrock.com",
+    "sourceUrl": "https://healthrock.com/about/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Cross-border health education and engagement partner using multimedia, music, and interactive formats to promote pediatric and family wellness.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "General & preventive care"
+    ]
+  },
+  {
+    "id": "seed-17",
+    "name": "Richi Childhood Cancer Foundation",
+    "logo_enabled": false,
+    "type": "Charity or foundation",
+    "stage": null,
+    "city": "Boston",
+    "country": "United States",
+    "lat": 42.3601,
+    "lng": -71.0589,
+    "website": "https://www.richifoundation.org",
+    "sourceUrl": "https://www.richifoundation.org/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Nonprofit foundation with roots in Barcelona and Boston dedicated to advancing pediatric oncology outcomes through translational brain tumor research and family-centered initiatives.",
+    "technology": [],
+    "focus": [
+      "Cancer & blood disorders"
+    ]
+  },
+  {
+    "id": "seed-2",
+    "name": "Brightline",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": "Series C+",
+    "city": "San Mateo",
+    "country": "United States",
+    "lat": 37.563,
+    "lng": -122.3255,
+    "website": "https://www.hellobrightline.com",
+    "sourceUrl": "https://www.hellobrightline.com/about",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Comprehensive virtual mental and behavioral healthcare platform tailored specifically for children, adolescents, and their families.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Mental health"
+    ]
+  },
+  {
+    "id": "seed-3",
+    "name": "Manatee",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": "Seed",
+    "city": "Los Angeles",
+    "country": "United States",
+    "lat": 34.0522,
+    "lng": -118.2437,
+    "website": "https://getmanatee.com",
+    "sourceUrl": "https://getmanatee.com/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Virtual mental healthcare and family-therapy platform integrating clinical coaching and digital tracking tools for children and parents.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Mental health"
+    ]
+  },
+  {
+    "id": "seed-4",
+    "name": "Fort Health",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": "Seed",
+    "city": "New York",
+    "country": "United States",
+    "lat": 40.7128,
+    "lng": -74.006,
+    "website": "https://www.forthealth.org",
+    "sourceUrl": "https://www.forthealth.org/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Child and adolescent tele-mental health provider built in clinical partnership with the Child Mind Institute to treat pediatric anxiety and depression.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Mental health"
+    ]
+  },
+  {
+    "id": "seed-5",
+    "name": "Nen",
+    "logo_enabled": false,
+    "type": "Startup",
+    "stage": "Pre-seed",
+    "city": "Barcelona",
+    "country": "Spain",
+    "lat": 41.3905,
+    "lng": 2.165,
+    "website": "https://www.nen.health",
+    "sourceUrl": "https://www.nen.health/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Digital health startup developing evidence-based therapeutic video games to manage acute and chronic pain in pediatric oncology patients.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": [
+      "Cancer & blood disorders"
+    ]
+  },
+  {
+    "id": "seed-6",
+    "name": "Boston Children's Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Boston",
+    "country": "United States",
+    "lat": 42.3366,
+    "lng": -71.1061,
+    "website": "https://www.childrenshospital.org",
+    "sourceUrl": "https://www.childrenshospital.org/research",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "World-leading pediatric academic medical center and primary pediatric teaching affiliate of Harvard Medical School.",
+    "technology": [],
+    "focus": []
+  },
+  {
+    "id": "seed-7",
+    "name": "Children's Hospital Los Angeles",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Los Angeles",
+    "country": "United States",
+    "lat": 34.0978,
+    "lng": -118.2917,
+    "website": "https://www.chla.org",
+    "sourceUrl": "https://www.chla.org/research",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Academic pediatric medical center affiliated with the Keck School of Medicine of USC and founding institution of the KidsX digital accelerator.",
+    "technology": [
+      "Digital health"
+    ],
+    "focus": []
+  },
+  {
+    "id": "seed-8",
+    "name": "Great Ormond Street Hospital",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "London",
+    "country": "United Kingdom",
+    "lat": 51.5225,
+    "lng": -0.1206,
+    "website": "https://www.gosh.nhs.uk",
+    "sourceUrl": "https://www.gosh.nhs.uk/our-research/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "International centre of clinical excellence in tertiary pediatrics and primary partner of the UCL GOSH Institute of Child Health.",
+    "technology": [
+      "Biotech & therapeutics"
+    ],
+    "focus": [
+      "Cancer & blood disorders",
+      "Rare & genetic conditions",
+      "Surgery"
+    ]
+  },
+  {
+    "id": "seed-9",
+    "name": "Sant Joan de Déu Barcelona",
+    "logo_enabled": false,
+    "type": "Children's hospital",
+    "stage": null,
+    "city": "Barcelona",
+    "country": "Spain",
+    "lat": 41.381,
+    "lng": 2.102,
+    "website": "https://www.sjdhospitalbarcelona.org",
+    "sourceUrl": "https://www.sjdhospitalbarcelona.org/en/research-innovation",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Leading pediatric and maternal university hospital in southern Europe and host institution of the i4KIDS pediatric innovation network.",
+    "technology": [
+      "Digital health",
+      "Medical devices"
+    ],
+    "focus": [
+      "Pregnancy & newborn care",
+      "Rare & genetic conditions"
+    ]
+  }
+]

@@ -1,0 +1,21 @@
+User-agent: *
+Disallow: /moderation.html
+Disallow: /organisation-management.html
+Disallow: /onboarding.html
+Disallow: /data/
+Allow: /
+
+# Voluntary bulk-collection/model-training exclusions, not access controls.
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+Sitemap: https://thechildlens.com/map/sitemap.xml

@@ -1,11 +1,20 @@
 # Children's health map integration
 
-The main website repository is a published static Next.js export served by GitHub Pages (`CNAME`, `.nojekyll`, exported `_next` assets). It does not contain the Next.js source, `package.json`, a Node version pin, or a build command. Its only available QA script is `scripts/check-geo.mjs`, which runs on current Node and checks published content. A fresh Next.js build cannot be reproduced from this repository.
+The main website is a published static Next.js export served by GitHub Pages (`CNAME`, `.nojekyll`, exported `_next` assets). It does not contain the Next.js source, `package.json`, a Node version pin, or a build command. Its only available QA script is `scripts/check-geo.mjs`. A fresh Next.js build cannot be reproduced from this repository.
 
-The map remains the separately built Vercel app in `The-Child-Lens/Mapping-Childrens-Health`. The main site's Home and About navigation link to `/map/`, a small GitHub Pages route that redirects to the stable production map URL. This keeps the map's Supabase Auth session, filters, pin cards, and organisation workspace on their existing origin. Copying the map assets into this generated export or embedding it in an iframe would create two deployment owners and complicate authentication and responsive layout.
+The map source and its Vercel deployment remain in `The-Child-Lens/Mapping-Childrens-Health`. This repository publishes a snapshot of the map's 52-file static build at `/map/`, so the address stays `thechildlens.com/map/`. All map pages and relative assets resolve beneath that path. The Home and About navigation point there. The map uses Supabase directly for public data, sign-in and the organisation workspace.
 
-The main site's published design tokens are in `shared/shared.css`: cream `#f9f6f0`, charcoal `#222222`, secondary cream `#f2efe8`, aqua `#81ecec`, Lenia Sans headings and Helvetica Neue body. The map's `brand-system.css` carries a scoped application of those tokens. The map's category pin colours stay distinct for interpretation.
+To update the snapshot after a map release, run from the map source repository:
 
-When `map.thechildlens.com` has working DNS and Vercel verification, switch the redirect in `map/index.html` to that hostname only after checking TLS, Supabase Auth redirect URLs, account sign-in and map routes. The navigation can keep linking to `/map/`.
+```sh
+MCH_PUBLIC_BASE_URL=https://thechildlens.com/map/ node scripts/build-static.mjs
+cp -R dist/. /path/to/The-Child-Lens/map/
+```
 
-If Tito can provide the original Next.js source repository, future navigation edits should be made there and exported through its normal build pipeline. The small published-HTML patch here is appropriate for this exported repository, but regenerated output could overwrite it.
+Review the resulting diff and test `/map/`, `/map/directory.html`, pin cards, filters and sign-in before publishing the main site. If build files have been removed upstream, delete obsolete files from this snapshot explicitly after review. The Vercel deployment remains available but is no longer the navigation destination.
+
+The design tokens in the main site's `shared/shared.css` are cream `#f9f6f0`, charcoal `#222222`, secondary cream `#f2efe8`, aqua `#81ecec`, Lenia Sans headings and Helvetica Neue body. The map's `brand-system.css` applies those tokens. Category pin colours remain distinct.
+
+For Google and email sign-in on this origin, Supabase Auth must allow redirect URLs under `https://thechildlens.com/map/` (including `index.html`). The provider configuration must also permit the production domain. Test the full sign-in return flow with a real account after any Auth setting change.
+
+The static snapshot duplicates published assets and requires manual synchronization on future map releases. A longer-term setup could put the whole site behind a host that supports a `/map/*` reverse proxy to the separately deployed app, while preserving one public domain. That would need Tito's domain and hosting changes. If Tito provides the original Next.js source, future navigation edits belong there so regenerated output does not overwrite these patches.

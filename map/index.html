@@ -1,2 +1,111 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0;url=https://mapping-childrens-health.vercel.app/"><title>Opening the children’s health map | The Child Lens</title><link rel="canonical" href="https://mapping-childrens-health.vercel.app/"></head><body><p>Opening the <a href="https://mapping-childrens-health.vercel.app/">children’s health map</a>…</p><script>location.replace('https://mapping-childrens-health.vercel.app/'+location.search+location.hash)</script></body></html>
+<html lang="en">
+<head><link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.">
+<title>Children’s health innovation map | The Child Lens</title>
+
+
+
+
+
+
+<!-- MapLibre -->
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<script defer src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+
+<script defer src="map-sheet.js?v=5"></script>
+<script defer src="organisation-logos.js"></script>
+<script defer src="organisation-team.js"></script>
+<script defer src="organisation-model.js"></script>
+<script defer src="app.js?v=20261113-multiselect"></script>
+<script defer src="filter-bar.js?v=20261113-multiselect"></script>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="brand-system.css?v=20261113-tcl-logo"><script defer src="app-shell.js"></script><link rel="canonical" href="https://thechildlens.com/map/">
+<meta property="og:type" content="website"><meta property="og:url" content="https://thechildlens.com/map/"><meta property="og:title" content="Children’s health innovation map | The Child Lens"><meta property="og:description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens."><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Children’s health innovation map | The Child Lens"><meta name="twitter:description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Children’s health innovation map | The Child Lens","description":"Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.","url":"https://thechildlens.com/map/","isPartOf":{"@type":"WebSite","name":"Mapping Children’s Health","url":"https://thechildlens.com/map/"},"publisher":{"@type":"Organization","name":"The Child Lens","url":"https://thechildlens.com/"}}</script>
+</head>
+
+<body class="map-page">
+<a class="skip-link" href="#mapRegion">Skip to map</a>
+<header>
+  <a class="brand" href="index.html" aria-label="Mapping Children’s Health home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-name">Mapping<br><strong>Children’s Health</strong></span></a>
+  <nav aria-label="Main navigation">
+    <a href="index.html" aria-current="page">Map</a>
+    <a href="directory.html">Directory</a>
+    <button type="button" id="authBtn" class="btn-secondary">My account</button>
+    <button type="button" id="openSubmitModal" class="btn-suggest">Suggest</button>
+  </nav>
+
+</header>
+<div class="map-layout">
+  <main id="mapRegion" tabindex="-1" aria-label="Organisation map">
+    <h1 class="discovery-heading">Explore children’s health innovation</h1>
+    <div id="map"></div>
+
+    <div class="map-tools">
+      <button id="fitMap" disabled>Fit map to results</button>
+      <button id="clearMapFilters" type="button" hidden>Clear filters</button>
+      <a id="filteredDirectory" class="map-directory-link" href="directory.html" hidden></a>
+    </div>
+
+    <!-- Map Colour Key / Legend -->
+    <details class="map-legend" aria-label="Ecosystem map legend"><summary>Map key & filters</summary>
+      <div class="legend-items">
+        <button type="button" class="legend-item" data-type="Children's hospital">
+          <span class="legend-dot dot-hospital"></span> Hospital
+        </button>
+        <button type="button" class="legend-item" data-type="Startup">
+          <span class="legend-dot dot-startup"></span> Startup
+        </button>
+        <button type="button" class="legend-item" data-type="Investor">
+          <span class="legend-dot dot-investor"></span> Investor
+        </button>
+        <button type="button" class="legend-item" data-type="hub">
+          <span class="legend-dot dot-hub"></span> Hub / Accelerator
+        </button>
+        <button type="button" class="legend-item" id="legendTcl">
+          <span class="legend-dot dot-tcl"></span> The Child Lens
+        </button>
+        <button type="button" id="clearKeyFilters" class="legend-clear">Clear all filters</button>
+      </div>
+      <div class="map-filter-fields"><label for="type">Organisation type<select id="type" multiple aria-label="Choose one or more organisation types"></select></label>
+        <label for="search">Search organisations<input type="search" id="search" placeholder="Name, place or keyword"></label>
+        <label for="focus">Paediatric specialty<select id="focus" multiple aria-label="Choose one or more specialties"></select></label>
+        <label for="technology">Product / innovation sector<select id="technology" multiple aria-label="Choose one or more sectors"></select></label>
+        <label for="country">Country<select id="country" multiple aria-label="Choose one or more countries"></select></label>
+        <label for="stage">Startup stage<select id="stage" multiple aria-label="Choose one or more stages"></select></label>
+      </div>
+    </details>
+
+    <div class="sr-only" id="mapNote" role="status">Explore organisations using search and filters.</div>
+    <div class="map-fallback" id="mapFallback" hidden>Map loading or offline. You can still explore all organisations in the directory.</div>
+  </main>
+</div>
+<!-- In-app suggestions require membership; signed-out visitors can email the team. -->
+<dialog id="submitModal" class="tcl-modal" aria-labelledby="submitTitle">
+  <div class="modal-header">
+    <h2 id="submitTitle">Suggest an organisation</h2>
+    <button type="button" id="closeModalCross" class="modal-close" aria-label="Close dialog">&times;</button>
+  </div>
+<p class="modal-sub">Members can suggest an organisation for human review. Sign in to submit; your suggestion is not published automatically.</p>
+  <div class="suggestion-paused" role="status" aria-live="polite">
+    <h3>Submit as a member</h3>
+    <p><a class="btn-primary" href="index.html?account=1&amp;memberSuggestion=1">Sign in to suggest an organisation</a></p>
+    <p>Email the team with the organisation name, its website and a public link showing its children’s-health work. We’ll review suggestions before adding them to the directory.</p>
+    <p>Please don’t send patient information, private contact details or confidential material.</p>
+    <p><a class="btn-primary" href="mailto:map@thechildlens.com?subject=Mapping%20Children%E2%80%99s%20Health%20suggestion">Email a suggestion</a></p>
+    <div class="form-actions"><button type="button" id="closeModal" class="btn-secondary">Close</button></div>
+  </div>
+  <p class="map-involvement"><a href="about.html">About the map and its listings</a></p>
+</dialog>
+<!-- Profile interface is rendered with DOM APIs by profiles.js. -->
+<dialog id="authModal" class="tcl-modal" aria-labelledby="authTitle"></dialog>
+<script defer src="profiles-config.js"></script>
+<script defer src="submission-status.js"></script>
+<script defer src="age-gate.js"></script>
+<script defer src="account-extras.js"></script>
+<script defer src="profiles.js"></script>
+<footer class="site-footer" aria-label="Site information"><a href="about.html">About</a><a href="accessibility.html">Accessibility</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="cookies.html">Cookies</a><a href="mailto:map@thechildlens.com">Contact</a></footer></body>
+</html>

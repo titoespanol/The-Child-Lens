@@ -8,4 +8,5 @@
 .tcl-map-menu>a{position:absolute;top:calc(100% + .5rem);right:0;z-index:100;display:block!important;width:max-content;min-width:12rem;min-height:2.75rem!important;padding:.75rem 1rem!important;border:1px solid rgba(17,17,17,.18)!important;border-radius:12px!important;background:#f9f6f0!important;color:#111!important;box-shadow:0 8px 24px #1112;text-align:left;text-decoration:none;font-size:.875rem!important;white-space:nowrap}
 .tcl-map-menu>a:hover{background:#f2efe8!important;color:#111!important}
 .ssr-fallback nav li:has(.tcl-map-menu){list-style:none}
-@media(max-width:767px){.tcl-map-menu>summary{min-height:1.875rem;padding:0 .65rem;font-size:.6875rem}}
+@media(max-width:767px){.tcl-top-menu,.about-nav-links{gap:.35rem}.tcl-map-menu>summary{min-height:1.875rem;padding:0 .5rem;font-size:.6875rem}}
+@media(max-width:380px){.tcl-map-menu>summary{font-size:.625rem}.tcl-top-menu a,.about-nav-links a{padding-left:.5rem!important;padding-right:.5rem!important}}
