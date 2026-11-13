@@ -128,7 +128,7 @@
         <ul>
           <li><a href="#hero">Home</a></li>
           <li><a href="/about/">About Us</a></li>
-          <li><details class="tcl-map-menu"><summary>Explore the Ecosystem</summary><a href="/map/">Children’s health map</a></details></li>
+          <li><details class="tcl-map-menu"><summary>Explore the Ecosystem</summary><a href="/map/?release=20261113">Children’s health map</a></details></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#vision">Vision</a></li>
           <li><a href="#method">Method</a></li>
@@ -499,7 +499,7 @@
         var nav = document.createElement("nav");
         nav.className = "tcl-top-menu";
         nav.setAttribute("aria-label", "Site navigation");
-        nav.innerHTML = '<a href="/">Home</a><a href="/about/">About Us</a><details class="tcl-map-menu"><summary>Explore the Ecosystem</summary><a href="/map/">Children’s health map</a></details>';
+        nav.innerHTML = '<a href="/">Home</a><a href="/about/">About Us</a><details class="tcl-map-menu"><summary>Explore the Ecosystem</summary><a href="/map/?release=20261113">Children’s health map</a></details>';
 
         Array.prototype.forEach.call(nav.querySelectorAll("a"), function(link) {
           var linkPath = new URL(link.getAttribute("href"), window.location.origin).pathname.replace(/\/$/, "") || "/";
