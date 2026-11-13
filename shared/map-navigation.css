@@ -31,3 +31,9 @@ header button.tcl-home-switch::after{content:"Adult Lens";position:static;displa
 header button.tcl-home-switch[aria-checked="true"]::after{content:"Child Lens"}
 @media(max-width:767px){header button.tcl-home-switch::after{font-size:12px}}
 @media(max-width:360px){.tcl-top-menu a,.about-nav-links a{font-size:10px!important;padding:0 7px!important}}
+/* Paint the Adult Lens switch before the hydration bridge adds its class. */
+body:not(.about-page) header.fixed.top-0 button:not(.tcl-home-switch){position:relative!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:9px!important;width:auto!important;min-width:130px!important;height:44px!important;min-height:44px!important;padding:6px 14px!important;border:1px solid #111!important;border-radius:999px!important;background:#f8f5ee!important;color:#111!important;font-size:0!important;transform:none!important}
+body:not(.about-page) header.fixed.top-0 button:not(.tcl-home-switch)::before{content:"";display:block;width:40px;height:22px;border-radius:99px;background:radial-gradient(circle 8px at 11px 50%,#fff 98%,transparent 100%),#bbb}
+body:not(.about-page) header.fixed.top-0 button:not(.tcl-home-switch)::after{content:"Adult Lens";font:700 13px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;color:#111}
+@media(max-width:767px){body:not(.about-page) header.fixed.top-0 button:not(.tcl-home-switch)::after{font-size:12px}}
+@media(prefers-reduced-motion:reduce){body:not(.about-page) *,body:not(.about-page) *::before,body:not(.about-page) *::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
