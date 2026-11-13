@@ -15,6 +15,6 @@ Review the resulting diff and test `/map/`, `/map/directory.html`, pin cards, fi
 
 The design tokens in the main site's `shared/shared.css` are cream `#f9f6f0`, charcoal `#222222`, secondary cream `#f2efe8`, aqua `#81ecec`, Lenia Sans headings and Helvetica Neue body. The map's `brand-system.css` applies those tokens. Category pin colours remain distinct.
 
-For Google and email sign-in on this origin, Supabase Auth must allow redirect URLs under `https://thechildlens.com/map/` (including `index.html`). The provider configuration must also permit the production domain. Test the full sign-in return flow with a real account after any Auth setting change.
+Supabase Auth allows both `https://thechildlens.com/map/` and the older `https://thechildlens.com/map/index.html` callback. The Site URL is `https://thechildlens.com/map/`. The map uses the clean path for Google and email sign-in; retain the older callback while previously issued links may still be in circulation. Test the full sign-in return flow with a real account after any Auth setting change.
 
 The static snapshot duplicates published assets and requires manual synchronization on future map releases. A longer-term setup could put the whole site behind a host that supports a `/map/*` reverse proxy to the separately deployed app, while preserving one public domain. That would need Tito's domain and hosting changes. If Tito provides the original Next.js source, future navigation edits belong there so regenerated output does not overwrite these patches.

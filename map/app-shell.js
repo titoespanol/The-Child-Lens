@@ -19,7 +19,15 @@
 // Keep the main navigation focused; secondary actions stay available in More.
 (() => {
   const nav = document.querySelector('header nav');
-  const suggest = document.getElementById('openSubmitModal') || nav?.querySelector('a[href="index.html?suggest=organisation"]');
+  if (nav && !nav.querySelector('.main-site-home')) {
+    const home = document.createElement('a');
+    home.className = 'main-site-home';
+    home.href = 'https://thechildlens.com/';
+    home.textContent = 'Home';
+    home.setAttribute('aria-label', 'Return to The Child Lens homepage');
+    nav.prepend(home);
+  }
+  const suggest = document.getElementById('openSubmitModal') || nav?.querySelector('a[href*="suggest=organisation"]');
   const credit = nav?.querySelector('a[href="https://thechildlens.com"]');
   if (!nav || !suggest) return;
   const more = document.createElement('details');

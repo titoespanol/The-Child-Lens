@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><script>if(new URLSearchParams(location.search).has("release"))history.replaceState(null,"",location.pathname+location.hash)</script><link rel="icon" href="favicon.svg" type="image/svg+xml">
+<head><script>if(location.pathname.endsWith('/index.html'))history.replaceState(null,'',location.pathname.slice(0,-10)+location.search+location.hash)</script><link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.">
@@ -22,7 +22,7 @@
 <script defer src="app.js?v=20261113-multiselect"></script>
 <script defer src="filter-bar.js?v=20261113-multiselect"></script>
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="brand-system.css?v=20261113-tcl-logo"><script defer src="app-shell.js"></script><link rel="canonical" href="https://thechildlens.com/map/">
+<link rel="stylesheet" href="brand-system.css?v=20261113-home-headings"><script defer src="app-shell.js?v=20261113-home"></script><link rel="canonical" href="https://thechildlens.com/map/">
 <meta property="og:type" content="website"><meta property="og:url" content="https://thechildlens.com/map/"><meta property="og:title" content="Children’s health innovation map | The Child Lens"><meta property="og:description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens."><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Children’s health innovation map | The Child Lens"><meta name="twitter:description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Children’s health innovation map | The Child Lens","description":"Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.","url":"https://thechildlens.com/map/","isPartOf":{"@type":"WebSite","name":"Mapping Children’s Health","url":"https://thechildlens.com/map/"},"publisher":{"@type":"Organization","name":"The Child Lens","url":"https://thechildlens.com/"}}</script>
 </head>
@@ -30,9 +30,9 @@
 <body class="map-page">
 <a class="skip-link" href="#mapRegion">Skip to map</a>
 <header>
-  <a class="brand" href="index.html" aria-label="Mapping Children’s Health home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-name">Mapping<br><strong>Children’s Health</strong></span></a>
+  <a class="brand" href="./" aria-label="Mapping Children’s Health home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-name">Mapping<br><strong>Children’s Health</strong></span></a>
   <nav aria-label="Main navigation">
-    <a href="index.html" aria-current="page">Map</a>
+    <a href="./" aria-current="page">Map</a>
     <a href="directory.html">Directory</a>
     <button type="button" id="authBtn" class="btn-secondary">My account</button>
     <button type="button" id="openSubmitModal" class="btn-suggest">Suggest</button>
@@ -92,7 +92,7 @@
 <p class="modal-sub">Members can suggest an organisation for human review. Sign in to submit; your suggestion is not published automatically.</p>
   <div class="suggestion-paused" role="status" aria-live="polite">
     <h3>Submit as a member</h3>
-    <p><a class="btn-primary" href="index.html?account=1&amp;memberSuggestion=1">Sign in to suggest an organisation</a></p>
+    <p><a class="btn-primary" href="./?account=1&amp;memberSuggestion=1">Sign in to suggest an organisation</a></p>
     <p>Email the team with the organisation name, its website and a public link showing its children’s-health work. We’ll review suggestions before adding them to the directory.</p>
     <p>Please don’t send patient information, private contact details or confidential material.</p>
     <p><a class="btn-primary" href="mailto:map@thechildlens.com?subject=Mapping%20Children%E2%80%99s%20Health%20suggestion">Email a suggestion</a></p>
@@ -106,6 +106,6 @@
 <script defer src="submission-status.js"></script>
 <script defer src="age-gate.js"></script>
 <script defer src="account-extras.js"></script>
-<script defer src="profiles.js"></script>
+<script defer src="profiles.js?v=20261113-clean-path"></script>
 <footer class="site-footer" aria-label="Site information"><a href="about.html">About</a><a href="accessibility.html">Accessibility</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="cookies.html">Cookies</a><a href="mailto:map@thechildlens.com">Contact</a></footer></body>
 </html>

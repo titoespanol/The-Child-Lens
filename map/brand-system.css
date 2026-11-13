@@ -432,3 +432,10 @@ body.directory-page .entry,.maplibregl-popup-content,.organisation-sheet,.filter
 .text-link,.map-link,body.directory-page .entry .card-links .text-link:first-child{color:#226b6b}
 body>header nav .btn-suggest{background:#222;border-color:#222;color:#f9f6f0}
 body>header nav .btn-suggest:hover{background:#3d3a36!important;border-color:#3d3a36!important}
+
+/* Match the main site's strong Lenia Sans display headings. */
+body.map-page :is(h1,h2,h3),body.directory-page :is(h1,h2,h3){font-family:LeniaSans,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:800;letter-spacing:normal}
+body.directory-page #directory>h1{font-size:clamp(36px,4vw,48px);line-height:1.08}
+body.directory-page #directory>h1 em{font-style:normal;color:#d45324}
+body.map-page .discovery-heading{font-size:clamp(22px,2vw,28px);line-height:1.12}
+@media(max-width:840px){body>header nav .main-site-home{flex:0 0 auto;padding:10px 6px;font-size:12px}body>header nav #authBtn{font-size:12px}}

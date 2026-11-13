@@ -150,7 +150,7 @@
       b.onclick = () => action(b, status, async () => {
         try { window.sessionStorage?.setItem('mch-account-route', route); } catch {}
         const { error } = await client.auth.signInWithOAuth({ provider,
-          options: { redirectTo: new URL('index.html', window.location.href).href, scopes: 'openid profile email' } });
+          options: { redirectTo: new URL('./', window.location.href).href, scopes: 'openid profile email' } });
         if (error) throw error;
         status.textContent = `Continuing to ${name}…`;
       });
@@ -164,7 +164,7 @@
       action(send, status, async () => {
         try { window.sessionStorage?.setItem('mch-account-route', route); } catch {}
         const { error } = await client.auth.signInWithOtp({ email: email.value.trim(), options: {
-          emailRedirectTo: new URL('index.html', window.location.href).href
+          emailRedirectTo: new URL('./', window.location.href).href
         } });
         if (error) {
           status.textContent = ['over_email_send_rate_limit', 'over_request_rate_limit'].includes(error.code)
