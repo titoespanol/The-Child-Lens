@@ -34,15 +34,18 @@ function appendRegistryDetails(parent, org) {
   const relations = registry.links.get(org.id) || [];
   if (relations.length) {
     const relation = el('p', 'registry-relation');
+    let memberHeadingShown = false;
     for (const row of relations) {
       const target = row.target_org_id && all.find(item => item.id === row.target_org_id);
       const label = target?.name || row.target_name;
       if (!label) continue;
       if (relation.childNodes.length) relation.append(document.createTextNode(' · '));
       const taskforceId = 'coalition-child-lens-taskforce-gb';
+      const isTaskforceMember = org.id === taskforceId && row.relationship === 'affiliated_with';
       const relationLabel = row.target_org_id === taskforceId ? 'Representatives are members of ' :
-        org.id === taskforceId && row.relationship === 'affiliated_with' ? 'Member representatives from ' :
+        isTaskforceMember ? (memberHeadingShown ? '' : 'Member representatives from: ') :
         row.relationship === 'part_of' ? 'Part of ' : 'Affiliated with ';
+      if (isTaskforceMember) memberHeadingShown = true;
       const targetLabel = el(target ? 'a' : 'span', '', label);
       if (target) targetLabel.href = 'directory.html?organisation=' + encodeURIComponent(target.id);
       relation.append(el('span', 'registry-relation-kind', relationLabel), targetLabel);
