@@ -1,5 +1,90 @@
 [
   {
+    "id": "charity-duchenne-uk-gb",
+    "name": "Duchenne UK",
+    "logo_enabled": false,
+    "type": "Charity or foundation",
+    "stage": null,
+    "city": "London",
+    "country": "United Kingdom",
+    "lat": 51.5026773,
+    "lng": -0.2188549,
+    "website": "https://www.duchenneuk.org/",
+    "sourceUrl": "https://www.duchenneuk.org/about",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Patient-led charity accelerating research, treatment access and better care for people with Duchenne muscular dystrophy, working with families, clinicians, researchers and industry on clinical trials, practical support and policy change.",
+    "technology": [],
+    "focus": [
+      "Rare & genetic conditions"
+    ],
+    "founding_year": 2012,
+    "founding_year_source_url": "https://www.duchenneuk.org/about"
+  },
+  {
+    "id": "charity-lifearc-gb",
+    "name": "LifeArc",
+    "logo_enabled": false,
+    "type": "Charity or foundation",
+    "stage": null,
+    "city": "London",
+    "country": "United Kingdom",
+    "lat": 51.5253878,
+    "lng": -0.1282382,
+    "website": "https://www.lifearc.org/",
+    "sourceUrl": "https://www.lifearc.org/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Medical research charity translating scientific discoveries into tests and treatments through funding, partnerships and scientific expertise, with programmes addressing childhood cancer, rare diseases and the use of paediatric health data.",
+    "technology": [],
+    "focus": [
+      "Cancer & blood disorders",
+      "Rare & genetic conditions"
+    ]
+  },
+  {
+    "id": "charity-thinking-of-oscar-gb",
+    "name": "Thinking of Oscar",
+    "logo_enabled": false,
+    "type": "Charity or foundation",
+    "stage": null,
+    "city": "Oxford",
+    "country": "United Kingdom",
+    "lat": null,
+    "lng": null,
+    "website": "https://www.thinkingofoscar.com/",
+    "sourceUrl": "https://www.thinkingofoscar.com/",
+    "sourceType": "Primary-source desk research",
+    "verification": "Needs review (location pin missing)",
+    "description": "Oxfordshire charity supporting children and families in hospital by funding healthcare innovation, improving patient experience and connecting clinicians, researchers and innovators through projects and the Not Mini Adults podcast.",
+    "technology": [
+      "Patient experience"
+    ],
+    "focus": [],
+    "founding_year": 2014,
+    "founding_year_source_url": "https://uk.linkedin.com/company/thinkingofoscar"
+  },
+  {
+    "id": "coalition-child-lens-taskforce-gb",
+    "name": "Child-Lens Taskforce on Health Research, Innovation and Investment",
+    "logo_enabled": false,
+    "type": "Coalition",
+    "stage": null,
+    "city": "Cardiff",
+    "country": "United Kingdom",
+    "lat": 51.5201875,
+    "lng": -3.1945625,
+    "website": "https://www.childlenstaskforce.uk/",
+    "sourceUrl": "https://www.childlenstaskforce.uk/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Independent taskforce developing evidence-based recommendations to strengthen investment in UK children's health research and innovation, bringing together representatives from healthcare, industry, research, charities, venture building and investment.",
+    "technology": [],
+    "focus": [],
+    "founding_year": 2026,
+    "founding_year_source_url": "https://www.childlenstaskforce.uk/"
+  },
+  {
     "id": "health-board-cardiff-and-vale-gb",
     "name": "Cardiff and Vale University Health Board",
     "logo_enabled": false,
@@ -10,10 +95,10 @@
     "lat": 51.5201875,
     "lng": -3.1945625,
     "website": "https://cavuhb.nhs.wales/",
-    "sourceUrl": "https://cavuhb.nhs.wales/about-us/our-health-board-structure/",
-    "sourceType": "Official health board",
+    "sourceUrl": "https://cavuhb.nhs.wales/",
+    "sourceType": "Primary-source desk research",
     "verification": "Needs review (location pin missing)",
-    "description": "NHS health board serving Cardiff and the Vale of Glamorgan, with primary, community and hospital services, including Noah's Ark Children's Hospital for Wales.",
+    "description": "NHS health board providing primary, community and hospital services across Cardiff and the Vale of Glamorgan, including Noah's Ark Children's Hospital for Wales and paediatric research and clinical services.",
     "technology": [],
     "focus": [
       "General & preventive care"
@@ -1512,6 +1597,42 @@
     "focus": [
       "Rare & genetic conditions"
     ]
+  },
+  {
+    "id": "institution-abpi-gb",
+    "name": "ABPI",
+    "logo_enabled": false,
+    "type": "Institution",
+    "stage": null,
+    "city": "London",
+    "country": "United Kingdom",
+    "lat": 51.5061360334721,
+    "lng": -0.0840750707310592,
+    "website": "https://www.abpi.org.uk/",
+    "sourceUrl": "https://www.abpi.org.uk/about-the-abpi/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "The Association of the British Pharmaceutical Industry represents companies researching, developing and supplying medicines in the UK, working with government, the NHS and patient organisations on research, policy and access to medicines.",
+    "technology": [],
+    "focus": []
+  },
+  {
+    "id": "institution-rcpch-gb",
+    "name": "Royal College of Paediatrics and Child Health (RCPCH)",
+    "logo_enabled": false,
+    "type": "Institution",
+    "stage": null,
+    "city": "London",
+    "country": "United Kingdom",
+    "lat": 51.5207171,
+    "lng": -0.1159032,
+    "website": "https://www.rcpch.ac.uk/",
+    "sourceUrl": "https://www.rcpch.ac.uk/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Professional membership body for paediatricians, supporting education, professional standards, research and advocacy to improve the health and wellbeing of children and young people in the UK and internationally.",
+    "technology": [],
+    "focus": []
   },
   {
     "id": "kidsx-1",
@@ -3086,6 +3207,30 @@
     ]
   },
   {
+    "id": "research-medicines-discovery-institute-gb",
+    "name": "Medicines Discovery Institute",
+    "logo_enabled": false,
+    "type": "Institution",
+    "stage": null,
+    "city": "Cardiff",
+    "country": "United Kingdom",
+    "lat": 51.4876934,
+    "lng": -3.1793944,
+    "website": "https://www.medicinesdiscoveryinstitute.com/",
+    "sourceUrl": "https://www.medicinesdiscoveryinstitute.com/",
+    "sourceType": "Primary-source desk research",
+    "verification": "verified",
+    "description": "Cardiff University institute translating biomedical research into new medicines, combining drug-discovery expertise across neuroscience, mental health, oncology and lysosomal storage disorders with academic and industry collaboration.",
+    "technology": [
+      "Biotech & therapeutics"
+    ],
+    "focus": [
+      "Brain & nervous system",
+      "Cancer & blood disorders",
+      "Mental health"
+    ]
+  },
+  {
     "id": "research-metrodora",
     "name": "Metrodora Ventures",
     "logo_enabled": false,
@@ -3115,11 +3260,11 @@
     "country": "Spain",
     "lat": 41.3887,
     "lng": 2.1589,
-    "website": "https://montana.ship2bventures.com",
-    "sourceUrl": "https://ship2bventures.com/news/montana-raises-37m-in-first-close-becoming-europes-first-venture-fund-dedicated-to-childrens-health",
+    "website": "https://montana.partners/",
+    "sourceUrl": "https://ship2bventures.com/funds/montana",
     "sourceType": "Primary-source desk research",
     "verification": "verified",
-    "description": "European child-health venture fund managed by Ship2B Ventures, supporting research-based paediatric innovation.",
+    "description": "Child-health venture fund managed by Ship2B Ventures, backing early-stage companies and research-based innovations addressing unmet needs in children's health across medicines, diagnostics, devices and digital technologies.",
     "technology": [],
     "focus": []
   },
@@ -3458,11 +3603,11 @@
     "country": "Spain",
     "lat": 41.3879,
     "lng": 2.1699,
-    "website": "https://thechildlens.com",
-    "sourceUrl": "https://thechildlens.com",
-    "sourceType": "user-provided",
+    "website": "https://thechildlens.com/",
+    "sourceUrl": "https://thechildlens.com/",
+    "sourceType": "Primary-source desk research",
     "verification": "verified",
-    "description": "Barcelona-based venture builder dedicated to advancing children's health innovation, working with clinicians, startups, and researchers to turn promising pediatric solutions into viable ventures.",
+    "description": "Barcelona-based platform for systemic innovation in children's health, building ventures, supporting startups and developing collaborative initiatives to improve how paediatric innovation is created, funded and brought into practice.",
     "technology": [
       "Biotech & therapeutics",
       "Diagnostics",

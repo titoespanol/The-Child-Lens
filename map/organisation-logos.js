@@ -5,6 +5,8 @@
  const key='sb_publishable_P_gC6PJRohYkXn1nMBGC4A_bHKkQmef';
  const valid=id=>/^[A-Za-z0-9_-]{1,160}$/.test(String(id));
  const path=id=>`${id}/logo.png`;
+ // Curated assets sourced from official websites/LinkedIn; IDs and names must both match.
+ const bundledLogos=Object.freeze({"research-montana-childrens-health":{"name":"Montana Children’s Health Fund","file":"organisation-logo-assets/research-montana-childrens-health.png","background":"#ffffff"},"health-board-cardiff-and-vale-gb":{"name":"Cardiff and Vale University Health Board","file":"organisation-logo-assets/health-board-cardiff-and-vale-gb.png","background":"#2c3e72"},"seed-15":{"name":"La Health Rock","file":"organisation-logo-assets/seed-15.jpg","background":"#ffffff"},"seed-9":{"name":"Sant Joan de Déu Barcelona","file":"organisation-logo-assets/seed-9.svg","background":"#ffffff"},"seed-12":{"name":"Harmony Hybrid","file":"organisation-logo-assets/seed-12.svg","background":"#ffffff"},"seed-6":{"name":"Boston Children's Hospital","file":"organisation-logo-assets/seed-6.svg","background":"#ffffff"},"seed-13":{"name":"Chirpy Mood Science","file":"organisation-logo-assets/seed-13.png","background":"#ffffff"},"seed-8":{"name":"Great Ormond Street Hospital","file":"organisation-logo-assets/seed-8.svg","background":"#ffffff"},"hospital-evelina-london-children-s-hospital-gb":{"name":"Evelina London Children's Hospital","file":"organisation-logo-assets/hospital-evelina-london-children-s-hospital-gb.png","background":"#ffffff"},"institution-abpi-gb":{"name":"ABPI","file":"organisation-logo-assets/institution-abpi-gb.png","background":"#ffffff"},"institution-rcpch-gb":{"name":"Royal College of Paediatrics and Child Health (RCPCH)","file":"organisation-logo-assets/institution-rcpch-gb.png","background":"#ffffff"},"charity-thinking-of-oscar-gb":{"name":"Thinking of Oscar","file":"organisation-logo-assets/charity-thinking-of-oscar-gb.jpg","background":"#ffffff"},"charity-lifearc-gb":{"name":"LifeArc","file":"organisation-logo-assets/charity-lifearc-gb.png","background":"#ffffff"},"research-medicines-discovery-institute-gb":{"name":"Medicines Discovery Institute","file":"organisation-logo-assets/research-medicines-discovery-institute-gb.png","background":"#ffffff"},"coalition-child-lens-taskforce-gb":{"name":"Child-Lens Taskforce on Health Research, Innovation and Investment","file":"organisation-logo-assets/coalition-child-lens-taskforce-gb.svg","background":"#172132"},"charity-duchenne-uk-gb":{"name":"Duchenne UK","file":"organisation-logo-assets/charity-duchenne-uk-gb.svg","background":"#111111"}});
  const query=async operation=>{const r=await operation;if(r.error)throw r.error;return r.data;};
  async function prepare(file){
   if(!file||!['image/png','image/jpeg','image/webp'].includes(file.type)||file.size>2097152)throw Error('Choose a PNG, JPEG or WebP logo up to 2 MB.');
@@ -26,6 +28,14 @@
    const image=document.createElement('img');image.alt='';image.width=48;image.height=48;
    image.onload=()=>{fallback.hidden=true;};image.onerror=()=>{image.remove();fallback.hidden=false;};
    image.src='child-lens-map-pin.png';root.append(image);return root;
+  }
+  // An authorised hosted upload takes precedence over a bundled default.
+  const bundled=Object.hasOwn(bundledLogos,String(org.id))?bundledLogos[org.id]:null;
+  if(org.logo_enabled!==true&&bundled&&org.name===bundled.name){
+   const image=document.createElement('img');image.alt='';image.width=48;image.height=48;
+   image.onload=()=>{fallback.hidden=true;root.style.backgroundColor=bundled.background;};
+   image.onerror=()=>{image.remove();fallback.hidden=false;root.style.backgroundColor='';};
+   image.src=bundled.file;root.append(image);return root;
   }
   if(org.logo_enabled===true&&valid(org.id)){
    fetch(`${base}/storage/v1/object/authenticated/organisation-logos/${encodeURIComponent(org.id)}/logo.png`,{headers:{apikey:key},signal:AbortSignal.timeout(5000),cache:'no-store'})

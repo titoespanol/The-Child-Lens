@@ -2,7 +2,7 @@
 
 The main website is a published static Next.js export served by GitHub Pages (`CNAME`, `.nojekyll`, exported `_next` assets). It does not contain the Next.js source, `package.json`, a Node version pin, or a build command. Its only available QA script is `scripts/check-geo.mjs`. A fresh Next.js build cannot be reproduced from this repository.
 
-The map source and its Vercel deployment remain in `The-Child-Lens/Mapping-Childrens-Health`. This repository publishes a snapshot of the map's 52-file static build at `/map/`, so the address stays `thechildlens.com/map/`. All map pages and relative assets resolve beneath that path. The Home and About navigation point there. The map uses Supabase directly for public data, sign-in and the organisation workspace.
+The map source and its Vercel deployment remain in `The-Child-Lens/Mapping-Childrens-Health`. This repository publishes a snapshot of the map's 68-file static build at `/map/`, so the address stays `thechildlens.com/map/`. All map pages and relative assets resolve beneath that path. The Home and About navigation point there. The map uses Supabase directly for public data, sign-in and the organisation workspace.
 
 To update the snapshot after a map release, run from the map source repository:
 
@@ -18,3 +18,5 @@ The design tokens in the main site's `shared/shared.css` are cream `#f9f6f0`, ch
 Supabase Auth allows both `https://thechildlens.com/map/` and the older `https://thechildlens.com/map/index.html` callback. The Site URL is `https://thechildlens.com/map/`. The map uses the clean path for Google and email sign-in; retain the older callback while previously issued links may still be in circulation. Test the full sign-in return flow with a real account after any Auth setting change.
 
 The static snapshot duplicates published assets and requires manual synchronization on future map releases. A longer-term setup could put the whole site behind a host that supports a `/map/*` reverse proxy to the separately deployed app, while preserving one public domain. That would need Tito's domain and hosting changes. If Tito provides the original Next.js source, future navigation edits belong there so regenerated output does not overwrite these patches.
+
+Release checklist: a map release is complete only after the snapshot in this repository is synchronized and the deployed `https://thechildlens.com/map/` is verified. Checking the Vercel URL alone does not verify the main website.

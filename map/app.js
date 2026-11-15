@@ -39,7 +39,13 @@ function appendRegistryDetails(parent, org) {
       const label = target?.name || row.target_name;
       if (!label) continue;
       if (relation.childNodes.length) relation.append(document.createTextNode(' · '));
-      relation.append(el('span', 'registry-relation-kind', row.relationship === 'part_of' ? 'Part of ' : 'Affiliated with '), el('span', '', label));
+      const taskforceId = 'coalition-child-lens-taskforce-gb';
+      const relationLabel = row.target_org_id === taskforceId ? 'Representatives are members of ' :
+        org.id === taskforceId && row.relationship === 'affiliated_with' ? 'Member representatives from ' :
+        row.relationship === 'part_of' ? 'Part of ' : 'Affiliated with ';
+      const targetLabel = el(target ? 'a' : 'span', '', label);
+      if (target) targetLabel.href = 'directory.html?organisation=' + encodeURIComponent(target.id);
+      relation.append(el('span', 'registry-relation-kind', relationLabel), targetLabel);
     }
     if (relation.childNodes.length) parent.append(relation);
   }
@@ -48,12 +54,18 @@ function appendRegistryDetails(parent, org) {
 async function loadPublicRegistry() {
   const headers = { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` };
   const read = async (table, select) => {
-    const query = new URLSearchParams({ select, limit: '5000' });
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${query}`, { headers, signal: AbortSignal.timeout(5000) });
-    if (!response.ok) throw new Error(`Registry read ${table}: ${response.status}`);
-    const rows = await response.json();
-    if (!Array.isArray(rows)) throw new Error(`Registry response ${table} is not a list`);
-    return rows;
+    const rows = [];
+    const order = table === 'taxonomy_terms' ? 'id.asc' : table === 'organisation_terms' ?
+      'org_id.asc,term_id.asc,context.asc' : 'source_org_id.asc,relationship.asc,target_name.asc';
+    for (let offset = 0; ; offset += 500) {
+      const query = new URLSearchParams({ select, order, limit: '500', offset: String(offset) });
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${query}`, { headers, signal: AbortSignal.timeout(5000) });
+      if (!response.ok) throw new Error(`Registry read ${table}: ${response.status}`);
+      const page = await response.json();
+      if (!Array.isArray(page)) throw new Error(`Registry response ${table} is not a list`);
+      rows.push(...page);
+      if (page.length < 500) return rows;
+    }
   };
   try {
     const [terms, assignments, links] = await Promise.all([
@@ -187,6 +199,7 @@ function popup(org) {
     card.append(tagList);
   }
 
+  appendRegistryDetails(card, org);
   const pBtn = viewPortfolioButton(org);
   if (pBtn) card.append(pBtn);
 
@@ -289,7 +302,21 @@ function updateMarkers() {
   }
 
   if (!map) return;
+  const sharedLocations = new Map();
+  for (const org of pins) {
+    const key = `${org.lat.toFixed(6)},${org.lng.toFixed(6)}`;
+    const group = sharedLocations.get(key) || [];
+    group.push(org.id); sharedLocations.set(key, group);
+  }
+  for (const group of sharedLocations.values()) group.sort();
   pins.forEach(org => {
+    const group = sharedLocations.get(`${org.lat.toFixed(6)},${org.lng.toFixed(6)}`);
+    const position = group.indexOf(org.id);
+    // Separate only the screen markers; the actual stored/shared coordinates stay unchanged.
+    const radius = Math.max(28, group.length * 48 / (2 * Math.PI));
+    const angle = position * 2 * Math.PI / group.length;
+    const offset = group.length === 1 ? [0, 0] : group.length === 2 ? [position === 0 ? -28 : 28, 0] :
+      [Math.round(Math.cos(angle) * radius), Math.round(Math.sin(angle) * radius)];
     const typeClass =
       (org.type || '').toLowerCase().includes('hospital') ? ' type-hospital' :
       (org.type || '').toLowerCase().includes('startup') ? ' type-startup' :
@@ -301,7 +328,7 @@ function updateMarkers() {
     button.title = org.name;
     button.dataset.organisationId = String(org.id);
     button.addEventListener('click', event => show(org, true, event.detail === 0));
-    const marker = new maplibregl.Marker({ element: button, anchor: 'center' }).setLngLat([org.lng, org.lat]).addTo(map);
+    const marker = new maplibregl.Marker({ element: button, anchor: 'center', offset }).setLngLat([org.lng, org.lat]).addTo(map);
     if (org.id === 'seed-1') button.parentElement?.style.setProperty('z-index', '20');
     // MapLibre assigns its own generic label during construction; restore the organisation name afterwards.
     button.setAttribute('aria-label', `Show ${org.name}${org.city ? ' in ' + org.city : ''} on map`);
