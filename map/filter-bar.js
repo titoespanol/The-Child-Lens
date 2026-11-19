@@ -16,8 +16,11 @@
  const active=make('div','',{className:'active-filter-row'});active.setAttribute('aria-label','Active filters');bar.append(active);
  const clear=make('button','Clear all',{type:'button',className:'filter-clear'});clear.onclick=()=>document.getElementById(map?'clearMapFilters':'reset')?.click();
  const dialog=make('dialog','',{className:'filter-picker'});dialog.setAttribute('aria-labelledby','filterPickerTitle');document.body.append(dialog);
- let originButton;
- dialog.addEventListener('close',()=>originButton?.focus());
+ let originButton,optionObserver;
+ dialog.addEventListener('close',()=>{
+  optionObserver?.disconnect();
+  originButton?.focus();
+ });
  function choose(item){
   originButton=item.button;dialog.replaceChildren();
   const header=make('div','',{className:'filter-picker-header'}),title=make('h2',item.label,{id:'filterPickerTitle'}),done=make('button','Done',{type:'button',className:'btn-primary'});done.onclick=()=>dialog.close();header.append(title,done);dialog.append(header);
@@ -27,8 +30,32 @@
   function renderOptions(focusValue){list.replaceChildren();const q=find.value.trim().toLowerCase();
    const options=[...item.select.options].filter(option=>option.value&&!option.disabled&&(!q||option.textContent.toLowerCase().includes(q)));
    if(!options.length)list.append(make('p','No matching choices. Try another search.'));
-   for(const option of options){const selected=[...item.select.selectedOptions].some(current=>current.value===option.value);const b=make('button','',{type:'button',className:'filter-option'});b.append(make('span',option.value==='hub'?'Hubs & accelerators':option.textContent,{className:'filter-option-label'}),make('span',selected?'✓':'',{className:'filter-option-check'}));b.setAttribute('aria-pressed',String(selected));b.setAttribute('aria-label',(option.value==='hub'?'Hubs & accelerators':option.textContent)+(selected?', selected':''));b.onclick=()=>{option.selected=!selected;item.select.dispatchEvent(new Event('change',{bubbles:true}));renderOptions(option.value);};list.append(b);if(option.value===focusValue)b.focus();}
+   for(const option of options){
+    const {value,selected}=option;
+    const name=value==='hub'?'Hubs & accelerators':option.textContent;
+    const b=make('button','',{type:'button',className:'filter-option'});
+    b.dataset.filterValue=value;
+    b.append(make('span',name,{className:'filter-option-label'}),make('span',selected?'✓':'',{className:'filter-option-check'}));
+    b.setAttribute('aria-pressed',String(selected));
+    b.setAttribute('aria-label',name+(selected?', selected':''));
+    b.onclick=()=>{
+     const current=[...item.select.options].find(candidate=>candidate.value===value);
+     if(current){
+      current.selected=!current.selected;
+      item.select.dispatchEvent(new Event('change',{bubbles:true}));
+     }
+     renderOptions(value);
+    };
+    list.append(b);
+    if(value===focusValue)b.focus();
+   }
   }
+  optionObserver?.disconnect();
+  optionObserver=new MutationObserver(()=>{
+   const focused=document.activeElement;
+   renderOptions(list.contains(focused)?focused.dataset.filterValue:undefined);
+  });
+  optionObserver.observe(item.select,{childList:true});
   find.oninput=renderOptions;renderOptions();dialog.showModal();if(window.matchMedia('(max-width:840px)').matches)done.focus();else find.focus();
  }
  for(const item of selects){item.button=make('button',item.label+' ▾',{type:'button',className:'filter-chip'});item.button.setAttribute('aria-haspopup','dialog');item.button.onclick=()=>choose(item);chips.append(item.button);}
