@@ -129,10 +129,35 @@ function externalLink(label, value) {
   return link;
 }
 
-function shareListing(org) {
+function publicListingUrl(org) {
   const mainSite = ['thechildlens.com', 'www.thechildlens.com'].includes(location.hostname);
   const url = new URL(mainSite ? 'https://thechildlens.com/directory/' : 'directory.html', document.baseURI);
   url.searchParams.set('organisation', org.id);
+  return url.href;
+}
+
+function suggestListingCorrection(org) {
+  const name = org.name.replace(/[\r\n]+/g, ' ').trim();
+  const subject = encodeURIComponent(`Listing correction for ${name}`);
+  const body = [
+    'Hello The Child Lens team,',
+    '',
+    'I’d like to suggest a correction to this listing.',
+    name,
+    publicListingUrl(org),
+    '',
+    'Suggested correction',
+    '',
+    'Public source (if available)',
+    ''
+  ].join('\r\n');
+  const link = el('a', 'text-link', 'Suggest a correction');
+  link.href = `mailto:map@thechildlens.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+  return link;
+}
+
+function shareListing(org) {
+  const url = publicListingUrl(org);
 
   const group = el('div', 'listing-share');
   const button = el('button', 'map-link', 'Copy listing link');
@@ -143,14 +168,14 @@ function shareListing(org) {
   field.type = 'url';
   field.readOnly = true;
   field.hidden = true;
-  field.value = url.href;
+  field.value = url;
   field.setAttribute('aria-label', 'Shareable listing link');
   group.append(button, status, field);
 
   button.addEventListener('click', async () => {
     status.textContent = '';
     try {
-      await navigator.clipboard.writeText(url.href);
+      await navigator.clipboard.writeText(url);
       field.hidden = true;
       status.textContent = 'Link copied';
     } catch {
@@ -231,7 +256,7 @@ function popup(org) {
   workspace.href = 'organisation-management.html?org=' + encodeURIComponent(org.id);
   links.append(workspace);
   if(window.MCHOrganisationLogos)links.append(window.MCHOrganisationLogos.managementLink(org));
-  links.append(shareListing(org));
+  links.append(shareListing(org), suggestListingCorrection(org));
   card.append(links);
 
   if(window.MCHOrganisationTeam)card.append(window.MCHOrganisationTeam.card(org));
@@ -472,7 +497,7 @@ function render() {
     links.append(workspace);
     if(window.MCHOrganisationLogos)links.append(window.MCHOrganisationLogos.managementLink(org));
 
-    links.append(shareListing(org));
+    links.append(shareListing(org), suggestListingCorrection(org));
     body.append(links);
     root.append(card);
   });
