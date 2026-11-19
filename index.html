@@ -465,12 +465,13 @@
       line-height: 1.45;
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: 960px) {
       .tcl-top-menu {
         left: 12px;
         right: 12px;
         top: calc(100% + 0.35rem);
         width: calc(100% - 24px);
+        flex-wrap: wrap;
         justify-content: center;
         gap: 6px;
         transform: none;
@@ -506,7 +507,7 @@
         var nav = document.createElement("nav");
         nav.className = "tcl-top-menu";
         nav.setAttribute("aria-label", "Site navigation");
-        nav.innerHTML = '<a href="/">Home</a><a href="/about/">About Us</a><a href="/map/">Explore the Ecosystem</a>';
+        nav.innerHTML = '<a href="/">Home</a><a href="/about/">About Us</a><a href="/map/">Explore the Ecosystem</a><a href="/map/?updates=1">Get email updates</a>';
 
         Array.prototype.forEach.call(nav.querySelectorAll("a"), function(link) {
           var linkPath = new URL(link.getAttribute("href"), window.location.origin).pathname.replace(/\/$/, "") || "/";
