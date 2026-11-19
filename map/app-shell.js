@@ -62,6 +62,8 @@
   more.append(summary);
   const actions = document.createElement('div');
   actions.className = 'nav-more-actions';
+  const updates = nav.querySelector('#updatesBtn');
+  if (updates) actions.append(updates);
   actions.append(suggest);
   if (credit) { credit.textContent = 'Learn more about The Child Lens'; actions.append(credit); }
   more.append(actions);

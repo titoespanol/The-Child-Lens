@@ -143,7 +143,7 @@
     }
     pendingEmailChoices(user.id, null);
     confirmed.add(user.id);
-    if (root.isConnected) onReady();
+    if (root.isConnected) onReady({emailChoicesSaved: changed, optedIn: choices.tcl || choices.partner});
    } catch {
     birthDate.value = '';
     msg.textContent = ageConfirmed

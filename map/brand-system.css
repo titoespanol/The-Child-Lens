@@ -257,6 +257,10 @@ body.map-page .site-footer{padding:0 12px;gap:0 16px;font-size:12px}
 .organisation-team-members img{width:40px;height:40px;flex:none;border-radius:50%;object-fit:cover}
 .organisation-team-members small,.organisation-team-members a{display:block;font-size:.85em}
 .organisation-team-summary .organisation-team-members a{display:inline-flex;min-height:32px}
+.directory-updates{font-size:15px;min-height:44px;text-decoration:underline;text-underline-offset:3px}
+.listing-share .map-link{min-height:44px}
+.listing-share-status{display:block;font-size:13px}
+.listing-share-url{max-width:100%;width:20rem;margin:4px 0 8px;padding:7px;font:inherit}
 
 /* Directory cards use a clear scan order: identity, evidence, then actions. */
 body.directory-page .entry{padding:20px 22px;border-radius:16px}

@@ -6,8 +6,12 @@
   let modalHeader, modalHeading;
   const opener = document.getElementById('authBtn');
   if (!modal || !opener) return;
-  const authReturnUrl = () => window.location.hostname === 'thechildlens.com' || window.location.hostname === 'www.thechildlens.com'
-    ? new URL('/map/', window.location.origin).href : new URL('./', window.location.href).href;
+  function authReturnUrl() {
+    const isMainSite = ['thechildlens.com', 'www.thechildlens.com'].includes(window.location.hostname);
+    const destination = new URL(isMainSite ? '/map/' : './', window.location.href);
+    if (route === 'updates') destination.searchParams.set('updates', '1');
+    return destination.href;
+  }
   let client = typeof dbClient === 'undefined' ? null : dbClient;
   let loadingClient = null;
   let subscribed = false;
@@ -18,7 +22,7 @@
     client.auth.onAuthStateChange((event, session) => setTimeout(() => {
       opener.textContent = 'My account';
       if(event === 'SIGNED_OUT'){
-        currentUser=null;generation++;modal.replaceChildren();
+        currentUser=null;setupReceipt=null;generation++;modal.replaceChildren();
         try { for(let i=window.sessionStorage.length-1;i>=0;i--){const key=window.sessionStorage.key(i);if(key?.startsWith('mch:onboarding:'))window.sessionStorage.removeItem(key);} } catch {}
       }
       if (event === 'SIGNED_OUT' || (session?.user?.id !== currentUser?.id && event === 'SIGNED_IN')) {
@@ -46,18 +50,22 @@
     return loadingClient;
   }
   window.MCHAccountClient = { getClient };
-  const entryQuery = new URL(window.location.href).searchParams;
-  let route = entryQuery.get('memberSuggestion') === '1' ? 'suggest' : entryQuery.get('review') === '1' ? 'review' : 'home';
+  const returnUrl = new URL(window.location.href);
+  const entryQuery = returnUrl.searchParams;
+  const fragment = new URLSearchParams(returnUrl.hash.slice(1));
+  const hasReturn = entryQuery.has('code') || entryQuery.has('error') || fragment.has('access_token') || fragment.has('error');
+  let isReturn = hasReturn;
+  const updatesEntry = entryQuery.get('updates') === '1';
+  let route = updatesEntry ? 'updates' : entryQuery.get('memberSuggestion') === '1' ? 'suggest' : entryQuery.get('review') === '1' ? 'review' : 'home';
   // Consume the redirect intent once; ordinary visits start at the account overview.
   try {
     const pending = window.sessionStorage?.getItem('mch-account-route');
-    const returning = new URL(window.location.href);
-    const hash = new URLSearchParams(returning.hash.slice(1));
-    if ((returning.searchParams.has('code') || returning.searchParams.has('error') || hash.has('access_token') || hash.has('error')) && ['home', 'profile', 'updates', 'suggest', 'review'].includes(pending)) route = pending;
+    if (!updatesEntry && hasReturn && ['home', 'profile', 'updates', 'suggest', 'review'].includes(pending)) route = pending;
     window.sessionStorage?.removeItem?.('mch-account-route');
   } catch {}
   let currentUser = null;
   let generation = 0;
+  let setupReceipt = null;
   function node(tag, text, parent, attrs = {}) {
     const e = document.createElement(tag);
     if (text) e.textContent = text;
@@ -127,12 +135,14 @@
     retry.onclick = () => refresh().catch(showUnavailable);
   }
   function login() {
-    shell(route === 'updates' ? 'Keep up to date with The Child Lens' : 'Sign in to your account');
+    shell(route === 'updates' ? 'Get email updates' : 'Sign in to your account');
     if (!config.enabled || !client) {
       node('p', config.enabled ? 'Connecting to sign-in…' : 'Profile registration is being prepared. You can continue exploring the directory without an account.', modal);
       return;
     }
-    node('p', 'Accounts are for people aged 16 and over. Sign in to manage your private profile, affiliations and email choices.', modal);
+    node('p', route === 'updates'
+      ? 'Sign in to choose which opportunities you’d like to hear about, including jobs, funding and events in children’s health. Accounts are for people aged 16 and over. A professional profile is optional.'
+      : 'Accounts are for people aged 16 and over. Sign in to manage your private profile, affiliations and email choices.', modal);
     const privacy = node('details', '', modal, { className: 'account-help' });
     node('summary', 'How we use your account information', privacy);
     node('p', 'We use basic identity information and email for your account, without inbox or contacts access. Provider information is not added to mailing lists. Email updates are a separate, optional choice.', privacy);
@@ -196,6 +206,10 @@
   }
   async function account(user, stamp) {
     accountShell('Your account');
+    if (setupReceipt?.userId === user.id) {
+      node('p', setupReceipt.message, modal, {className: 'form-msg', role: 'status'});
+      setupReceipt = null;
+    }
     const overview = node('div', '', modal, { className: 'account-overview' });
     const affiliations = node('section', '', overview, { className: 'account-affiliations' });
     node('h3', 'Your affiliations', affiliations);
@@ -369,7 +383,7 @@
         p_contact: contact.value.trim(), p_tcl: tcl.checked, p_partner_opportunities: partner.checked
       }, () => {
         if (!tcl.checked && !partner.checked) contact.value = '';
-        feedback(status, tcl.checked || partner.checked ? 'Your email preferences have been saved. No professional profile has been created or changed.' : 'Your email choices have been withdrawn and the active contact address has been cleared.');
+        feedback(status, tcl.checked || partner.checked ? 'Your email preferences have been saved.' : 'Your email choices have been withdrawn and the active contact address has been cleared.');
       });
     };
   }
@@ -529,9 +543,15 @@
       const ready = await window.MCHAccountExtras.ensureEligible(client, currentUser, () => {
         if (stamp !== generation) return null;
         accountShell('Finish account setup'); return node('section', '', modal);
-      }, () => {
+      }, ({emailChoicesSaved, optedIn} = {}) => {
         if (stamp !== generation) return;
         if (route === 'updates') route = 'home';
+        if (emailChoicesSaved && route === 'home') {
+          setupReceipt = {
+            userId: currentUser.id,
+            message: optedIn ? 'Your email preferences are saved.' : 'Email preferences saved. Both email choices are off.'
+          };
+        }
         refresh().catch(showUnavailable);
       });
       if (stamp !== generation || !ready) return;
@@ -545,9 +565,6 @@
       if (isReturn) node('p', 'The sign-in link could not be completed. Request a new email link or try signing in again in this browser.', modal, { role: 'status' });
     }
   }
-  const returnUrl = new URL(window.location.href);
-  const fragment = new URLSearchParams(returnUrl.hash.slice(1));
-  let isReturn = returnUrl.searchParams.has('code') || returnUrl.searchParams.has('error') || fragment.has('access_token') || fragment.has('error');
   function cleanReturn() {
     isReturn = false;
     for (const key of ['code', 'error', 'error_code', 'error_description']) returnUrl.searchParams.delete(key);
@@ -569,13 +586,28 @@
   opener.addEventListener('pointerenter', () => { if(config.enabled)getClient().catch(() => {}); }, {once:true});
   opener.addEventListener('focus', () => { if(config.enabled)getClient().catch(() => {}); }, {once:true});
   const updatesOpener = document.getElementById('updatesBtn');
-  updatesOpener?.addEventListener('click', () => { route = 'updates'; if (!dialog.open) dialog.showModal(); refresh().catch(showUnavailable); });
-  opener.addEventListener('click', () => { if(dialog.open)return;route='home';const opening=refresh();dialog.showModal();opening.catch(showUnavailable); });
-  if (new URLSearchParams(window.location.search).get('account') === '1') {
+  let restoreUpdatesFocus;
+  updatesOpener?.addEventListener('click', event => {
+    if (event?.metaKey || event?.ctrlKey || event?.shiftKey || event?.altKey) return;
+    event?.preventDefault();
+    if (dialog.open) return;
+    restoreUpdatesFocus = updatesOpener.closest?.('.nav-more')?.querySelector('summary') ?? updatesOpener;
+    route = 'updates';
+    const opening = refresh();
     dialog.showModal();
-    refresh().catch(showUnavailable);
+    opening.catch(showUnavailable);
+  });
+  opener.addEventListener('click', () => { if(dialog.open)return;route='home';const opening=refresh();dialog.showModal();opening.catch(showUnavailable); });
+  if (!hasReturn && (updatesEntry || entryQuery.get('account') === '1')) {
+    const opening = refresh();
+    dialog.showModal();
+    opening.catch(showUnavailable);
   }
-  dialog.addEventListener('close', () => { generation++; });
+  dialog.addEventListener('close', () => {
+    generation++;
+    restoreUpdatesFocus?.focus();
+    restoreUpdatesFocus = null;
+  });
   // Restore the returning-user label independently; never delay directory/map startup.
   let hasSavedSession = Boolean(client);
   try { hasSavedSession ||= Boolean(window.localStorage?.getItem('sb-zbhvwduyohpiiksyjqba-auth-token')); } catch { /* Storage may be unavailable. */ }

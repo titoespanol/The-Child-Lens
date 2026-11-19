@@ -129,6 +129,40 @@ function externalLink(label, value) {
   return link;
 }
 
+function shareListing(org) {
+  const mainSite = ['thechildlens.com', 'www.thechildlens.com'].includes(location.hostname);
+  const url = new URL(mainSite ? 'https://thechildlens.com/directory/' : 'directory.html', document.baseURI);
+  url.searchParams.set('organisation', org.id);
+
+  const group = el('div', 'listing-share');
+  const button = el('button', 'map-link', 'Copy listing link');
+  button.type = 'button';
+  const status = el('span', 'listing-share-status');
+  status.setAttribute('role', 'status');
+  const field = el('input', 'listing-share-url');
+  field.type = 'url';
+  field.readOnly = true;
+  field.hidden = true;
+  field.value = url.href;
+  field.setAttribute('aria-label', 'Shareable listing link');
+  group.append(button, status, field);
+
+  button.addEventListener('click', async () => {
+    status.textContent = '';
+    try {
+      await navigator.clipboard.writeText(url.href);
+      field.hidden = true;
+      status.textContent = 'Link copied';
+    } catch {
+      status.textContent = 'Copy the link below';
+      field.hidden = false;
+      field.focus();
+      field.select();
+    }
+  });
+  return group;
+}
+
 function viewPortfolioButton(org) {
   if (!org.portfolio || !org.portfolio.length) return null;
   const button = el('button', 'portfolio-btn', 'View ' + org.portfolio.length + ' portfolio companies on map');
@@ -197,7 +231,8 @@ function popup(org) {
   workspace.href = 'organisation-management.html?org=' + encodeURIComponent(org.id);
   links.append(workspace);
   if(window.MCHOrganisationLogos)links.append(window.MCHOrganisationLogos.managementLink(org));
-  if (links.children.length) card.append(links);
+  links.append(shareListing(org));
+  card.append(links);
 
   if(window.MCHOrganisationTeam)card.append(window.MCHOrganisationTeam.card(org));
   return card;
@@ -437,7 +472,8 @@ function render() {
     links.append(workspace);
     if(window.MCHOrganisationLogos)links.append(window.MCHOrganisationLogos.managementLink(org));
 
-    if (links.children.length) body.append(links);
+    links.append(shareListing(org));
+    body.append(links);
     root.append(card);
   });
 
@@ -542,6 +578,7 @@ function initMap() {
 }
 
 let initialRouteHandled = false;
+let linkedOrganisationResolved = false;
 
 function applyOrganisationData(data, source) {
   if (!Array.isArray(data) || !data.length) return false;
@@ -575,18 +612,25 @@ function applyOrganisationData(data, source) {
     }
   }
 
-  filter(false);
   const linkedOrganisation = params.get('organisation');
-  if (!initialRouteHandled && linkedOrganisation) {
-    const organisation = all.find(org => String(org.id) === linkedOrganisation);
-    if (organisation) {
+  const wasOpen = linkedOrganisation && $('card-' + linkedOrganisation)?.open;
+  const organisation = linkedOrganisation && all.find(org => String(org.id) === linkedOrganisation);
+  filter(false);
+  if (organisation && (!linkedOrganisationResolved || wasOpen)) {
+    const firstOpen = !linkedOrganisationResolved;
+    if (firstOpen) {
       if ($('search')) $('search').value = organisation.name;
       for (const id of ['type', 'country', 'focus', 'technology', 'stage']) if ($(id)) { if ($(id).multiple) [...$(id).options].forEach(option=>option.selected=false); else $(id).value=''; }
       filter(false);
       show(organisation, true);
     }
-    else if ($('status')) $('status').textContent = 'This organisation is no longer in the current directory. You can search for another record.';
+    const card = $('card-' + linkedOrganisation);
+    if (card) {
+      card.open = true;
+      if (firstOpen) card.scrollIntoView({block: 'nearest'});
+    }
   }
+  linkedOrganisationResolved = Boolean(organisation);
   initialRouteHandled = true;
   if ($('status')) {
     $('status').textContent = source === 'local snapshot' ? 'Showing a saved directory copy. Some details may have changed.' : '';
@@ -623,6 +667,9 @@ async function init() {
     } catch (err) {
       console.warn('Supabase fetch failed; keeping the bundled snapshot:', err);
     }
+  }
+  if (!linkedOrganisationResolved && new URLSearchParams(location.search).get('organisation') && $('status')) {
+    $('status').textContent = 'This listing could not be found. You can search for another organisation.';
   }
 }
 
