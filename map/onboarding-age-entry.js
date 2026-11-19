@@ -3,7 +3,7 @@
 (() => {
   const root = document.getElementById('onboarding-root');
   root.textContent = 'Loading professional profile…';
-  const script = document.createElement('script'); script.src = 'onboarding.js';
+  const script = document.createElement('script'); script.src = 'onboarding.js?v=20261119-account-setup';
   script.onerror = () => { root.textContent = 'Your profile could not load. Refresh to try again.'; };
   document.head.append(script);
 })();

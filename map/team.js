@@ -1,25 +1,46 @@
 'use strict';
 (async()=>{
- const status=document.getElementById('teamStatus'),root=document.getElementById('founders');
+ const status=document.getElementById('teamStatus'),root=document.getElementById('teamMembers');
  const id=new URL(location.href).searchParams.get('org');
+ const supabase='https://zbhvwduyohpiiksyjqba.supabase.co',apikey='sb_publishable_P_gC6PJRohYkXn1nMBGC4A_bHKkQmef';
  const form=document.getElementById('workEmailForm'),claimStatus=document.getElementById('claimStatus'),sendButton=form.querySelector('button');
  form.addEventListener('submit',event=>{event.preventDefault();if(!window.MCH_TEAM_CONFIG?.deliveryEnabled)claimStatus.textContent='Verification email delivery is not enabled. No claim has been created.';});
  try{
-  const [orgs,people]=await Promise.all(['data/organisations.json','data/organisation-team.json'].map(async url=>{const r=await fetch(url);if(!r.ok)throw Error();return r.json();}));
-  const org=orgs.find(row=>String(row.id)===id);if(!org)throw Error();
+  if(!id)throw Error();
+  const org=await findOrganisation(id);if(!org)throw Error();
   document.querySelector('#teamMain h1').textContent=org.name+' · Team';document.title=org.name+' team | Mapping Children’s Health';
-  const entries=people.filter(row=>row.organisationId===id);status.textContent=entries.length?'Founders listed from public sources.':'No founders are listed yet.';
-  for(const row of entries){const url=new URL(row.sourceUrl);if(url.protocol!=='https:')continue;const p=document.createElement('p');p.textContent=row.name+' · '+row.role+' · ';const a=document.createElement('a');a.href=url.href;a.textContent='Public source';p.append(a);root.append(p);}
-  if(window.MCH_TEAM_CONFIG?.deliveryEnabled){await loadVerifiedTeam(org);await prepareVerification(org);}
   document.getElementById('backOrganisation').href=(location.hostname==='thechildlens.com'||location.hostname==='www.thechildlens.com'?'/directory/':'directory.html')+'?organisation='+encodeURIComponent(id);
- }catch{status.textContent='Organisation not found in the public snapshot. Return to the directory and choose an organisation.';document.getElementById('workEmailForm').hidden=true;}
+  const {members,complete}=await window.MCHOrganisationTeam.load(id);
+  if(members.length)root.append(window.MCHOrganisationTeam.list(members));
+  status.textContent=complete
+   ? (members.length?'':'No team members are listed yet.')
+   : 'Some team information could not be loaded. Refresh to try again.';
+  if(window.MCH_TEAM_CONFIG?.deliveryEnabled){
+   await loadVerifiedTeam(org);
+   try { await prepareVerification(org); }
+   catch { claimStatus.textContent='Work email verification could not be loaded. Refresh to retry.'; }
+  }
+ }catch{status.textContent='Organisation not found. Return to the directory and choose an organisation.';form.hidden=true;}
+ async function findOrganisation(id){
+  const options={signal:AbortSignal.timeout(5000)};
+  try{
+   const response=await fetch('data/organisations.json',options);
+   if(response.ok){
+    const organisation=(await response.json()).find(row=>String(row.id)===id);
+    if(organisation)return organisation;
+   }
+  }catch{ /* Live listings can be newer than the bundled directory. */ }
+  const query=new URLSearchParams({select:'id,name',id:'eq.'+id,limit:'1'});
+  const response=await fetch(`${supabase}/rest/v1/organisations?${query}`,{headers:{apikey},signal:AbortSignal.timeout(5000)});
+  if(response.ok)return (await response.json())[0];
+ }
  async function loadVerifiedTeam(org){
   try{const response=await fetch('https://zbhvwduyohpiiksyjqba.supabase.co/rest/v1/rpc/list_verified_organisation_team',{method:'POST',headers:{apikey:'sb_publishable_P_gC6PJRohYkXn1nMBGC4A_bHKkQmef','Content-Type':'application/json'},body:JSON.stringify({p_org:String(org.id)}),signal:AbortSignal.timeout(8000)});if(!response.ok)throw Error();const rows=await response.json();if(!Array.isArray(rows))throw Error();if(rows.length){const section=document.createElement('section'),heading=document.createElement('h2');heading.textContent='Members who chose to be public';section.append(heading);for(const row of rows){const p=document.createElement('p');p.textContent=[row.name,row.role,row.verification].filter(Boolean).join(' · ');section.append(p);}root.after(section);}}catch{const p=document.createElement('p');p.textContent='Verified Team members could not be loaded. Public source information is shown above.';root.after(p);}
  }
  async function prepareVerification(org){
   const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js';
   await new Promise((resolve,reject)=>{script.onload=resolve;script.onerror=reject;document.head.append(script);});
-  const client=window.supabase.createClient('https://zbhvwduyohpiiksyjqba.supabase.co','sb_publishable_P_gC6PJRohYkXn1nMBGC4A_bHKkQmef');
+  const client=window.supabase.createClient(supabase,apikey);
   const {data,error}=await client.auth.getUser();if(error||!data.user){claimStatus.textContent='Sign in to your existing account through My account on the map, then return to this Team page.';return;}
   document.getElementById('deliveryNotice').textContent='Verify an additional work email. Your login email will stay unchanged.';
   const own=await client.rpc('get_my_organisation_team');

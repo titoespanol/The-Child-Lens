@@ -153,25 +153,6 @@ function filterByPortfolio(investor) {
   setTimeout(fitResults, 150);
 }
 
-function publicAffiliations(org) {
-  const section = el('details', 'public-affiliations');
-  section.append(el('summary', '', 'People who chose to share an affiliation'));
-  const content = el('div'); section.append(content); let loaded = false;
-  section.addEventListener('toggle', async () => {
-    if (!section.open || loaded) return;
-    content.textContent = 'Loading affiliations…';
-    try {
-      const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/list_public_affiliations`, {
-        method:'POST',headers:{apikey:SUPABASE_ANON_KEY,'Content-Type':'application/json'},body:JSON.stringify({p_org:String(org.id)}),signal:AbortSignal.timeout(5000)
-      });
-      if (!response.ok) throw new Error(); const rows=await response.json();
-      if (!Array.isArray(rows)) throw new Error(); content.replaceChildren();
-      if (!rows.length) content.append(el('p','','No public affiliations shared yet.'));
-      rows.forEach(row=>content.append(el('p','',[row.name,row.role].filter(Boolean).join(' · '))));loaded=true;
-    } catch {content.textContent='Public affiliations could not be loaded. Close and reopen to retry.';}
-  });
-  return section;
-}
 function popup(org) {
   const card = el('div', 'map-card-popup');
 
@@ -219,7 +200,6 @@ function popup(org) {
   if (links.children.length) card.append(links);
 
   if(window.MCHOrganisationTeam)card.append(window.MCHOrganisationTeam.card(org));
-  card.append(publicAffiliations(org));
   return card;
 }
 
@@ -451,8 +431,7 @@ function render() {
       }
     }
 
-    if(window.MCHOrganisationTeam)body.append(window.MCHOrganisationTeam.card(org));
-  body.append(publicAffiliations(org));
+    if(window.MCHOrganisationTeam)body.append(window.MCHOrganisationTeam.card(org, card));
     const workspace = el('a', 'text-link', 'Associations & sharing');
     workspace.href = 'organisation-management.html?org=' + encodeURIComponent(org.id);
     links.append(workspace);

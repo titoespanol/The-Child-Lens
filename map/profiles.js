@@ -58,10 +58,6 @@
   } catch {}
   let currentUser = null;
   let generation = 0;
-  const copy = {
-    tcl: "The Child Lens may email me about opportunities in children's health.",
-    partner: "The Child Lens may email me opportunities from its partners and sponsors in children's health."
-  };
   function node(tag, text, parent, attrs = {}) {
     const e = document.createElement(tag);
     if (text) e.textContent = text;
@@ -350,9 +346,9 @@
     node('a', 'Privacy notice — how we use your email', form, {href: config.privacyUrl});
     const contact = field(form, 'Contact email', 'email', saved?.contact_email || '', false, 254);
     contact.autocomplete = 'off';
-    const tcl = check(form, copy.tcl, saved?.tcl_opt_in || false);
+    const tcl = check(form, window.MCHAccountExtras.contactChoices.tcl, saved?.tcl_opt_in || false);
     node('p', 'Includes news, jobs, funding calls, events, venture-building support and partnerships.', form);
-    const partner = check(form, copy.partner, saved?.partner_opportunities_opt_in || false);
+    const partner = check(form, window.MCHAccountExtras.contactChoices.partner, saved?.partner_opportunities_opt_in || false);
     node('p', 'Both choices are optional. The Child Lens sends these emails. Choosing partner or sponsor opportunities does not share your contact details with those organisations. We do not use your Google or LinkedIn profile information for promotional targeting.', form);
     node('p', 'Saving these choices replaces any earlier email preferences. Earlier consent is not automatically transferred to these choices.', form);
     const privacy = node('p', 'Manage or withdraw your choices here, or email ', form);
@@ -412,7 +408,7 @@
     let photoProvider = saved?.photo_provider || null;
     const photoSection = node('fieldset', '', form);
     node('legend', 'Profile picture (optional)', photoSection);
-    node('p', 'Choose a picture already supplied by a connected sign-in account. It is used only in your private professional profile and preview. Loading it contacts the provider’s image service. You can remove it here; no picture is copied into contact records.', photoSection);
+    node('p', 'Choose a picture from a connected sign-in account or upload your own. Your picture starts private. Viewing a connected picture contacts the provider’s image service.', photoSection);
     const picture = node('img', '', photoSection, { className: 'profile-avatar', alt: 'Your chosen profile picture', hidden: true, referrerPolicy: 'no-referrer' });
     const pictureStatus = message(photoSection);
     function showPicture() {
@@ -432,6 +428,7 @@
     if (!photos.length) node('p', 'No picture is available from your connected account. A picture is not required.', photoSection);
     showPicture();
     window.MCHAccountExtras.mountPhoto(client, user, photoSection, picture, pictureStatus);
+    window.MCHAccountExtras.mountPhotoSharing(client, user, photoSection);
     const orgs = node('fieldset', '', form);
     node('legend', 'Organisation affiliations (self-reported)', orgs);
     const selected = new Set((saved?.organisation_ids || []).map(String));
@@ -530,8 +527,13 @@
     if (currentUser) {
       if (!window.MCHAccountExtras) { showUnavailable(); return; }
       const ready = await window.MCHAccountExtras.ensureEligible(client, currentUser, () => {
+        if (stamp !== generation) return null;
         accountShell('Finish account setup'); return node('section', '', modal);
-      }, () => refresh().catch(showUnavailable));
+      }, () => {
+        if (stamp !== generation) return;
+        if (route === 'updates') route = 'home';
+        refresh().catch(showUnavailable);
+      });
       if (stamp !== generation || !ready) return;
       if (route === 'profile') await profile(currentUser, stamp);
       else if (route === 'updates') await preferences(currentUser, stamp);

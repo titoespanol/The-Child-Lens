@@ -166,7 +166,9 @@ body>header nav .nav-more-actions :is(a,button){display:block;text-align:left;mi
 .account-actions{display:flex;flex-wrap:wrap;gap:10px}.account-actions button{min-height:44px}
 .onboarding__header nav{display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:20px}
 .public-affiliation-settings{padding:20px 0;border-top:1px solid var(--border-subtle);margin-top:20px}
-.public-affiliations{margin-top:12px;font-size:14px}.public-affiliations summary{cursor:pointer;min-height:44px;padding:10px 0}
+.account-setup-fields{border:0;margin:0;padding:0;min-width:0}
+.account-setup-email{border:1px solid var(--border-subtle);border-radius:8px;margin:16px 0;padding:8px 14px;min-width:0}
+.account-setup-email legend{font-weight:700;padding:0 4px}
 .profile-field input[type=file]{max-width:100%;min-height:44px}
 
 /* Mobile discovery: small identity above the map, quiet navigation within thumb reach. */
@@ -249,6 +251,12 @@ body>header nav .nav-more-actions :is(a,button){font-size:1.067rem;line-height:1
 body.map-page .site-footer{padding:0 12px;gap:0 16px;font-size:12px}
 @media(max-width:840px){body.map-page .site-footer{padding-bottom:calc(80px + env(safe-area-inset-bottom));gap:0 12px}body:not(.map-page)>.site-footer{padding-bottom:calc(92px + env(safe-area-inset-bottom))}}
 .organisation-team-summary{margin-top:16px;padding-top:12px;border-top:1px solid var(--border-subtle)}.organisation-team-summary h3{font-size:16px;margin:0 0 8px}.organisation-team-summary a{display:inline-flex;align-items:center;min-height:44px}
+.organisation-team-disclosure summary{cursor:pointer;min-height:44px;padding:10px 0;font-weight:700}
+.organisation-team-members{list-style:none;padding:0;margin:0 0 8px}
+.organisation-team-members li{display:flex;align-items:center;gap:10px;margin:0;padding:6px 0}
+.organisation-team-members img{width:40px;height:40px;flex:none;border-radius:50%;object-fit:cover}
+.organisation-team-members small,.organisation-team-members a{display:block;font-size:.85em}
+.organisation-team-summary .organisation-team-members a{display:inline-flex;min-height:32px}
 
 /* Directory cards use a clear scan order: identity, evidence, then actions. */
 body.directory-page .entry{padding:20px 22px;border-radius:16px}

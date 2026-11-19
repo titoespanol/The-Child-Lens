@@ -1084,7 +1084,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState10(initialState) {
+          function useState9(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1887,7 +1887,7 @@
           exports.useMemo = useMemo;
           exports.useReducer = useReducer;
           exports.useRef = useRef8;
-          exports.useState = useState10;
+          exports.useState = useState9;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -2383,9 +2383,9 @@
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React12 = require_react();
+          var React11 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React12.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React11.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -3992,7 +3992,7 @@
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React12.Children.forEach(props.children, function(child) {
+                  React11.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -23582,18 +23582,18 @@
   });
 
   // onboarding-entry.jsx
-  var import_react11 = __toESM(require_react());
+  var import_react10 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // onboarding/OnboardingFlow.jsx
-  var import_react10 = __toESM(require_react());
+  var import_react9 = __toESM(require_react());
 
   // onboarding/OnboardingLayout.jsx
   var import_react = __toESM(require_react());
 
   // onboarding/draft-store.mjs
-  var TOTAL_STEPS = 2;
-  var VERSION = 2;
+  var TOTAL_STEPS = 1;
+  var VERSION = 3;
   var MAX_AGE = 30 * 24 * 60 * 60 * 1e3;
   function emptyDraft() {
     return { step: 0, values: {} };
@@ -23609,8 +23609,16 @@
     if (!raw) return emptyDraft();
     try {
       const draft = JSON.parse(raw);
+      if (!draft || typeof draft !== "object") {
+        storage.removeItem(key);
+        return emptyDraft();
+      }
       if (draft.version === 1) {
         draft.step -= 1;
+        draft.version = 2;
+      }
+      if (draft.version === 2) {
+        if (draft.step === 2) draft.step = 1;
         draft.version = VERSION;
       }
       if (draft.version !== VERSION || !Number.isInteger(draft.step) || draft.step < 0 || draft.step > TOTAL_STEPS || !draft.values || typeof draft.values !== "object" || Array.isArray(draft.values) || !Number.isFinite(draft.savedAt) || draft.savedAt > now || now - draft.savedAt > MAX_AGE) {
@@ -23718,7 +23726,7 @@
       clearDraft,
       saveStatus
     };
-    return /* @__PURE__ */ import_react.default.createElement("section", { className: "onboarding", "aria-labelledby": "onboarding-title", "aria-busy": !ready }, /* @__PURE__ */ import_react.default.createElement("header", { className: "onboarding__header" }, import_react.default.createElement("nav",{"aria-label":"Account setup navigation"},import_react.default.createElement("a",{className:"text-link",href:"index.html"},"← Back to map"),draft.step>0&&import_react.default.createElement("button",{type:"button",className:"onboarding__chip",onClick:()=>goToStep(draft.step-1)},"← Back"),import_react.default.createElement("a",{className:"text-link",href:"index.html?account=1"},"My account")), /* @__PURE__ */ import_react.default.createElement("p", { className: "onboarding__eyebrow" }, "The Child Lens"), /* @__PURE__ */ import_react.default.createElement("h1", { id: "onboarding-title", ref: heading, tabIndex: -1 }, "Let\u2019s get you started"), /* @__PURE__ */ import_react.default.createElement("p", { id: "onboarding-progress-label" }, !ready ? "Loading your progress\u2026" : draft.step === 0 ? "Welcome" : draft.step === 3 ? "Profile created" : `Step ${draft.step} of ${TOTAL_STEPS}`), draft.step !== 0 && /* @__PURE__ */ import_react.default.createElement("progress", { "aria-labelledby": "onboarding-progress-label", max: TOTAL_STEPS, value: ready ? Math.min(draft.step, TOTAL_STEPS) : 0 })), ready && /* @__PURE__ */ import_react.default.createElement(OnboardingContext.Provider, { value: state }, /* @__PURE__ */ import_react.default.createElement("div", { className: "onboarding__step" }, typeof children === "function" ? children(state) : children ?? /* @__PURE__ */ import_react.default.createElement("p", { className: "onboarding__placeholder" }, "Your next step will appear here."))), /* @__PURE__ */ import_react.default.createElement("p", { className: "onboarding__status", role: "status" }, saveStatus === "saved" && "Draft kept in this tab until it closes. Save your profile to keep it in your account.", saveStatus === "error" && "Draft could not be kept in this tab. You can continue, but may need to start again if you leave."));
+    return /* @__PURE__ */ import_react.default.createElement("section", { className: "onboarding", "aria-labelledby": "onboarding-title", "aria-busy": !ready }, /* @__PURE__ */ import_react.default.createElement("header", { className: "onboarding__header" }, /* @__PURE__ */ import_react.default.createElement("nav", { "aria-label": "Account setup navigation" }, /* @__PURE__ */ import_react.default.createElement("a", { className: "text-link", href: "index.html" }, "\u2190 Back to map"), draft.step > 0 && /* @__PURE__ */ import_react.default.createElement("button", { type: "button", className: "onboarding__chip", onClick: () => goToStep(draft.step - 1) }, "\u2190 Back"), /* @__PURE__ */ import_react.default.createElement("a", { className: "text-link", href: "index.html?account=1" }, "My account")), /* @__PURE__ */ import_react.default.createElement("p", { className: "onboarding__eyebrow" }, "The Child Lens"), /* @__PURE__ */ import_react.default.createElement("h1", { id: "onboarding-title", ref: heading, tabIndex: -1 }, "Let\u2019s get you started"), /* @__PURE__ */ import_react.default.createElement("p", { id: "onboarding-progress-label" }, !ready ? "Loading your progress\u2026" : draft.step === 0 ? "Welcome" : draft.step === 3 ? "Profile created" : `Step ${draft.step} of ${TOTAL_STEPS}`), draft.step !== 0 && /* @__PURE__ */ import_react.default.createElement("progress", { "aria-labelledby": "onboarding-progress-label", max: TOTAL_STEPS, value: ready ? Math.min(draft.step, TOTAL_STEPS) : 0 })), ready && /* @__PURE__ */ import_react.default.createElement(OnboardingContext.Provider, { value: state }, /* @__PURE__ */ import_react.default.createElement("div", { className: "onboarding__step" }, typeof children === "function" ? children(state) : children ?? /* @__PURE__ */ import_react.default.createElement("p", { className: "onboarding__placeholder" }, "Your next step will appear here."))), /* @__PURE__ */ import_react.default.createElement("p", { className: "onboarding__status", role: "status" }, saveStatus === "saved" && "Draft kept in this tab until it closes. Save your profile to keep it in your account.", saveStatus === "error" && "Draft could not be kept in this tab. You can continue, but may need to start again if you leave."));
   }
 
   // onboarding/Step0_Welcome.jsx
@@ -23735,24 +23743,57 @@
     if (error) throw error;
   }
 
-  // onboarding/Step0_Welcome.jsx
-  async function sendSignInLink(supabase,email,emailRedirectTo) {
-    if(!supabase?.auth?.signInWithOtp)throw new Error('Sign-in unavailable');
-    const result=await supabase.auth.signInWithOtp({email:email.trim(),options:{emailRedirectTo}});
-    if(result.error)throw result.error;
+  // onboarding/passwordless-auth.mjs
+  async function sendSignInLink(supabase, email, emailRedirectTo) {
+    if (!supabase?.auth?.signInWithOtp) throw new Error("Sign-in unavailable");
+    const result = await supabase.auth.signInWithOtp({ email: email.trim(), options: { emailRedirectTo } });
+    if (result.error) throw result.error;
   }
-  function Step0_Welcome({supabase,session,emailRedirectTo}) {
-    const {nextStep}=useOnboarding();
-    const [email,setEmail]=(0,import_react2.useState)(''),[pending,setPending]=(0,import_react2.useState)(false),[message,setMessage]=(0,import_react2.useState)(''),[failed,setFailed]=(0,import_react2.useState)(false);
-    const busy=(0,import_react2.useRef)(false),id=(0,import_react2.useId)();
-    async function submit(event){event.preventDefault();if(busy.current)return;if(session?.user){nextStep();return;}busy.current=true;setPending(true);setFailed(false);setMessage('');try{await sendSignInLink(supabase,email,emailRedirectTo);setMessage('Check your inbox for your sign-in link. Use it to create or return to your account.');}catch{setFailed(true);setMessage('We could not send the sign-in link. Please wait a few minutes and try again.');}finally{busy.current=false;setPending(false);}}
-    async function continueWithGoogle(){if(busy.current)return;busy.current=true;setPending(true);setFailed(false);setMessage('Connecting to Google…');try{await signInWithGoogle(supabase,emailRedirectTo||'onboarding.html');}catch{setFailed(true);setMessage('Google sign-in could not start. Try again or use an email sign-in link.');}finally{busy.current=false;setPending(false);}}
-    const h=import_react2.default.createElement;
-    return h('form',{className:'onboarding__form',onSubmit:submit},
-      h('h2',null,"Join the map of children's health"),h('p',null,'Use Google or an email sign-in link. No password to create or remember.'),
-      h('p',null,'Read our ',h('a',{href:'privacy.html'},'Privacy notice'),' before providing your email or signing in.'),
-      !session?.user&&h(import_react2.default.Fragment,null,h('button',{className:'onboarding__provider',type:'button',onClick:continueWithGoogle,disabled:pending},'Continue with Google'),h('p',{className:'onboarding__or'},'Or use email'),h('label',{className:'onboarding__field',htmlFor:`${id}-email`},'Email',h('input',{id:`${id}-email`,name:'email',type:'email',autoComplete:'email',required:true,maxLength:254,value:email,onChange:event=>setEmail(event.target.value),disabled:pending}))),
-      h('p',null,'The same sign-in options work for new and existing accounts. Email updates remain optional.'),h('button',{className:'onboarding__primary',type:'submit',disabled:pending},pending?'Please wait…':session?.user?'Continue':'Email me a sign-in link'),h('p',{role:failed?'alert':'status'},message));
+
+  // onboarding/Step0_Welcome.jsx
+  function Step0_Welcome({ supabase, session, emailRedirectTo }) {
+    const { nextStep } = useOnboarding();
+    const [email, setEmail] = (0, import_react2.useState)(""), [pending, setPending] = (0, import_react2.useState)(false), [message, setMessage] = (0, import_react2.useState)(""), [failed, setFailed] = (0, import_react2.useState)(false);
+    const busy = (0, import_react2.useRef)(false), id = (0, import_react2.useId)();
+    async function submit(event) {
+      event.preventDefault();
+      if (busy.current) return;
+      if (session?.user) {
+        nextStep();
+        return;
+      }
+      busy.current = true;
+      setPending(true);
+      setFailed(false);
+      setMessage("");
+      try {
+        await sendSignInLink(supabase, email, emailRedirectTo);
+        setMessage("Check your inbox for your sign-in link. Use it to create or return to your account.");
+      } catch {
+        setFailed(true);
+        setMessage("We could not send the sign-in link. Please wait a few minutes and try again.");
+      } finally {
+        busy.current = false;
+        setPending(false);
+      }
+    }
+    async function continueWithGoogle() {
+      if (busy.current) return;
+      busy.current = true;
+      setPending(true);
+      setFailed(false);
+      setMessage("Connecting to Google\u2026");
+      try {
+        await signInWithGoogle(supabase, emailRedirectTo || "onboarding.html");
+      } catch {
+        setFailed(true);
+        setMessage("Google sign-in could not start. Try again or use an email sign-in link.");
+      } finally {
+        busy.current = false;
+        setPending(false);
+      }
+    }
+    return /* @__PURE__ */ import_react2.default.createElement("form", { className: "onboarding__form", onSubmit: submit }, /* @__PURE__ */ import_react2.default.createElement("h2", null, "Join the map of children's health"), /* @__PURE__ */ import_react2.default.createElement("p", null, "Use Google or an email sign-in link. No password to create or remember."), /* @__PURE__ */ import_react2.default.createElement("p", null, "Read our ", /* @__PURE__ */ import_react2.default.createElement("a", { href: "privacy.html" }, "Privacy notice"), " before providing your email or signing in."), !session?.user && /* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, /* @__PURE__ */ import_react2.default.createElement("button", { className: "onboarding__provider", type: "button", onClick: continueWithGoogle, disabled: pending }, "Continue with Google"), /* @__PURE__ */ import_react2.default.createElement("p", { className: "onboarding__or" }, "Or use email"), /* @__PURE__ */ import_react2.default.createElement("label", { className: "onboarding__field", htmlFor: `${id}-email` }, "Email", /* @__PURE__ */ import_react2.default.createElement("input", { id: `${id}-email`, name: "email", type: "email", autoComplete: "email", required: true, maxLength: 254, value: email, onChange: (event) => setEmail(event.target.value), disabled: pending }))), /* @__PURE__ */ import_react2.default.createElement("p", null, "The same sign-in options work for new and existing accounts. Email updates remain optional."), /* @__PURE__ */ import_react2.default.createElement("button", { className: "onboarding__primary", type: "submit", disabled: pending }, pending ? "Please wait\u2026" : session?.user ? "Continue" : "Email me a sign-in link"), /* @__PURE__ */ import_react2.default.createElement("p", { role: failed ? "alert" : "status" }, message));
   }
 
   // onboarding/Step1_AboutYou.jsx
@@ -23810,27 +23851,20 @@
         try {
           const { data: auth, error: authError } = await supabase.auth.getUser();
           if (authError || auth?.user?.id !== userId) throw new Error("Please sign in again.");
-          const [profile, preferences] = await Promise.all([
-            supabase.from("member_profiles").select("display_name,role,bio,interests,organisation_ids,city,country,photo_provider,linkedin_url").eq("user_id", userId).maybeSingle(),
-            supabase.from("member_contact_preferences").select("tcl_opt_in,partner_opportunities_opt_in").eq("user_id", userId).maybeSingle()
-          ]);
-          if (profile.error || preferences.error) throw new Error("Your existing profile could not be loaded. Retry before continuing so saved details are preserved.");
+          const profile = await supabase.from("member_profiles").select("display_name,role,bio,interests,organisation_ids,city,country,photo_provider,linkedin_url").eq("user_id", userId).abortSignal(AbortSignal.timeout(15e3)).maybeSingle();
+          if (profile.error) throw new Error("Your existing profile could not be loaded. Please try again.");
           if (!active) return;
-          const savedValues = {
-            ...profile.data ? {
-              full_name: profile.data.display_name,
-              headline: profile.data.role,
-              bio: profile.data.bio,
-              specialties: profile.data.interests ? profile.data.interests.split(", ").filter(Boolean) : [],
-              organisation_ids: profile.data.organisation_ids,
-              city: profile.data.city ?? "",
-              country: profile.data.country ?? "",
-              photo_provider: profile.data.photo_provider,
-              linkedin_url: profile.data.linkedin_url
-            } : {},
-            consent_tcl_email: preferences.data?.tcl_opt_in === true,
-            consent_partner_contact: preferences.data?.partner_opportunities_opt_in === true
-          };
+          const savedValues = profile.data ? {
+            full_name: profile.data.display_name,
+            headline: profile.data.role,
+            bio: profile.data.bio,
+            specialties: profile.data.interests ? profile.data.interests.split(", ").filter(Boolean) : [],
+            organisation_ids: profile.data.organisation_ids,
+            city: profile.data.city ?? "",
+            country: profile.data.country ?? "",
+            photo_provider: profile.data.photo_provider,
+            linkedin_url: profile.data.linkedin_url
+          } : {};
           updateValues(Object.fromEntries(Object.entries(savedValues).filter(([key]) => !Object.hasOwn(values, key))));
         } catch (error) {
           if (active) setLoadError(error.message || "Your profile could not be loaded.");
@@ -23871,8 +23905,8 @@
       setSubmitting(true);
       try {
         await onContinue(cleaned);
-      } catch {
-        setMessage("We could not continue. Your details are still here; please try again.");
+      } catch (error) {
+        setMessage(error instanceof Error ? error.message : "Your profile could not be saved. Please try again.");
       } finally {
         busy.current = false;
         setSubmitting(false);
@@ -23894,7 +23928,7 @@
         }
       ), errors[name] && /* @__PURE__ */ import_react3.default.createElement("span", { className: "onboarding__error", id: `${id}-${name}-error` }, errors[name]));
     }
-    if (loadingProfile) return /* @__PURE__ */ import_react3.default.createElement("p", { role: "status" }, "Loading your existing profile and email choices\u2026");
+    if (loadingProfile) return /* @__PURE__ */ import_react3.default.createElement("p", { role: "status" }, "Loading your existing profile\u2026");
     if (loadError) return /* @__PURE__ */ import_react3.default.createElement("div", null, /* @__PURE__ */ import_react3.default.createElement("p", { className: "onboarding__error", role: "alert" }, loadError), /* @__PURE__ */ import_react3.default.createElement("button", { type: "button", className: "onboarding__primary", onClick: () => {
       setLoadError("");
       setLoadingProfile(true);
@@ -23914,11 +23948,11 @@
         },
         focus
       );
-    })), errors.specialties && /* @__PURE__ */ import_react3.default.createElement("p", { className: "onboarding__error", role: "alert" }, errors.specialties)), /* @__PURE__ */ import_react3.default.createElement("button", { className: "onboarding__primary", type: "submit", disabled: submitting }, submitting ? "Continuing\u2026" : "Continue"), /* @__PURE__ */ import_react3.default.createElement("p", { role: "status" }, message));
+    })), errors.specialties && /* @__PURE__ */ import_react3.default.createElement("p", { className: "onboarding__error", role: "alert" }, errors.specialties)), /* @__PURE__ */ import_react3.default.createElement("button", { className: "onboarding__primary", type: "submit", disabled: submitting }, submitting ? "Saving your profile\u2026" : "Save professional profile"), /* @__PURE__ */ import_react3.default.createElement("p", { role: "status" }, message));
   }
 
-  // onboarding/Step2_Privacy.jsx
-  var import_react4 = __toESM(require_react());
+  // onboarding/Step3_Success.jsx
+  var import_react8 = __toESM(require_react());
 
   // onboarding/profile-save.mjs
   function profilePayload(values) {
@@ -23954,18 +23988,6 @@
     if (readError || !data) throw new Error("Your profile was saved, but we could not confirm it. Reopen your profile before retrying.");
     return data;
   }
-  async function saveEmailPreferences(supabase, values, expectedUserId) {
-    const { data, error: authError } = await supabase.auth.getUser();
-    if (authError || !data?.user || data.user.id !== expectedUserId || !data.user.email) {
-      throw new Error("Please sign in again with your verified account email before saving email choices.");
-    }
-    const { error } = await supabase.rpc("save_contact_preferences", {
-      p_contact: data.user.email,
-      p_tcl: values.consent_tcl_email === true,
-      p_partner_opportunities: values.consent_partner_contact === true
-    }, { signal: AbortSignal.timeout(15e3) });
-    if (error) throw new Error("Your profile was saved, but your email choices were not. Retry saving your email choices.");
-  }
   function profileStrength(profile) {
     const fields = [
       profile.display_name,
@@ -23979,61 +24001,18 @@
     return Math.round(fields.filter(Boolean).length / fields.length * 100);
   }
 
-  // onboarding/Step2_Privacy.jsx
-  function Step2_Privacy({ supabase, userId }) {
-    const { values, updateValues, previousStep, complete } = useOnboarding();
-    const [pending, setPending] = (0, import_react4.useState)(false);
-    const [error, setError] = (0, import_react4.useState)("");
-    const busy = (0, import_react4.useRef)(false);
-    async function finish(event) {
-      event.preventDefault();
-      if (busy.current) return;
-      busy.current = true;
-      setPending(true);
-      setError("");
-      try {
-        const profile = await saveProfile(supabase, values, userId);
-        await saveEmailPreferences(supabase, values, userId);
-        complete(profile);
-      } catch (failure) {
-        setError(failure instanceof Error ? failure.message : "We could not save your profile. Please try again.");
-      } finally {
-        busy.current = false;
-        setPending(false);
-      }
-    }
-    return /* @__PURE__ */ import_react4.default.createElement("form", { className: "onboarding__form", onSubmit: finish }, /* @__PURE__ */ import_react4.default.createElement("h2", null, "Privacy and email choices"), /* @__PURE__ */ import_react4.default.createElement("p", null, "Your professional profile is private and visible only to you. You can choose optional email updates below; these choices are saved separately from your profile."), /* @__PURE__ */ import_react4.default.createElement("fieldset", { className: "onboarding__fieldset", disabled: pending }, /* @__PURE__ */ import_react4.default.createElement("legend", null, "Staying in touch (optional)"), /* @__PURE__ */ import_react4.default.createElement("label", { className: "onboarding__choice" }, /* @__PURE__ */ import_react4.default.createElement(
-      "input",
-      {
-        type: "checkbox",
-        checked: values.consent_tcl_email === true,
-        onChange: (event) => updateValues({ consent_tcl_email: event.target.checked })
-      }
-    ), /* @__PURE__ */ import_react4.default.createElement("span", null, "The Child Lens may email me about opportunities in children's health.")), /* @__PURE__ */ import_react4.default.createElement("label", { className: "onboarding__choice" }, /* @__PURE__ */ import_react4.default.createElement(
-      "input",
-      {
-        type: "checkbox",
-        checked: values.consent_partner_contact === true,
-        onChange: (event) => updateValues({ consent_partner_contact: event.target.checked })
-      }
-    ), /* @__PURE__ */ import_react4.default.createElement("span", null, "I am happy to hear from partners through The Child Lens about opportunities in children's health.")), /* @__PURE__ */ import_react4.default.createElement("p", null, "Emails are sent by The Child Lens. Your contact details are not shared with partners.")), /* @__PURE__ */ import_react4.default.createElement("button", { type: "submit", className: "onboarding__primary", disabled: pending }, pending ? "Saving your choices\u2026" : "Finish and save my choices"), /* @__PURE__ */ import_react4.default.createElement("button", { type: "button", className: "onboarding__chip", onClick: previousStep, disabled: pending }, "Back"), error && /* @__PURE__ */ import_react4.default.createElement("p", { className: "onboarding__error", role: "alert" }, error));
-  }
-
-  // onboarding/Step3_Success.jsx
-  var import_react9 = __toESM(require_react());
-
   // onboarding/ProgressiveProfileActions.jsx
-  var import_react8 = __toESM(require_react());
+  var import_react7 = __toESM(require_react());
 
   // onboarding/AddWorkModal.jsx
-  var import_react6 = __toESM(require_react());
+  var import_react5 = __toESM(require_react());
 
   // onboarding/ProfileModal.jsx
-  var import_react5 = __toESM(require_react());
+  var import_react4 = __toESM(require_react());
   function ProfileModal({ title, onClose, busy = false, children }) {
-    const dialog = (0, import_react5.useRef)(null);
-    const id = (0, import_react5.useId)();
-    (0, import_react5.useEffect)(() => {
+    const dialog = (0, import_react4.useRef)(null);
+    const id = (0, import_react4.useId)();
+    (0, import_react4.useEffect)(() => {
       const element = dialog.current;
       const opener = document.activeElement;
       element.showModal();
@@ -24042,7 +24021,7 @@
         if (opener instanceof HTMLElement && opener.isConnected) opener.focus();
       };
     }, []);
-    return /* @__PURE__ */ import_react5.default.createElement(
+    return /* @__PURE__ */ import_react4.default.createElement(
       "dialog",
       {
         ref: dialog,
@@ -24054,7 +24033,7 @@
           if (!busy) onClose();
         }
       },
-      /* @__PURE__ */ import_react5.default.createElement("div", { className: "profile-modal__header" }, /* @__PURE__ */ import_react5.default.createElement("h2", { id }, title), /* @__PURE__ */ import_react5.default.createElement("button", { type: "button", className: "onboarding__chip", onClick: onClose, disabled: busy, "aria-label": "Close dialog" }, "Close")),
+      /* @__PURE__ */ import_react4.default.createElement("div", { className: "profile-modal__header" }, /* @__PURE__ */ import_react4.default.createElement("h2", { id }, title), /* @__PURE__ */ import_react4.default.createElement("button", { type: "button", className: "onboarding__chip", onClick: onClose, disabled: busy, "aria-label": "Close dialog" }, "Close")),
       children
     );
   }
@@ -24124,7 +24103,9 @@
     return { profileId: result.data.user_id, userId: data.user.id };
   }
   async function suggestOrganisation(supabase, userId, values) {
-    if (window.MCH_SUBMISSIONS_ENABLED !== true) throw new Error('Organisation suggestions are paused. Email map@thechildlens.com with public evidence links. Do not send patient information or private contacts.');
+    if (globalThis.window?.MCH_SUBMISSIONS_ENABLED !== true) {
+      throw new Error("Organisation suggestions are paused. Email map@thechildlens.com with public evidence links. Do not send patient information or private contacts.");
+    }
     const payload = suggestionPayload(values);
     const owner = await ownerProfile(supabase, userId);
     const { data, error } = await supabase.from("org_suggestions").insert({ ...payload, suggested_by: owner.userId }).select("id, name, status").abortSignal(AbortSignal.timeout(15e3)).single();
@@ -24154,19 +24135,19 @@
 
   // onboarding/AddWorkModal.jsx
   function AddWorkModal({ open, userId, ...props }) {
-    return open ? /* @__PURE__ */ import_react6.default.createElement(AddWorkForm, { key: userId, userId, ...props }) : null;
+    return open ? /* @__PURE__ */ import_react5.default.createElement(AddWorkForm, { key: userId, userId, ...props }) : null;
   }
   function AddWorkForm({ supabase, userId, organisations = MOCK_ORGANISATIONS, onClose, onSaved, onSuggested }) {
-    const [query, setQuery] = (0, import_react6.useState)("");
-    const [selected, setSelected] = (0, import_react6.useState)(null);
-    const [suggesting, setSuggesting] = (0, import_react6.useState)(false);
-    const [suggestion, setSuggestion] = (0, import_react6.useState)({ name: "", org_type: "", country: "", website: "" });
-    const [work, setWork] = (0, import_react6.useState)({ role_title: "", start_date: "", is_current: false });
-    const [pending, setPending] = (0, import_react6.useState)(false);
-    const [error, setError] = (0, import_react6.useState)("");
-    const [saved, setSaved] = (0, import_react6.useState)(null);
-    const lock = (0, import_react6.useRef)(false);
-    const id = (0, import_react6.useId)();
+    const [query, setQuery] = (0, import_react5.useState)("");
+    const [selected, setSelected] = (0, import_react5.useState)(null);
+    const [suggesting, setSuggesting] = (0, import_react5.useState)(false);
+    const [suggestion, setSuggestion] = (0, import_react5.useState)({ name: "", org_type: "", country: "", address: "", website: "" });
+    const [work, setWork] = (0, import_react5.useState)({ role_title: "", start_date: "", is_current: false });
+    const [pending, setPending] = (0, import_react5.useState)(false);
+    const [error, setError] = (0, import_react5.useState)("");
+    const [saved, setSaved] = (0, import_react5.useState)(null);
+    const lock = (0, import_react5.useRef)(false);
+    const id = (0, import_react5.useId)();
     const results = searchOrganisations(organisations, query);
     const demo = organisations.some((org) => org.isMock);
     async function submit(event) {
@@ -24195,7 +24176,7 @@
     }
     function input(field, label, type = "text", isSuggestion = false, required = true, maxLength = 160) {
       const data = isSuggestion ? suggestion : work;
-      return /* @__PURE__ */ import_react6.default.createElement("label", { className: "onboarding__field", htmlFor: `${id}-${field}` }, label, /* @__PURE__ */ import_react6.default.createElement(
+      return /* @__PURE__ */ import_react5.default.createElement("label", { className: "onboarding__field", htmlFor: `${id}-${field}` }, label, /* @__PURE__ */ import_react5.default.createElement(
         "input",
         {
           id: `${id}-${field}`,
@@ -24212,7 +24193,7 @@
         }
       ));
     }
-    return /* @__PURE__ */ import_react6.default.createElement(ProfileModal, { title: "Add where you work", onClose, busy: pending }, saved ? /* @__PURE__ */ import_react6.default.createElement("div", { className: "onboarding__form", role: "status" }, /* @__PURE__ */ import_react6.default.createElement("p", null, saved === "suggestion" ? "Organisation suggested for review. It has not been added to your experience. Once approved, select it from the directory to add your role." : "Your experience has been saved as a self-reported affiliation."), /* @__PURE__ */ import_react6.default.createElement("button", { type: "button", className: "onboarding__primary", onClick: onClose }, "Done"), error && /* @__PURE__ */ import_react6.default.createElement("p", null, error)) : /* @__PURE__ */ import_react6.default.createElement("form", { onSubmit: submit, className: "onboarding__form" }, /* @__PURE__ */ import_react6.default.createElement("fieldset", { disabled: pending, className: "onboarding__fieldset onboarding__form" }, /* @__PURE__ */ import_react6.default.createElement("legend", null, "Organisation and role"), demo && /* @__PURE__ */ import_react6.default.createElement("p", null, "Demo search results. Connect the dashboard\u2019s organisation directory to save an existing organisation."), /* @__PURE__ */ import_react6.default.createElement("label", { className: "onboarding__field", htmlFor: `${id}-search` }, "Search organisations", /* @__PURE__ */ import_react6.default.createElement(
+    return /* @__PURE__ */ import_react5.default.createElement(ProfileModal, { title: "Add where you work", onClose, busy: pending }, saved ? /* @__PURE__ */ import_react5.default.createElement("div", { className: "onboarding__form", role: "status" }, /* @__PURE__ */ import_react5.default.createElement("p", null, saved === "suggestion" ? "Organisation suggested for review. It has not been added to your experience. Once approved, select it from the directory to add your role." : "Your experience has been saved as a self-reported affiliation."), /* @__PURE__ */ import_react5.default.createElement("button", { type: "button", className: "onboarding__primary", onClick: onClose }, "Done"), error && /* @__PURE__ */ import_react5.default.createElement("p", null, error)) : /* @__PURE__ */ import_react5.default.createElement("form", { onSubmit: submit, className: "onboarding__form" }, /* @__PURE__ */ import_react5.default.createElement("fieldset", { disabled: pending, className: "onboarding__fieldset onboarding__form" }, /* @__PURE__ */ import_react5.default.createElement("legend", null, "Organisation and role"), demo && /* @__PURE__ */ import_react5.default.createElement("p", null, "Demo search results. Connect the dashboard\u2019s organisation directory to save an existing organisation."), /* @__PURE__ */ import_react5.default.createElement("label", { className: "onboarding__field", htmlFor: `${id}-search` }, "Search organisations", /* @__PURE__ */ import_react5.default.createElement(
       "input",
       {
         id: `${id}-search`,
@@ -24226,7 +24207,7 @@
         },
         "aria-describedby": `${id}-search-help`
       }
-    )), /* @__PURE__ */ import_react6.default.createElement("p", { id: `${id}-search-help` }, "Type at least two characters to search by name."), query.trim().length >= 2 && !selected && /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, results.length ? /* @__PURE__ */ import_react6.default.createElement("ul", { className: "profile-modal__results", "aria-label": "Organisation results" }, results.map((org) => /* @__PURE__ */ import_react6.default.createElement("li", { key: org.id }, /* @__PURE__ */ import_react6.default.createElement(
+    )), /* @__PURE__ */ import_react5.default.createElement("p", { id: `${id}-search-help` }, "Type at least two characters to search by name."), query.trim().length >= 2 && !selected && /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, results.length ? /* @__PURE__ */ import_react5.default.createElement("ul", { className: "profile-modal__results", "aria-label": "Organisation results" }, results.map((org) => /* @__PURE__ */ import_react5.default.createElement("li", { key: org.id }, /* @__PURE__ */ import_react5.default.createElement(
       "button",
       {
         type: "button",
@@ -24239,10 +24220,10 @@
       org.name,
       org.country ? ` \xB7 ${org.country}` : "",
       org.isMock ? " (demo)" : ""
-    )))) : /* @__PURE__ */ import_react6.default.createElement("p", { role: "status" }, "No matching organisation found."), (window.MCH_SUBMISSIONS_ENABLED === true ? /* @__PURE__ */ import_react6.default.createElement("button", { type: "button", className: "onboarding__chip", onClick: () => {
+    )))) : /* @__PURE__ */ import_react5.default.createElement("p", { role: "status" }, "No matching organisation found."), globalThis.window?.MCH_SUBMISSIONS_ENABLED === true ? /* @__PURE__ */ import_react5.default.createElement("button", { type: "button", className: "onboarding__chip", onClick: () => {
       setSuggesting(true);
       setSuggestion((previous) => ({ ...previous, name: query.trim() }));
-    } }, "Suggest an organisation") : import_react6.default.createElement("p", null, "In-app suggestions are paused. ", import_react6.default.createElement("a", {href:"mailto:map@thechildlens.com"}, "Email the team"), " with public evidence links. Do not send patient information or private contacts."))), selected && /* @__PURE__ */ import_react6.default.createElement("p", null, "Selected: ", /* @__PURE__ */ import_react6.default.createElement("strong", null, selected.name), selected.isMock ? " (demo \u2014 cannot be saved)" : ""), suggesting ? /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, /* @__PURE__ */ import_react6.default.createElement("h3", null, "Suggest an organisation"), /* @__PURE__ */ import_react6.default.createElement("p", null, "We\u2019ll review the organisation before it can be linked to a profile."), input("name", "Organisation name", "text", true, true, 200), input("org_type", "Organisation type", "text", true, true, 100), input("country", "Country", "text", true, true, 120), input("address", "Public organisation address (optional)", "text", true, false, 500), input("website", "Website (optional)", "url", true, false, 2e3)) : /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, input("role_title", "Role title"), input("start_date", "Start date", "date"), /* @__PURE__ */ import_react6.default.createElement("label", { className: "onboarding__choice" }, /* @__PURE__ */ import_react6.default.createElement(
+    } }, "Suggest an organisation") : /* @__PURE__ */ import_react5.default.createElement("p", null, "In-app suggestions are paused. ", /* @__PURE__ */ import_react5.default.createElement("a", { href: "mailto:map@thechildlens.com" }, "Email the team"), " with public evidence links. Do not send patient information or private contacts.")), selected && /* @__PURE__ */ import_react5.default.createElement("p", null, "Selected: ", /* @__PURE__ */ import_react5.default.createElement("strong", null, selected.name), selected.isMock ? " (demo \u2014 cannot be saved)" : ""), suggesting ? /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement("h3", null, "Suggest an organisation"), /* @__PURE__ */ import_react5.default.createElement("p", null, "We\u2019ll review the organisation before it can be linked to a profile."), input("name", "Organisation name", "text", true, true, 200), input("org_type", "Organisation type", "text", true, true, 100), input("country", "Country", "text", true, true, 120), input("address", "Public organisation address (optional)", "text", true, false, 500), input("website", "Website (optional)", "url", true, false, 2e3)) : /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, input("role_title", "Role title"), input("start_date", "Start date", "date"), /* @__PURE__ */ import_react5.default.createElement("label", { className: "onboarding__choice" }, /* @__PURE__ */ import_react5.default.createElement(
       "input",
       {
         type: "checkbox",
@@ -24250,21 +24231,21 @@
         checked: work.is_current,
         onChange: (event) => setWork((previous) => ({ ...previous, is_current: event.target.checked }))
       }
-    ), /* @__PURE__ */ import_react6.default.createElement("span", null, "I work here now")), /* @__PURE__ */ import_react6.default.createElement("p", null, "Adding a role does not verify employment or give you organisation editing rights."))), error && /* @__PURE__ */ import_react6.default.createElement("p", { role: "alert", className: "onboarding__error" }, error), /* @__PURE__ */ import_react6.default.createElement("button", { type: "submit", className: "onboarding__primary", disabled: pending || !suggesting && (!selected || selected.isMock) }, pending ? "Saving\u2026" : suggesting ? "Submit suggestion" : "Save experience")));
+    ), /* @__PURE__ */ import_react5.default.createElement("span", null, "I work here now")), /* @__PURE__ */ import_react5.default.createElement("p", null, "Adding a role does not verify employment or give you organisation editing rights."))), error && /* @__PURE__ */ import_react5.default.createElement("p", { role: "alert", className: "onboarding__error" }, error), /* @__PURE__ */ import_react5.default.createElement("button", { type: "submit", className: "onboarding__primary", disabled: pending || !suggesting && (!selected || selected.isMock) }, pending ? "Saving\u2026" : suggesting ? "Submit suggestion" : "Save experience")));
   }
 
   // onboarding/LinkLinkedInModal.jsx
-  var import_react7 = __toESM(require_react());
+  var import_react6 = __toESM(require_react());
   function LinkLinkedInModal({ open, userId, ...props }) {
-    return open ? /* @__PURE__ */ import_react7.default.createElement(LinkLinkedInForm, { key: userId, userId, ...props }) : null;
+    return open ? /* @__PURE__ */ import_react6.default.createElement(LinkLinkedInForm, { key: userId, userId, ...props }) : null;
   }
   function LinkLinkedInForm({ supabase, userId, initialUrl = "", onClose, onSaved }) {
-    const [url, setUrl] = (0, import_react7.useState)(initialUrl);
-    const [pending, setPending] = (0, import_react7.useState)(false);
-    const [saved, setSaved] = (0, import_react7.useState)(false);
-    const [error, setError] = (0, import_react7.useState)("");
-    const lock = (0, import_react7.useRef)(false);
-    const id = (0, import_react7.useId)();
+    const [url, setUrl] = (0, import_react6.useState)(initialUrl);
+    const [pending, setPending] = (0, import_react6.useState)(false);
+    const [saved, setSaved] = (0, import_react6.useState)(false);
+    const [error, setError] = (0, import_react6.useState)("");
+    const lock = (0, import_react6.useRef)(false);
+    const id = (0, import_react6.useId)();
     async function submit(event) {
       event.preventDefault();
       if (lock.current) return;
@@ -24289,7 +24270,7 @@
         }
       }
     }
-    return /* @__PURE__ */ import_react7.default.createElement(ProfileModal, { title: "Link your LinkedIn profile", onClose, busy: pending }, /* @__PURE__ */ import_react7.default.createElement("form", { className: "onboarding__form", onSubmit: submit }, /* @__PURE__ */ import_react7.default.createElement("p", null, "A LinkedIn link adds professional context and can help people recognise you and build trust."), /* @__PURE__ */ import_react7.default.createElement("p", { id: `${id}-help` }, "This is a self-reported link. It does not verify your identity or employment, connect your LinkedIn account, or change how you sign in."), saved ? /* @__PURE__ */ import_react7.default.createElement("p", { role: "status" }, "Your LinkedIn profile link has been saved.") : /* @__PURE__ */ import_react7.default.createElement("label", { className: "onboarding__field", htmlFor: `${id}-url` }, "LinkedIn profile URL", /* @__PURE__ */ import_react7.default.createElement(
+    return /* @__PURE__ */ import_react6.default.createElement(ProfileModal, { title: "Link your LinkedIn profile", onClose, busy: pending }, /* @__PURE__ */ import_react6.default.createElement("form", { className: "onboarding__form", onSubmit: submit }, /* @__PURE__ */ import_react6.default.createElement("p", null, "A LinkedIn link adds professional context and can help people recognise you and build trust."), /* @__PURE__ */ import_react6.default.createElement("p", { id: `${id}-help` }, "This is a self-reported link. It does not verify your identity or employment, connect your LinkedIn account, or change how you sign in."), saved ? /* @__PURE__ */ import_react6.default.createElement("p", { role: "status" }, "Your LinkedIn profile link has been saved.") : /* @__PURE__ */ import_react6.default.createElement("label", { className: "onboarding__field", htmlFor: `${id}-url` }, "LinkedIn profile URL", /* @__PURE__ */ import_react6.default.createElement(
       "input",
       {
         id: `${id}-url`,
@@ -24302,17 +24283,17 @@
         onChange: (event) => setUrl(event.target.value),
         disabled: pending
       }
-    )), error && /* @__PURE__ */ import_react7.default.createElement("p", { role: "alert", className: "onboarding__error" }, error), saved ? /* @__PURE__ */ import_react7.default.createElement("button", { type: "button", className: "onboarding__primary", onClick: onClose }, "Done") : /* @__PURE__ */ import_react7.default.createElement("button", { type: "submit", className: "onboarding__primary", disabled: pending }, pending ? "Saving\u2026" : "Save LinkedIn link")));
+    )), error && /* @__PURE__ */ import_react6.default.createElement("p", { role: "alert", className: "onboarding__error" }, error), saved ? /* @__PURE__ */ import_react6.default.createElement("button", { type: "button", className: "onboarding__primary", onClick: onClose }, "Done") : /* @__PURE__ */ import_react6.default.createElement("button", { type: "submit", className: "onboarding__primary", disabled: pending }, pending ? "Saving\u2026" : "Save LinkedIn link")));
   }
 
   // onboarding/ProgressiveProfileActions.jsx
   function ProgressiveProfileActions({ userId, ...props }) {
-    return userId ? /* @__PURE__ */ import_react8.default.createElement(ProfileActions, { key: userId, userId, ...props }) : null;
+    return userId ? /* @__PURE__ */ import_react7.default.createElement(ProfileActions, { key: userId, userId, ...props }) : null;
   }
   function ProfileActions({ supabase, userId, profile, organisations, onExperienceSaved, onSuggestionSaved, onProfileSaved }) {
-    const [active, setActive] = (0, import_react8.useState)(null);
-    const [linkedIn, setLinkedIn] = (0, import_react8.useState)(profile?.linkedin_url ?? "");
-    return /* @__PURE__ */ import_react8.default.createElement("div", { className: "onboarding__actions" }, /* @__PURE__ */ import_react8.default.createElement("button", { type: "button", className: "onboarding__chip", onClick: () => setActive("work") }, "Add where you work"), /* @__PURE__ */ import_react8.default.createElement("button", { type: "button", className: "onboarding__chip", onClick: () => setActive("linkedin") }, "Link your LinkedIn profile"), /* @__PURE__ */ import_react8.default.createElement(
+    const [active, setActive] = (0, import_react7.useState)(null);
+    const [linkedIn, setLinkedIn] = (0, import_react7.useState)(profile?.linkedin_url ?? "");
+    return /* @__PURE__ */ import_react7.default.createElement("div", { className: "onboarding__actions" }, /* @__PURE__ */ import_react7.default.createElement("button", { type: "button", className: "onboarding__chip", onClick: () => setActive("work") }, "Add where you work"), /* @__PURE__ */ import_react7.default.createElement("button", { type: "button", className: "onboarding__chip", onClick: () => setActive("linkedin") }, "Link your LinkedIn profile"), /* @__PURE__ */ import_react7.default.createElement(
       AddWorkModal,
       {
         open: active === "work",
@@ -24321,7 +24302,7 @@
         onSaved: onExperienceSaved,
         onSuggested: onSuggestionSaved
       }
-    ), /* @__PURE__ */ import_react8.default.createElement(
+    ), /* @__PURE__ */ import_react7.default.createElement(
       LinkLinkedInModal,
       {
         open: active === "linkedin",
@@ -27681,12 +27662,12 @@
   // onboarding/Step3_Success.jsx
   function Step3_Success({ supabase, mapUrl = "/" }) {
     const { savedProfile } = useOnboarding();
-    const [profile, setProfile] = (0, import_react9.useState)(savedProfile);
-    const [actionMessage, setActionMessage] = (0, import_react9.useState)("");
-    const id = (0, import_react9.useId)();
-    if (!profile) return /* @__PURE__ */ import_react9.default.createElement("p", null, "Your profile has not been saved yet. Please finish the privacy step.");
+    const [profile, setProfile] = (0, import_react8.useState)(savedProfile);
+    const [actionMessage, setActionMessage] = (0, import_react8.useState)("");
+    const id = (0, import_react8.useId)();
+    if (!profile) return /* @__PURE__ */ import_react8.default.createElement("p", null, "Complete About you to save your profile.");
     const strength = profileStrength(profile);
-    return /* @__PURE__ */ import_react9.default.createElement("div", { className: "onboarding__form" }, /* @__PURE__ */ import_react9.default.createElement("h2", null, "You're on the map!"), /* @__PURE__ */ import_react9.default.createElement("p", null, "Your profile has been saved. Keep building it whenever you\u2019re ready."), /* @__PURE__ */ import_react9.default.createElement("p", null, "Your professional profile is private and visible only to you. Your email choices are stored separately and can be changed later."), /* @__PURE__ */ import_react9.default.createElement("div", { className: "onboarding__strength" }, /* @__PURE__ */ import_react9.default.createElement("p", { id: `${id}-strength` }, /* @__PURE__ */ import_react9.default.createElement("strong", null, "Profile Strength: ", strength, "%")), /* @__PURE__ */ import_react9.default.createElement("progress", { "aria-labelledby": `${id}-strength`, value: strength, max: 100 }), /* @__PURE__ */ import_react9.default.createElement("p", null, "A measure of profile completeness. Optional details can help people learn more about you.")), /* @__PURE__ */ import_react9.default.createElement("nav", { className: "onboarding__actions", "aria-label": "What next" }, /* @__PURE__ */ import_react9.default.createElement("a", { className: "onboarding__primary", href: mapUrl }, "Explore the map"), /* @__PURE__ */ import_react9.default.createElement(
+    return /* @__PURE__ */ import_react8.default.createElement("div", { className: "onboarding__form" }, /* @__PURE__ */ import_react8.default.createElement("h2", null, "You're on the map!"), /* @__PURE__ */ import_react8.default.createElement("p", null, "Your profile has been saved. Keep building it whenever you\u2019re ready."), /* @__PURE__ */ import_react8.default.createElement("p", null, "Your professional profile is private and visible only to you. Your email choices are stored separately and can be changed later."), /* @__PURE__ */ import_react8.default.createElement("div", { className: "onboarding__strength" }, /* @__PURE__ */ import_react8.default.createElement("p", { id: `${id}-strength` }, /* @__PURE__ */ import_react8.default.createElement("strong", null, "Profile Strength: ", strength, "%")), /* @__PURE__ */ import_react8.default.createElement("progress", { "aria-labelledby": `${id}-strength`, value: strength, max: 100 }), /* @__PURE__ */ import_react8.default.createElement("p", null, "A measure of profile completeness. Optional details can help people learn more about you.")), /* @__PURE__ */ import_react8.default.createElement("nav", { className: "onboarding__actions", "aria-label": "What next" }, /* @__PURE__ */ import_react8.default.createElement("a", { className: "onboarding__primary", href: mapUrl }, "Explore the map"), /* @__PURE__ */ import_react8.default.createElement(
       ProgressiveProfileActions,
       {
         userId: profile.user_id,
@@ -27700,37 +27681,49 @@
           setActionMessage("Your LinkedIn profile link was saved.");
         }
       }
-    ), /* @__PURE__ */ import_react9.default.createElement("button", { className: "onboarding__chip", type: "button", disabled: true }, "Invite a colleague (not connected yet)")), actionMessage && /* @__PURE__ */ import_react9.default.createElement("p", { role: "status" }, actionMessage), /* @__PURE__ */ import_react9.default.createElement("p", null, "Affiliations are self-reported. They do not verify employment or give organisation access."), /* @__PURE__ */ import_react9.default.createElement("p", null, "Inviting colleagues will be available after invitation delivery is connected."));
+    ), /* @__PURE__ */ import_react8.default.createElement("button", { className: "onboarding__chip", type: "button", disabled: true }, "Invite a colleague (not connected yet)")), actionMessage && /* @__PURE__ */ import_react8.default.createElement("p", { role: "status" }, actionMessage), /* @__PURE__ */ import_react8.default.createElement("p", null, "Affiliations are self-reported. They do not verify employment or give organisation access."), /* @__PURE__ */ import_react8.default.createElement("p", null, "Inviting colleagues will be available after invitation delivery is connected."));
   }
 
   // onboarding/OnboardingFlow.jsx
   function OnboardingFlow({ supabase, session, onAuthenticated, emailRedirectTo, ...actions }) {
-    return /* @__PURE__ */ import_react10.default.createElement(OnboardingLayout, { userId: session?.user.id }, ({ step, nextStep }) => {
-      if (step === 0) return /* @__PURE__ */ import_react10.default.createElement(Step0_Welcome, { ...{ supabase, session, onAuthenticated, emailRedirectTo } });
-      if (!session?.user) return /* @__PURE__ */ import_react10.default.createElement("p", null, "Confirm your email and sign in to continue.");
-      if (step === 1) return /* @__PURE__ */ import_react10.default.createElement(Step1_AboutYou, { supabase, userId: session.user.id, onContinue: nextStep });
-      if (step === 2) return /* @__PURE__ */ import_react10.default.createElement(Step2_Privacy, { supabase, userId: session.user.id });
-      return /* @__PURE__ */ import_react10.default.createElement(Step3_Success, { supabase, ...actions });
+    return /* @__PURE__ */ import_react9.default.createElement(OnboardingLayout, { userId: session?.user.id }, ({ step, complete }) => {
+      if (step === 0) return /* @__PURE__ */ import_react9.default.createElement(Step0_Welcome, { ...{ supabase, session, onAuthenticated, emailRedirectTo } });
+      if (!session?.user) return /* @__PURE__ */ import_react9.default.createElement("p", null, "Confirm your email and sign in to continue.");
+      if (step === 1) return /* @__PURE__ */ import_react9.default.createElement(
+        Step1_AboutYou,
+        {
+          supabase,
+          userId: session.user.id,
+          onContinue: async (values) => complete(await saveProfile(supabase, values, session.user.id))
+        }
+      );
+      return /* @__PURE__ */ import_react9.default.createElement(Step3_Success, { supabase, ...actions });
     });
   }
 
   // onboarding-entry.jsx
-  function AccountEligibility({client, user, children}) {
-    const host = (0, import_react11.useRef)(null);
-    const [ready, setReady] = (0, import_react11.useState)(false);
-    (0, import_react11.useEffect)(() => {
-      let active = true;
-      window.MCHAccountExtras.ensureEligible(client,user,()=>host.current,()=>{if(active)setReady(true);}).then(value=>{if(active&&value)setReady(true);});
-      return ()=>{active=false;};
-    },[client,user.id]);
-    return ready ? children : import_react11.default.createElement("section",{className:"onboarding"},import_react11.default.createElement("h2",null,"Finish account setup"),import_react11.default.createElement("div",{ref:host}),import_react11.default.createElement("a",{href:"index.html",className:"text-link"},"← Back to map"));
-  }
   var root = (0, import_client.createRoot)(document.getElementById("onboarding-root"));
+  function AccountEligibility({ client, user, children }) {
+    const host = (0, import_react10.useRef)(null);
+    const [ready, setReady] = (0, import_react10.useState)(false);
+    (0, import_react10.useEffect)(() => {
+      let active = true;
+      window.MCHAccountExtras.ensureEligible(client, user, () => host.current, () => {
+        if (active) setReady(true);
+      }).then((value) => {
+        if (active && value) setReady(true);
+      });
+      return () => {
+        active = false;
+      };
+    }, [client, user.id]);
+    return ready ? children : /* @__PURE__ */ import_react10.default.createElement("section", { className: "onboarding" }, /* @__PURE__ */ import_react10.default.createElement("h2", null, "Finish account setup"), /* @__PURE__ */ import_react10.default.createElement("div", { ref: host }), /* @__PURE__ */ import_react10.default.createElement("a", { href: "index.html", className: "text-link" }, "\u2190 Back to map"));
+  }
   function App() {
-    const [client, setClient] = (0, import_react11.useState)(null);
-    const [session, setSession] = (0, import_react11.useState)(null);
-    const [error, setError] = (0, import_react11.useState)("");
-    (0, import_react11.useEffect)(() => {
+    const [client, setClient] = (0, import_react10.useState)(null);
+    const [session, setSession] = (0, import_react10.useState)(null);
+    const [error, setError] = (0, import_react10.useState)("");
+    (0, import_react10.useEffect)(() => {
       let active = true;
       let subscription;
       async function connect() {
@@ -27761,10 +27754,10 @@
         subscription?.unsubscribe();
       };
     }, []);
-    if (error) return /* @__PURE__ */ import_react11.default.createElement("p", { role: "alert", className: "onboarding__error" }, error);
-    if (!client) return /* @__PURE__ */ import_react11.default.createElement("p", { role: "status" }, "Connecting to your account\u2026");
+    if (error) return /* @__PURE__ */ import_react10.default.createElement("p", { role: "alert", className: "onboarding__error" }, error);
+    if (!client) return /* @__PURE__ */ import_react10.default.createElement("p", { role: "status" }, "Connecting to your account\u2026");
     const redirect = new URL("onboarding.html", window.location.href).href;
-    const flow = /* @__PURE__ */ import_react11.default.createElement(
+    const flow = /* @__PURE__ */ import_react10.default.createElement(
       OnboardingFlow,
       {
         supabase: client,
@@ -27774,9 +27767,9 @@
         mapUrl: "index.html"
       }
     );
-    return session?.user ? import_react11.default.createElement(AccountEligibility,{key:session.user.id,client,user:session.user},flow) : flow;
+    return session?.user ? /* @__PURE__ */ import_react10.default.createElement(AccountEligibility, { key: session.user.id, client, user: session.user }, flow) : flow;
   }
-  root.render(/* @__PURE__ */ import_react11.default.createElement(App, null));
+  root.render(/* @__PURE__ */ import_react10.default.createElement(App, null));
 })();
 /*! Bundled license information:
 
