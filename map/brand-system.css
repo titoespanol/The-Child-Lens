@@ -320,6 +320,8 @@ body.map-page .discovery-filters{position:absolute;z-index:12;top:94px;left:24px
 .account-loading{min-height:180px;padding:24px 0;color:var(--text-secondary)}#authModal[open]{animation:account-enter 160ms ease-out}@keyframes account-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:840px){body.map-page .discovery-filters{top:86px;left:12px;right:12px;width:auto}.discovery-search input{min-height:48px;padding:12px 16px}.filter-chip{padding:9px 14px}body.map-page.has-discovery-filters .map-tools{top:252px}.filter-picker{margin:auto auto 12px;width:calc(100% - 20px);max-height:calc(100dvh - 100px);border-radius:28px;padding:22px}.filter-picker-header{position:sticky;top:-22px;background:var(--bg-card);padding:12px 0;z-index:1}}
 @media(prefers-reduced-motion:reduce){#authModal[open]{animation:none}.filter-chip,.active-filter,.filter-clear{transition:none}}
+body.directory-page .active-filter-row{flex-wrap:wrap;overflow:visible}
+body.directory-page .active-filter{max-width:100%;white-space:normal;overflow-wrap:anywhere}
 /* Give the map a clear title and a compact, coherent discovery panel. */
 .discovery-heading{margin:0;font-size:23px;line-height:1.2;letter-spacing:-.025em;color:var(--text-primary);text-wrap:balance}
 body.map-page .discovery-filters{width:min(540px,calc(100% - 48px));top:100px;padding:18px;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:22px;box-shadow:0 8px 28px #051d2310;gap:12px}
