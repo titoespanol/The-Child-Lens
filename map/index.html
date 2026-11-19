@@ -19,10 +19,10 @@
 <script defer src="organisation-logos.js"></script>
 <script defer src="organisation-team.js?v=20261119-account-team"></script>
 <script defer src="organisation-model.js"></script>
-<script defer src="app.js?v=20261119-listing-corrections"></script>
-<script defer src="filter-bar.js?v=20261119-view-filters"></script>
+<script defer src="app.js?v=20261119-directory-recovery"></script>
+<script defer src="filter-bar.js?v=20261119-directory-recovery"></script>
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="brand-system.css?v=20261119-email-listing"><script defer src="app-shell.js?v=20261119-view-filters"></script><link rel="canonical" href="https://thechildlens.com/map/">
+<link rel="stylesheet" href="brand-system.css?v=20261119-directory-recovery"><script defer src="app-shell.js?v=20261119-view-filters"></script><link rel="canonical" href="https://thechildlens.com/map/">
 <meta property="og:type" content="website"><meta property="og:url" content="https://thechildlens.com/map/"><meta property="og:title" content="Children’s health innovation map | The Child Lens"><meta property="og:description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens."><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Children’s health innovation map | The Child Lens"><meta name="twitter:description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Children’s health innovation map | The Child Lens","description":"Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.","url":"https://thechildlens.com/map/","isPartOf":{"@type":"WebSite","name":"Mapping Children’s Health","url":"https://thechildlens.com/map/"},"publisher":{"@type":"Organization","name":"The Child Lens","url":"https://thechildlens.com/"}}</script>
 </head>
@@ -46,7 +46,7 @@
     <div id="map"></div>
 
     <div class="map-tools">
-      <button id="fitMap" disabled>Fit map to results</button>
+      <button id="fitMap" class="btn-secondary" type="button" disabled hidden>Fit map to results</button>
       <button id="clearMapFilters" type="button" hidden>Clear filters</button>
       <a id="filteredDirectory" class="map-directory-link" href="directory.html" data-ecosystem-view="directory" hidden></a>
     </div>
@@ -80,8 +80,17 @@
       </div>
     </details>
 
+    <div id="mapFilterResults" class="map-filter-results" hidden>
+      <p id="mapFilterResultText">Loading organisations…</p>
+      <a id="mapFilterDirectory" class="text-link" href="directory.html" data-ecosystem-view="directory" hidden>View matching listings in the directory</a>
+    </div>
     <div class="sr-only" id="mapNote" role="status">Explore organisations using search and filters.</div>
-    <div class="map-fallback" id="mapFallback" hidden>Map loading or offline. You can still explore all organisations in the directory.</div>
+    <div class="map-fallback" id="mapFallback" hidden>
+      <div>
+        <p role="status">The map is unavailable right now.</p>
+        <a class="btn-primary" href="directory.html" data-ecosystem-view="directory">Open the directory</a>
+      </div>
+    </div>
   </main>
 </div>
 <!-- In-app suggestions require membership; signed-out visitors can email the team. -->

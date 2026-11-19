@@ -338,10 +338,20 @@ function updateMarkers() {
   markers.forEach(marker => marker.remove());
   markers = [];
   const pins = shown.filter(located);
-  if ($('fitMap')) $('fitMap').disabled = !map || !pins.length;
+  const fit = $('fitMap');
+  if (fit) fit.hidden = fit.disabled = !map || !pins.length;
   if ($('mapNote')) {
     $('mapNote').textContent =
       shown.length + (shown.length === 1 ? ' organisation matches.' : ' organisations match.');
+  }
+  const resultText = $('mapFilterResultText');
+  if (resultText && all.length) {
+    const count = shown.length;
+    resultText.textContent = count === 0 ? 'No organisations match your search.'
+      : pins.length === 0 ? (count === 1 ? 'One match has no map location.' : `${count} matches have no map locations.`)
+      : pins.length === count ? `${count} matching ${count === 1 ? 'organisation' : 'organisations'} on the map.`
+      : `${pins.length} of ${count} matching organisations have map locations.`;
+    $('mapFilterDirectory').hidden = count === pins.length;
   }
 
   if (!map) return;
@@ -394,12 +404,16 @@ function fitResults() {
   });
 }
 
-function render() {
+function render(preserveExpanded = false) {
   const root = $('results');
   if (!root) {
     updateMarkers();
     return;
   }
+  const expanded = preserveExpanded
+    ? new Set([...root.querySelectorAll('details.entry[open]')].map(card => card.id))
+    : new Set();
+  const focusedId = preserveExpanded ? document.activeElement?.closest('details.entry')?.id : null;
   root.replaceChildren();
 
   const countText = activeRelation
@@ -410,13 +424,24 @@ function render() {
   if ($('mobileCount')) $('mobileCount').textContent = shown.length;
 
   if (!shown.length) {
-    root.append(el('p', 'empty-state', 'No organisations match your search. Try another term or clear the filters.'));
+    const empty = el('div', 'empty-state');
+    empty.append(el('p', '', 'No organisations match your search.'));
+    if (window.MCHOrganisationModel.toSearch(filterState).size) {
+      const clear = el('button', 'btn-secondary', 'Clear search and filters');
+      clear.type = 'button';
+      clear.addEventListener('click', () => {
+        clearAllFilters();
+        $('search')?.focus();
+      });
+      empty.append(clear);
+    }
+    root.append(empty);
   }
 
   shown.forEach(org => {
     const card = el('details', 'entry');
-    card.open = false;
     card.id = 'card-' + org.id;
+    card.open = expanded.has(card.id);
 
     const summary = el('summary', 'entry-summary');
     const body = el('div', 'entry-body');
@@ -500,6 +525,7 @@ function render() {
     links.append(shareListing(org), suggestListingCorrection(org));
     body.append(links);
     root.append(card);
+    if (card.id === focusedId) summary.focus({preventScroll: true});
   });
 
   updateMarkers();
@@ -559,7 +585,7 @@ function filter(syncUrl = true) {
   const active = [type,country,focus,technology,stage].reduce((sum,value)=>sum+(Array.isArray(value)?value.length:Number(Boolean(value))),0);
   if ($('filterCount')) $('filterCount').textContent = active ? '(' + active + ')' : '';
   document.querySelectorAll('.legend-item[data-type]').forEach(button => button.setAttribute('aria-pressed', String((Array.isArray(type)?type:[type]).includes(button.dataset.type))));
-  render();
+  render(!syncUrl);
   window.MCHFilterBar?.refresh();
 }
 
@@ -671,17 +697,32 @@ function applyOrganisationData(data, source) {
 }
 
 async function init() {
-  await loadPublicRegistry();
-  let snapshotLoaded = false;
-  try {
-    const res = await fetch('./data/organisations.json');
-    if (res.ok) snapshotLoaded = applyOrganisationData(await res.json(), 'local snapshot');
-  } catch (err) {
-    console.error('Local JSON fetch failed:', err);
+  let latest;
+  function showLatest(data, source) {
+    if (latest?.source === 'live directory' && source === 'local snapshot') return;
+    if (applyOrganisationData(data, source)) latest = {data, source, registry};
   }
+  const registryRequest = loadPublicRegistry().then(loaded => {
+    if (loaded && latest && latest.registry !== registry) showLatest(latest.data, latest.source);
+  });
+  const snapshotRequest = fetch('./data/organisations.json', {signal: AbortSignal.timeout(5000)})
+    .then(async response => {
+      if (response.ok) showLatest(await response.json(), 'local snapshot');
+    })
+    .catch(error => console.error('Local JSON fetch failed:', error));
+  const liveRequest = loadLiveOrganisations().then(data => showLatest(data, 'live directory'));
 
-  if (!snapshotLoaded && !all.length && $('status')) $('status').textContent = 'Directory unavailable';
+  await Promise.all([snapshotRequest, liveRequest, registryRequest]);
+  if (!latest) {
+    if ($('status')) $('status').textContent = 'Directory unavailable';
+    if ($('mapFilterResultText')) $('mapFilterResultText').textContent = 'Organisation data is unavailable right now.';
+  }
+  else if (!linkedOrganisationResolved && new URLSearchParams(location.search).get('organisation') && $('status')) {
+    $('status').textContent = 'This listing could not be found. You can search for another organisation.';
+  }
+}
 
+async function loadLiveOrganisations() {
   if (SUPABASE_ANON_KEY && (SUPABASE_ANON_KEY.startsWith('sb_publishable_') || SUPABASE_ANON_KEY.startsWith('ey'))) {
     try {
       const query = new URLSearchParams({ select: PUBLIC_ORGANISATION_FIELDS.join(',') });
@@ -692,16 +733,10 @@ async function init() {
         },
         signal: AbortSignal.timeout(5000)
       });
-      if (res.ok) {
-        const json = await res.json();
-        if (Array.isArray(json) && json.length > 0) applyOrganisationData(json, 'live directory');
-      }
+      if (res.ok) return await res.json();
     } catch (err) {
       console.warn('Supabase fetch failed; keeping the bundled snapshot:', err);
     }
-  }
-  if (!linkedOrganisationResolved && new URLSearchParams(location.search).get('organisation') && $('status')) {
-    $('status').textContent = 'This listing could not be found. You can search for another organisation.';
   }
 }
 

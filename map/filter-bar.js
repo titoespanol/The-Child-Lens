@@ -12,6 +12,13 @@
  const searchWrap=make('div','',{className:'discovery-search'}),label=make('label','Search organisations',{htmlFor:'search',className:'sr-only'});
  const oldLabel=search.closest('label')||document.querySelector('label[for="search"]');if(oldLabel){oldLabel.hidden=true;oldLabel.removeAttribute('for');}
  search.placeholder='Name, place or specialty';searchWrap.append(label,search);bar.append(searchWrap);
+ const mapResults=document.getElementById('mapFilterResults');
+ const fit=document.getElementById('fitMap');
+ if(mapResults){
+  if(fit)mapResults.append(fit);
+  bar.append(mapResults);
+  mapResults.hidden=false;
+ }
  const chips=make('div','',{className:'filter-chip-row'});chips.setAttribute('aria-label','Filter categories');bar.append(chips);
  const active=make('div','',{className:'active-filter-row'});active.setAttribute('aria-label','Active filters');bar.append(active);
  const clear=make('button','Clear all',{type:'button',className:'filter-clear'});clear.onclick=()=>document.getElementById(map?'clearMapFilters':'reset')?.click();
@@ -69,6 +76,7 @@
   disclosureSummary=make('summary','Search & filters');disclosure.append(disclosureSummary,bar);
   const close=make('button','Close',{type:'button',className:'discovery-close'});
   close.onclick=()=>{disclosure.open=false;disclosureSummary.focus();};
+  fit?.addEventListener('click',close.onclick);
   const panelHeader=make('div','',{className:'discovery-panel-header'});panelHeader.append(make('h2','Find organisations'),close);bar.prepend(panelHeader);
   const heading=bar.querySelector('.discovery-heading');if(heading){heading.classList.add('sr-only');host.prepend(heading);}
   dock.append(disclosure);const key=document.querySelector('.map-legend');if(key)dock.append(key);

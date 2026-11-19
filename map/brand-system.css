@@ -261,6 +261,11 @@ body.map-page .site-footer{padding:0 12px;gap:0 16px;font-size:12px}
 .listing-share .map-link{min-height:44px}
 .listing-share-status{display:block;font-size:13px}
 .listing-share-url{max-width:100%;width:20rem;margin:4px 0 8px;padding:7px;font:inherit}
+.map-fallback .btn-primary{display:inline-flex;align-items:center;text-decoration:none}
+.empty-state p{margin:0 0 12px}
+.map-filter-results p{margin:0;font-size:14px}
+.map-filter-results .text-link{min-height:44px}
+.map-filter-results button{margin-top:8px}
 
 /* Directory cards use a clear scan order: identity, evidence, then actions. */
 body.directory-page .entry{padding:20px 22px;border-radius:16px}
