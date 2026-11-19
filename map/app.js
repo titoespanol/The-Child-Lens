@@ -480,6 +480,33 @@ function render() {
   updateMarkers();
 }
 
+function syncViewLinks(query) {
+  const onMainSite = ['thechildlens.com', 'www.thechildlens.com'].includes(location.hostname);
+  const mapPath = onMainSite ? '/map/' : './';
+  const directoryPath = onMainSite ? '/directory/' : 'directory.html';
+  const suffix = query.size ? '?' + query.toString() : '';
+  for (const link of document.querySelectorAll('a[data-ecosystem-view]')) {
+    link.href = (link.dataset.ecosystemView === 'map' ? mapPath : directoryPath) + suffix;
+  }
+}
+
+function restoreFilterControls() {
+  if ($('search')) $('search').value = filterState.q;
+  for (const key of window.MCHOrganisationModel.multiKeys) {
+    const select = $(key);
+    if (!select) continue;
+    const requested = select.multiple ? filterState[key] : filterState[key].slice(0, 1);
+    for (const value of requested) {
+      if (![...select.options].some(option => option.value === value)) {
+        select.append(new Option(value + ' (not in current data)', value));
+      }
+    }
+    if (select.multiple) {
+      for (const option of select.options) option.selected = requested.includes(option.value);
+    } else select.value = requested[0] ?? '';
+  }
+}
+
 function filter(syncUrl = true) {
   activeRelation = null;
   for (const key of window.MCHOrganisationModel.filterKeys) {
@@ -488,25 +515,19 @@ function filter(syncUrl = true) {
   }
   const {type,country,focus,technology,stage} = filterState;
   shown = window.MCHOrganisationModel.filterRows(all, filterState);
+  const query = window.MCHOrganisationModel.toSearch(filterState);
   if (syncUrl) {
     const url = new URL(location.href);
     url.searchParams.delete('organisation');
-    for (const key of window.MCHOrganisationModel.filterKeys) {
-      url.searchParams.delete(key);
-      if (filterState[key]) for (const value of Array.isArray(filterState[key]) ? filterState[key] : [filterState[key]]) url.searchParams.append(key,value);
-    }
+    for (const key of window.MCHOrganisationModel.filterKeys) url.searchParams.delete(key);
+    for (const [key, value] of query) url.searchParams.append(key, value);
     history.replaceState(null, '', url);
   }
-  const hasFilters = window.MCHOrganisationModel.filterKeys.some(key => Array.isArray(filterState[key]) ? filterState[key].length : filterState[key]);
+  const hasFilters = query.size > 0;
+  syncViewLinks(query);
   if ($('clearMapFilters')) $('clearMapFilters').hidden = !hasFilters;
-  const query = window.MCHOrganisationModel.toSearch(filterState).toString();
-  for (const link of document.querySelectorAll('header nav a[href^="directory.html"], header nav a[href^="index.html"]')) {
-    const page = link.getAttribute('href').split('?')[0];
-    link.href = page + (query ? '?' + query : '');
-  }
   if ($('filteredDirectory')) {
     $('filteredDirectory').hidden = !hasFilters;
-    $('filteredDirectory').href = (location.hostname === 'thechildlens.com' || location.hostname === 'www.thechildlens.com' ? '/directory/' : 'directory.html') + (query ? '?' + query : '');
     $('filteredDirectory').textContent = `View ${shown.length} ${window.MCHOrganisationModel.categoryLabel(type, shown.length)} in the directory`;
   }
 
@@ -577,7 +598,6 @@ function initMap() {
   }
 }
 
-let initialRouteHandled = false;
 let linkedOrganisationResolved = false;
 
 function applyOrganisationData(data, source) {
@@ -600,18 +620,6 @@ function applyOrganisationData(data, source) {
   addOptions('stage', all.map(org => org.stage));
 
   const params = new URLSearchParams(location.search);
-  if (!initialRouteHandled) {
-    if ($('search')) $('search').value = params.get('q') || '';
-    for (const id of ['type', 'country', 'focus', 'technology', 'stage']) {
-      const elNode = $(id);
-      const requested = elNode?.multiple ? params.getAll(id) : params.getAll(id).slice(0,1);
-      if (elNode && requested.length) {
-        for (const value of requested) if (![...elNode.options].some(opt => opt.value === value)) elNode.append(new Option(value + ' (not in current data)', value));
-        if (elNode.multiple) for (const option of elNode.options) option.selected = requested.includes(option.value); else elNode.value = requested[0];
-      }
-    }
-  }
-
   const linkedOrganisation = params.get('organisation');
   const wasOpen = linkedOrganisation && $('card-' + linkedOrganisation)?.open;
   const organisation = linkedOrganisation && all.find(org => String(org.id) === linkedOrganisation);
@@ -631,7 +639,6 @@ function applyOrganisationData(data, source) {
     }
   }
   linkedOrganisationResolved = Boolean(organisation);
-  initialRouteHandled = true;
   if ($('status')) {
     $('status').textContent = source === 'local snapshot' ? 'Showing a saved directory copy. Some details may have changed.' : '';
   }
@@ -845,6 +852,8 @@ if ($('findTcl')) {
 
 if ($('fitMap')) $('fitMap').addEventListener('click', fitResults);
 
+restoreFilterControls();
+syncViewLinks(window.MCHOrganisationModel.toSearch(filterState));
 if ($('map')) initMap();
 init();
 

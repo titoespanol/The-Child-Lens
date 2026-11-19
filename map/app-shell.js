@@ -27,8 +27,6 @@
     document.querySelectorAll('a[href^="directory.html"]').forEach(link => {
       link.href = directoryUrl + link.getAttribute('href').slice('directory.html'.length);
     });
-    const filteredDirectory = document.getElementById('filteredDirectory');
-    if (filteredDirectory) filteredDirectory.href = directoryUrl;
   }
   {
     const header = document.createElement('header');
