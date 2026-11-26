@@ -1,8 +1,8 @@
 'use strict';
 (() => {
-  const gaId = '';
+  const gaId = 'G-QLRVCZBDF1';
   const clarityId = '';
-  const key = 'mch-optional-measurement-v1';
+  const key = 'mch-optional-measurement-v1-' + [gaId, clarityId].filter(Boolean).join('-');
   const profile = /^\/map\/organisations\/[a-z0-9_-]+\/$/.test(location.pathname);
   const settings = location.pathname === '/map/cookies.html';
   const discovery = ['/map/', '/map/index.html', '/directory', '/directory/', '/map/directory.html'].includes(location.pathname);
@@ -75,7 +75,10 @@
   panel.className = 'measurement-choice';
   panel.setAttribute('aria-label', 'Optional analytics');
   const message = document.createElement('p');
-  message.textContent = 'Allow Google Analytics to count map interactions and Microsoft Clarity to produce heatmaps and session recordings on public organisation profiles?';
+  const purposes = [];
+  if (gaId) purposes.push('Google Analytics to count map interactions');
+  if (clarityId) purposes.push('Microsoft Clarity to produce heatmaps and session recordings on public organisation profiles');
+  message.textContent = 'Allow ' + purposes.join(' and ') + '?';
   const notice = document.createElement('a');
   notice.href = '/map/cookies.html';
   notice.textContent = 'Cookie settings';
@@ -106,6 +109,9 @@
   } else document.body.append(panel);
   render(readChoice());
   start();
+  window.addEventListener('pageshow', e => {
+    if (e.persisted && allowed !== (readChoice() === 'yes')) location.reload();
+  });
   window.addEventListener('storage', e => {
     if (e.key !== key && e.key !== null) return;
     const wasStarted = started;
