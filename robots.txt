@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /map/moderation.html
+Disallow: /map/organisation-management.html
+Disallow: /map/onboarding.html
+Disallow: /map/data/
+
+User-agent: CCBot
+User-agent: ClaudeBot
+User-agent: GPTBot
+User-agent: Google-Extended
+Disallow: /map/
+Disallow: /directory
+
+Sitemap: https://thechildlens.com/sitemap.xml

@@ -111,7 +111,7 @@
       content.querySelector('.popup-meta')?.remove();
       const primary = node('div', 'sheet-primary-links');
       const links = content.querySelector('.popup-links');
-      if (links) [...links.querySelectorAll('a')].filter(a => /^(Website|Public source)/.test(a.textContent)).forEach(a => primary.append(a));
+      if (links) [...links.querySelectorAll('a')].filter(a => /^(View organisation profile|Website|Public source)/.test(a.textContent)).forEach(a => primary.append(a));
       const locationNote = node('p', 'sheet-location-note', 'Map location may be approximate.');
       body.replaceChildren(primary, content, locationNote); body.scrollTop = 0;
       sheet.hidden = false; root.classList.add('has-organisation-sheet');

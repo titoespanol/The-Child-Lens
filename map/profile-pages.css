@@ -1,0 +1,11 @@
+.organisation-profile .policy-page { width: min(100%, 54rem); box-sizing: border-box; }
+.organisation-profile h1 { margin-top: 1.4rem; overflow-wrap: anywhere; }
+.organisation-profile dl { display: grid; grid-template-columns: minmax(9rem, 1fr) 2fr; gap: .5rem 1rem; border-block: 1px solid var(--border-subtle); padding-block: 1rem; }
+.organisation-profile dt { font-weight: bold; }
+.organisation-profile dd { margin: 0; }
+.organisation-profile .profile-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.profile-actions a { border: 1px solid currentColor; border-radius: 2rem; padding: .5rem 1rem; }
+@media (max-width: 32rem) {
+  .organisation-profile dl { display: block; }
+  .organisation-profile dd { margin-bottom: .7rem; }
+}
