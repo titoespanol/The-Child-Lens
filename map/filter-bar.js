@@ -80,6 +80,7 @@
   const panelHeader=make('div','',{className:'discovery-panel-header'});panelHeader.append(make('h2','Find organisations'),close);bar.prepend(panelHeader);
   const heading=bar.querySelector('.discovery-heading');if(heading){heading.classList.add('sr-only');host.prepend(heading);}
   dock.append(disclosure);const key=document.querySelector('.map-legend');if(key)dock.append(key);
+  const area=document.getElementById('mapAreaControls');if(area)dock.append(area);
   const tools=document.querySelector('.map-tools');if(tools)dock.append(tools);
   host.append(dock);
   disclosure.addEventListener('toggle',()=>{if(disclosure.open&&key)key.open=false;});

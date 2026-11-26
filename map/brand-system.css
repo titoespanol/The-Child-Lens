@@ -518,3 +518,18 @@ dialog.map-cluster-dialog{width:min(31rem,calc(100% - 24px));max-height:calc(100
 dialog.map-cluster-dialog[open]:has(.map-cluster-search:not([hidden])){display:flex;flex-direction:column;overflow:hidden}
 .map-cluster-dialog #mapClusterZoom:not([hidden]){flex-shrink:0;align-self:flex-start}
 .map-cluster-dialog #mapClusterList{overflow:auto;overscroll-behavior:contain}
+
+.map-area-controls{grid-column:1/-1;justify-self:start;max-width:100%;pointer-events:auto}
+.map-area-controls #searchMapArea{min-height:44px;padding:8px 16px;background:#051d23;border:1px solid #051d23;color:#fff;border-radius:999px;font-weight:600}
+.map-area-controls #searchMapArea:disabled{opacity:.65}
+.map-discovery-dock:has(details[open]) .map-area-controls,#mapRegion.has-organisation-sheet .map-area-controls{visibility:hidden}
+.map-area-results:not([hidden]),.directory-area-filter:not([hidden]){display:flex;align-items:center;flex-wrap:wrap;gap:0 12px;padding:6px 12px;background:#f9f6f0;color:#051d23;border:1px solid var(--border-subtle);border-radius:14px;font-size:14px}
+.map-area-results{margin-top:6px}
+.map-area-results p{width:100%;margin:3px 0 0}
+.map-area-results a,.map-area-results button{display:inline-flex;align-items:center;min-height:44px;color:#051d23;text-decoration:underline;font:inherit}
+.map-area-results button{padding:0;background:none;border:0;cursor:pointer}
+.directory-area-filter{margin:8px 0 12px}
+@media(max-width:840px){
+  body.map-page.has-discovery-filters .maplibregl-ctrl-top-right{top:70px}
+  .map-area-controls{max-width:calc(100% - 48px)}
+}

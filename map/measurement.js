@@ -7,7 +7,7 @@
   const discovery = ['/map/', '/map/index.html', '/directory', '/directory/', '/map/directory.html'].includes(location.pathname);
   if (!['thechildlens.com', 'www.thechildlens.com'].includes(location.hostname)) return;
   if (!profile && !settings && !discovery) return;
-  const publicParams = new Set(['organisation','q','country','focus','technology','stage','type']);
+  const publicParams = new Set(['organisation','q','country','focus','technology','stage','type','area']);
   if (location.hash || [...new URLSearchParams(location.search).keys()].some(k => !publicParams.has(k))) return;
   const canonical = document.querySelector('link[rel="canonical"]')?.href;
   function readChoice() {

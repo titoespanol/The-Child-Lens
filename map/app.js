@@ -214,6 +214,10 @@ function viewPortfolioButton(org) {
 }
 
 function filterByPortfolio(investor) {
+  if (filterState.area) {
+    filterState.area = '';
+    filter();
+  }
   activeRelation = investor.name;
   shown = all.filter(item => (investor.portfolio || []).includes(item.id));
   if ($('search')) $('search').value = '';
@@ -379,6 +383,7 @@ function updateMarkers() {
 
   const source = map?.getSource(clusterSourceId);
   if (!source) return;
+  $('searchMapArea').disabled = !all.length;
   const groups = new Map();
   for (const org of pins) {
     const key = `${org.lng.toFixed(6)},${org.lat.toFixed(6)}`;
@@ -736,6 +741,13 @@ function filter(syncUrl = true) {
   const hasFilters = query.size > 0;
   syncViewLinks(query);
   if ($('clearMapFilters')) $('clearMapFilters').hidden = !hasFilters;
+  const area = Boolean(filterState.area);
+  if ($('mapAreaResults')) {
+    $('mapAreaResults').hidden = !area;
+    $('mapAreaCount').textContent = area ? (shown.length === 0 ? 'No organisations in this area.'
+      : `${shown.length} ${shown.length === 1 ? 'organisation' : 'organisations'} in this area.`) : '';
+  }
+  if ($('directoryAreaFilter')) $('directoryAreaFilter').hidden = !area;
   if ($('filteredDirectory')) {
     $('filteredDirectory').hidden = !hasFilters;
     $('filteredDirectory').textContent = `View ${shown.length} ${window.MCHOrganisationModel.categoryLabel(type, shown.length)} in the directory`;
@@ -879,9 +891,13 @@ function applyOrganisationData(data, source) {
   const wasOpen = linkedOrganisation && $('card-' + linkedOrganisation)?.open;
   const organisation = linkedOrganisation && all.find(org => String(org.id) === linkedOrganisation);
   filter(false);
-  if (map && fitInitialFilters && shown.some(located)) {
+  if (map && fitInitialFilters && (filterState.area || shown.some(located))) {
     fitInitialFilters = false;
-    fitResults();
+    const area = window.MCHOrganisationModel.readArea(filterState.area);
+    if (area) {
+      const [west, south, east, north] = area;
+      map.fitBounds([[west, south], [east, north]], { duration: 0, maxZoom: 18 });
+    } else fitResults();
   }
   if (organisation && (!linkedOrganisationResolved || wasOpen)) {
     const firstOpen = !linkedOrganisationResolved;
@@ -975,6 +991,22 @@ function clearAllFilters() {
   if (map) fitResults();
 }
 $('clearMapFilters')?.addEventListener('click', clearAllFilters);
+
+$('searchMapArea')?.addEventListener('click', () => {
+  if (!map) return;
+  const area = window.MCHOrganisationModel.areaFromBounds(map.getBounds());
+  if (!area) return;
+  fitInitialFilters = false;
+  filterState.area = area;
+  filter();
+});
+for (const id of ['clearMapArea', 'clearDirectoryArea']) {
+  $(id)?.addEventListener('click', () => {
+    filterState.area = '';
+    filter();
+    ($('searchMapArea') || $('search'))?.focus({ preventScroll: true });
+  });
+}
 
 if ($('legendTcl')) {
   $('legendTcl').addEventListener('click', () => {
