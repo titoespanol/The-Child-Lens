@@ -1122,8 +1122,14 @@ if ($('fitMap')) $('fitMap').addEventListener('click', fitResults);
 
 restoreFilterControls();
 syncViewLinks(window.MCHOrganisationModel.toSearch(filterState));
-if ($('map')) initMap();
-init();
+if ($('map')) {
+  // The shared headers affect the map height. Start with their final layout so
+  // MapLibre clamps the restored camera against the actual viewport.
+  document.addEventListener('DOMContentLoaded', () => {
+    initMap();
+    init();
+  }, { once: true });
+} else init();
 
 // Open the existing review submission form from the profile affiliation search.
 if (new URLSearchParams(location.search).get('suggest') === 'organisation') {
