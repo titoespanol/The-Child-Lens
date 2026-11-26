@@ -264,6 +264,7 @@ function popup(org) {
   appendProfileLink(links, org);
   const directoryLink = el('a', 'text-link', 'Open in directory');
   directoryLink.href = ecosystemUrl('directory', window.MCHOrganisationModel.toSearch(filterState), org.id);
+  directoryLink.dataset.rememberMap = '';
   links.append(directoryLink);
   for (const [label, url] of [['Website ↗', org.website], ['LinkedIn ↗', org.linkedin_url], ['Public source ↗', org.sourceUrl]]) {
     const link = externalLink(label, url);
@@ -297,7 +298,7 @@ function clearMapSelection() {
 }
 // Clicks follow a completed tap, so dragging/panning does not dismiss the card.
 document.addEventListener('click', dismissOrganisationCard);
-function show(org, scrollCard = true, keyboard = false, returnFocus) {
+function show(org, scrollCard = true, keyboard = false, returnFocus, preserveCamera = false) {
   if (!map || !located(org)) return;
 
   if (activePopup) { activePopup.remove(); activePopup = null; }
@@ -312,6 +313,7 @@ function show(org, scrollCard = true, keyboard = false, returnFocus) {
     window.MCHMapSheet.open(org, popup(org), {
       focus: keyboard,
       resize: height => {
+        if (preserveCamera) return;
         // Offset the centre into the visible area, without changing persistent map padding.
         map.easeTo({ center: [org.lng, org.lat], offset: [0, (76 - height) / 2],
           ...(firstFrame ? { zoom } : {}),
@@ -329,7 +331,7 @@ function show(org, scrollCard = true, keyboard = false, returnFocus) {
   }
   window.MCHMapSheet?.close(false);
   selectedMapOrganisation = org; renderMapMarkers();
-  map.easeTo({ center: [org.lng, org.lat], zoom: Math.max(map.getZoom(), 10.5),
+  if (!preserveCamera) map.easeTo({ center: [org.lng, org.lat], zoom: Math.max(map.getZoom(), 10.5),
     duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 500, essential: false });
   activePopup = new maplibregl.Popup({ offset: 18, anchor: 'left', maxWidth: '340px', closeButton: true, closeOnClick: false })
     .setLngLat([org.lng, org.lat]).setDOMContent(popup(org)).addTo(map);
@@ -418,12 +420,17 @@ async function openCluster(button, properties, coordinates) {
   const list = $('mapClusterList');
   const status = $('mapClusterStatus');
   const zoom = $('mapClusterZoom');
+  const search = $('mapClusterSearch');
+  const searchField = $('mapClusterSearchField');
   const count = properties.count;
   title.textContent = `${count} organisations`;
   status.textContent = 'Loading organisations…';
   list.replaceChildren();
   zoom.hidden = true;
   zoom.onclick = null;
+  search.value = '';
+  search.oninput = null;
+  searchField.hidden = true;
   dismissOrganisationCard();
   dialog.onclose = () => {
     if (document.activeElement === document.body) {
@@ -439,7 +446,7 @@ async function openCluster(button, properties, coordinates) {
       : [properties.group];
     if (!dialog.open || request !== clusterRequest || properties.revision !== clusterRevision) return;
     const organisations = groups.flatMap(key => pointGroups.get(key) || []).sort((a, b) => a.name.localeCompare(b.name));
-    for (const org of organisations) {
+    const rows = organisations.map(org => {
       const row = el('li');
       const select = el('button', 'cluster-organisation');
       select.type = 'button';
@@ -452,8 +459,21 @@ async function openCluster(button, properties, coordinates) {
         show(org, true, true, button);
       });
       row.append(select);
-      list.append(row);
-    }
+      return { row, text: normalise([org.name, org.type, org.city, org.country].filter(Boolean).join(' ')) };
+    });
+    list.append(...rows.map(({ row }) => row));
+    searchField.hidden = rows.length < 10;
+    search.oninput = () => {
+      const words = normalise(search.value.trim()).split(/\s+/).filter(Boolean);
+      let matches = 0;
+      for (const { row, text } of rows) {
+        row.hidden = !words.every(word => text.includes(word));
+        if (!row.hidden) matches++;
+      }
+      list.scrollTop = 0;
+      status.textContent = !words.length ? '' : matches === 0 ? 'No organisations in this group match your search.'
+        : `${matches} of ${rows.length} organisations`;
+    };
     status.textContent = '';
     if (!properties.cluster) return;
     const level = await source.getClusterExpansionZoom(properties.cluster_id);
@@ -741,6 +761,36 @@ function addOptions(id, values) {
   else if (selected) select.value = selected;
 }
 
+const cameraKey = 'mch-map-camera';
+const restoreCameraKey = 'mch-map-return';
+
+function takeSavedCamera() {
+  try {
+    if (sessionStorage.getItem(restoreCameraKey) !== '1') return null;
+    sessionStorage.removeItem(restoreCameraKey);
+    const camera = JSON.parse(sessionStorage.getItem(cameraKey));
+    if (!camera || ![camera.lng, camera.lat, camera.zoom, camera.bearing, camera.pitch].every(Number.isFinite)) return null;
+    if (Math.abs(camera.lat) > 90 || camera.zoom < 0 || camera.zoom > 22 || camera.pitch < 0 || camera.pitch > 85) return null;
+    return { center: [camera.lng, camera.lat], zoom: camera.zoom, bearing: camera.bearing, pitch: camera.pitch };
+  } catch { return null; }
+}
+
+document.addEventListener('click', event => {
+  if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const link = event.target.closest('a[href]');
+  if (!link) return;
+  try {
+    if (map && link.matches('[data-ecosystem-view="directory"], [data-remember-map]')) {
+      const { lng, lat } = map.getCenter();
+      sessionStorage.setItem(cameraKey, JSON.stringify({
+        lng, lat, zoom: map.getZoom(), bearing: map.getBearing(), pitch: map.getPitch()
+      }));
+    } else if (document.body.classList.contains('directory-page') && link.matches('.ecosystem-switch [data-ecosystem-view="map"]')) {
+      sessionStorage.setItem(restoreCameraKey, '1');
+    }
+  } catch { /* The links also work with storage disabled. */ }
+}, { capture: true });
+
 function initMap() {
   if (!window.maplibregl) {
     if ($('mapFallback')) $('mapFallback').hidden = false;
@@ -752,7 +802,8 @@ function initMap() {
       container: 'map',
       style: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
       center: [-27, 37],
-      zoom: width > 0 && width < 840 ? Math.max(0, 1.7 + Math.log2(width / 840)) : 1.7
+      zoom: width > 0 && width < 840 ? Math.max(0, 1.7 + Math.log2(width / 840)) : 1.7,
+      ...savedCamera
     });
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
     map.on('load', async () => {
@@ -801,7 +852,8 @@ function initMap() {
 
 let linkedOrganisationResolved = false;
 const initialView = new URLSearchParams(location.search);
-let fitInitialFilters = !initialView.has('organisation') && window.MCHOrganisationModel.toSearch(filterState).size > 0;
+const savedCamera = $('map') ? takeSavedCamera() : null;
+let fitInitialFilters = !savedCamera && !initialView.has('organisation') && window.MCHOrganisationModel.toSearch(filterState).size > 0;
 
 function applyOrganisationData(data, source) {
   if (!Array.isArray(data) || !data.length) return false;
@@ -833,12 +885,12 @@ function applyOrganisationData(data, source) {
   }
   if (organisation && (!linkedOrganisationResolved || wasOpen)) {
     const firstOpen = !linkedOrganisationResolved;
-    if (firstOpen && !window.MCHOrganisationModel.toSearch(filterState).size) {
+    if (firstOpen && !savedCamera && !window.MCHOrganisationModel.toSearch(filterState).size) {
       if ($('search')) $('search').value = organisation.name;
       for (const id of ['type', 'country', 'focus', 'technology', 'stage']) if ($(id)) { if ($(id).multiple) [...$(id).options].forEach(option=>option.selected=false); else $(id).value=''; }
       filter(false);
     }
-    if (firstOpen) show(organisation, true);
+    if (firstOpen) show(organisation, true, false, null, Boolean(savedCamera));
     const card = $('card-' + linkedOrganisation);
     if (card) {
       card.open = true;

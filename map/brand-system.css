@@ -511,3 +511,10 @@ dialog.map-cluster-dialog{width:min(31rem,calc(100% - 24px));max-height:calc(100
   body.map-page>header.ecosystem-header nav,body.directory-page>header.ecosystem-header nav{grid-template-columns:minmax(0,2.25fr) minmax(0,1fr) minmax(0,.75fr)}
   body>header.ecosystem-header .ecosystem-switch a{min-width:0;padding:0 5px;font-size:13px}
 }
+
+.map-cluster-search{margin:12px 0 8px}
+.map-cluster-search label{display:block;margin-bottom:5px;font-weight:600}
+.map-cluster-search input{width:100%;min-height:44px;font-size:16px}
+dialog.map-cluster-dialog[open]:has(.map-cluster-search:not([hidden])){display:flex;flex-direction:column;overflow:hidden}
+.map-cluster-dialog #mapClusterZoom:not([hidden]){flex-shrink:0;align-self:flex-start}
+.map-cluster-dialog #mapClusterList{overflow:auto;overscroll-behavior:contain}
