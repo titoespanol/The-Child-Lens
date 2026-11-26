@@ -487,3 +487,27 @@ body.child-lens.directory-page .directory-layout{background-image:linear-gradien
   body>header.ecosystem-header nav>a,body>header.ecosystem-header nav>button{border-radius:999px}
   body>header.ecosystem-header .nav-more>summary{list-style:none}
 }
+
+/* Map and directory navigation, shared across both views. */
+.ecosystem-switch{display:inline-flex;align-items:center;gap:2px;padding:2px;border:1px solid #d1cdc3;border-radius:999px;background:#f9f6f0}
+body>header.ecosystem-header .ecosystem-switch a{display:flex;flex:1;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:999px;color:#051d23;font-size:14px;font-weight:600;line-height:1.15}
+body>header.ecosystem-header .ecosystem-switch a[aria-current="page"]{background:#051d23;color:#fff}
+.ecosystem-switch a:focus-visible,.map-cluster:focus-visible,.cluster-organisation:focus-visible{outline:3px solid #409DBF;outline-offset:2px}
+.map-pin::before{content:"";position:absolute;inset:-14px}
+.map-cluster{width:44px;height:44px;padding:0;display:grid;place-items:center;border:2px solid #fff;border-radius:50%;background:#051d23;color:#fff;font-size:14px;font-weight:700;box-shadow:0 2px 6px #051d2355;cursor:pointer}
+.map-cluster:hover{background:#164b5a}
+.map-cluster-key{flex-basis:100%;margin:0 0 4px;font-size:13px}
+dialog.map-cluster-dialog{width:min(31rem,calc(100% - 24px));max-height:calc(100dvh - 32px);padding:20px;overscroll-behavior:contain}
+.map-cluster-dialog .modal-header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.map-cluster-dialog h2{margin:0;font-size:clamp(20px,5vw,28px)}
+.map-cluster-dialog button{min-height:44px}
+#mapClusterStatus:empty{margin:0}
+#mapClusterList{list-style:none;padding:0;margin:14px 0 0}
+#mapClusterList li+li{border-top:1px solid var(--border-subtle)}
+.cluster-organisation{display:grid;gap:3px;width:100%;padding:10px 8px;background:none;border:0;color:#051d23;text-align:left;cursor:pointer;font:inherit}
+.cluster-organisation:hover{background:#f9f6f0}
+.cluster-organisation span{font-size:13px}
+@media(max-width:840px){
+  body.map-page>header.ecosystem-header nav,body.directory-page>header.ecosystem-header nav{grid-template-columns:minmax(0,2.25fr) minmax(0,1fr) minmax(0,.75fr)}
+  body>header.ecosystem-header .ecosystem-switch a{min-width:0;padding:0 5px;font-size:13px}
+}

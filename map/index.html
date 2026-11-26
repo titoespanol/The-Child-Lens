@@ -15,7 +15,7 @@
 <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
 <script defer src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 
-<script defer src="map-sheet.js?v=6"></script>
+<script defer src="map-sheet.js?v=7"></script>
 <script defer src="organisation-logos.js"></script>
 <script defer src="organisation-team.js?v=20261119-account-team"></script>
 <script defer src="/map/published-profiles.js"></script>
@@ -23,10 +23,10 @@
 <link rel="stylesheet" href="/map/measurement.css">
 <meta name="referrer" content="strict-origin">
 <script defer src="organisation-model.js"></script>
-<script defer src="app.js?v=20261126-profiles"></script>
+<script defer src="app.js?v=20261127-clusters"></script>
 <script defer src="filter-bar.js?v=20261119-directory-recovery"></script>
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="brand-system.css?v=20261119-directory-recovery"><script defer src="app-shell.js?v=20261119-view-filters"></script><link rel="canonical" href="https://thechildlens.com/map/">
+<link rel="stylesheet" href="brand-system.css?v=20261127-clusters"><script defer src="app-shell.js?v=20261119-view-filters"></script><link rel="canonical" href="https://thechildlens.com/map/">
 <meta property="og:type" content="website"><meta property="og:url" content="https://thechildlens.com/map/"><meta property="og:title" content="Children’s health innovation map | The Child Lens"><meta property="og:description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens."><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Children’s health innovation map | The Child Lens"><meta name="twitter:description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Children’s health innovation map | The Child Lens","description":"Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.","url":"https://thechildlens.com/map/","isPartOf":{"@type":"WebSite","name":"Mapping Children’s Health","url":"https://thechildlens.com/map/"},"publisher":{"@type":"Organization","name":"The Child Lens","url":"https://thechildlens.com/"}}</script>
 </head>
@@ -36,8 +36,10 @@
 <header>
   <a class="brand" href="./" aria-label="Mapping Children’s Health home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-name">Mapping<br><strong>Children’s Health</strong></span></a>
   <nav aria-label="Main navigation">
+    <div class="ecosystem-switch" role="group" aria-label="Explore by map or directory">
     <a href="./" data-ecosystem-view="map" aria-current="page">Map</a>
     <a href="directory.html" data-ecosystem-view="directory">Directory</a>
+    </div>
     <button type="button" id="authBtn" class="btn-secondary">My account</button>
     <a id="updatesBtn" href="/map/?updates=1" aria-haspopup="dialog">Get email updates</a>
     <button type="button" id="openSubmitModal" class="btn-suggest">Suggest</button>
@@ -58,6 +60,7 @@
     <!-- Map Colour Key / Legend -->
     <details class="map-legend" aria-label="Ecosystem map legend"><summary>Map key & filters</summary>
       <div class="legend-items">
+        <p class="map-cluster-key">Tap a numbered group to browse its organisations or zoom in.</p>
         <button type="button" class="legend-item" data-type="Children's hospital">
           <span class="legend-dot dot-hospital"></span> Hospital
         </button>
@@ -97,6 +100,15 @@
     </div>
   </main>
 </div>
+<dialog id="mapClusterDialog" class="tcl-modal map-cluster-dialog" aria-labelledby="mapClusterTitle">
+  <div class="modal-header">
+    <h2 id="mapClusterTitle"></h2>
+    <form method="dialog"><button class="btn-secondary" autofocus>Close</button></form>
+  </div>
+  <p id="mapClusterStatus" role="status"></p>
+  <button type="button" id="mapClusterZoom" class="btn-secondary" hidden>Zoom in on this group</button>
+  <ul id="mapClusterList"></ul>
+</dialog>
 <!-- In-app suggestions require membership; signed-out visitors can email the team. -->
 <dialog id="submitModal" class="tcl-modal" aria-labelledby="submitTitle">
   <div class="modal-header">

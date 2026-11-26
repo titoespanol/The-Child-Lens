@@ -12,7 +12,7 @@ const PUBLIC_ORGANISATION_FIELDS = window.MCHOrganisationModel.publicFields;
 const filterState = window.MCHOrganisationModel.fromSearch(location.search);
 
 const $ = id => document.getElementById(id);
-let all = [], shown = [], map = null, markers = [], activePopup = null, activeRelation = null;
+let all = [], shown = [], map = null, markers = new Map(), activePopup = null, activeRelation = null;
 let registry = { terms: new Map(), assignments: new Map(), links: new Map() };
 
 const el = (tag, cls, text) => {
@@ -262,6 +262,9 @@ function popup(org) {
 
   const links = el('div', 'popup-links');
   appendProfileLink(links, org);
+  const directoryLink = el('a', 'text-link', 'Open in directory');
+  directoryLink.href = ecosystemUrl('directory', window.MCHOrganisationModel.toSearch(filterState), org.id);
+  links.append(directoryLink);
   for (const [label, url] of [['Website ↗', org.website], ['LinkedIn ↗', org.linkedin_url], ['Public source ↗', org.sourceUrl]]) {
     const link = externalLink(label, url);
     if (link) links.append(link);
@@ -281,26 +284,26 @@ function popup(org) {
 let selectedMapOrganisation = null;
 function dismissOrganisationCard(event) {
   const target = event?.target;
-  if (target?.closest?.('.map-pin, .maplibregl-popup, .organisation-sheet, dialog, .nav-more, .map-link, #findTcl, #legendTcl')) return;
+  if (target?.closest?.('.map-pin, .map-cluster, .maplibregl-popup, .organisation-sheet, .ecosystem-switch, dialog, .nav-more, .map-link, #findTcl, #legendTcl')) return;
   window.MCHMapSheet?.close(false);
   if (activePopup) { activePopup.remove(); activePopup = null; }
-  selectedMapOrganisation = null; markSelectedOrganisation(null);
+  clearMapSelection();
+}
+function clearMapSelection() {
+  if (!selectedMapOrganisation) return;
+  selectedMapOrganisation = null;
+  renderMapMarkers();
+  syncViewLinks(window.MCHOrganisationModel.toSearch(filterState));
 }
 // Clicks follow a completed tap, so dragging/panning does not dismiss the card.
 document.addEventListener('click', dismissOrganisationCard);
-function markSelectedOrganisation(id) {
-  document.querySelectorAll('.map-pin').forEach(button => {
-    const selected = button.dataset.organisationId === String(id);
-    button.classList.toggle('is-selected', selected);
-    button.setAttribute('aria-pressed', String(selected));
-  });
-}
-function show(org, scrollCard = true, keyboard = false) {
+function show(org, scrollCard = true, keyboard = false, returnFocus) {
   if (!map || !located(org)) return;
 
   if (activePopup) { activePopup.remove(); activePopup = null; }
   selectedMapOrganisation = org;
-  markSelectedOrganisation(org.id);
+  renderMapMarkers();
+  syncViewLinks(window.MCHOrganisationModel.toSearch(filterState));
   if (window.MCHMapSheet && matchMedia('(max-width: 840px)').matches) {
     const currentZoom = map.getZoom();
     const nearby = map.getBounds().contains([org.lng, org.lat]);
@@ -317,22 +320,21 @@ function show(org, scrollCard = true, keyboard = false) {
         firstFrame = false;
       },
       close: restoreFocus => {
-        selectedMapOrganisation = null; markSelectedOrganisation(null);
-        if (restoreFocus) [...document.querySelectorAll('.map-pin')].find(button => button.dataset.organisationId === String(org.id))?.focus({ preventScroll: true });
+        clearMapSelection();
+        if (restoreFocus && returnFocus?.isConnected) returnFocus.focus({ preventScroll: true });
+        else if (restoreFocus) [...document.querySelectorAll('.map-pin')].find(button => button.dataset.organisationId === String(org.id))?.focus({ preventScroll: true });
       }
     });
     return;
   }
   window.MCHMapSheet?.close(false);
-  selectedMapOrganisation = org; markSelectedOrganisation(org.id);
-  map.easeTo({ center: [org.lng, org.lat], zoom: 10.5,
+  selectedMapOrganisation = org; renderMapMarkers();
+  map.easeTo({ center: [org.lng, org.lat], zoom: Math.max(map.getZoom(), 10.5),
     duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 500, essential: false });
   activePopup = new maplibregl.Popup({ offset: 18, anchor: 'left', maxWidth: '340px', closeButton: true, closeOnClick: false })
     .setLngLat([org.lng, org.lat]).setDOMContent(popup(org)).addTo(map);
-  activePopup.on('close', () => { selectedMapOrganisation = null; markSelectedOrganisation(null); });
+  activePopup.on('close', () => { clearMapSelection(); });
 
-  // The map page has no mobile view switch. The old setMobileView call
-  // raised a ReferenceError on narrow screens when a pin was clicked.
   if (innerWidth > 840 && scrollCard) {
     const cardNode = $('card-' + org.id);
     if (cardNode) {
@@ -349,9 +351,13 @@ function show(org, scrollCard = true, keyboard = false) {
   }
 }
 
+const clusterSourceId = 'organisation-points';
+let pointGroups = new Map();
+let clusterRevision = 0;
+let clusterSignature;
+let clusterRequest = 0;
+
 function updateMarkers() {
-  markers.forEach(marker => marker.remove());
-  markers = [];
   const pins = shown.filter(located);
   const fit = $('fitMap');
   if (fit) fit.hidden = fit.disabled = !map || !pins.length;
@@ -369,43 +375,151 @@ function updateMarkers() {
     $('mapFilterDirectory').hidden = count === pins.length;
   }
 
-  if (!map) return;
-  const sharedLocations = new Map();
+  const source = map?.getSource(clusterSourceId);
+  if (!source) return;
+  const groups = new Map();
   for (const org of pins) {
-    const key = `${org.lat.toFixed(6)},${org.lng.toFixed(6)}`;
-    const group = sharedLocations.get(key) || [];
-    group.push(org.id); sharedLocations.set(key, group);
+    const key = `${org.lng.toFixed(6)},${org.lat.toFixed(6)}`;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(org);
   }
-  for (const group of sharedLocations.values()) group.sort();
-  pins.forEach(org => {
-    const group = sharedLocations.get(`${org.lat.toFixed(6)},${org.lng.toFixed(6)}`);
-    const position = group.indexOf(org.id);
-    // Separate only the screen markers; the actual stored/shared coordinates stay unchanged.
-    const radius = Math.max(28, group.length * 48 / (2 * Math.PI));
-    const angle = position * 2 * Math.PI / group.length;
-    const offset = group.length === 1 ? [0, 0] : group.length === 2 ? [position === 0 ? -28 : 28, 0] :
-      [Math.round(Math.cos(angle) * radius), Math.round(Math.sin(angle) * radius)];
-    const typeClass =
-      (org.type || '').toLowerCase().includes('hospital') ? ' type-hospital' :
-      (org.type || '').toLowerCase().includes('startup') ? ' type-startup' :
-      (org.type || '').toLowerCase().includes('investor') ? ' type-investor' :
-      (org.type || '').toLowerCase().includes('hub') || (org.type || '').toLowerCase().includes('accelerator') ? ' type-hub' : '';
+  pointGroups = groups;
+  const signature = JSON.stringify([...groups].map(([key, rows]) => [key, rows.map(org => [org.id, org.name, org.type, org.city])]));
+  if (signature === clusterSignature) return;
+  clusterSignature = signature;
+  clusterRevision++;
+  if ($('mapClusterDialog').open) $('mapClusterDialog').close();
+  source.setData({ type: 'FeatureCollection', features: [...groups].map(([key, organisations]) => ({
+    type: 'Feature',
+    geometry: { type: 'Point', coordinates: key.split(',').map(Number) },
+    properties: { group: key, count: organisations.length, revision: clusterRevision }
+  })) });
+}
 
-    const button = el('button', 'map-pin' + (org.id === 'seed-1' ? ' tcl-pin' : typeClass));
-    button.type = 'button';
-    button.title = org.name;
-    button.dataset.organisationId = String(org.id);
-    button.addEventListener('click', event => {
-      window.MCHMeasure?.('map_pin_open');
-      show(org, true, event.detail === 0);
-    });
-    const marker = new maplibregl.Marker({ element: button, anchor: 'center', offset }).setLngLat([org.lng, org.lat]).addTo(map);
-    if (org.id === 'seed-1') button.parentElement?.style.setProperty('z-index', '20');
-    // MapLibre assigns its own generic label during construction; restore the organisation name afterwards.
-    button.setAttribute('aria-label', `Show ${org.name}${org.city ? ' in ' + org.city : ''} on map`);
-    markers.push(marker);
+function organisationPin(org) {
+  const type = (org.type || '').toLowerCase();
+  const category = ['hospital', 'startup', 'investor', 'hub'].find(value => type.includes(value))
+    || (type.includes('accelerator') ? 'hub' : '');
+  const button = el('button', 'map-pin' + (org.id === 'seed-1' ? ' tcl-pin' : category ? ' type-' + category : ''));
+  button.type = 'button';
+  button.title = org.name;
+  button.dataset.organisationId = String(org.id);
+  button.addEventListener('click', event => {
+    window.MCHMeasure?.('map_pin_open');
+    show(shown.find(row => row.id === org.id) || org, true, event.detail === 0);
   });
-  markSelectedOrganisation(selectedMapOrganisation?.id);
+  return button;
+}
+
+async function openCluster(button, properties, coordinates) {
+  const request = ++clusterRequest;
+  const dialog = $('mapClusterDialog');
+  const title = $('mapClusterTitle');
+  const list = $('mapClusterList');
+  const status = $('mapClusterStatus');
+  const zoom = $('mapClusterZoom');
+  const count = properties.count;
+  title.textContent = `${count} organisations`;
+  status.textContent = 'Loading organisations…';
+  list.replaceChildren();
+  zoom.hidden = true;
+  zoom.onclick = null;
+  dismissOrganisationCard();
+  dialog.onclose = () => {
+    if (document.activeElement === document.body) {
+      (button.isConnected ? button : $('mapRegion')).focus({ preventScroll: true });
+    }
+  };
+  dialog.showModal();
+
+  try {
+    const source = map.getSource(clusterSourceId);
+    const groups = properties.cluster
+      ? (await source.getClusterLeaves(properties.cluster_id, properties.point_count, 0)).map(leaf => leaf.properties.group)
+      : [properties.group];
+    if (!dialog.open || request !== clusterRequest || properties.revision !== clusterRevision) return;
+    const organisations = groups.flatMap(key => pointGroups.get(key) || []).sort((a, b) => a.name.localeCompare(b.name));
+    for (const org of organisations) {
+      const row = el('li');
+      const select = el('button', 'cluster-organisation');
+      select.type = 'button';
+      select.append(el('strong', '', org.name));
+      const detail = [org.type, org.city || org.country].filter(Boolean).join(' · ');
+      if (detail) select.append(el('span', '', detail));
+      select.addEventListener('click', () => {
+        dialog.close();
+        window.MCHMeasure?.('map_pin_open');
+        show(org, true, true, button);
+      });
+      row.append(select);
+      list.append(row);
+    }
+    status.textContent = '';
+    if (!properties.cluster) return;
+    const level = await source.getClusterExpansionZoom(properties.cluster_id);
+    if (!dialog.open || request !== clusterRequest || properties.revision !== clusterRevision) return;
+    zoom.hidden = false;
+    zoom.onclick = () => {
+      dialog.close();
+      $('mapRegion').focus({ preventScroll: true });
+      map.easeTo({ center: coordinates, zoom: level,
+        duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 450, essential: false });
+    };
+  } catch {
+    if (dialog.open && request === clusterRequest && !list.children.length) {
+      status.textContent = 'This group could not be loaded. Close it and try again.';
+    }
+  }
+}
+
+function renderMapMarkers() {
+  if (!map?.getSource(clusterSourceId)) return;
+  const visible = new Set();
+  const bounds = map.getBounds();
+  const features = map.querySourceFeatures(clusterSourceId);
+  for (const { geometry, properties } of features) {
+    if (properties.revision !== clusterRevision || !bounds.contains(geometry.coordinates)) continue;
+    const org = pointGroups.get(properties.group)?.[0];
+    if (properties.count === 1 && org?.id === selectedMapOrganisation?.id) continue;
+    const key = properties.cluster ? 'cluster:' + properties.cluster_id : 'group:' + properties.group;
+    renderMarker(key, geometry.coordinates, properties, org);
+  }
+  if (selectedMapOrganisation) {
+    const org = selectedMapOrganisation;
+    renderMarker('selected:' + org.id, [org.lng, org.lat], { count: 1 }, org);
+  }
+  for (const [key, marker] of markers) {
+    if (visible.has(key)) continue;
+    const focused = marker.getElement() === document.activeElement;
+    marker.remove();
+    markers.delete(key);
+    if (focused) {
+      const id = selectedMapOrganisation?.id;
+      (markers.get(clusterRevision + ':selected:' + id)?.getElement() || $('mapRegion')).focus({ preventScroll: true });
+    }
+  }
+
+  function renderMarker(key, coordinates, properties, org) {
+    key = clusterRevision + ':' + key;
+    if (visible.has(key)) return;
+    visible.add(key);
+    if (markers.has(key)) return;
+    const group = properties.count > 1;
+    if (!group && !org) return;
+    const button = group ? el('button', 'map-cluster', String(properties.count)) : organisationPin(org);
+    if (group) {
+      button.type = 'button';
+      button.setAttribute('aria-haspopup', 'dialog');
+      button.addEventListener('click', () => openCluster(button, properties, coordinates));
+    }
+    const marker = new maplibregl.Marker({ element: button }).setLngLat(coordinates).addTo(map);
+    button.setAttribute('aria-label', group ? `Browse ${properties.count} organisations in this area`
+      : `Show ${org.name}${org.city ? ' in ' + org.city : ''} on map`);
+    if (group) button.removeAttribute('aria-pressed');
+    else button.setAttribute('aria-pressed', String(org.id === selectedMapOrganisation?.id));
+    if (!group && org.id === selectedMapOrganisation?.id) button.classList.add('is-selected');
+    markers.set(key, marker);
+  }
 }
 
 function fitResults() {
@@ -530,7 +644,7 @@ function render(preserveExpanded = false) {
         links.append(button);
       } else {
         const mapLink = el('a', 'text-link', 'Show on map');
-        mapLink.href = 'index.html?organisation=' + encodeURIComponent(org.id);
+        mapLink.href = ecosystemUrl('map', window.MCHOrganisationModel.toSearch(filterState), org.id);
         links.append(mapLink);
       }
     }
@@ -550,13 +664,19 @@ function render(preserveExpanded = false) {
   updateMarkers();
 }
 
-function syncViewLinks(query) {
+function ecosystemUrl(view, query, organisation) {
   const onMainSite = ['thechildlens.com', 'www.thechildlens.com'].includes(location.hostname);
   const mapPath = onMainSite ? '/map/' : './';
   const directoryPath = onMainSite ? '/directory/' : 'directory.html';
-  const suffix = query.size ? '?' + query.toString() : '';
+  const params = new URLSearchParams(query);
+  if (organisation) params.set('organisation', organisation);
+  return (view === 'map' ? mapPath : directoryPath) + (params.size ? '?' + params : '');
+}
+
+function syncViewLinks(query) {
+  const organisation = selectedMapOrganisation?.id || new URLSearchParams(location.search).get('organisation');
   for (const link of document.querySelectorAll('a[data-ecosystem-view]')) {
-    link.href = (link.dataset.ecosystemView === 'map' ? mapPath : directoryPath) + suffix;
+    link.href = ecosystemUrl(link.dataset.ecosystemView, query, organisation);
   }
 }
 
@@ -627,14 +747,25 @@ function initMap() {
     return;
   }
   try {
+    const width = $('map').clientWidth;
     map = new maplibregl.Map({
       container: 'map',
       style: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
       center: [-27, 37],
-      zoom: 1.7
+      zoom: width > 0 && width < 840 ? Math.max(0, 1.7 + Math.log2(width / 840)) : 1.7
     });
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
     map.on('load', async () => {
+      map.addSource(clusterSourceId, {
+        type: 'geojson',
+        data: { type: 'FeatureCollection', features: [] },
+        cluster: true,
+        clusterRadius: 52,
+        clusterMaxZoom: 16,
+        clusterProperties: { count: ['+', ['get', 'count']], revision: ['max', ['get', 'revision']] }
+      });
+      map.addLayer({ id: clusterSourceId, source: clusterSourceId, type: 'circle', paint: { 'circle-opacity': 0 } });
+      map.on('render', renderMapMarkers);
       updateMarkers();
       const background = map.getStyle()?.layers?.find(layer => layer.type === 'background');
       if (!background) return;
@@ -669,6 +800,8 @@ function initMap() {
 }
 
 let linkedOrganisationResolved = false;
+const initialView = new URLSearchParams(location.search);
+let fitInitialFilters = !initialView.has('organisation') && window.MCHOrganisationModel.toSearch(filterState).size > 0;
 
 function applyOrganisationData(data, source) {
   if (!Array.isArray(data) || !data.length) return false;
@@ -694,14 +827,18 @@ function applyOrganisationData(data, source) {
   const wasOpen = linkedOrganisation && $('card-' + linkedOrganisation)?.open;
   const organisation = linkedOrganisation && all.find(org => String(org.id) === linkedOrganisation);
   filter(false);
+  if (map && fitInitialFilters && shown.some(located)) {
+    fitInitialFilters = false;
+    fitResults();
+  }
   if (organisation && (!linkedOrganisationResolved || wasOpen)) {
     const firstOpen = !linkedOrganisationResolved;
-    if (firstOpen) {
+    if (firstOpen && !window.MCHOrganisationModel.toSearch(filterState).size) {
       if ($('search')) $('search').value = organisation.name;
       for (const id of ['type', 'country', 'focus', 'technology', 'stage']) if ($(id)) { if ($(id).multiple) [...$(id).options].forEach(option=>option.selected=false); else $(id).value=''; }
       filter(false);
-      show(organisation, true);
     }
+    if (firstOpen) show(organisation, true);
     const card = $('card-' + linkedOrganisation);
     if (card) {
       card.open = true;
