@@ -20,3 +20,9 @@ Supabase Auth allows both `https://thechildlens.com/map/` and the older `https:/
 The static snapshot duplicates published assets and requires manual synchronization on future map releases. A longer-term setup could put the whole site behind a host that supports a `/map/*` reverse proxy to the separately deployed app, while preserving one public domain. That would need Tito's domain and hosting changes. If Tito provides the original Next.js source, future navigation edits belong there so regenerated output does not overwrite these patches.
 
 Release checklist: a map release is complete only after the snapshot in this repository is synchronized and the deployed `https://thechildlens.com/map/` is verified. Checking the Vercel URL alone does not verify the main website.
+
+### Organisation profiles and measurement
+
+After updating the published organisation snapshot, run `node scripts/build-map-profiles.mjs` from this website repository. Commit the profile pages, the published ID list, both directory pages and both sitemaps together. Live additions keep their existing query links until their static profiles have been published. When importing a new map build, retain the website integration in app.js, map-sheet.js, the public page heads and the cookie notice.
+
+The root sitemap is `https://thechildlens.com/sitemap.xml`. Submit it in the HTTPS URL-prefix Search Console property. The public GA4 measurement ID and Clarity project ID belong in `map/measurement.js`. Turn off enhanced measurement on the GA4 stream to keep collection limited to the events declared in that file. Use GA4 Realtime to confirm an opted-in pin open, profile visit and source click. Clarity runs on clean public profile URLs, which contain no account or submission forms.

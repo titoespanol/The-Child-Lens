@@ -1,0 +1,5 @@
+.measurement-choice:not([hidden]) { display:flex; align-items:center; flex-wrap:wrap; gap:.5rem; background:#fff8eb; color:#051d23; border:1px solid #051d23; padding:1rem; border-radius:1rem; }
+body > .measurement-choice { position:fixed; z-index:10000; bottom:max(.75rem,env(safe-area-inset-bottom)); left:.75rem; right:.75rem; margin:auto; width:fit-content; max-width:min(38rem,calc(100% - 1.5rem)); box-shadow:0 .25rem 1.5rem #051d2322; }
+.measurement-choice p { width:100%; margin:0; font:1rem/1.4 "Helvetica Neue",Arial,sans-serif; }
+.measurement-choice button { min-height:44px; border:1px solid; border-radius:2rem; padding:.5rem .9rem; background:#fff; color:#051d23; cursor:pointer; }
+.measurement-choice a { color:#174f63; }

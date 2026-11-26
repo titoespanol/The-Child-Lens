@@ -47,7 +47,7 @@ function appendRegistryDetails(parent, org) {
         row.relationship === 'part_of' ? 'Part of ' : 'Affiliated with ';
       if (isTaskforceMember) memberHeadingShown = true;
       const targetLabel = el(target ? 'a' : 'span', '', label);
-      if (target) targetLabel.href = 'directory.html?organisation=' + encodeURIComponent(target.id);
+      if (target) targetLabel.href = publicListingUrl(target);
       relation.append(el('span', 'registry-relation-kind', relationLabel), targetLabel);
     }
     if (relation.childNodes.length) parent.append(relation);
@@ -126,14 +126,27 @@ function externalLink(label, value) {
   const link = el('a', 'text-link', label.replace(' ↗',''));
   link.href = url;
   link.rel = 'noopener noreferrer';
+  if (label.startsWith('Website')) link.dataset.usage = 'website_open';
+  if (label.startsWith('Public source')) link.dataset.usage = 'source_open';
   return link;
 }
 
 function publicListingUrl(org) {
+  if (window.MCHPublishedProfiles?.has(org.id)) {
+    return new URL('/map/organisations/' + encodeURIComponent(org.id) + '/', location.origin).href;
+  }
   const mainSite = ['thechildlens.com', 'www.thechildlens.com'].includes(location.hostname);
   const url = new URL(mainSite ? 'https://thechildlens.com/directory/' : 'directory.html', document.baseURI);
   url.searchParams.set('organisation', org.id);
   return url.href;
+}
+
+function appendProfileLink(links, org) {
+  if (!window.MCHPublishedProfiles?.has(org.id)) return;
+  const link = el('a', 'text-link', 'View organisation profile');
+  link.href = publicListingUrl(org);
+  link.dataset.usage = 'profile_open';
+  links.append(link);
 }
 
 function suggestListingCorrection(org) {
@@ -178,6 +191,7 @@ function shareListing(org) {
       await navigator.clipboard.writeText(url);
       field.hidden = true;
       status.textContent = 'Link copied';
+      window.MCHMeasure?.('listing_link_copy');
     } catch {
       status.textContent = 'Copy the link below';
       field.hidden = false;
@@ -247,6 +261,7 @@ function popup(org) {
   if (pBtn) card.append(pBtn);
 
   const links = el('div', 'popup-links');
+  appendProfileLink(links, org);
   for (const [label, url] of [['Website ↗', org.website], ['LinkedIn ↗', org.linkedin_url], ['Public source ↗', org.sourceUrl]]) {
     const link = externalLink(label, url);
     if (link) links.append(link);
@@ -380,7 +395,10 @@ function updateMarkers() {
     button.type = 'button';
     button.title = org.name;
     button.dataset.organisationId = String(org.id);
-    button.addEventListener('click', event => show(org, true, event.detail === 0));
+    button.addEventListener('click', event => {
+      window.MCHMeasure?.('map_pin_open');
+      show(org, true, event.detail === 0);
+    });
     const marker = new maplibregl.Marker({ element: button, anchor: 'center', offset }).setLngLat([org.lng, org.lat]).addTo(map);
     if (org.id === 'seed-1') button.parentElement?.style.setProperty('z-index', '20');
     // MapLibre assigns its own generic label during construction; restore the organisation name afterwards.
@@ -495,6 +513,7 @@ function render(preserveExpanded = false) {
     if (pBtn) body.append(pBtn);
 
     const links = el('div', 'card-links');
+    appendProfileLink(links, org);
     for (const [label, url] of [['Website ↗', org.website], ['LinkedIn ↗', org.linkedin_url], ['Public source ↗', org.sourceUrl]]) {
       const link = externalLink(label, url);
       if (link) links.append(link);
