@@ -49,7 +49,11 @@ function render(org) {
   };
   const schema = { '@context': 'https://schema.org', '@type': 'WebPage', url, name: title,
     description, mainEntity: entity, citation: source, isPartOf: { '@id': site + '/#website' },
-    publisher: { '@id': site + '/#org' } };
+    publisher: { '@id': site + '/#org' },
+    breadcrumb: { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Organisation directory', item: site + '/directory/' },
+      { '@type': 'ListItem', position: 2, name: org.name, item: url }
+    ] } };
   const details = [
     ['Organisation type', org.type], ['Location', place], ['Stage', org.stage],
     ['Paediatric specialties', org.focus?.join(', ')], ['Technology', org.technology?.join(', ')],
@@ -74,7 +78,7 @@ ${marker}
 <script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script>
 </head><body class="organisation-profile">
 <a class="skip-link" href="#profile">Skip to organisation</a>
-<main class="policy-page" id="profile">
+<main class="policy-page" id="profile" tabindex="-1">
 <nav aria-label="Breadcrumb"><a href="/directory/">Organisation directory</a></nav>
 <h1>${escape(org.name)}</h1>
 <p>${escape(description)}</p>
