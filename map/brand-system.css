@@ -125,7 +125,6 @@ body>header nav .nav-more-actions :is(a,button){display:block;text-align:left;mi
   #authModal .account-actions>button{padding:8px 0;font-size:13px}
   #authModal .account-overview{gap:12px}
   .map-tools{max-width:calc(100% - 72px)}
-  body.map-page .map-tools #findTcl{display:none}
 }
 @media(max-width:360px){body>header nav>a,body>header nav>button,.nav-more>summary{font-size:12px;padding:11px 9px}}
 
@@ -541,10 +540,4 @@ dialog.map-cluster-dialog[open]:has(.map-cluster-search:not([hidden])){display:f
 @media(max-width:840px){
   body.map-page .maplibregl-ctrl-group button{width:44px;height:44px}
   .map-area-controls{max-width:calc(100% - 56px)}
-}
-
-body.map-page>header.ecosystem-header #findTcl{background:#f9f6f0;color:#051d23;border:1px solid #409DBF;font-weight:700}
-body.map-page>header.ecosystem-header #findTcl:hover{background:#e6f2f5}
-@media(max-width:840px){
-  body.map-page>header.ecosystem-header nav{grid-template-columns:minmax(0,2fr) minmax(0,1.25fr) minmax(0,.9fr) minmax(0,.6fr)}
 }

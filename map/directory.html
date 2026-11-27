@@ -15,14 +15,14 @@
 <script defer src="organisation-logos.js"></script>
 <script defer src="organisation-team.js?v=20261119-account-team"></script>
 <script defer src="/map/published-profiles.js"></script>
-<script defer src="/map/measurement.js?v=382528e69ac4"></script>
+<script defer src="/map/measurement.js?v=d21ece72ce7a"></script>
 <link rel="stylesheet" href="/map/measurement.css">
 <meta name="referrer" content="strict-origin">
-<script defer src="organisation-model.js?v=20261127-area-search"></script>
-<script defer src="app.js?v=20261128-region-results"></script>
+<script defer src="organisation-model.js?v=20261128-exact-cluster"></script>
+<script defer src="app.js?v=20261128-exact-cluster"></script>
 <script defer src="filter-bar.js?v=20261127-area-search"></script>
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="brand-system.css?v=20261128-region-results"><script defer src="app-shell.js?v=20261119-view-filters"></script><link rel="canonical" href="https://thechildlens.com/directory/">
+<link rel="stylesheet" href="brand-system.css?v=20261128-exact-cluster"><script defer src="app-shell.js?v=20261119-view-filters"></script><link rel="canonical" href="https://thechildlens.com/directory/">
 <meta property="og:type" content="website"><meta property="og:url" content="https://thechildlens.com/directory/"><meta property="og:title" content="Children’s health organisation directory | The Child Lens"><meta property="og:description" content="Find organisations working in children’s health by specialty, technology, country and organisation type. Explore public listings and their sources."><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Children’s health organisation directory | The Child Lens"><meta name="twitter:description" content="Find organisations working in children’s health by specialty, technology, country and organisation type. Explore public listings and their sources.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Children’s health organisation directory | The Child Lens","description":"Find organisations working in children’s health by specialty, technology, country and organisation type. Explore public listings and their sources.","url":"https://thechildlens.com/directory/","isPartOf":{"@type":"WebSite","name":"Mapping Children’s Health","url":"https://thechildlens.com/map/"},"publisher":{"@type":"Organization","name":"The Child Lens","url":"https://thechildlens.com/"}}</script>
 </head>
@@ -80,7 +80,7 @@
     </details>
 
     <div id="directoryAreaFilter" class="directory-area-filter" hidden>
-      <span>Filtered to the area you searched on the map</span>
+      <span id="directoryAreaLabel">Filtered to the area you searched on the map</span>
       <button id="clearDirectoryArea" class="btn-secondary" type="button">Clear area</button>
     </div>
 

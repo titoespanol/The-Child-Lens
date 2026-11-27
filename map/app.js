@@ -214,8 +214,9 @@ function viewPortfolioButton(org) {
 }
 
 function filterByPortfolio(investor) {
-  if (filterState.area) {
+  if (filterState.area || filterState.group) {
     filterState.area = '';
+    filterState.group = '';
     filter();
   }
   activeRelation = investor.name;
@@ -291,7 +292,7 @@ function popup(org) {
 let selectedMapOrganisation = null;
 function dismissOrganisationCard(event) {
   const target = event?.target;
-  if (target?.closest?.('.map-pin, .map-cluster, .maplibregl-popup, .organisation-sheet, .ecosystem-switch, dialog, .nav-more, .map-link, #findTcl, #legendTcl')) return;
+  if (target?.closest?.('.map-pin, .map-cluster, .maplibregl-popup, .organisation-sheet, .ecosystem-switch, dialog, .nav-more, .map-link, #legendTcl')) return;
   window.MCHMapSheet?.close(false);
   if (activePopup) { activePopup.remove(); activePopup = null; }
   clearMapSelection();
@@ -387,7 +388,6 @@ function updateMarkers() {
   const source = map?.getSource(clusterSourceId);
   if (!source) return;
   $('searchMapArea').disabled = !all.length;
-  $('findTcl').disabled = !all.some(org => org.id === 'seed-1' && located(org));
   const groups = new Map();
   for (const org of pins) {
     const key = `${org.lng.toFixed(6)},${org.lat.toFixed(6)}`;
@@ -462,11 +462,14 @@ async function zoomToCluster(button, properties, coordinates) {
     dismissOrganisationCard();
     previousClusterView = {
       camera: { center: map.getCenter(), zoom: map.getZoom(), bearing: map.getBearing(), pitch: map.getPitch() },
-      area: filterState.area
+      area: filterState.area,
+      group: filterState.group
     };
     $('restoreClusterView').hidden = false;
     if (document.activeElement === button) $('mapRegion').focus({ preventScroll: true });
-    animateClusterCamera(camera, { regionSearchZoom: camera.zoom });
+    const group = [...new Set(leaves.flatMap(leaf =>
+      (pointGroups.get(leaf.properties.group) || []).map(org => org.id)))].sort().join(',');
+    animateClusterCamera(camera, { regionResults: { zoom: camera.zoom, group, revision: clusterRevision } });
   } catch {
     if (request === clusterRequest && properties.revision === clusterRevision) {
       $('mapNote').textContent = 'This group could not be zoomed. Try selecting it again.';
@@ -487,10 +490,11 @@ $('restoreClusterView')?.addEventListener('click', event => {
   clusterRequest++;
   dismissOrganisationCard();
   map.stop();
-  const { camera, area } = previousClusterView;
+  const { camera, area, group } = previousClusterView;
   previousClusterView = undefined;
-  if (area !== filterState.area) {
+  if (area !== filterState.area || group !== filterState.group) {
     filterState.area = area;
+    filterState.group = group;
     filter();
   }
   animateClusterCamera(camera);
@@ -807,13 +811,19 @@ function filter(syncUrl = true) {
   const hasFilters = query.size > 0;
   syncViewLinks(query);
   if ($('clearMapFilters')) $('clearMapFilters').hidden = !hasFilters;
-  const area = Boolean(filterState.area);
+  const scope = filterState.group ? 'group' : filterState.area ? 'area' : '';
   if ($('mapAreaResults')) {
-    $('mapAreaResults').hidden = !area;
-    $('mapAreaCount').textContent = area ? (shown.length === 0 ? 'No organisations in this area.'
-      : `${shown.length} ${shown.length === 1 ? 'organisation' : 'organisations'} in this area.`) : '';
+    $('mapAreaResults').hidden = !scope;
+    $('mapAreaCount').textContent = scope ? (shown.length === 0 ? `No organisations in this ${scope}.`
+      : `${shown.length} ${shown.length === 1 ? 'organisation' : 'organisations'} in this ${scope}.`) : '';
+    $('clearMapArea').textContent = scope === 'group' ? 'Clear group' : 'Clear area';
   }
-  if ($('directoryAreaFilter')) $('directoryAreaFilter').hidden = !area;
+  if ($('directoryAreaFilter')) {
+    $('directoryAreaFilter').hidden = !scope;
+    $('directoryAreaLabel').textContent = scope === 'group' ? 'Filtered to the group you selected on the map'
+      : 'Filtered to the area you searched on the map';
+    $('clearDirectoryArea').textContent = scope === 'group' ? 'Clear group' : 'Clear area';
+  }
   if ($('filteredDirectory')) {
     $('filteredDirectory').hidden = !hasFilters;
     $('filteredDirectory').textContent = `View ${shown.length} ${window.MCHOrganisationModel.categoryLabel(type, shown.length)} in the directory`;
@@ -897,8 +907,12 @@ function initMap() {
       map.on('render', renderMapMarkers);
       map.on('movestart', () => { clusterRequest++; });
       map.on('moveend', event => {
-        const target = event.regionSearchZoom;
-        if (Number.isFinite(target) && Math.abs(map.getZoom() - target) < 0.02) searchCurrentMapArea();
+        const region = event.regionResults;
+        if (!region?.group || region.revision !== clusterRevision || Math.abs(map.getZoom() - region.zoom) >= 0.02) return;
+        fitInitialFilters = false;
+        filterState.area = '';
+        filterState.group = region.group;
+        filter();
       });
       updateMarkers();
       const background = map.getStyle()?.layers?.find(layer => layer.type === 'background');
@@ -1069,12 +1083,14 @@ function searchCurrentMapArea() {
   if (!area) return;
   fitInitialFilters = false;
   filterState.area = area;
+  filterState.group = '';
   filter();
 }
 $('searchMapArea')?.addEventListener('click', searchCurrentMapArea);
 for (const id of ['clearMapArea', 'clearDirectoryArea']) {
   $(id)?.addEventListener('click', () => {
     filterState.area = '';
+    filterState.group = '';
     filter();
     ($('searchMapArea') || $('search'))?.focus({ preventScroll: true });
   });
@@ -1214,17 +1230,6 @@ if ($('technology')) $('technology').addEventListener('change', () => filter());
 if ($('stage')) $('stage').addEventListener('change', () => filter());
 
 if ($('reset')) $('reset').addEventListener('click', clearAllFilters);
-
-if ($('findTcl')) {
-  $('findTcl').addEventListener('click', () => {
-    const tcl = all.find(org => org.id === 'seed-1');
-    if (tcl) {
-      const dock = document.querySelector('.map-discovery-dock');
-      dock?.querySelectorAll('details[open]').forEach(panel => { panel.open = false; });
-      show(tcl, true);
-    }
-  });
-}
 
 if ($('fitMap')) $('fitMap').addEventListener('click', fitResults);
 

@@ -6,7 +6,7 @@
   else root.MCHOrganisationModel = api;
 })(typeof window === 'object' ? window : globalThis, () => {
   const publicFields = Object.freeze(['id','name','logo_enabled','type','stage','city','country','lat','lng','website','sourceUrl','sourceType','verification','description','technology','focus','founding_year','founding_year_source_url']);
-  const filterKeys = Object.freeze(['q','type','country','focus','technology','stage','area']);
+  const filterKeys = Object.freeze(['q','type','country','focus','technology','stage','area','group']);
   const multiKeys = Object.freeze(['type','country','focus','technology','stage']);
   const normalise = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   function foundingLabel(org) {
@@ -36,6 +36,7 @@
     const params = new URLSearchParams(search);
     const values = Object.fromEntries(filterKeys.map(key => [key, multiKeys.includes(key) ? params.getAll(key).filter(Boolean) : params.get(key) || '']));
     if (!readArea(values.area)) values.area = '';
+    values.group = [...readGroup(values.group)].join(',');
     return values;
   }
   function toSearch(values) {
@@ -43,13 +44,19 @@
     for (const key of filterKeys) if (values[key]) for (const value of Array.isArray(values[key]) ? values[key] : [values[key]]) params.append(key, value.trim());
     return params;
   }
+  function readGroup(value) {
+    const ids = typeof value === 'string' ? value.split(',') : [];
+    return new Set(ids.filter(id => /^[a-z0-9][a-z0-9_-]*$/.test(id)));
+  }
   function filterRows(rows, values) {
     const q = normalise(values.q?.trim());
     const area = readArea(values.area);
+    const group = readGroup(values.group);
     const choices = key => Array.isArray(values[key]) ? values[key].filter(Boolean) : values[key] ? [values[key]] : [];
     const types=choices('type'),countries=choices('country'),focuses=choices('focus'),technologies=choices('technology'),stages=choices('stage');
     return rows.filter(org =>
       (!area || inArea(org, area)) &&
+      (!group.size || group.has(String(org.id))) &&
       (!types.length || types.includes(org.type) || (types.includes('hub') && ['Innovation hub','Accelerator'].includes(org.type))) &&
       (!countries.length || countries.includes(org.country)) &&
       (!focuses.length || (org.focus || []).some(value => focuses.includes(value))) &&
