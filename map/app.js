@@ -267,7 +267,9 @@ function popup(org) {
   const links = el('div', 'popup-links');
   appendProfileLink(links, org);
   const directoryLink = el('a', 'text-link', 'Open in directory');
-  directoryLink.href = ecosystemUrl('directory', window.MCHOrganisationModel.toSearch(filterState), org.id);
+  const listingFilters = shown.some(item => item.id === org.id)
+    ? window.MCHOrganisationModel.toSearch(filterState) : new URLSearchParams();
+  directoryLink.href = ecosystemUrl('directory', listingFilters, org.id);
   directoryLink.dataset.rememberMap = '';
   links.append(directoryLink);
   for (const [label, url] of [['Website ↗', org.website], ['LinkedIn ↗', org.linkedin_url], ['Public source ↗', org.sourceUrl]]) {
@@ -385,6 +387,7 @@ function updateMarkers() {
   const source = map?.getSource(clusterSourceId);
   if (!source) return;
   $('searchMapArea').disabled = !all.length;
+  $('findTcl').disabled = !all.some(org => org.id === 'seed-1' && located(org));
   const groups = new Map();
   for (const org of pins) {
     const key = `${org.lng.toFixed(6)},${org.lat.toFixed(6)}`;
@@ -443,7 +446,8 @@ async function zoomToCluster(button, properties, coordinates) {
     const viewport = map.getContainer().getBoundingClientRect();
     const compact = viewport.width <= 840;
     const controlsBottom = $('mapAreaControls').getBoundingClientRect().bottom - viewport.top;
-    const top = Math.min(viewport.height * 0.4, Math.max(118, controlsBottom + 26));
+    const resultsHeight = $('mapAreaResults').hidden ? 88 : 0;
+    const top = Math.min(viewport.height * 0.4, Math.max(118, controlsBottom + resultsHeight + 26));
     const padding = compact ? { top, bottom: 28, left: 24, right: 32 }
       : { top: 76, bottom: 30, left: 36, right: 36 };
     const currentZoom = map.getZoom();
@@ -456,10 +460,13 @@ async function zoomToCluster(button, properties, coordinates) {
     }
 
     dismissOrganisationCard();
-    previousClusterView = { center: map.getCenter(), zoom: map.getZoom(), bearing: map.getBearing(), pitch: map.getPitch() };
+    previousClusterView = {
+      camera: { center: map.getCenter(), zoom: map.getZoom(), bearing: map.getBearing(), pitch: map.getPitch() },
+      area: filterState.area
+    };
     $('restoreClusterView').hidden = false;
     if (document.activeElement === button) $('mapRegion').focus({ preventScroll: true });
-    animateClusterCamera(camera);
+    animateClusterCamera(camera, { regionSearchZoom: camera.zoom });
   } catch {
     if (request === clusterRequest && properties.revision === clusterRevision) {
       $('mapNote').textContent = 'This group could not be zoomed. Try selecting it again.';
@@ -467,20 +474,26 @@ async function zoomToCluster(button, properties, coordinates) {
   }
 }
 
-function animateClusterCamera(camera) {
+function animateClusterCamera(camera, eventData) {
   map.easeTo({
     ...camera,
     duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 420,
     essential: false
-  });
+  }, eventData);
 }
 
 $('restoreClusterView')?.addEventListener('click', event => {
   if (!map || !previousClusterView) return;
   clusterRequest++;
   dismissOrganisationCard();
-  animateClusterCamera(previousClusterView);
+  map.stop();
+  const { camera, area } = previousClusterView;
   previousClusterView = undefined;
+  if (area !== filterState.area) {
+    filterState.area = area;
+    filter();
+  }
+  animateClusterCamera(camera);
   $('mapRegion').focus({ preventScroll: true });
   event.currentTarget.hidden = true;
 });
@@ -541,12 +554,23 @@ function renderMapMarkers() {
   const visible = new Set();
   const bounds = map.getBounds();
   const features = map.querySourceFeatures(clusterSourceId);
+  const tcl = all.find(org => org.id === 'seed-1');
+  const tclCoordinates = tcl && located(tcl) ? [tcl.lng, tcl.lat] : null;
+  const tclPoint = tclCoordinates && bounds.contains(tclCoordinates) ? map.project(tclCoordinates) : null;
+  let raiseTclPin = false;
   for (const { geometry, properties } of features) {
     if (properties.revision !== clusterRevision || !bounds.contains(geometry.coordinates)) continue;
     const org = pointGroups.get(properties.group)?.[0];
-    if (properties.count === 1 && org?.id === selectedMapOrganisation?.id) continue;
+    if (properties.count === 1 && (org?.id === selectedMapOrganisation?.id || (tclPoint && org?.id === tcl.id))) continue;
+    if (tclPoint && properties.count > 1) {
+      const { x, y } = map.project(geometry.coordinates);
+      if (Math.hypot(tclPoint.x - x, tclPoint.y - y) < 42) raiseTclPin = true;
+    }
     const key = properties.cluster ? 'cluster:' + properties.cluster_id : 'group:' + properties.group;
     renderMarker(key, geometry.coordinates, properties, org);
+  }
+  if (tclPoint && selectedMapOrganisation?.id !== tcl.id) {
+    renderMarker(raiseTclPin ? 'featured:raised' : 'featured', tclCoordinates, { count: 1 }, tcl, raiseTclPin ? [0, -40] : [0, 0]);
   }
   if (selectedMapOrganisation) {
     const org = selectedMapOrganisation;
@@ -563,7 +587,7 @@ function renderMapMarkers() {
     }
   }
 
-  function renderMarker(key, coordinates, properties, org) {
+  function renderMarker(key, coordinates, properties, org, offset) {
     key = clusterRevision + ':' + key;
     if (visible.has(key)) return;
     visible.add(key);
@@ -579,7 +603,7 @@ function renderMapMarkers() {
       }
       button.addEventListener('click', () => zoomToCluster(button, properties, coordinates));
     }
-    const marker = new maplibregl.Marker({ element: button }).setLngLat(coordinates).addTo(map);
+    const marker = new maplibregl.Marker({ element: button, offset }).setLngLat(coordinates).addTo(map);
     button.setAttribute('aria-label', group ? properties.cluster ? `Zoom to ${properties.count} organisations` : `Choose from ${properties.count} organisations at this location`
       : `Show ${org.name}${org.city ? ' in ' + org.city : ''} on map`);
     if (group) button.removeAttribute('aria-pressed');
@@ -872,6 +896,10 @@ function initMap() {
       map.addLayer({ id: clusterSourceId, source: clusterSourceId, type: 'circle', paint: { 'circle-opacity': 0 } });
       map.on('render', renderMapMarkers);
       map.on('movestart', () => { clusterRequest++; });
+      map.on('moveend', event => {
+        const target = event.regionSearchZoom;
+        if (Number.isFinite(target) && Math.abs(map.getZoom() - target) < 0.02) searchCurrentMapArea();
+      });
       updateMarkers();
       const background = map.getStyle()?.layers?.find(layer => layer.type === 'background');
       if (!background) return;
@@ -1035,14 +1063,15 @@ function clearAllFilters() {
 }
 $('clearMapFilters')?.addEventListener('click', clearAllFilters);
 
-$('searchMapArea')?.addEventListener('click', () => {
+function searchCurrentMapArea() {
   if (!map) return;
   const area = window.MCHOrganisationModel.areaFromBounds(map.getBounds());
   if (!area) return;
   fitInitialFilters = false;
   filterState.area = area;
   filter();
-});
+}
+$('searchMapArea')?.addEventListener('click', searchCurrentMapArea);
 for (const id of ['clearMapArea', 'clearDirectoryArea']) {
   $(id)?.addEventListener('click', () => {
     filterState.area = '';
@@ -1189,7 +1218,11 @@ if ($('reset')) $('reset').addEventListener('click', clearAllFilters);
 if ($('findTcl')) {
   $('findTcl').addEventListener('click', () => {
     const tcl = all.find(org => org.id === 'seed-1');
-    if (tcl) show(tcl, true);
+    if (tcl) {
+      const dock = document.querySelector('.map-discovery-dock');
+      dock?.querySelectorAll('details[open]').forEach(panel => { panel.open = false; });
+      show(tcl, true);
+    }
   });
 }
 

@@ -542,3 +542,9 @@ dialog.map-cluster-dialog[open]:has(.map-cluster-search:not([hidden])){display:f
   body.map-page .maplibregl-ctrl-group button{width:44px;height:44px}
   .map-area-controls{max-width:calc(100% - 56px)}
 }
+
+body.map-page>header.ecosystem-header #findTcl{background:#f9f6f0;color:#051d23;border:1px solid #409DBF;font-weight:700}
+body.map-page>header.ecosystem-header #findTcl:hover{background:#e6f2f5}
+@media(max-width:840px){
+  body.map-page>header.ecosystem-header nav{grid-template-columns:minmax(0,2fr) minmax(0,1.25fr) minmax(0,.9fr) minmax(0,.6fr)}
+}

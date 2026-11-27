@@ -23,10 +23,10 @@
 <link rel="stylesheet" href="/map/measurement.css">
 <meta name="referrer" content="strict-origin">
 <script defer src="organisation-model.js?v=20261127-area-search"></script>
-<script defer src="app.js?v=20261128-group-zoom"></script>
+<script defer src="app.js?v=20261128-region-results"></script>
 <script defer src="filter-bar.js?v=20261127-area-search"></script>
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="brand-system.css?v=20261128-group-zoom"><script defer src="app-shell.js?v=20261119-view-filters"></script><link rel="canonical" href="https://thechildlens.com/map/">
+<link rel="stylesheet" href="brand-system.css?v=20261128-region-results"><script defer src="app-shell.js?v=20261119-view-filters"></script><link rel="canonical" href="https://thechildlens.com/map/">
 <meta property="og:type" content="website"><meta property="og:url" content="https://thechildlens.com/map/"><meta property="og:title" content="Children’s health innovation map | The Child Lens"><meta property="og:description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens."><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Children’s health innovation map | The Child Lens"><meta name="twitter:description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Children’s health innovation map | The Child Lens","description":"Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.","url":"https://thechildlens.com/map/","isPartOf":{"@type":"WebSite","name":"Mapping Children’s Health","url":"https://thechildlens.com/map/"},"publisher":{"@type":"Organization","name":"The Child Lens","url":"https://thechildlens.com/"}}</script>
 </head>
@@ -40,6 +40,7 @@
     <a href="./" data-ecosystem-view="map" aria-current="page">Map</a>
     <a href="directory.html" data-ecosystem-view="directory">Directory</a>
     </div>
+    <button type="button" id="findTcl" class="btn-secondary" disabled>The Child Lens</button>
     <button type="button" id="authBtn" class="btn-secondary">My account</button>
     <a id="updatesBtn" href="/map/?updates=1" aria-haspopup="dialog">Get email updates</a>
     <button type="button" id="openSubmitModal" class="btn-suggest">Suggest</button>
