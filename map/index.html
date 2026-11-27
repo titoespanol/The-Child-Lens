@@ -23,10 +23,10 @@
 <link rel="stylesheet" href="/map/measurement.css">
 <meta name="referrer" content="strict-origin">
 <script defer src="organisation-model.js?v=20261127-area-search"></script>
-<script defer src="app.js?v=20261127-area-search"></script>
+<script defer src="app.js?v=20261128-group-zoom"></script>
 <script defer src="filter-bar.js?v=20261127-area-search"></script>
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="brand-system.css?v=20261127-area-search"><script defer src="app-shell.js?v=20261119-view-filters"></script><link rel="canonical" href="https://thechildlens.com/map/">
+<link rel="stylesheet" href="brand-system.css?v=20261128-group-zoom"><script defer src="app-shell.js?v=20261119-view-filters"></script><link rel="canonical" href="https://thechildlens.com/map/">
 <meta property="og:type" content="website"><meta property="og:url" content="https://thechildlens.com/map/"><meta property="og:title" content="Children’s health innovation map | The Child Lens"><meta property="og:description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens."><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Children’s health innovation map | The Child Lens"><meta name="twitter:description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Children’s health innovation map | The Child Lens","description":"Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.","url":"https://thechildlens.com/map/","isPartOf":{"@type":"WebSite","name":"Mapping Children’s Health","url":"https://thechildlens.com/map/"},"publisher":{"@type":"Organization","name":"The Child Lens","url":"https://thechildlens.com/"}}</script>
 </head>
@@ -52,7 +52,10 @@
     <div id="map"></div>
 
     <section id="mapAreaControls" class="map-area-controls" aria-label="Map area search">
-      <button id="searchMapArea" class="btn-secondary" type="button" disabled>Search this area</button>
+      <div class="map-area-actions">
+        <button id="searchMapArea" class="btn-secondary" type="button" disabled>Search this area</button>
+        <button id="restoreClusterView" class="btn-secondary" type="button" hidden>Zoom back</button>
+      </div>
       <div id="mapAreaResults" class="map-area-results" hidden>
         <p id="mapAreaCount" role="status"></p>
         <a href="directory.html" data-ecosystem-view="directory">Open results in Directory</a>
@@ -69,7 +72,7 @@
     <!-- Map Colour Key / Legend -->
     <details class="map-legend" aria-label="Ecosystem map legend"><summary>Map key & filters</summary>
       <div class="legend-items">
-        <p class="map-cluster-key">Tap a numbered group to browse its organisations or zoom in.</p>
+        <p class="map-cluster-key">Select a numbered group to zoom in. Outlined groups share a location. Select one to choose an organisation.</p>
         <button type="button" class="legend-item" data-type="Children's hospital">
           <span class="legend-dot dot-hospital"></span> Hospital
         </button>
@@ -119,7 +122,6 @@
     <input type="search" id="mapClusterSearch" placeholder="Name, place or organisation type" autocomplete="off">
   </div>
   <p id="mapClusterStatus" role="status"></p>
-  <button type="button" id="mapClusterZoom" class="btn-secondary" hidden>Zoom in on this group</button>
   <ul id="mapClusterList"></ul>
 </dialog>
 <!-- In-app suggestions require membership; signed-out visitors can email the team. -->

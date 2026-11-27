@@ -516,7 +516,6 @@ dialog.map-cluster-dialog{width:min(31rem,calc(100% - 24px));max-height:calc(100
 .map-cluster-search label{display:block;margin-bottom:5px;font-weight:600}
 .map-cluster-search input{width:100%;min-height:44px;font-size:16px}
 dialog.map-cluster-dialog[open]:has(.map-cluster-search:not([hidden])){display:flex;flex-direction:column;overflow:hidden}
-.map-cluster-dialog #mapClusterZoom:not([hidden]){flex-shrink:0;align-self:flex-start}
 .map-cluster-dialog #mapClusterList{overflow:auto;overscroll-behavior:contain}
 
 .map-area-controls{grid-column:1/-1;justify-self:start;max-width:100%;pointer-events:auto}
@@ -532,4 +531,14 @@ dialog.map-cluster-dialog[open]:has(.map-cluster-search:not([hidden])){display:f
 @media(max-width:840px){
   body.map-page.has-discovery-filters .maplibregl-ctrl-top-right{top:70px}
   .map-area-controls{max-width:calc(100% - 48px)}
+}
+
+.map-area-actions{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+#restoreClusterView:not([hidden]){min-height:44px;border-radius:999px;background:#f9f6f0;color:#051d23}
+.map-cluster.map-cluster-shared{background:#f9f6f0;color:#051d23;border-color:#051d23}
+.map-cluster.map-cluster-shared:hover{background:#fff}
+
+@media(max-width:840px){
+  body.map-page .maplibregl-ctrl-group button{width:44px;height:44px}
+  .map-area-controls{max-width:calc(100% - 56px)}
 }

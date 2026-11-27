@@ -304,6 +304,7 @@ function clearMapSelection() {
 document.addEventListener('click', dismissOrganisationCard);
 function show(org, scrollCard = true, keyboard = false, returnFocus, preserveCamera = false) {
   if (!map || !located(org)) return;
+  clusterRequest++;
 
   if (activePopup) { activePopup.remove(); activePopup = null; }
   selectedMapOrganisation = org;
@@ -418,83 +419,121 @@ function organisationPin(org) {
   return button;
 }
 
-async function openCluster(button, properties, coordinates) {
+let previousClusterView;
+
+async function zoomToCluster(button, properties, coordinates) {
+  if (!properties.cluster) {
+    openSharedLocations(button, pointGroups.get(properties.group) || []);
+    return;
+  }
+
   const request = ++clusterRequest;
+  const source = map.getSource(clusterSourceId);
+  try {
+    const leaves = await source.getClusterLeaves(properties.cluster_id, properties.point_count, 0);
+    if (request !== clusterRequest || properties.revision !== clusterRevision || !button.isConnected || !leaves.length) return;
+
+    const [anchor] = coordinates;
+    const bounds = new maplibregl.LngLatBounds();
+    for (const { geometry } of leaves) {
+      const [lng, lat] = geometry.coordinates;
+      // Keep neighbouring points together where the map wraps at the date line.
+      bounds.extend([lng + 360 * Math.round((anchor - lng) / 360), lat]);
+    }
+    const viewport = map.getContainer().getBoundingClientRect();
+    const compact = viewport.width <= 840;
+    const controlsBottom = $('mapAreaControls').getBoundingClientRect().bottom - viewport.top;
+    const top = Math.min(viewport.height * 0.4, Math.max(118, controlsBottom + 26));
+    const padding = compact ? { top, bottom: 28, left: 24, right: 32 }
+      : { top: 76, bottom: 30, left: 36, right: 36 };
+    const currentZoom = map.getZoom();
+    const fitted = map.cameraForBounds(bounds, { padding, maxZoom: 17 });
+    let camera = fitted;
+    if (!fitted || fitted.zoom <= currentZoom + 0.15) {
+      const expansion = await source.getClusterExpansionZoom(properties.cluster_id);
+      if (request !== clusterRequest || properties.revision !== clusterRevision || !button.isConnected) return;
+      camera = { center: coordinates, zoom: Math.min(map.getMaxZoom(), Math.max(expansion, currentZoom + 0.5)) };
+    }
+
+    dismissOrganisationCard();
+    previousClusterView = { center: map.getCenter(), zoom: map.getZoom(), bearing: map.getBearing(), pitch: map.getPitch() };
+    $('restoreClusterView').hidden = false;
+    if (document.activeElement === button) $('mapRegion').focus({ preventScroll: true });
+    animateClusterCamera(camera);
+  } catch {
+    if (request === clusterRequest && properties.revision === clusterRevision) {
+      $('mapNote').textContent = 'This group could not be zoomed. Try selecting it again.';
+    }
+  }
+}
+
+function animateClusterCamera(camera) {
+  map.easeTo({
+    ...camera,
+    duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 420,
+    essential: false
+  });
+}
+
+$('restoreClusterView')?.addEventListener('click', event => {
+  if (!map || !previousClusterView) return;
+  clusterRequest++;
+  dismissOrganisationCard();
+  animateClusterCamera(previousClusterView);
+  previousClusterView = undefined;
+  $('mapRegion').focus({ preventScroll: true });
+  event.currentTarget.hidden = true;
+});
+
+function openSharedLocations(button, organisations) {
+  clusterRequest++;
   const dialog = $('mapClusterDialog');
-  const title = $('mapClusterTitle');
   const list = $('mapClusterList');
   const status = $('mapClusterStatus');
-  const zoom = $('mapClusterZoom');
   const search = $('mapClusterSearch');
   const searchField = $('mapClusterSearchField');
-  const count = properties.count;
-  title.textContent = `${count} organisations`;
-  status.textContent = 'Loading organisations…';
+  $('mapClusterTitle').textContent = `${organisations.length} organisations at this location`;
+  status.textContent = '';
   list.replaceChildren();
-  zoom.hidden = true;
-  zoom.onclick = null;
   search.value = '';
   search.oninput = null;
-  searchField.hidden = true;
   dismissOrganisationCard();
   dialog.onclose = () => {
     if (document.activeElement === document.body) {
       (button.isConnected ? button : $('mapRegion')).focus({ preventScroll: true });
     }
   };
-  dialog.showModal();
-
-  try {
-    const source = map.getSource(clusterSourceId);
-    const groups = properties.cluster
-      ? (await source.getClusterLeaves(properties.cluster_id, properties.point_count, 0)).map(leaf => leaf.properties.group)
-      : [properties.group];
-    if (!dialog.open || request !== clusterRequest || properties.revision !== clusterRevision) return;
-    const organisations = groups.flatMap(key => pointGroups.get(key) || []).sort((a, b) => a.name.localeCompare(b.name));
-    const rows = organisations.map(org => {
-      const row = el('li');
-      const select = el('button', 'cluster-organisation');
-      select.type = 'button';
-      select.append(el('strong', '', org.name));
-      const detail = [org.type, org.city || org.country].filter(Boolean).join(' · ');
-      if (detail) select.append(el('span', '', detail));
-      select.addEventListener('click', () => {
-        dialog.close();
-        window.MCHMeasure?.('map_pin_open');
-        show(org, true, true, button);
-      });
-      row.append(select);
-      return { row, text: normalise([org.name, org.type, org.city, org.country].filter(Boolean).join(' ')) };
-    });
-    list.append(...rows.map(({ row }) => row));
-    searchField.hidden = rows.length < 10;
-    search.oninput = () => {
-      const words = normalise(search.value.trim()).split(/\s+/).filter(Boolean);
-      let matches = 0;
-      for (const { row, text } of rows) {
-        row.hidden = !words.every(word => text.includes(word));
-        if (!row.hidden) matches++;
-      }
-      list.scrollTop = 0;
-      status.textContent = !words.length ? '' : matches === 0 ? 'No organisations in this group match your search.'
-        : `${matches} of ${rows.length} organisations`;
-    };
-    status.textContent = '';
-    if (!properties.cluster) return;
-    const level = await source.getClusterExpansionZoom(properties.cluster_id);
-    if (!dialog.open || request !== clusterRequest || properties.revision !== clusterRevision) return;
-    zoom.hidden = false;
-    zoom.onclick = () => {
+  organisations = [...organisations].sort((a, b) => a.name.localeCompare(b.name));
+  const rows = organisations.map(org => {
+    const row = el('li');
+    const select = el('button', 'cluster-organisation');
+    select.type = 'button';
+    select.append(el('strong', '', org.name));
+    const detail = [org.type, org.city || org.country].filter(Boolean).join(' · ');
+    if (detail) select.append(el('span', '', detail));
+    select.addEventListener('click', () => {
       dialog.close();
-      $('mapRegion').focus({ preventScroll: true });
-      map.easeTo({ center: coordinates, zoom: level,
-        duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 450, essential: false });
-    };
-  } catch {
-    if (dialog.open && request === clusterRequest && !list.children.length) {
-      status.textContent = 'This group could not be loaded. Close it and try again.';
+      window.MCHMeasure?.('map_pin_open');
+      show(org, true, true, button);
+    });
+    row.append(select);
+    return { row, text: normalise([org.name, org.type, org.city, org.country].filter(Boolean).join(' ')) };
+  });
+  list.append(...rows.map(({ row }) => row));
+  searchField.hidden = rows.length < 10;
+  search.oninput = () => {
+    const words = normalise(search.value.trim()).split(/\s+/).filter(Boolean);
+    let matches = 0;
+    for (const { row, text } of rows) {
+      row.hidden = !words.every(word => text.includes(word));
+      if (!row.hidden) matches++;
     }
-  }
+    list.scrollTop = 0;
+    status.textContent = !words.length ? '' : matches === 0 ? 'No organisations in this group match your search.'
+      : `${matches} of ${rows.length} organisations`;
+  };
+  status.textContent = '';
+  dialog.showModal();
 }
 
 function renderMapMarkers() {
@@ -534,11 +573,14 @@ function renderMapMarkers() {
     const button = group ? el('button', 'map-cluster', String(properties.count)) : organisationPin(org);
     if (group) {
       button.type = 'button';
-      button.setAttribute('aria-haspopup', 'dialog');
-      button.addEventListener('click', () => openCluster(button, properties, coordinates));
+      if (!properties.cluster) {
+        button.classList.add('map-cluster-shared');
+        button.setAttribute('aria-haspopup', 'dialog');
+      }
+      button.addEventListener('click', () => zoomToCluster(button, properties, coordinates));
     }
     const marker = new maplibregl.Marker({ element: button }).setLngLat(coordinates).addTo(map);
-    button.setAttribute('aria-label', group ? `Browse ${properties.count} organisations in this area`
+    button.setAttribute('aria-label', group ? properties.cluster ? `Zoom to ${properties.count} organisations` : `Choose from ${properties.count} organisations at this location`
       : `Show ${org.name}${org.city ? ' in ' + org.city : ''} on map`);
     if (group) button.removeAttribute('aria-pressed');
     else button.setAttribute('aria-pressed', String(org.id === selectedMapOrganisation?.id));
@@ -829,6 +871,7 @@ function initMap() {
       });
       map.addLayer({ id: clusterSourceId, source: clusterSourceId, type: 'circle', paint: { 'circle-opacity': 0 } });
       map.on('render', renderMapMarkers);
+      map.on('movestart', () => { clusterRequest++; });
       updateMarkers();
       const background = map.getStyle()?.layers?.find(layer => layer.type === 'background');
       if (!background) return;
