@@ -1,0 +1,74 @@
+name: Publish TCL website and organisation profiles
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '13,43 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: tcl-github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: read
+      pages: read
+    outputs:
+      workflow_source: ${{ steps.source.outputs.workflow_source }}
+    steps:
+      - name: Check GitHub Pages publishing source
+        id: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          source=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq .build_type)
+          if [ "$source" = workflow ]; then
+            echo 'workflow_source=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'workflow_source=false' >> "$GITHUB_OUTPUT"
+            echo '::notice::Set Settings → Pages → Source to GitHub Actions to enable automatic publishing.'
+          fi
+      - uses: actions/checkout@v6
+        if: steps.source.outputs.workflow_source == 'true' || github.event_name != 'schedule'
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        if: steps.source.outputs.workflow_source == 'true' || github.event_name != 'schedule'
+        with:
+          node-version: 24
+      - name: Build and verify the static website
+        if: steps.source.outputs.workflow_source == 'true' || github.event_name != 'schedule'
+        run: |
+          mkdir "$RUNNER_TEMP/tcl-pages"
+          git archive HEAD | tar -x -C "$RUNNER_TEMP/tcl-pages"
+          cd "$RUNNER_TEMP/tcl-pages"
+          node scripts/refresh-map-organisations.mjs
+          node scripts/build-map-profiles.mjs
+          node scripts/build-map-profiles.mjs --check
+          rm -rf .github scripts
+      - name: Upload the website
+        if: steps.source.outputs.workflow_source == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ runner.temp }}/tcl-pages
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && needs.build.outputs.workflow_source == 'true'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to thechildlens.com
+        uses: actions/deploy-pages@v4
+        id: deployment

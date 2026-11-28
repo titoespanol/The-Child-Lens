@@ -331,7 +331,7 @@ body.map-page .filter-chip{padding:9px 12px;font-size:13px;min-height:44px}
 @media(min-width:841px){body.map-page>header{left:24px;right:24px;transform:none;width:auto;max-width:none;justify-content:space-between;border-radius:20px;padding:8px 14px}body.map-page>header nav{gap:6px}body.map-page>header .brand-name{font-size:15px}}
 @media(min-width:841px){body.map-page .maplibregl-ctrl-top-right{top:90px}}
 @media(max-width:840px){body.map-page .discovery-filters{top:86px;left:12px;right:12px;width:auto;padding:14px;gap:10px;border-radius:18px}.discovery-heading{font-size:20px}body.map-page .filter-chip-row{flex-wrap:nowrap;overflow-x:auto;padding:2px 2px 6px}body.map-page .filter-chip{font-size:14px}}
-body.map-page.has-discovery-filters .map-tools{top:var(--discovery-tools-top,240px)}.has-discovery-filters #clearMapFilters,.has-discovery-filters #reset{display:none}.active-filter-row .filter-clear{min-height:44px;padding:8px 12px}
+body.map-page.has-discovery-filters .map-tools{top:var(--discovery-tools-top,240px)}.has-discovery-filters #reset{display:none}.active-filter-row .filter-clear{min-height:44px;padding:8px 12px}
 
 /* A single discovery dock: panels open only when requested. */
 .site-footer{margin-top:0}
@@ -520,7 +520,17 @@ dialog.map-cluster-dialog[open]:has(.map-cluster-search:not([hidden])){display:f
 .map-area-controls{grid-column:1/-1;justify-self:start;max-width:100%;pointer-events:auto}
 .map-area-controls #searchMapArea{min-height:44px;padding:8px 16px;background:#051d23;border:1px solid #051d23;color:#fff;border-radius:999px;font-weight:600}
 .map-area-controls #searchMapArea:disabled{opacity:.65}
-.map-discovery-dock:has(details[open]) .map-area-controls,#mapRegion.has-organisation-sheet .map-area-controls{visibility:hidden}
+/* Keep the primary area controls above the open map panels. */
+body.map-page .map-search-disclosure .discovery-filters,.map-discovery-dock .map-legend .legend-items{
+  top:calc(64px + var(--map-area-height,44px));
+  max-height:max(8rem,calc(100dvh - 290px - var(--map-area-height,44px)));
+}
+#mapRegion.has-organisation-sheet .map-discovery-dock{z-index:25}
+#mapRegion.has-organisation-sheet .organisation-sheet:not(.is-dragging){
+  max-height:min(var(--sheet-height,44dvh),max(6rem,calc(100% - var(--map-controls-bottom,110px) - 16px)));
+}
+#mapRegion.has-organisation-sheet .organisation-sheet[data-state=peek]{--sheet-height:150px}
+#mapRegion.has-organisation-sheet .organisation-sheet[data-state=expanded]{--sheet-height:78dvh}
 .map-area-results:not([hidden]),.directory-area-filter:not([hidden]){display:flex;align-items:center;flex-wrap:wrap;gap:0 12px;padding:6px 12px;background:#f9f6f0;color:#051d23;border:1px solid var(--border-subtle);border-radius:14px;font-size:14px}
 .map-area-results{margin-top:6px}
 .map-area-results p{width:100%;margin:3px 0 0}
@@ -533,7 +543,13 @@ dialog.map-cluster-dialog[open]:has(.map-cluster-search:not([hidden])){display:f
 }
 
 .map-area-actions{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
-#restoreClusterView:not([hidden]){min-height:44px;border-radius:999px;background:#f9f6f0;color:#051d23}
+#clearMapFilters:not([hidden]),#restoreClusterView:not([hidden]){
+  min-height:44px;padding:8px 12px;border-radius:999px;background:#f9f6f0;color:#051d23;
+}
+.map-area-actions button{white-space:nowrap}
+@media(max-width:380px){
+  .map-area-controls #searchMapArea,#clearMapFilters:not([hidden]){padding-inline:10px;font-size:13px}
+}
 .map-cluster.map-cluster-shared{background:#f9f6f0;color:#051d23;border-color:#051d23}
 .map-cluster.map-cluster-shared:hover{background:#fff}
 

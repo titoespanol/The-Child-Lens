@@ -5,7 +5,42 @@
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.MCHOrganisationModel = api;
 })(typeof window === 'object' ? window : globalThis, () => {
+  const SUPABASE_URL = 'https://zbhvwduyohpiiksyjqba.supabase.co';
+  // Publishable browser key only. Never put a service-role/secret key in this client.
+  const SUPABASE_ANON_KEY = 'sb_publishable_P_gC6PJRohYkXn1nMBGC4A_bHKkQmef';
+  // Match the anon SELECT grants. New database columns are opt-in.
   const publicFields = Object.freeze(['id','name','logo_enabled','type','stage','city','country','lat','lng','website','sourceUrl','sourceType','verification','description','technology','focus','founding_year','founding_year_source_url']);
+  async function readPublicOrganisations({ timeout = 5000 } = {}) {
+    const rows = [];
+    const ids = new Set();
+    let total;
+    do {
+      const query = new URLSearchParams({
+        select: publicFields.join(','), order: 'id.asc', limit: '250', offset: String(rows.length)
+      });
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/organisations?${query}`, {
+        headers: { apikey: SUPABASE_ANON_KEY, Prefer: 'count=exact' },
+        signal: AbortSignal.timeout(timeout)
+      });
+      if (!response.ok) throw new Error(`Public directory returned HTTP ${response.status}`);
+      const page = await response.json();
+      const range = response.headers.get('Content-Range')?.match(/^(?:(\d+)-(\d+)|\*)\/(\d+)$/);
+      const count = range && Number(range[3]);
+      if (!Array.isArray(page) || !count || (total !== undefined && count !== total) ||
+          Number(range[1]) !== rows.length || Number(range[2]) !== rows.length + page.length - 1 ||
+          !page.length || rows.length + page.length > count) {
+        throw new Error('The public directory response is empty or changed during pagination');
+      }
+      for (const row of page) {
+        if (!row?.id || ids.has(row.id)) throw new Error('Missing or duplicate public organisation ID');
+        ids.add(row.id);
+        rows.push(row);
+      }
+      total = count;
+    } while (rows.length < total);
+    return rows;
+  }
+
   const filterKeys = Object.freeze(['q','type','country','focus','technology','stage','area','group']);
   const multiKeys = Object.freeze(['type','country','focus','technology','stage']);
   const normalise = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
@@ -75,5 +110,5 @@
     const names = {"Children's hospital":['hospital','hospitals'],Startup:['startup','startups'],Investor:['investor','investors'],hub:['hub / accelerator','hubs / accelerators'],'Innovation hub':['innovation hub','innovation hubs'],Accelerator:['accelerator','accelerators']};
     return (names[type] || ['organisation','organisations'])[count === 1 ? 0 : 1];
   }
-  return Object.freeze({publicFields,filterKeys,multiKeys,fromSearch,toSearch,filterRows,readArea,areaFromBounds,categoryLabel,foundingLabel});
+  return Object.freeze({publicFields,readPublicOrganisations,SUPABASE_URL,SUPABASE_ANON_KEY,filterKeys,multiKeys,fromSearch,toSearch,filterRows,readArea,areaFromBounds,categoryLabel,foundingLabel});
 });

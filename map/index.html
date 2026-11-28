@@ -15,18 +15,18 @@
 <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
 <script defer src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 
-<script defer src="map-sheet.js?v=7"></script>
+<script defer src="map-sheet.js?v=20261128-map-controls"></script>
 <script defer src="organisation-logos.js"></script>
 <script defer src="organisation-team.js?v=20261119-account-team"></script>
-<script defer src="/map/published-profiles.js"></script>
+<script defer src="/map/published-profiles.js?v=e0eb71244374"></script>
 <script defer src="/map/measurement.js?v=d21ece72ce7a"></script>
 <link rel="stylesheet" href="/map/measurement.css">
 <meta name="referrer" content="strict-origin">
-<script defer src="organisation-model.js?v=20261128-exact-cluster"></script>
-<script defer src="app.js?v=20261128-profile-audit"></script>
-<script defer src="filter-bar.js?v=20261127-area-search"></script>
+<script defer src="organisation-model.js?v=20261128-map-controls"></script>
+<script defer src="app.js?v=20261128-map-controls"></script>
+<script defer src="filter-bar.js?v=20261128-map-controls"></script>
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="brand-system.css?v=20261128-exact-cluster"><script defer src="app-shell.js?v=20261119-view-filters"></script><link rel="canonical" href="https://thechildlens.com/map/">
+<link rel="stylesheet" href="brand-system.css?v=20261128-map-controls"><script defer src="app-shell.js?v=20261119-view-filters"></script><link rel="canonical" href="https://thechildlens.com/map/">
 <meta property="og:type" content="website"><meta property="og:url" content="https://thechildlens.com/map/"><meta property="og:title" content="Children’s health innovation map | The Child Lens"><meta property="og:description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens."><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Children’s health innovation map | The Child Lens"><meta name="twitter:description" content="Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Children’s health innovation map | The Child Lens","description":"Explore hospitals, startups, research organisations and venture builders advancing children’s health. Browse the map and directory by The Child Lens.","url":"https://thechildlens.com/map/","isPartOf":{"@type":"WebSite","name":"Mapping Children’s Health","url":"https://thechildlens.com/map/"},"publisher":{"@type":"Organization","name":"The Child Lens","url":"https://thechildlens.com/"}}</script>
 </head>
@@ -54,6 +54,7 @@
     <section id="mapAreaControls" class="map-area-controls" aria-label="Map area search">
       <div class="map-area-actions">
         <button id="searchMapArea" class="btn-secondary" type="button" disabled>Search this area</button>
+        <button id="clearMapFilters" class="btn-secondary" type="button" hidden>Clear all filters</button>
         <button id="restoreClusterView" class="btn-secondary" type="button" hidden>Zoom back</button>
       </div>
       <div id="mapAreaResults" class="map-area-results" hidden>
@@ -65,7 +66,6 @@
 
     <div class="map-tools">
       <button id="fitMap" class="btn-secondary" type="button" disabled hidden>Fit map to results</button>
-      <button id="clearMapFilters" type="button" hidden>Clear filters</button>
       <a id="filteredDirectory" class="map-directory-link" href="directory.html" data-ecosystem-view="directory" hidden></a>
     </div>
 

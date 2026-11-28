@@ -31,7 +31,15 @@
   const body = node('div', 'sheet-body'); body.id = 'organisationSheetContent';
   handle.setAttribute('aria-controls', body.id);
   sheet.append(handle, header, meta, body); root.append(sheet);
-  function notify() { requestAnimationFrame(() => { if (active) callbacks.resize?.(sheet.getBoundingClientRect().height); }); }
+  let pendingFrame;
+  function notify() {
+    cancelAnimationFrame(pendingFrame);
+    pendingFrame = requestAnimationFrame(() => {
+      if (active && !sheet.getAnimations().some(animation => animation.transitionProperty === 'max-height')) {
+        callbacks.resize?.(sheet.getBoundingClientRect().height);
+      }
+    });
+  }
   function setState(next) {
     if (!states.includes(next)) return;
     state = next; sheet.dataset.state = state;
@@ -95,7 +103,9 @@
       event.preventDefault(); close(true);
     }
   });
-  sheet.addEventListener('transitionend', event => { if (event.propertyName === 'max-height') notify(); });
+  for (const type of ['transitionend', 'transitioncancel']) {
+    sheet.addEventListener(type, event => { if (event.propertyName === 'max-height') notify(); });
+  }
   window.addEventListener('resize', notify);
   mobile.addEventListener('change', () => { if (!mobile.matches) close(false); });
   window.MCHMapSheet = {

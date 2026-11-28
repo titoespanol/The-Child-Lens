@@ -83,6 +83,15 @@
   const area=document.getElementById('mapAreaControls');if(area)dock.append(area);
   const tools=document.querySelector('.map-tools');if(tools)dock.append(tools);
   host.append(dock);
+  if(area){
+   const measureArea=()=>{
+    dock.style.setProperty('--map-area-height',area.offsetHeight+'px');
+    host.style.setProperty('--map-controls-bottom',Math.ceil(area.getBoundingClientRect().bottom-host.getBoundingClientRect().top)+'px');
+   };
+   const areaObserver=new ResizeObserver(measureArea);
+   areaObserver.observe(area);
+   areaObserver.observe(host);
+  }
   disclosure.addEventListener('toggle',()=>{if(disclosure.open&&key)key.open=false;});
   key?.addEventListener('toggle',()=>{if(key.open)disclosure.open=false;});
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!dialog.open&&disclosure.open){disclosure.open=false;disclosureSummary.focus();}});

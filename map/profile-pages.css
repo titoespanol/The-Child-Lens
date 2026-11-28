@@ -16,3 +16,20 @@
 .profile-nearby ul { margin-top: 0; padding-left: 1.25rem; }
 .profile-nearby li { padding-block: .25rem; }
 .profile-nearby li span { display: block; font-size: .875rem; }
+
+body.organisation-profile.child-lens {
+  background-color: #f9f6f0;
+  background-image: linear-gradient(#f9f6f09c, #f9f6f09c), url('/assets/boho-pattern.jpg');
+  background-size: auto, 580px auto;
+}
+.organisation-profile.child-lens .policy-page {
+  width: min(calc(100% - 1.5rem), 54rem);
+  background: #fffdf8;
+  border: 1px solid #d1cdc3;
+  border-top: .4rem solid #409dbf;
+  border-radius: 1.5rem;
+  box-shadow: 0 .5rem 2rem #051d2314;
+}
+.organisation-profile.child-lens .profile-actions a {
+  background: #f9f6f0;
+}
