@@ -372,7 +372,7 @@ body.directory-page #directory>p:not(.status){font-size:16px;line-height:1.65}
 .map-tools{display:none!important}
 @media(max-width:840px){body>header{position:fixed;top:0;left:0;transform:none;width:100%;max-width:none;border:0;border-radius:0;box-shadow:0 1px 8px #051d2315;padding:6px 8px}body>header nav{position:static;display:flex;width:100%;min-height:0;border:0;border-radius:0;box-shadow:none;padding:0;background:transparent;backdrop-filter:none;justify-content:space-evenly}body>header nav>a,body>header nav>button{flex:1;font-size:13px;min-height:44px;padding:10px 7px}.map-discovery-dock{top:64px;left:12px;width:calc(100% - 24px)}.map-note{left:12px;right:12px;bottom:calc(80px + env(safe-area-inset-bottom));text-align:center}.maplibregl-ctrl-bottom-right,.maplibregl-ctrl-bottom-left{bottom:76px}.directory-page .directory-layout{padding-top:72px}}
 .map-filter-fields select[multiple]{min-height:120px;padding:8px}.filter-options .filter-option[aria-pressed=true]{border-color:#246a80;background:#e5f1ed;color:#153b40}
-body.directory-page .entry-summary{list-style:none;cursor:pointer}body.directory-page .entry-summary::-webkit-details-marker{display:none}body.directory-page .entry-summary::after{content:'Open details';display:inline-flex;margin-top:6px;padding:5px 10px;border:1px solid #bdcac2;border-radius:999px;color:#155c70;font-size:12px;font-weight:600}body.directory-page .entry[open]>.entry-summary::after{content:'Close details'}
+body.directory-page .entry-summary{list-style:none;cursor:pointer}body.directory-page .entry-summary::-webkit-details-marker{display:none}body.directory-page .entry-disclosure-label::before{content:'Open details';display:inline-flex;margin-top:6px;padding:5px 10px;border:1px solid #bdcac2;border-radius:999px;color:#155c70;font-size:12px;font-weight:600}body.directory-page .entry[open] .entry-disclosure-label::before{content:'Close details'}
 .map-legend .legend-clear{width:100%;min-height:44px;margin-top:8px;padding:9px 12px;border:1px solid #9aafaa;border-radius:10px;background:var(--bg-card);color:#155c70;font:600 14px var(--font-body);text-align:center}
 .map-legend .legend-clear:hover{background:#e6f2f5}
 
@@ -541,3 +541,5 @@ dialog.map-cluster-dialog[open]:has(.map-cluster-search:not([hidden])){display:f
   body.map-page .maplibregl-ctrl-group button{width:44px;height:44px}
   .map-area-controls{max-width:calc(100% - 56px)}
 }
+
+body.directory-page #directory{scroll-margin-top:175px}

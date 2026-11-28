@@ -114,6 +114,7 @@ For academic or structured citations:
 ## Links
 
 - [Homepage](https://thechildlens.com/)
+- [Children’s health organisation directory](https://thechildlens.com/directory/): Public profiles in the Mapping Children’s Health project, with organisation details and available source links.
 - [About Us](https://thechildlens.com/about/)
 - [Brand Book](https://thechildlens.com/brand-book/)
 - [Design System](https://thechildlens.com/design-system/)
@@ -122,6 +123,6 @@ For academic or structured citations:
 
 ---
 
-> Last updated: 2026-05-07
+> Last updated: 2026-11-28
 > Canonical URL: https://thechildlens.com/llms-full.txt
 > See also: https://thechildlens.com/llms.txt

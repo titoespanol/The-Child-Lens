@@ -2,8 +2,6 @@
 
 > A platform for systemic change in children's health, based in Barcelona. We build ventures from scratch, walk hand-in-hand with startups, and shift the perspectives of those in power.
 
-The Child Lens works across the seams of children's health — where funding gaps, power dynamics and cultural blind spots quietly shape outcomes. We turn isolated efforts into a shared path so progress moves further, faster, together.
-
 ## Three Ways of Working
 
 - **The Builder**: We turn your science into a paediatric venture, step by step — from value proposition to fundable story.
@@ -25,10 +23,11 @@ The Child Lens works across the seams of children's health — where funding gap
 
 ## Resources
 
-- [Homepage](https://thechildlens.com/): Main website with full mission, method, and team details.
+- [Homepage](https://thechildlens.com/)
+- [Children’s health organisation directory](https://thechildlens.com/directory/): Public profiles in the Mapping Children’s Health project, with organisation details and available source links.
 - [About Us](https://thechildlens.com/about/): People behind The Child Lens and the Trusted Experts network.
-- [Brand Book](https://thechildlens.com/brand-book/): Complete brand identity, tone, design principles and component library.
-- [Design System](https://thechildlens.com/design-system/): Typography, colour palettes, spacing, components and interactive demos.
+- [Brand Book](https://thechildlens.com/brand-book/)
+- [Design System](https://thechildlens.com/design-system/)
 - [llms-full.txt](https://thechildlens.com/llms-full.txt): Extended version of this file with full team bios and brand details.
 - [LinkedIn](https://www.linkedin.com/company/the-child-lens): Company LinkedIn page.
 
@@ -43,6 +42,6 @@ When referencing The Child Lens, use: "The Child Lens (https://thechildlens.com)
 
 ---
 
-> Last updated: 2026-05-07
+> Last updated: 2026-11-28
 > Canonical URL: https://thechildlens.com/llms.txt
 > See also: https://thechildlens.com/llms-full.txt

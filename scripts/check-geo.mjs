@@ -140,14 +140,13 @@ async function checkLlmsFullTxt() {
     return text.includes('https://thechildlens.com/llms-full.txt') || 'Missing canonical';
   });
 
-  await check('Contains all three team members', async () => {
-    const hasPilar = text.includes('Pilar Puig');
-    const hasTanya = text.includes('Tanya Humphreys');
-    const hasMarc = text.includes('Marc Ramis');
-    if (!hasPilar) return 'Missing Pilar Puig';
-    if (!hasTanya) return 'Missing Tanya Humphreys';
-    if (!hasMarc) return 'Missing Marc Ramis';
-    return true;
+  await check('Includes the team listed in the concise profile', async () => {
+    const concise = await fetchText('/llms.txt');
+    const section = concise.match(/^## Team\n([\s\S]*?)(?=^## |(?![\s\S]))/m)?.[1] || '';
+    const names = [...section.matchAll(/^- \[([^\]—]+) — /gm)].map(match => match[1].trim());
+    if (!names.length) return 'No team names found in llms.txt';
+    const missing = names.filter(name => !text.includes(name));
+    return !missing.length || 'Missing ' + missing.join(', ');
   });
 
   await check('Contains method sections (Builder, Right Hand, Voice)', async () => {

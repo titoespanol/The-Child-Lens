@@ -556,18 +556,26 @@ function openSharedLocations(button, organisations) {
 function renderMapMarkers() {
   if (!map?.getSource(clusterSourceId)) return;
   const visible = new Set();
-  const bounds = map.getBounds();
+  const { clientWidth, clientHeight } = map.getContainer();
+  const centreLongitude = map.getCenter().lng;
+  function pointInView([lng, lat]) {
+    // GeoJSON features use their original world. Markers follow the visible world copy.
+    const point = map.project([lng + 360 * Math.round((centreLongitude - lng) / 360), lat]);
+    return point.x >= -24 && point.x <= clientWidth + 24 && point.y >= -24 && point.y <= clientHeight + 24 ? point : null;
+  }
   const features = map.querySourceFeatures(clusterSourceId);
   const tcl = all.find(org => org.id === 'seed-1');
   const tclCoordinates = tcl && located(tcl) ? [tcl.lng, tcl.lat] : null;
-  const tclPoint = tclCoordinates && bounds.contains(tclCoordinates) ? map.project(tclCoordinates) : null;
+  const tclPoint = tclCoordinates ? pointInView(tclCoordinates) : null;
   let raiseTclPin = false;
   for (const { geometry, properties } of features) {
-    if (properties.revision !== clusterRevision || !bounds.contains(geometry.coordinates)) continue;
+    if (properties.revision !== clusterRevision) continue;
+    const point = pointInView(geometry.coordinates);
+    if (!point) continue;
     const org = pointGroups.get(properties.group)?.[0];
     if (properties.count === 1 && (org?.id === selectedMapOrganisation?.id || (tclPoint && org?.id === tcl.id))) continue;
     if (tclPoint && properties.count > 1) {
-      const { x, y } = map.project(geometry.coordinates);
+      const { x, y } = point;
       if (Math.hypot(tclPoint.x - x, tclPoint.y - y) < 42) raiseTclPin = true;
     }
     const key = properties.cluster ? 'cluster:' + properties.cluster_id : 'group:' + properties.group;
@@ -686,6 +694,9 @@ function render(preserveExpanded = false) {
     card.append(summary, body);
     summary.append(head, el('p', 'meta', [org.type, org.city || 'Location under review', org.country].filter(Boolean).join(' | ')));
     appendFoundingYear(summary,org);
+    const affordance = el('span', 'entry-disclosure-label');
+    affordance.setAttribute('aria-hidden', 'true');
+    summary.append(affordance);
 
     if (org.address) body.append(el('p', 'meta', [org.address, org.postal_code].filter(Boolean).join(', ')));
     if (org.description) body.append(el('p', 'desc', org.description));
@@ -1232,6 +1243,15 @@ if ($('stage')) $('stage').addEventListener('change', () => filter());
 if ($('reset')) $('reset').addEventListener('click', clearAllFilters);
 
 if ($('fitMap')) $('fitMap').addEventListener('click', fitResults);
+
+const directorySkip = document.querySelector('.directory-page .skip-link');
+directorySkip?.addEventListener('click', event => {
+  const directory = $('directory');
+  if (!directory || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  directory.focus({ preventScroll: true });
+  directory.scrollIntoView({ block: 'start' });
+});
 
 restoreFilterControls();
 syncViewLinks(window.MCHOrganisationModel.toSearch(filterState));

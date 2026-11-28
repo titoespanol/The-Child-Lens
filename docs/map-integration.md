@@ -23,6 +23,6 @@ Release checklist: a map release is complete only after the snapshot in this rep
 
 ### Organisation profiles and measurement
 
-After updating the published organisation snapshot, run `node scripts/build-map-profiles.mjs` from this website repository. Commit the profile pages, the published ID list, both directory pages and both sitemaps together. Live additions keep their existing query links until their static profiles have been published. When importing a new map build, retain the website integration in app.js, map-sheet.js, the public page heads and the cookie notice.
+After updating the published organisation snapshot, run `node scripts/build-map-profiles.mjs` from this website repository. Run `node scripts/build-map-profiles.mjs --check` to catch any generated files that are missing or stale. Commit the profile pages, the published ID list, both directory pages and both sitemaps together. Live additions keep their existing query links until their static profiles have been published. When importing a new map build, retain the website integration in app.js, map-sheet.js, the public page heads and the cookie notice.
 
 The root sitemap is `https://thechildlens.com/sitemap.xml`. Submit it in the HTTPS URL-prefix Search Console property. The public GA4 measurement ID belongs in `map/measurement.js`. Turn off enhanced measurement on the GA4 stream to keep collection limited to the events declared in that file. Use GA4 Realtime to confirm an opted-in pin open, profile visit and source click. GA4 receives canonical page URLs and event names.
