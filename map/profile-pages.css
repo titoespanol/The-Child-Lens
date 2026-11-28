@@ -11,8 +11,8 @@
 }
 
 .organisation-profile .policy-page > h1 { max-width: none; }
-.profile-nearby { margin-top: 2.25rem; border-top: 1px solid var(--border-subtle); }
-.profile-nearby h2 { margin-bottom: .5rem; }
+.profile-team, .profile-nearby { margin-top: 2.25rem; border-top: 1px solid var(--border-subtle); }
+.profile-team h2, .profile-nearby h2 { margin-bottom: .5rem; }
 .profile-nearby ul { margin-top: 0; padding-left: 1.25rem; }
 .profile-nearby li { padding-block: .25rem; }
 .profile-nearby li span { display: block; font-size: .875rem; }

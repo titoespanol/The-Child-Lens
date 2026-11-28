@@ -59,7 +59,7 @@
   function load(id) {
     id = String(id);
     if (inFlight.has(id)) return inFlight.get(id);
-    publishedTeam ??= read(fetch('data/organisation-team.json?v=20261119-account-team', {signal: AbortSignal.timeout(5000)}))
+    publishedTeam ??= read(fetch('/map/data/organisation-team.json?v=20261119-account-team', {signal: AbortSignal.timeout(5000)}))
       .catch(error => { publishedTeam = null; throw error; });
     const affiliations = read(fetch(`${supabase}/rest/v1/rpc/list_public_affiliations`, {
       method: 'POST', headers: {apikey, 'Content-Type': 'application/json'},
@@ -128,7 +128,7 @@
 
   function card(org, parentDetails) {
     const section = node('section', '', {className: 'organisation-team-summary'});
-    const link = node('a', 'View team', {href: 'team.html?org=' + encodeURIComponent(org.id)});
+    const link = node('a', 'View team', {href: '/map/team.html?org=' + encodeURIComponent(org.id)});
     link.setAttribute('aria-label', `View ${org.name} team`);
     section.append(link);
     let loading = false;
@@ -159,6 +159,15 @@
       parentDetails.addEventListener('toggle', () => { if (parentDetails.open) update(); });
     } else update();
     return section;
+  }
+
+  const profileTeam = document.querySelector('[data-profile-team]');
+  if (profileTeam) {
+    load(profileTeam.dataset.profileTeam).then(({members}) => {
+      if (!members.length) return;
+      profileTeam.querySelector('h2').after(list(members));
+      profileTeam.hidden = false;
+    });
   }
 
   window.MCHOrganisationTeam = {card, load, list};
