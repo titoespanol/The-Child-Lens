@@ -34,10 +34,20 @@
     const remaining = affiliations.filter(row => typeof row.name === 'string' && row.name.trim());
     const members = [];
     const listed = new Set();
+    const profileLinks = new Map();
     for (const row of published) {
-      const url = sourceUrl(row.sourceUrl);
-      if (!url || typeof row.name !== 'string' || !row.name.trim()) continue;
+      if (typeof row.name !== 'string' || !row.name.trim()) continue;
       const name = key(row.name);
+      const profileUrl = sourceUrl(row.profileUrl);
+      if (row.affiliationOnly) {
+        // A link alone must never publish someone's affiliation.
+        if (profileUrl && remaining.filter(person => key(person.name) === name).length === 1) {
+          profileLinks.set(name, profileUrl);
+        }
+        continue;
+      }
+      const url = sourceUrl(row.sourceUrl);
+      if (!url) continue;
       if (listed.has(name)) continue;
       listed.add(name);
       const matching = remaining.filter(person => key(person.name) === name);
@@ -52,14 +62,14 @@
     }
     return members.concat(remaining.map(row => ({
       name: row.name, role: row.role, affiliation: 'Self-reported affiliation',
-      photoPath: row.photoPath, photoUrl: row.photoUrl
+      photoPath: row.photoPath, photoUrl: row.photoUrl, profileUrl: profileLinks.get(key(row.name))
     })));
   }
 
   function load(id) {
     id = String(id);
     if (inFlight.has(id)) return inFlight.get(id);
-    publishedTeam ??= read(fetch('/map/data/organisation-team.json?v=20261119-account-team', {signal: AbortSignal.timeout(5000)}))
+    publishedTeam ??= read(fetch('/map/data/organisation-team.json?v=20261128-profile-links', {signal: AbortSignal.timeout(5000)}))
       .catch(error => { publishedTeam = null; throw error; });
     const affiliations = read(fetch(`${supabase}/rest/v1/rpc/list_public_affiliations`, {
       method: 'POST', headers: {apikey, 'Content-Type': 'application/json'},
@@ -81,7 +91,11 @@
     const list = node('ul', '', {className: 'organisation-team-members'});
     for (const member of members) {
       const row = node('li', '');
-      const label = node('span', [member.name, member.role].filter(Boolean).join(' · '));
+      const label = node('span', '');
+      if (member.profileUrl) {
+        label.append(node('a', member.name, {href: member.profileUrl, rel: 'noopener noreferrer'}));
+        if (member.role) label.append(document.createTextNode(member.role));
+      } else label.textContent = [member.name, member.role].filter(Boolean).join(' · ');
       if (member.affiliation) label.append(node('small', member.affiliation));
       if (member.sourceUrl) label.append(node('a', 'Public source', {href: member.sourceUrl}));
       row.append(label);
@@ -102,28 +116,33 @@
         if (!response.ok) return;
         const blob = await response.blob();
         if (row.isConnected && blob.type === 'image/jpeg' && blob.size && blob.size <= 1048576) {
-          appendAvatar(row, URL.createObjectURL(blob), true);
+          appendAvatar(row, member, URL.createObjectURL(blob), true);
         }
       }).catch(() => {});
     } else if (providerUrl) {
       const url = new URL(providerUrl);
       const domains = ['googleusercontent.com', 'licdn.com', 'licdn-ei.com'];
       if (!url.port && domains.some(host => url.hostname === host || url.hostname.endsWith('.' + host))) {
-        appendAvatar(row, url.href);
+        appendAvatar(row, member, url.href);
       }
     }
   }
 
-  function appendAvatar(row, src, isBlob = false) {
+  function appendAvatar(row, member, src, isBlob = false) {
     const image = node('img', '', {alt: '', width: 40, height: 40, referrerPolicy: 'no-referrer'});
+    const link = member.profileUrl && node('a', '', {href: member.profileUrl, rel: 'noopener noreferrer'});
+    if (link) {
+      link.setAttribute('aria-label', `Open ${member.name}’s public profile`);
+      link.append(image);
+    }
     if (isBlob) image.onload = () => URL.revokeObjectURL(src);
     else image.loading = 'lazy';
     image.onerror = () => {
       if (isBlob) URL.revokeObjectURL(src);
-      image.remove();
+      (link || image).remove();
     };
     image.src = src;
-    row.prepend(image);
+    row.prepend(link || image);
   }
 
   function card(org, parentDetails) {
